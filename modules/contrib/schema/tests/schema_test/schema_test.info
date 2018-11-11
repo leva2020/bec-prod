@@ -1,0 +1,11 @@
+name = Schema test
+core = 7.x
+hidden = TRUE
+files[] = SchemaTestDatabaseConnection.php
+
+; Information added by Drupal.org packaging script on 2017-06-09
+version = "8.x-1.x-dev"
+core = "8.x"
+project = "schema"
+datestamp = "1497045844"
+

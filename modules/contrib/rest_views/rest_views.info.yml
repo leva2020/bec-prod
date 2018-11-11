@@ -1,0 +1,14 @@
+name: REST Views
+type: module
+description: Expose fields and entity references in REST view displays.
+# core: 8.x
+package: PwC's Experience Center
+dependencies:
+  - views
+  - rest
+
+# Information added by Drupal.org packaging script on 2017-09-03
+version: '8.x-1.0-alpha9'
+core: '8.x'
+project: 'rest_views'
+datestamp: 1504468749

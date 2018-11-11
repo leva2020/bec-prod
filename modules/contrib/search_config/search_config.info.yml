@@ -1,0 +1,14 @@
+name: Search Configuration
+description: 'Modify search form, including enforcing search restrictions by content type.'
+package: Search
+# core: 8.x
+configure: entity.search_page.collection
+dependencies:
+  - search
+type: module
+
+# Information added by Drupal.org packaging script on 2016-08-23
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'search_config'
+datestamp: 1471937040
