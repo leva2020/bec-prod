@@ -1,0 +1,56 @@
+footer{
+	width: 100%;
+	background: $main-blue;
+	padding: 60px 0;
+	float: left;
+	.container{
+		.row{
+			text-align: left;
+			color: white;
+			a{
+				color: white;
+				&:hover{
+					opacity: 0.6;
+				}
+			}
+			p{
+				line-height: 1.4;
+				margin: 8px 0 16px;
+			}
+			address {
+				margin-bottom: 20px;
+				font-style: normal;
+				line-height: 1.42857143;
+			}
+			h5{
+				&.heading{
+					font-size: 18px;
+					font-weight: bold;
+					margin: 8px 0 16px;
+				}
+			}
+			ul{
+				li{
+					margin-bottom: 10px;
+					padding-left: 0;
+				}
+			}
+		}
+	}
+}
+
+
+@media (max-width: 480px){
+	footer .container .row{
+		text-align: center;
+		.company-details{
+			padding-bottom: 10px;
+    		border-bottom: 1px solid rgba(255,255,255,0.2);
+    		margin-bottom: 20px;
+		}
+		ul li{
+			width: 100%;
+			padding: 0;
+		}
+	}
+}

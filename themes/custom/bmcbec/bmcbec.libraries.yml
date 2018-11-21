@@ -1,0 +1,13 @@
+base:
+  css:
+    fonts:
+      https://fonts.googleapis.com/css?family=Varela+Round: {type: external}
+    carousel:
+      dist/css/contrib/owl.carousel.min.css: {}
+    theme:
+      dist/css/custom/main.css: {}
+  js:
+    dist/js/contrib/owl.carousel.js: {}
+    dist/js/custom/main.min.js: {}
+  dependencies:
+    - core/jquery
