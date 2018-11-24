@@ -1,0 +1,256 @@
+/* Mixins */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+
+*{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none!important;
+	&:focus{
+    	outline: none!important;
+	}
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, .heading, nav.main, table thead th, .nav-tabs{
+	font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.color-text-blue{
+	color: $main-blue;
+}
+.color-text-white{
+	color: white;
+}
+.color-bg-main-blue{
+	background: $main-blue;
+}
+.color-bg-sec-blue{
+	background: $sec-blue;
+}
+.color-bg-main-gray{
+	background: $gray;
+}
+
+
+#site{
+	width: 100%;
+	position: relative;
+    float: left;
+    box-shadow: 0px 0 60px 0 rgba(0,0,0,0.1);
+    animation-duration: 0.5s;
+}
+
+#site, header{
+	background-color: white;
+}
+
+ul.nav, ol.nav, nav ul, nav ol, ul.list, ol.list, nav ul li, nav ol li, ul.list li, ol.list li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    line-height: 1;
+}
+
+nav.main ul{
+	li:hover, li:hover ul, li.open, li.open ul {
+	    background-color: $sec-blue;
+	}
+}
+
+.site_search {
+    padding: 0;
+    position: relative;
+    form {
+	    padding: 0;
+	    margin: 0;
+	}
+	.form-group {
+	    width: 100%;
+	}
+	.form-control {
+	    width: 100%;
+	    height: 40px;
+	    padding-right: 45px;
+	}
+	.btn {
+	    width: 40px;
+	    height: 38px;
+	    position: absolute;
+	    top: 16px;
+	    right: 16px;
+	    background: none;
+	    box-shadow: none!important;
+	}
+}
+
+.form-control {
+    border-radius: 0;
+    min-height: 40px;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    transition: all 0.2s ease-in-out 0s;
+}
+
+
+body, html{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	overflow: hidden;
+	overflow-y: auto;
+	max-width: 1920px;
+    position: relative;
+    margin: 0 auto;
+}
+
+body{
+	width: 100%;
+	color: #6e6e6e;
+	line-height: normal;
+	font-family: $font;
+	font-weight: 400;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    background-color: rgba(238,238,238,1);
+    animation-name: fadeIn;
+}
+
+ul, ol{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+section, article{
+	float: left;
+	width: 100%;
+	height: 100%;
+	padding: 60px 0;
+}
+
+a{
+	text-decoration: none;
+	transition: all 0.2s ease-in-out 0s;
+	&:hover{
+		text-decoration: none;
+	}
+}
+
+i.fa {
+    margin-right: 5px;
+    &.after {
+	    margin-right: 0;
+	    margin-left: 5px;
+	}
+}
+
+b, strong{
+	font-weight: 600;
+}
+
+img{
+	width: 100%;
+	height: auto;
+}
+
+hr{
+	&.x1{
+		border: 1px solid $main-blue;
+	}
+	&.x1-5{
+		border: 1.5px solid $main-blue;
+	}
+}
+
+.container {
+	text-align: center;
+	transition: all 1s ease;
+}
+
+#top-link-block {
+    position: fixed;
+    bottom: 25px;
+    right: 15px;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out 0s;
+}
+#top-link-block a {
+    display: block;
+    margin: 0 auto;
+}
+
+p{
+	margin: 8px 0 16px;
+}
+
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+	background-color: rgba(gray, .95);
+}
+.mCS-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+    background-color: rgba(gray, 1);
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{
+	background-color: #fff; background-color: rgba(255,255,255,0);
+	filter: "alpha(opacity=0)"; -ms-filter: "alpha(opacity=0)";
+}
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+    background-color: #fff;
+    background-color: rgba(255,255,255,0);
+    filter: "alpha(opacity=0)";
+    -ms-filter: "alpha(opacity=0)";
+}
+.mCustomScrollBox.mCS-minimal + .mCSB_scrollTools.mCSB_scrollTools_horizontal{
+	top: 18px;
+}
+.mCSB_container {
+    padding-bottom: 25px;
+}
+
+
+
+
+@media only screen and (min-width: $tablet){
+	header, .navigation, .navigation nav.main, .navigation nav.main ul, .navigation nav.main ul li {
+    	z-index: 500;
+	}
+	.site_search .btn {
+	    top: 1px;
+	    right: 1px;
+	}
+}
+
+
+@media (max-width: 480px){
+	section, article{
+		padding: 45px 0;
+	}
+}

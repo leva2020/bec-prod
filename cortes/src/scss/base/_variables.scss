@@ -1,0 +1,26 @@
+// Colors
+$red: #f81444;
+$main-blue: #0b5a9c;
+$sec-blue: #2e89b6;
+$green: #66c989;
+$gray: #eee;
+
+// Fonts
+$font: 'Varela Round', sans-serif;
+
+// Breakpoints
+$small: 0;
+$tablet: 768px;
+$medium: 992px;
+$laptop: 1200px;
+
+// Transitions
+$transition-slow: all 1s ease-in-out;
+$transition: all .5s ease-in-out;
+$transition-fast: all .25s ease-in-out;
+
+//mixin
+@mixin hover-transition-5 {
+	transition: all .5s;
+  -webkit-transition: all .5s
+}
