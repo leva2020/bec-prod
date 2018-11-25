@@ -41,4 +41,10 @@ jQuery(document).ready(function() {
 		});
 	}
 
+	if(($(window).height() + 100) < $(document).height()){
+        $('#top-link-block').addClass('show').affix({
+            offset: {top:100}
+        });
+	}
+
 })

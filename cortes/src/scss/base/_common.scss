@@ -106,19 +106,6 @@ hr{
 	transition: all 1s ease;
 }
 
-#top-link-block {
-    position: fixed;
-    bottom: 25px;
-    right: 15px;
-    padding: 0;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out 0s;
-}
-#top-link-block a {
-    display: block;
-    margin: 0 auto;
-}
-
 p{
 	margin: 8px 0 16px;
 }
@@ -245,6 +232,28 @@ nav.main ul{
 }
 
 
+
+#top-link-block{
+	z-index: 200;
+}
+
+@media only screen and (min-width: $medium){
+	#top-link-block {
+	    position: fixed;
+	    bottom: 25px;
+	    right: 15px;
+	    padding: 0;
+	    opacity: 0;
+	    transition: opacity 0.2s ease-in-out 0s;
+	    &.affix.show{
+	    	opacity: 1;
+	    }
+	}
+	#top-link-block a {
+	    display: block;
+	    margin: 0 auto;
+	}
+}
 
 
 @media only screen and (min-width: $tablet){
