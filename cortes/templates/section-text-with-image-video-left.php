@@ -13,6 +13,8 @@
 						<div class="text">
 							<p>Ubique con facilidad campos de producción, centrales térmicas, estaciones compresoras y el sistema nacional de transporte de gas.</p>
 						</div>
+						
+						<!--Las clases "btn-blue" "btn-green" definen el color del boton -->
 						<a class="btn btn-blue pull-left" href="#">Ver mapa interactivo</a>
 					</div>
 					<!--// INFO -->

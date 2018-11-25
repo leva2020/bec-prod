@@ -43,7 +43,7 @@
 						<li>Generadores Térmicos y Usuarios no Regulados <sup>1</sup>.</li>
 					</ul>
 					<p>1 <sup>Tomado de la Resolución CREG 114 de 2017</sup></p>
-					<p>Vea también: <a href="#" title="Participantes">Participantes</a></p>
+					<p>Vea también: <a href="#" target="" title="Participantes">Participantes</a></p>
                 </div>
             </div>
         </div>

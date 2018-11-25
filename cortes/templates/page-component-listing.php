@@ -6,9 +6,9 @@
             </div>
         </div>
         <div class="info col-sm-8 col-xs-12 pull-left">
-            <p class="heading">MISIÓN</p>
+            <p class="heading">TITLE LIST</p>
             <div class="text">
-            	<p>Administrar y desarrollar el mercado mayorista de gas natural, prestando un servicio de excelente calidad para todos los participantes, ofreciendo tecnología de punta y toda la experiencia y pasión de la Bolsa Mercantil de Colombia en la gestión de sistemas de negociación de commodities.</p>
+            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis neque et urna iaculis egestas. Sed ut felis a ipsum dapibus scelerisque et varius eros. Nunc vitae libero ac leo porta luctus.</p>
             </div>
         </div>
     </div>
@@ -19,9 +19,9 @@
             </div>
         </div>
         <div class="info col-sm-8 col-xs-12 pull-left">
-            <p class="heading">VISIÓN</p>
+            <p class="heading">TITLE LIST</p>
         	<div class="text">
-        		<p>En el 2020, ser reconocidos a nivel latinoamericano por la creación y administración de un mercado eficiente y seguro de gas natural en Colombia, donde la formación del precio del commodity sea transparente y se promueva la competitividad del sector.</p>
+        		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis neque et urna iaculis egestas. Sed ut felis a ipsum dapibus scelerisque et varius eros. Nunc vitae libero ac leo porta luctus.</p>
         	</div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<section class="content advanced-component text-with-image_video color-bg-main-blue">
+<section class="content advanced-component text-with-image_video color-bg-main-blue"><!--Las clases "color-bg-main-blue" "color-bg-sec-blue" "color-bg-main-gray" "color-bg-green" definen el color de fondo -->
 	<div class="container">
 		<!-- ROW -->
 		<div class="row">
@@ -13,6 +13,8 @@
 						<div class="text color-text-white">
 							<p>Documentos de ayuda definidos por el Gestor del Mercado de Gas Natural para el registro de los participantes, contratos marco y resoluciones.</p>
 						</div>
+
+						<!--Las clases "btn-blue" "btn-green" definen el color del boton -->
 						<a class="btn btn-green pull-left" href="#">Conocer más</a>
 					</div>
 					<!--// INFO -->

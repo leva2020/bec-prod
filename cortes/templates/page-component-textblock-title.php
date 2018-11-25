@@ -1,5 +1,5 @@
 <div class="page_component textblock">
 	<h2 class="heading">Estructura Corporativa</h2>
-	<p>El Gestor del Mercado de Gas Natural en Colombia hace parte de la Gerencia de Mercados Energéticos de la Bolsa Mercantil de Colombia S.A., por tanto, este se rige por los lineamientos y la estructura organizacional que esta tiene establecida actualmente.</p>
-	<p><sub>Organigrama de la Bolsa Mercantíl de Colombia.</sub></p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis neque et urna iaculis egestas. Sed ut felis a ipsum dapibus scelerisque et varius eros. Nunc vitae libero ac leo porta luctus.</p>
+	<p><sub>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sub></p>
 </div>

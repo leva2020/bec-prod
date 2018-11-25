@@ -17,18 +17,6 @@
 			</div>
 
 			<div class="row">
-
-				<!--menu lateral-->
-				<div id="left_col" class="col-sm-4 col-lg-3 pull-left">
-					<?php include'content-nav-panel.php'; ?>
-					
-					<div class="promo_pods ">
-						<?php include'content-promopods-default-panel.php'; ?>
-						<?php include'content-promopods-default-panel-color.php'; ?>
-						<?php include'content-promopods-image-panel.php'; ?>
-					</div>
-				</div>
-
 				<!--contenido-->
 				<div id="right_col" class="col-sm-8 pull-right" role="main">
 					<?php include'page-component-image.php'; ?>
@@ -43,6 +31,16 @@
 		            <?php include'page-component-gallery.php'; ?>
 				</div>
 
+				<!--menu lateral-->
+				<div id="left_col" class="col-sm-4 col-lg-3 pull-left">
+					<?php include'content-nav-panel.php'; ?>
+					
+					<div class="promo_pods ">
+						<?php include'content-promopods-default-panel.php'; ?>
+						<?php include'content-promopods-default-panel-color.php'; ?>
+						<?php include'content-promopods-image-panel.php'; ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
