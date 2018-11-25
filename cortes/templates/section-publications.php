@@ -70,11 +70,17 @@
                             <div class="header-section col-md-12 col-xs-12">
                                 <h1 class="color-text-blue">Resultados del Mercado</h1>
                             </div>
+                            <div class="wrapper-chart">
+                                <iframe id="becchartframe_left_1" src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/cuadro-mercado-resumen-de-contratos-homepage-marquee.cshtml"></iframe>
+                            </div>
                         </div>
                         <div>
                             <div class="header-section col-md-12 col-xs-12">
                                 <h1 class="color-text-blue">Comportamiento Transaccional del Mercado</h1>
                                 <p>En esta gráfica se puede visualizar el comportamiento del mercado en términos de precios (expresados en USD/MBTU), negociados según la modalidad contractual para cada uno de los mercados.</p>
+                                <div class="wrapper-chart">
+                                    <iframe id="becchartframe_left" src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/cuadro-mercado-comportamiento-transaccional-mercado-homepage.cshtml"></iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
