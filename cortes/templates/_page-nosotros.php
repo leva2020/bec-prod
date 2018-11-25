@@ -29,8 +29,21 @@
 					</div>
 				</div>
 
-			</div>
+				<!--contenido-->
+				<div id="right_col" class="col-sm-8 pull-right" role="main">
+					<?php include'page-component-image.php'; ?>
+					<?php include'page-component-textblock.php'; ?>
+					<?php include'page-component-accordion.php'; ?>
+		            <?php include'page-component-textblock.php'; ?>
 
+		            <hr>
+
+		            <?php include'page-component-listing.php'; ?>
+		            <?php include'page-component-textblock-title.php'; ?>
+		            <?php include'page-component-gallery.php'; ?>
+				</div>
+
+			</div>
 		</div>
 	</section>
 	

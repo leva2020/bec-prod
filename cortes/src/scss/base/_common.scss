@@ -49,6 +49,7 @@ body{
 	font-family: $font;
 	font-weight: 400;
     font-size: 15px;
+    text-align: left;
     -webkit-font-smoothing: antialiased;
     background-color: rgba(238,238,238,1);
     animation-name: fadeIn;
@@ -101,12 +102,15 @@ hr{
 }
 
 .container {
-	text-align: center;
 	transition: all 1s ease;
 }
 
 p{
 	margin: 8px 0 16px;
+}
+
+.heading{
+	color: $main-blue;
 }
 
 

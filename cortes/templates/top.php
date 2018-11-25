@@ -17,6 +17,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	
+	<link rel="stylesheet" href="../dist/css/plugins.css" media="all">
 	<link rel="stylesheet" href="../dist/css/main.css" media="all">
 </head>
 
