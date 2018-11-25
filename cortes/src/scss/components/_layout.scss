@@ -23,6 +23,11 @@ section{
 				color: white;
 			}
 		}
+		&.text-center{
+			h1, h2, h3, h4, h5, p{
+				text-align: center;
+			}
+		}
 	}
 	&.breadcrumb{
 		margin: 0;
@@ -105,6 +110,17 @@ section{
 			.wrapper-image, .content{
 				float: left;
 			}
+		}
+	}
+	&.codeblock{
+		padding: 0;
+		iframe{
+			width: 100%;
+		}
+	}
+	&.grid{
+		.content{
+			margin-top: 10px;
 		}
 	}
 }
