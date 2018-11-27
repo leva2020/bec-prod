@@ -39,6 +39,7 @@
 						<?php include'content-promopods-default-panel.php'; ?>
 						<?php include'content-promopods-default-panel-color.php'; ?>
 						<?php include'content-promopods-image-panel.php'; ?>
+						<?php include'content-promopods-list-panel.php'; ?>
 					</div>
 				</div>
 			</div>

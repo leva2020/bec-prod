@@ -243,11 +243,59 @@ nav.sub{
     			margin: 0;
 		    }
 		}
+		&.lists{
+			border-color: #dddddd;
+		}
+		.listing{
+			padding: 0;
+		    margin: 0 0 8px;
+		    border-width: 0 0 1px;
+		    border-style: solid;
+		    border-color: rgba(238,238,238,1);
+		    .item{
+		    	margin: 0;
+			    padding: 0;
+			    border-width: 1px 0 0;
+			    border-style: solid;
+			    border-color: rgba(238,238,238,1);
+			    p.heading {
+				    font-size: 14px;
+				    margin: 8px 0;
+				}
+				.meta {
+				    margin: 0 0 8px;
+				}
+		    }
+		    &.blog{
+		    	.item {
+		    		p.heading{
+		    			margin: 8px 0 0;
+		    		}
+		    	}
+		    }
+		}
+		a.see_all {
+		    top: 20px;
+		    right: 16px;
+		}
     }
     .image {
     	overflow: hidden;
     	padding: 0;
     }
+}
+
+div.meta {
+    font-size: 12px;
+    div {
+	    padding-top: 8px;
+	    overflow: hidden;
+	    height: 100%;
+	}
+}
+
+.item div.meta {
+    margin-top: 16px;
 }
 
 .page_component {
