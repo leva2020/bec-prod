@@ -1,0 +1,40 @@
+<section class="content">
+		<div class="container">
+
+			<!--header page-->
+			<div class="row">
+				<div class="header-section col-md-12 col-xs-12">
+					<h1 class="color-text-blue">{{node.title.value}}</h1>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<!--contenido-->
+				<div id="right_col" class="col-sm-8 pull-right" role="main">
+                    {% include 'page-component-image.html.twig' %}
+                    {% include 'page-component-textblock.html.twig' %}
+                    {% include 'page-component-accordion.html.twig' %}
+                    {% include 'page-component-textblock.html.twig' %}
+
+		            <hr>
+
+                    {% include 'page-component-listing.html.twig' %}
+                    {% include 'page-component-textblock-title.html.twig' %}
+                    {% include 'page-component-gallery.html.twig' %}
+				</div>
+
+				<!--menu lateral-->
+				<div id="left_col" class="col-sm-4 col-lg-3 pull-left">
+                    {% include 'content-nav-panel.html.twig' %}
+					
+					<div class="promo_pods ">
+                        {% include 'content-promopods-default-panel.html.twig' %}
+                        {% include 'content-promopods-default-panel-color.html.twig' %}
+                        {% include 'content-promopods-image-panel.html.twig' %}
+                        {% include 'content-promopods-list-panel.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>

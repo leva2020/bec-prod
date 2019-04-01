@@ -1,0 +1,26 @@
+{% import _self as menus %}
+
+
+<div class="right">
+    {% set level = 1 %}
+    {{ menus.menu_links(items, attributes, 0) }}
+</div>
+
+{% macro menu_links(items, attributes, menu_level) %}
+    {% import _self as menus %}
+    {% if items %}
+        <ul class="pull-right">            
+            {% for key, item in items %}
+                {% if (loop.index is even) %}
+                    <li class="even">
+                        <a class="secondary_colour_1-text" href="{{ item.url }}">{{ item.title }}</a>
+                    </li>
+                {% else %}
+                    <li class="odd">
+                        <a class="secondary_colour_1-text" href="{{ item.url }}">{{ item.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}

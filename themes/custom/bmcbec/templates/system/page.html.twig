@@ -62,21 +62,26 @@
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ]
     %}
-    <div class="topbar">
-	<div class="container">
-		<div class="search-box">
-			<form>
-				<label for="">Buscador</label>
-
-				<input type="text" name="" id="">
-
-				<a id="" class="search">Search</a>
-			</form>
-		</div>
-	</div>
 </div>
+
+      {% if page.navigation %}
+        {% block navigation %}<div class="topbar">
+        <div class="left"><span>jueves 22/Nov/2018 00:12</span></div>
+            {{ page.navigation }}
+        <div style="clear:both;"></div>
+      </div>
+        {% endblock %}
+      {% endif %}
+
     <header>
-      {{ page.navigation }}
+      {# Header #}
+      {% if page.header %}
+        {% block header %}
+          <div class="col-sm-12" role="heading">
+            {{ page.header }}
+          </div>
+        {% endblock %}
+      {% endif %}
       	<div class="container">
           <div class="row">
               <!-- LOGO -->
