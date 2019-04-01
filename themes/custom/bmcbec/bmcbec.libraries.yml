@@ -1,13 +1,18 @@
 base:
   css:
-    fonts:
-      https://fonts.googleapis.com/css?family=Varela+Round: {type: external}
-    carousel:
-      dist/css/contrib/owl.carousel.min.css: {}
     theme:
-      dist/css/custom/main.css: {}
+      dist/css/bootstrap.min.css: {}
+      dist/css/owl.carousel.min.css: {}
+      https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800: {type: external}
+      https://fonts.googleapis.com/css?family=Varela+Round: {type: external}
+      dist/css/plugins.css: {}
+      dist/css/main.css: {}
   js:
-    dist/js/contrib/owl.carousel.js: {}
-    dist/js/custom/main.min.js: {}
+    dist/js/greenSock/minified/TweenMax.min.js: {}
+    dist/js/bootstrap.js: {}
+    dist/js/owl.carousel.js: {}
+    dist/js/plugins.min.js: {}
+    dist/js/main.min.js: {}
   dependencies:
     - core/jquery
+    - core/underscore
