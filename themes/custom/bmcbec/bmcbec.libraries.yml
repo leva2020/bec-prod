@@ -9,7 +9,7 @@ base:
       dist/css/main.css: {}
   js:
     dist/js/greenSock/minified/TweenMax.min.js: {}
-    dist/js/bootstrap.js: {}
+    dist/js/bootstrap.min.js: {}
     dist/js/owl.carousel.js: {}
     dist/js/plugins.min.js: {}
     dist/js/main.min.js: {}
