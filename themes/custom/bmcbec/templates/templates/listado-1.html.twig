@@ -1,0 +1,6 @@
+{% if data.field_parte_inferior.value %}	
+    {% include 'page-component-textblock-title.html.twig' with {'data': data } %}
+    {% include 'page-component-gallery.html.twig' with {'data': data } %}
+{% else %}
+    {% include 'page-component-listing.html.twig' with {'data': data } %}
+{% endif %}

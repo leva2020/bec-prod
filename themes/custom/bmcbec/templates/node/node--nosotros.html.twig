@@ -16,19 +16,14 @@
 					{% for item in node.field_contenido_paragraph %}
 						{% include 'page-component-textblock.html.twig' with {'texto': item.entity.field_descripcion_1.value } %}
 						{% for item1 in item.entity.field_acordeon %}
-							{{item1.entity.bundle}}
+							{% if tipo=="acodeon" %}	
+								{% include 'page-component-accordion.html.twig' with {'data': item1.entity } %}
+							{%elseif tipo=="cuadros_informativos"%}
+                    			{% include 'listado-1.html.twig' with {'data': item1.entity } %}
+							{% endif %}
 						{% endfor %}
 					{% endfor %}
 
-                    
-                    {% include 'page-component-accordion.html.twig' %}
-                    {% include 'page-component-textblock.html.twig' %}
-
-		            <hr>
-
-                    {% include 'page-component-listing.html.twig' %}
-                    {% include 'page-component-textblock-title.html.twig' %}
-                    {% include 'page-component-gallery.html.twig' %}
 				</div>
 
 				<!--menu lateral-->
