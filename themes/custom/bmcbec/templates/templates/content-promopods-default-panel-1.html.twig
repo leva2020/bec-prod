@@ -1,0 +1,12 @@
+<div class="item panel panel-default">
+	<div class="panel-body">
+		<p class="heading">{{ data.field_titulo.value}}</p>
+		<div class="info">
+			<div class="text">
+				{% for link in data %}
+					<p><span class="intro"><a href="{{ link.field_link.url }}">{{ link.field_link.title }}</a></span></p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

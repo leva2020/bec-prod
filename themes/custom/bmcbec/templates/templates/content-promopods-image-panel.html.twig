@@ -1,7 +1,7 @@
 <div class="item panel imagepod">
 	<div class="image">
-		<a href="#" target="">
-			<img src="http://www.bmcbec.com.co/media/1026/bmc-bec-contenido-noticias-icon-new.jpg" alt="Noticias Recientes">
+		<a href="{{ data.field_link.url }}" target="{{ data.field_link.title }}">
+			<img src="{{file_url(data.field_imagen.entity.fileuri)}}" title="{{data.field_imagen.entity.title}}" alt="{{data.field_imagen.entity.alt}}">
 			<div class="overlayicon" style="width: 263px; height: 197px;">
 				<i class="fa fa fa-chain"></i>
 			</div>

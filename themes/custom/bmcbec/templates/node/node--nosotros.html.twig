@@ -28,14 +28,30 @@
 
 				<!--menu lateral-->
 				<div id="left_col" class="col-sm-4 col-lg-3 pull-left">
-                    {% include 'content-nav-panel.html.twig' %}
-					
-					<div class="promo_pods ">
-                        {% include 'content-promopods-default-panel.html.twig' %}
-                        {% include 'content-promopods-default-panel-color.html.twig' %}
-                        {% include 'content-promopods-image-panel.html.twig' %}
-                        {% include 'content-promopods-list-panel.html.twig' %}
-					</div>
+				
+					{% for item in node.field_menu_lateral %}	
+						{% for item1 in item.entity.field_opciones %}
+							{% if loop.index %}
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}	
+									{% include 'content-nav-panel.html.twig' with {'data': item1.entity } %}
+								<div class="promo_pods ">
+							{% elseif loop %}
+								</div>
+							{% else %}
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}	
+									{% include 'content-promopods-default-panel.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_2" %}
+									{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_3" %}
+									{% include 'content-promopods-list-panel.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_4" %}
+									{% include 'content-promopods-default-panel.html.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_5" %}
+									{% include 'content-promopods-image-panel.html.twig' with {'data': item1.entity } %}
+								{% endif %}
+							{% endif %}
+						{% endfor %}	
+					{% endfor %}
 				</div>
 			</div>
 		</div>
