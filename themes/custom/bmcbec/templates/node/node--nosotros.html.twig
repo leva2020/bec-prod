@@ -14,12 +14,13 @@
 				<div id="right_col" class="col-sm-8 pull-right" role="main">
                     {% include 'page-component-image.html.twig' with {'node': node }  %}
 					{% for item in node.field_contenido_paragraph %}
+						{% include 'page-component-textblock.html.twig' with {'texto': item.entity.field_descripcion_1 } %}
 						{% for item1 in item.field_acordeon %}
 							{{item1.entity.bundle}}
 						{% endfor %}
 					{% endfor %}
 
-                    {% include 'page-component-textblock.html.twig' %}
+                    
                     {% include 'page-component-accordion.html.twig' %}
                     {% include 'page-component-textblock.html.twig' %}
 
