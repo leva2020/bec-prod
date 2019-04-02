@@ -1,0 +1,23 @@
+{%  set resultados = view.result  %}
+<section class="section-participantes advanced-component color-bg-sec-blue">
+	<div class="container">
+        {% for key , row in resultados %}
+            {%  set data = row._entity  %}
+            <div class="row">
+                <div class="header-section col-md-12 col-xs-12">
+                    <h2 class="color-text-white">{{ data.field_titulo[0].value }}</h2>
+                </div>
+                <div class="body-section">
+                    <div class="col-md-8 col-xs-12">
+                        <p class="intro color-text-white">
+                            {{ data.field_descripcion_html[0].value|raw }}
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-xs-12 pull-right">
+                        <a class="btn btn-block btn-lg btn-green" href="{{ data.field_cta[0].url }}">{{ data.field_cta[0].title }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+	</div>
+</section>
