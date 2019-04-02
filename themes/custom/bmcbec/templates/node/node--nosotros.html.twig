@@ -34,6 +34,7 @@
 							{% if loop.first %}
 								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}	
 									{% include 'content-nav-panel.html.twig' with {'data': item1.entity } %}
+								{% endif %}
 								<div class="promo_pods ">
 							{% elseif loop.last %}
 								</div>
