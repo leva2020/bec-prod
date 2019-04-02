@@ -16,9 +16,9 @@
 					{% for item in node.field_contenido_paragraph %}
 						{% include 'page-component-textblock.html.twig' with {'texto': item.entity.field_descripcion_1.value } %}
 						{% for item1 in item.entity.field_acordeon %}
-							{% if tipo=="acodeon" %}	
+							{% if item1.entity.bundle =="acodeon" %}	
 								{% include 'page-component-accordion.html.twig' with {'data': item1.entity } %}
-							{%elseif tipo=="cuadros_informativos"%}
+							{% elseif item1.entity.bundle =="cuadros_informativos" %}
                     			{% include 'listado-1.html.twig' with {'data': item1.entity } %}
 							{% endif %}
 						{% endfor %}
