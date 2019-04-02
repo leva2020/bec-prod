@@ -3,7 +3,7 @@
 		<p class="heading">{{ data.field_titulo.value}}</p>
 		<div class="info">
 			<div class="text">
-				{% for link in data %}
+				{% for link in data.field_link %}
 					<p><span class="intro"><a href="{{ link.field_link.url }}">{{ link.field_link.title }}</a></span></p>
 				{% endfor %}
 			</div>
