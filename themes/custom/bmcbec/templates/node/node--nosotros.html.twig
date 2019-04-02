@@ -15,11 +15,6 @@
                     {% include 'page-component-image.html.twig' with {'node': node }  %}
 					{% for item in node.field_contenido_paragraph %}
 						{{item.entity.bundle}}
-
-
-					{% endif %}
-
-
 					{% endfor %}
 
                     {% include 'page-component-textblock.html.twig' %}
