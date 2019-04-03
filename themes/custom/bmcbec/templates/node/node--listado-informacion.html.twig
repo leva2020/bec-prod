@@ -1,3 +1,7 @@
 {% include 'banners.html.twig' with {'data': node.field_banner_principal.entity } %}
-{% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
+{% if node.field_cuadros_listado_ct.entity.bundle =="cuadros_listado" %}
+  {% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
+{% elseif node.field_cuadros_listado_ct.entity.bundle =="cuadros_listado_1" %}
+  {% include 'section-tabbed-listing-1.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
+{% endif %}
 {% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
