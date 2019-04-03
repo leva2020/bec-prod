@@ -1,6 +1,7 @@
 {% if data.field_background.value %}
     {% include 'section-text-with-image-video-left-2.html.twig' with {'data': data } %}
 {% else %}
+  {{data.field_posicion_contenido.value}}
   {% if data.field_posicion_contenido.value == "izquierda" %}
     izquierda
       {% include 'section-text-with-image-video-left-2.html.twig' with {'data': data } %}
