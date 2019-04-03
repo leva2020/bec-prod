@@ -4,18 +4,18 @@
             <div class="image">
                 <a>
                     <picture>
-                        <source media="(max-width: 480px)" srcset="http://www.bmcbec.com.co/media/1509/foto_termocandelaria2.jpg?anchor=center&mode=crop&width=1600&height=550&rnd=131401768080000000">
-                        <img src="http://www.bmcbec.com.co/media/1509/foto_termocandelaria2.jpg?anchor=center&mode=crop&width=1600&height=550&rnd=131401768080000000" alt="alt">
+                        <source media="(max-width: 480px)" srcset="{{file_url(data.field_imagen_mobile.entity.fileuri)}}">
+			                  <img src="{{file_url(data.field_imagen_desktop.entity.fileuri)}}" title="{{data.field_imagen_desktop.entity.title}}" alt="{{data.field_imagen_desktop.alt}}">
                     </picture>
-                </a>                                            
+                </a>
             </div>
             <div class="info">
                 <div class="container valign">
                     <div class="row">
                         <div class="col-md-6 col-xs-12 text-right pull-right">
-                            <p class="heading main">Principales informes del Sector de Gas en Colombia</p>
+                            <p class="heading main">{{ data.field_titulo.value }}</p>
                             <div class="text">
-                                <p>Conozca un resumen general del comportamiento transaccional y operativo del mercado de gas natural en Colombia</p>
+                                {{ data.field_descripcion_html.value|raw }}
                             </div>
                         </div>
                     </div>

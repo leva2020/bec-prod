@@ -1,0 +1,35 @@
+<section class="content advanced-component text-with-image_video">
+	<div class="container">
+		<!-- ROW -->
+		<div class="row">
+			<div class="col-md-5 col-xs-12 pull-right os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0">
+				<div class="row">
+					<!-- INFO -->
+					<div class="header-section col-md-12 col-sm-10 col-xs-12">
+						<h2 class="color-text-blue">{{ data.field_titulo.value }}</h2>
+						<div class="text">
+							{{ data.field_descripcion_html.value|raw }}
+						</div>
+
+						<!--Las clases "btn-blue" "btn-green" definen el color del boton-->
+
+							{% if data.field_imagen.field_tipo_cta.value =="verde" %}
+						    <a class="btn btn-green pull-left" href="{{ data.field_imagen.field_titulo.url }}">{{ data.field_imagen.field_titulo.title }}</a>
+							{% endif %}
+							{% if data.field_imagen.field_tipo_cta.value =="azul" %}
+						    <a class="btn btn-blue pull-left" href="{{ data.field_cta.url }}">{{ data.field_cta.title }}</a>
+							{% endif %}
+					</div>
+					<!--// INFO -->
+				</div>
+			</div>
+
+			<div class="col-md-6 col-xs-12 pull-left">
+				<div class="image video os-animation animated fadeInLeft" data-os-animation="fadeInLeft" data-os-animation-delay="0">
+          <img src="{{file_url(data.field_imagen_desktop.entity.fileuri)}}" title="{{data.field_imagen_desktop.entity.title}}" alt="{{data.field_imagen.field_imagen_desktop.alt}}">
+				</div>
+			</div>
+		</div>
+		<!--// ROW -->
+	</div>
+</section>

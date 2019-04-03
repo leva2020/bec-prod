@@ -1,0 +1,18 @@
+<section class="content advanced-component grid">
+	<div class="" data-os-animation="fadeIn" data-os-animation-delay="0">
+		<div class="container">
+			<div class="row">
+			  {% for item in data %}
+          <div class="col-md-3 text-center">
+            <div class="wrapper-image">
+              <img src="{{file_url(item.entity.field_imagen.entity.fileuri)}}" title="{{item.entity.field_imagen.entity.title}}" alt="{{item.entity.field_imagen.entity.alt}}">
+            </div>
+            <div class="content">
+              <h3><a href="{{ item.entity.field_link.url }}" title="{{ item.entity.field_link.title }}">{{ item.entity.field_titulo.value }}</a></h3>
+            </div>
+          </div>
+			  {% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
