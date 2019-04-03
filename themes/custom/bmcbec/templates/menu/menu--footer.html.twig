@@ -16,7 +16,7 @@
 {% macro menu_links(items, attributes, menu_level) %}
     {% import _self as menus %}
     {% if items %}
-        <ul class="pull-right">
+        <ul>
             {% for key, item in items %}
                 {% if (loop.index is even) %}
                     <li class="col-lg-4 col-xs-6 even">
