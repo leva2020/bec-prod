@@ -28,7 +28,7 @@
 							<!-- LISTING -->
 							<div class="row listing section grid">
                 {% for item in data.field_cuadros_listado %}
-                  {% for item1 in tem.entity.field_link %}
+                  {% for item1 in item.entity.field_link %}
                     <a href="{{ item1.url }}" title="{{ item1.title }}">
                   {% endfor %}
 								<div class="item col-md-4 col-sm-6 col-xs-12">
