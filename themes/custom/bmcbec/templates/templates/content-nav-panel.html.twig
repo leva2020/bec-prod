@@ -1,8 +1,8 @@
 <nav class="sub panel panel-default">
-	<ul class="nav"> 
+	<ul class="nav">
 		{% for link in data.field_link %}
 			<li>
-				<a href="{{ link.url }}"><span>{{ link.title }}</span></a>
+				<a href="{{ link.uri }}"><span>{{ link.title }}</span></a>
 			</li>
 		{% endfor %}
 	</ul>

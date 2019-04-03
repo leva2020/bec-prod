@@ -12,12 +12,12 @@
               {% if loop.first %}
                 {% if menu_level == 1 %}
                   {% if (loop.index is even) %}
-                    <li class="even"><a href="{{ item.url }}">
+                    <li class="even"><a href="{{ item.uri }}">
                       <i class="fa fa-user-md"></i>{{ item.title }}</a>
                     </li>
                   {% else %}
                     <li class="odd">
-                      <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
+                      <a href="{{ item.uri }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
                     </li>
                   {% endif %}
                 {% else %}
@@ -31,7 +31,7 @@
               {% elseif loop.last %}
                 {% if (loop.index is even) %}
                   {% if  menu_level == 1 %}
-                    <li class="even"><a href="{{ item.url }}">
+                    <li class="even"><a href="{{ item.uri }}">
                       <i class="fa fa-user-md"></i>{{ item.title }}</a>
                     </li>
                   {% else %}
@@ -45,7 +45,7 @@
                 {% else %}
                   {% if  menu_level == 1 %}
                     <li class="odd">
-                      <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
+                      <a href="{{ item.uri }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
                     </li>
                   {% else %}
                     <li class="dropdown odd">
@@ -61,21 +61,21 @@
                 {% if (loop.index is even) %}
                   {% if  menu_level == 1 %}
                     <li class="even">
-                      <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
+                      <a href="{{ item.uri }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
                     </li>
                   {% else %}
                     <li style="display:none;" class="even">
-                        <a class="secondary_colour_1-text" href="{{ item.url }}">{{ item.title }}</a>
+                        <a class="secondary_colour_1-text" href="{{ item.uri }}">{{ item.title }}</a>
                     </li>
                   {% endif %}
                 {% else %}
                   {% if  menu_level == 1 %}
                     <li class="odd">
-                      <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
+                      <a href="{{ item.uri }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
                     </li>
                   {% else %}
                     <li style="display:none;" class="odd">
-                        <a class="secondary_colour_1-text" href="{{ item.url }}">{{ item.title }}</a>
+                        <a class="secondary_colour_1-text" href="{{ item.uri }}">{{ item.title }}</a>
                     </li>
                   {% endif %}
                 {% endif %}

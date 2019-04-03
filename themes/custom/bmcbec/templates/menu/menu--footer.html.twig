@@ -20,11 +20,11 @@
             {% for key, item in items %}
                 {% if (loop.index is even) %}
                     <li class="col-lg-4 col-xs-6 even">
-                        <a href="{{ item.url }}"><i class="fa fa-angle-right"></i>{{ item.title }}</a>
+                        <a href="{{ item.uri }}"><i class="fa fa-angle-right"></i>{{ item.title }}</a>
                     </li>
                 {% else %}
                     <li class="col-lg-4 col-xs-6 odd">
-                        <a href="{{ item.url }}"><i class="fa fa-angle-right"></i>{{ item.title }}</a>
+                        <a href="{{ item.uri }}"><i class="fa fa-angle-right"></i>{{ item.title }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
