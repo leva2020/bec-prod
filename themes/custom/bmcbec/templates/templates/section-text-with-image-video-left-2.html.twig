@@ -13,10 +13,10 @@
 
 						<!--Las clases "btn-blue" "btn-green" definen el color del boton-->
 
-							{% if data.field_imagen.field_tipo_cta.value =="verde" %}
-						    <a class="btn btn-green pull-left" href="{{ data.field_imagen.field_titulo.url }}">{{ data.field_imagen.field_titulo.title }}</a>
+							{% if data.field_tipo_cta.value =="verde" %}
+						    <a class="btn btn-green pull-left" href="{{ data.field_titulo.url }}">{{ data.field_titulo.title }}</a>
 							{% endif %}
-							{% if data.field_imagen.field_tipo_cta.value =="azul" %}
+							{% if data.field_tipo_cta.value =="azul" %}
 						    <a class="btn btn-blue pull-left" href="{{ data.field_cta.url }}">{{ data.field_cta.title }}</a>
 							{% endif %}
 					</div>
@@ -26,7 +26,7 @@
 
 			<div class="col-md-6 col-xs-12 pull-left">
 				<div class="image video os-animation animated fadeInLeft" data-os-animation="fadeInLeft" data-os-animation-delay="0">
-          <img src="{{file_url(data.field_imagen_desktop.entity.fileuri)}}" title="{{data.field_imagen_desktop.entity.title}}" alt="{{data.field_imagen.field_imagen_desktop.alt}}">
+          <img src="{{file_url(data.field_imagen_desktop.entity.fileuri)}}" title="{{data.field_imagen_desktop.entity.title}}" alt="{{data.field_imagen_desktop.alt}}">
 				</div>
 			</div>
 		</div>
