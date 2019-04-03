@@ -1,0 +1,18 @@
+{% for item in data %}
+  <section class="content advanced-component text-center">
+    <div class="container">
+      <div class="row">
+        <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+          <div class="page_component title-page">
+              <div class="header-section text-center heading">
+                <h2>{{ item.entity.field_titulo.value }}</h2>
+              </div>
+            <p>
+              <span class="intro">{{item.entity.field_descripcion_1.value|raw}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endfor %}
