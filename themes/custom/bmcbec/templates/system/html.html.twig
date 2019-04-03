@@ -61,16 +61,18 @@
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
-	
-	{#fonts#}	
-	{#css#}	
+
+	{#fonts#}
+	{#css#}
   </head>
-  
-  <body{{ attributes.addClass(body_classes) }}>	   
+
+  <body{{ attributes.addClass(body_classes) }}>
+    <div id="site">
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
-	{#js#}	
+    </div>
+	{#js#}
   </body>
 </html>
