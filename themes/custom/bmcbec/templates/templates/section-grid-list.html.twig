@@ -9,8 +9,8 @@
             </div>
             <div class="content">
               {% for item1 in item.entity.field_link %}
-                <a href="{{ item1.url }}" title="{{ item1.title }}">
-              {% endfor %}
+                <h3><a href="{{ item1.url }}" title="{{ item1.title }}">{{ item.entity.field_titulo.value }}</a></h3>
+                {% endfor %}
             </div>
           </div>
 			  {% endfor %}
