@@ -1,0 +1,55 @@
+{% import _self as menus %}
+
+<nav class="main">
+    {% set level = 1 %}
+    {{ menus.menu_links(items, attributes, 0) }}
+</nav>
+
+{% macro menu_links(items, attributes, menu_level) %}
+    {% import _self as menus %}
+    {% if items %}
+        <ul>
+            {% for key, item in items %}
+                {% if (loop.index is even) %}
+                    {% if item.below %}
+                        {% if menu_level == 1 %}
+                          <li class="has_child even">
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
+                            <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
+                            <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
+                            {{ menus.menu_links_mobile(item.below, attributes, menu_level + 1) }}
+                          </li>
+                        {% endif %}
+                    {% elseif menu_level > 1 %}
+                          <li class="even">
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
+                          </li>
+                    {% else %}
+                      <li class="even">
+                          <a href="{{ item.url }}">{{ item.title }}</a>
+                      </li>
+                    {% endif %}
+                {% else %}
+                    {% if item.below %}
+                        {% if menu_level == 1 %}
+                          <li class="has_child odd">
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
+                            <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
+                            <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
+                            {{ menus.menu_links_mobile(item.below, attributes, menu_level + 1) }}
+                          </li>
+                        {% endif %}
+                    {% elseif menu_level > 1 %}
+                          <li class="odd">
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
+                          </li>
+                    {% else %}
+                      <li class="odd">
+                          <a href="{{ item.url }}">{{ item.title }}</a>
+                      </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}

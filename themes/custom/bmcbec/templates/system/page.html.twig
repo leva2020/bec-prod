@@ -77,18 +77,32 @@
       {# Header #}
       {% if page.header %}
         {% block header %}
-          <div class="col-sm-12" role="heading">
-            {{ page.header }}
+          <div class="container">
+            <div class="row">
+                <!-- LOGO -->
+                    <div id="logo"><a href="/">Gestor del Mercado de Gas Natural en Colombia - BEC</a></div>
+                <!--// LOGO -->
+                <div class="navigation">
+                  <!-- EXPAND -->
+                  <a class="expand">
+                    <em>Menu</em>
+                    <span class="line top"></span>
+                    <span class="line mid"></span>
+                    <span class="line bottom"></span>
+                  </a>
+                  <!--// EXPAND -->
+
+                  <!-- REVEAL -->
+                  <div class="reveal">
+                    {{ page.header }}
+                  </div>
+                  <!--// REVEAL -->
+
+                </div>
+            </div>
           </div>
         {% endblock %}
       {% endif %}
-      	<div class="container">
-          <div class="row">
-              <!-- LOGO -->
-                  <div id="logo"><a href="/">Gestor del Mercado de Gas Natural en Colombia - BEC</a></div>
-              <!--// LOGO -->
-          </div>
-	      </div>
     </header>
   {% endblock %}
 {% endif %}
