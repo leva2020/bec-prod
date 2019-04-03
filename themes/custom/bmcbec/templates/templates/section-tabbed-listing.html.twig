@@ -29,6 +29,7 @@
 							<div class="row listing section grid">
                 {% for item in data.field_cuadros_listado %}
 								<div class="item col-md-4 col-sm-6 col-xs-12">
+                {{ item.entity.field_link.url }}
 									<a href="{{ item.entity.field_link.url }}" title="{{ item.entity.field_link.title }}">
 										<div class="image">
                       <img src="{{file_url(item.entity.field_imagen.entity.fileuri)}}" title="{{item.entity.field_imagen.entity.title}}" alt="{{item.entity.field_imagen.entity.alt}}">
