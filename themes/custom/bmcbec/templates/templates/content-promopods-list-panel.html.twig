@@ -5,7 +5,7 @@
 			{% for item in data.field_links_fecha %}
                 <div class="item">
                     <div class="info">
-                        <a href="{{ item.entity.field_link.uri }}">
+                        <a href="{{ item.entity.field_link.url }}">
                             <p class="heading">
                                 {{ item.entity.field_link.title }}
                             </p>
@@ -19,6 +19,6 @@
                 </div>
 			{% endfor %}
         </div>
-        <a class="see_all" href="{{ data.field_link.uri }}">{{ data.field_link.title }}</a>
+        <a class="see_all" href="{{ data.field_link.url }}">{{ data.field_link.title }}</a>
     </div>
 </div>

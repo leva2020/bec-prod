@@ -13,11 +13,11 @@
             {% for key, item in items %}
                 {% if (loop.index is even) %}
                     <li class="even">
-                        <a class="secondary_colour_1-text" href="{{ item.uri }}">{{ item.title }}</a>
+                        <a class="secondary_colour_1-text" href="{{ item.url }}">{{ item.title }}</a>
                     </li>
                 {% else %}
                     <li class="odd">
-                        <a class="secondary_colour_1-text" href="{{ item.uri }}">{{ item.title }}</a>
+                        <a class="secondary_colour_1-text" href="{{ item.url }}">{{ item.title }}</a>
                     </li>
                 {% endif %}
             {% endfor %}

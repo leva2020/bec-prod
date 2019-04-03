@@ -14,7 +14,7 @@
                     {% if item.below %}
                         {% if menu_level == 1 %}
                           <li class="has_child even">
-                            <a href="{{ item.uri }}"><span>{{ item.title }}</span></a>
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                             <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
                             <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
                             {{ menus.menu_links_mobile(item.below, attributes, menu_level + 1) }}
@@ -22,18 +22,18 @@
                         {% endif %}
                     {% elseif menu_level > 1 %}
                           <li class="even">
-                            <a href="{{ item.uri }}"><span>{{ item.title }}</span></a>
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                           </li>
                     {% else %}
                       <li class="even">
-                          <a href="{{ item.uri }}">{{ item.title }}</a>
+                          <a href="{{ item.url }}">{{ item.title }}</a>
                       </li>
                     {% endif %}
                 {% else %}
                     {% if item.below %}
                         {% if menu_level == 1 %}
                           <li class="has_child odd">
-                            <a href="{{ item.uri }}"><span>{{ item.title }}</span></a>
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                             <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
                             <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
                             {{ menus.menu_links_mobile(item.below, attributes, menu_level + 1) }}
@@ -41,11 +41,11 @@
                         {% endif %}
                     {% elseif menu_level > 1 %}
                           <li class="odd">
-                            <a href="{{ item.uri }}"><span>{{ item.title }}</span></a>
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                           </li>
                     {% else %}
                       <li class="odd">
-                          <a href="{{ item.uri }}">{{ item.title }}</a>
+                          <a href="{{ item.url }}">{{ item.title }}</a>
                       </li>
                     {% endif %}
                 {% endif %}
