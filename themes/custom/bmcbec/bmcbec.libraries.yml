@@ -3,8 +3,8 @@ base:
     theme:
       dist/css/bootstrap.min.css: {}
       dist/css/owl.carousel.min.css: {}
-      https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800: {type: external}
       https://fonts.googleapis.com/css?family=Varela+Round: {type: external}
+      //netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css: {type: external}
       dist/css/plugins.css: {}
       dist/css/main.css: {}
   js:
