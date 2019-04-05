@@ -12,7 +12,7 @@
             {% for key, item in items %}
                 {% if (loop.index is even) %}
                     {% if item.below %}
-                        {% if menu_level == 1 %}
+                        {% if menu_level == 0 %}
                           <li class="has_child even">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                             <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
@@ -20,7 +20,7 @@
                             {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
                         {% endif %}
-                    {% elseif menu_level > 1 %}
+                    {% elseif menu_level > 0 %}
                           <li class="even">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                           </li>
@@ -31,7 +31,7 @@
                     {% endif %}
                 {% else %}
                     {% if item.below %}
-                        {% if menu_level == 1 %}
+                        {% if menu_level == 0 %}
                           <li class="has_child odd">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                             <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
@@ -39,7 +39,7 @@
                             {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
                         {% endif %}
-                    {% elseif menu_level > 1 %}
+                    {% elseif menu_level > 0 %}
                           <li class="odd">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                           </li>
