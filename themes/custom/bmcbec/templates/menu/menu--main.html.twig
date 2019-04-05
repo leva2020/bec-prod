@@ -17,7 +17,7 @@
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                             <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
                             <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
-                            {{ menus.menu_links_mobile(item.below, attributes, menu_level + 1) }}
+                            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
                         {% endif %}
                     {% elseif menu_level > 1 %}
@@ -36,7 +36,7 @@
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                             <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
                             <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
-                            {{ menus.menu_links_mobile(item.below, attributes, menu_level + 1) }}
+                            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
                         {% endif %}
                     {% elseif menu_level > 1 %}
