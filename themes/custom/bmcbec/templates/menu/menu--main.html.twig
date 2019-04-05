@@ -19,15 +19,19 @@
                             <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
                             {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
-                        {% endif %}
-                    {% elseif menu_level > 0 %}
+                        {% elseif menu_level > 0 %}
                           <li class="even">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                           </li>
+                        {% endif %}
+                    {% elseif menu_level > 0 %}
+                        <li class="even">
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
+                        </li>
                     {% else %}
-                      <li class="even">
-                          <a href="{{ item.url }}">{{ item.title }}</a>
-                      </li>
+                        <li class="even">
+                              <a href="{{ item.url }}">{{ item.title }}</a>
+                        </li>
                     {% endif %}
                 {% else %}
                     {% if item.below %}
@@ -38,11 +42,15 @@
                             <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
                             {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
-                        {% endif %}
-                    {% elseif menu_level > 0 %}
+                        {% elseif menu_level > 0 %}
                           <li class="odd">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
                           </li>
+                        {% endif %}
+                    {% elseif menu_level > 0 %}
+                        <li class="odd">
+                            <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
+                        </li>
                     {% else %}
                       <li class="odd">
                           <a href="{{ item.url }}">{{ item.title }}</a>
