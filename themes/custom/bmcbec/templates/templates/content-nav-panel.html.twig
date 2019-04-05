@@ -1,9 +1,19 @@
 <nav class="sub panel panel-default">
-	<ul class="nav">
-		{% for link in data.field_link %}
+	{% for link in data.field_link %}
+		{% if loop.first %}
+			<p class="heading">
+				<a href="#">Header link</a>
+			</p>
+			<ul class="nav">
+		{% elseif loop.last %}
+				<li>
+					<a href="{{ link.url }}"><span>{{ link.title }}</span></a>
+				</li>
+			</ul>
+		{% else %}
 			<li>
 				<a href="{{ link.url }}"><span>{{ link.title }}</span></a>
 			</li>
-		{% endfor %}
-	</ul>
+		{% endif %}
+	{% endfor %}
 </nav>
