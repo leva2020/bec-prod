@@ -63,8 +63,7 @@
       ]
     %}
 </div>
-<div id="site">
-      {% if page.navigation %}
+{% if page.navigation %}
         {% block navigation %}<div class="topbar">
         <div class="left"><span>jueves 22/Nov/2018 00:12</span></div>
             {{ page.navigation }}
@@ -72,6 +71,8 @@
       </div>
         {% endblock %}
       {% endif %}
+<div id="site">
+      
 
     <header>
       {# Header #}
