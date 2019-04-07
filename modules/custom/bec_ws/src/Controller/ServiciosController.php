@@ -29,7 +29,8 @@ class ServiciosController extends ControllerBase
         $request = $client->post($url, array('headers' => $headers, 'body' => $param));        
         $response = array('state' => 1,'response' =>json_decode($request->getBody()) );
         print "<pre>";
-        print_r($response);              
+        print_r($response);   
+        print "</pre>";   
       } catch (Exception $e) {
         $response = array('state' => 0,'response' =>$e->getMessage() );
       }
