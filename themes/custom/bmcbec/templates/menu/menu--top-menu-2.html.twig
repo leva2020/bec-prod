@@ -39,11 +39,21 @@
                                 {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                         </li>
                     {% else %}
-                        <li class="even">
-                              <a href="{{ item.url }}">{{ item.title }}</a>
+                      {% if  menu_level == 1 %}
+                        {% if (loop.index is even) %}
+                          <li class="even">
+                        {% else %}
+                          <li class="odd">
+                        {% endif %}
+                        <a href="{{ item.url }}">
+                          <i class="fa fa-user-md"></i>{{ item.title }}</a>
                         </li>
+                      {% else %}
+                          <li style="display:none;" class="even">
+                              <a class="secondary_colour_1-text" href="{{ item.url }}" target="blank" title="{{ item.title }}">{{ item.title }}<i class="fa fa-external-link after"></i></a>
+                          </li>
+                      {% endif %}
                     {% endif %}
-                        </ul>
                 {% if (loop.index is even) %}
                   {% if  menu_level == 1 %}
                     <li class="even"><a href="{{ item.url }}">
