@@ -1,0 +1,5 @@
+services:
+  bec_ws.SendMethodTwigExtension:
+    class: Drupal\bec_ws\Extensions\SendMethodTwigExtension
+    tags:
+      - { name: twig.extension }
