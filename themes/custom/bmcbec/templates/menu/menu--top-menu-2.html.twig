@@ -1,7 +1,7 @@
 {% import _self as menus %}
 
 <nav class="top col-md-9 col-md-pull-3 col-sm-10 col-sm-pull-2 pull-right">
-    {{ menus.menu_links(items, attributes, 0) }}
+    {{ menus.menu_links(items, attributes, 1) }}
 </nav>
 
 {% macro menu_links(items, attributes, menu_level) %}
@@ -9,7 +9,7 @@
     {% if items %}
             {% for key, item in items %}
               {% if loop.first %}
-                {% if menu_level == 1 %}
+                {% if menu_level == 2 %}
                   {% if (loop.index is even) %}
                     <li class="even"><a href="{{ item.url }}">
                       <i class="fa fa-user-md"></i>{{ item.title }}</a>
@@ -39,7 +39,7 @@
                                 {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                         </li>
                     {% else %}
-                      {% if  menu_level == 1 %}
+                      {% if  menu_level == 2 %}
                         {% if (loop.index is even) %}
                           <li class="even">
                         {% else %}
@@ -57,7 +57,7 @@
                 </ul>
               {% else %}
                 {% if (loop.index is even) %}
-                  {% if  menu_level == 1 %}
+                  {% if  menu_level == 2 %}
                     <li class="even">
                       <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
                     </li>
@@ -76,7 +76,7 @@
                     {% endif %}
                   {% endif %}
                 {% else %}
-                  {% if  menu_level == 1 %}
+                  {% if  menu_level == 2 %}
                     <li class="odd">
                       <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
                     </li>
