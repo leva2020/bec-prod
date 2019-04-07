@@ -18,6 +18,7 @@ base:
     - core/underscore
 
 chartJS:
+  header: true
   js:
     dist/js/chartJS/Chart.bundle.js: {}
     dist/js/chartJS/Chart.bundle.min.js: {}

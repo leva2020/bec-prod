@@ -1,5 +1,5 @@
 {% set info=enviar_post_ws('getCantidadEnergiaInyectadaOpe_R','fechaInicial=2018-12-01&fechaFinal=2019-01-31&codigoPozo=0')  %}
-
+{{ attach_library('bmcbec/chartJS') }}
 <div class="well" align="center">
     <div class="bmcbec-dp-left">
         <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
@@ -375,7 +375,8 @@
 
 <canvas id="canvas" width="400" height="400"></canvas>
 
-{{ attach_library('bmcbec/chartJS') }}
+
+
 <script type="text/javascript">
 
 
