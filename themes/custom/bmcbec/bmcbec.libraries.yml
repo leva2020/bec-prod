@@ -16,3 +16,12 @@ base:
   dependencies:
     - core/jquery
     - core/underscore
+
+chartJS:
+  js:
+    dist/js/chartJS/Chart.bundle.js: {}
+    dist/js/chartJS/Chart.bundle.min.js: {}
+    dist/js/chartJS/Chart.js: {}
+    dist/js/chartJS/Chart.min.js: {}
+  dependencies:
+    - core/jquery

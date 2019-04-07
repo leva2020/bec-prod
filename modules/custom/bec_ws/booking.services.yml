@@ -1,0 +1,5 @@
+services:
+  booking.TaxListTwigExtension:
+    class: Drupal\booking\Extensions\TaxResortsTwigExtension
+    tags:
+      - { name: twig.extension }

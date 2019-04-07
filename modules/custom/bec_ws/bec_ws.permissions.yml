@@ -1,0 +1,4 @@
+administer webservice:
+  title: 'Webservice BEC'
+  description: 'Permisos para administrar el webservice de BEC'
+  restrict access: true

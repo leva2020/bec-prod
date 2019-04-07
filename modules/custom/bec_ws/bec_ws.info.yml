@@ -1,0 +1,6 @@
+name: Formularios Sisec
+description: Modulo que permite generar los formularios y consumir servicios de otras plataformas.
+package: Formularios
+type: module
+core: 8.x
+version: 1.0

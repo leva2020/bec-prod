@@ -3,3 +3,8 @@
 {% include 'section-grid-list.html.twig' with {'data': node.field_cuadros_listado_tipo_2 } %}
 {% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
 {% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+{% for item in node.field_graficas %}
+	{% if item.entity.field_template is not empty%}
+		{% include item.entity.field_template.value with {'data': item } %}
+	{% endif %}
+{% endfor %}
