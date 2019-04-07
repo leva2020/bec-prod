@@ -1,7 +1,7 @@
 bec_ws.configuracion_url_base:
   path: '/admin/bec_ws/webservice'
   defaults:
-    _form: '\Drupal\bec_ws\Form\AmbientesForm'
+    _form: '\Drupal\bec_ws\Form\BaseForm'
     _title: 'Webservice'
   requirements:
     _permission: 'administer webservice'
