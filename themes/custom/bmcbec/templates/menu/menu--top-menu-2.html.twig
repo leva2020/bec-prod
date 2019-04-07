@@ -11,6 +11,7 @@
             {% for key, item in items %}
               {% if loop.first %}
                 {% if menu_level == 1 %}
+                  <ul class="dropdown-menu pull-right" role="menu">
                   {% if (loop.index is even) %}
                     <li class="even"><a href="{{ item.url }}">
                       <i class="fa fa-user-md"></i>{{ item.title }}</a>
@@ -31,6 +32,7 @@
               {% elseif loop.last %}
                 {% if (loop.index is even) %}
                   {% if  menu_level == 1 %}
+                  <ul class="dropdown-menu pull-right" role="menu">
                     <li class="even"><a href="{{ item.url }}">
                       <i class="fa fa-user-md"></i>{{ item.title }}</a>
                     </li>
@@ -60,6 +62,7 @@
               {% else %}
                 {% if (loop.index is even) %}
                   {% if  menu_level == 1 %}
+                  <ul class="dropdown-menu pull-right" role="menu">
                     <li class="even">
                       <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}<i class="fa fa-external-link after"></i></a>
                     </li>
