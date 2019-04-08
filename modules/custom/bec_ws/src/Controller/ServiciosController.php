@@ -47,18 +47,19 @@ class ServiciosController extends ControllerBase
     }
 
     public function formatearData($data,$fechaCompleta,$filtro,$campos,$cantidad){
+      $info=array();
       foreach ($data as $item) {          
         if ($fechaCompleta) {                  
-          if (isset($data[$item->año][$item->mes][$item->dia][$item->$filtro])) {
-            $data[$item->año][$item->mes][$item->dia][$item->$filtro]=$data[$item->año][$item->mes][$item->dia][$item->$filtro]+$item->$cantidad;
+          if (isset($info[$item->año][$item->mes][$item->dia][$item->$filtro])) {
+            $info[$item->año][$item->mes][$item->dia][$item->$filtro]=$info[$item->año][$item->mes][$item->dia][$item->$filtro]+$item->$cantidad;
           }else{
-            $data[$item->año][$item->mes][$item->dia][$item->$filtro]=$item->$cantidad;            
+            $info[$item->año][$item->mes][$item->dia][$item->$filtro]=$item->$cantidad;            
           }        
-          ksort($data[$item->año]);
+          ksort($info[$item->año]);
         }
       }
         print "<pre>";
-        print_r($data);
+        print_r($info);
     }
 
 }
