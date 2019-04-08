@@ -37,9 +37,28 @@ class ServiciosController extends ControllerBase
       return $response;
     }
 
-    public function enviarPeticionPost($metodo,$param){      
+    public function enviarPeticionPost($method,$param,$formatear,$fechaCompleta,$filtro,$campos,$cantidad){      
       $url=\Drupal::config('bec_ws.settings')->get('url_base').$metodo;
-      return new JsonResponse($this->sendPostRequest($url,$param) );
+      $data=$this->sendPostRequest($url,$param);
+      if ($formatear) {
+        $data=$this->formatearData($data['response'],$fechaCompleta,$filtro,$campos,$cantidad);
+      }
+      return $data;
+    }
+
+    public function formatearData($data,$fechaCompleta,$filtro,$campos,$cantidad){
+      foreach ($data as $item) {          
+        if ($fechaCompleta) {                  
+          if (isset($data[$item->año][$item->mes][$item->dia][$item->$filtro])) {
+            $data[$item->año][$item->mes][$item->dia][$item->$filtro]=$data[$item->año][$item->mes][$item->dia][$item->$filtro]+$item->$cantidad;
+          }else{
+            $data[$item->año][$item->mes][$item->dia][$item->$filtro]=$item->$cantidad;            
+          }        
+          ksort($data[$item->año]);
+        }
+      }
+        print "<pre>";
+        print_r($data);
     }
 
 }

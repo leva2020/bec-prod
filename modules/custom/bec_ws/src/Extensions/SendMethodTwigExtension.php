@@ -29,10 +29,10 @@ class SendMethodTwigExtension extends \Twig_Extension {
 
   /**
    * The php function to load a given block
-   */
-  public function enviar_post_ws($method,$param) {
+   */  
+  public function enviar_post_ws($method,$param,$formatear,$fechaCompleta,$filtro,$campos,$cantidad) {
     $servicio = new ServiciosController;
-    $result = $servicio->enviarPeticionPost($method,$param);
+    $result = $servicio->enviarPeticionPost($method,$param,$formatear,$fechaCompleta,$filtro,$campos,$cantidad);
     return $result;
   }
 
