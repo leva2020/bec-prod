@@ -1,6 +1,8 @@
 {% set info=enviar_post_ws('getCantidadEnergiaInyectadaOpe_R','fechaInicial=2018-12-01&fechaFinal=2019-01-31&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
-
-{{info['2019'][1][1]['NACIONAL']}}
+test1
+{% for item in info%}
+test2{{item['2019'][1][1]['NACIONAL']}}
+{% endfor %}
 
 
 {{ attach_library('bmcbec/chartJS') }}
