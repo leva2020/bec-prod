@@ -37,7 +37,7 @@ class ServiciosController extends ControllerBase
       return $response;
     }
 
-    public function enviarPeticionPost($method,$param,$formatear,$fechaCompleta,$filtro,$campos,$cantidad){      
+    public function enviarPeticionPost($metodo,$param,$formatear,$fechaCompleta,$filtro,$campos,$cantidad){      
       $url=\Drupal::config('bec_ws.settings')->get('url_base').$metodo;
       $data=$this->sendPostRequest($url,$param);
       if ($formatear) {
@@ -60,7 +60,7 @@ class ServiciosController extends ControllerBase
       }
         print "<pre>";
         print_r($info);
-        die("test back");
+        print "</pre>";
     }
 
 }
