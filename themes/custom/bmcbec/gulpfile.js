@@ -20,7 +20,7 @@ gulp.task('sass-cmarp', function(){
    includeContent: false,
    sourceRoot: 'src/scss/main.scss'
   }))
-  .pipe(gulp.dest('dist/css/custom'))
+  .pipe(gulp.dest('dist/css'))
   .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
@@ -28,7 +28,7 @@ gulp.task('uglify', function(){
  return gulp.src('src/js/*.js')
   .pipe(uglify())
   .pipe(rename({ suffix: '.min' }))
-  .pipe(gulp.dest('dist/js/custom'));
+  .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('default', function(){
