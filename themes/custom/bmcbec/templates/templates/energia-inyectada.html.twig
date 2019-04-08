@@ -1,20 +1,7 @@
 {% set info=enviar_post_ws('getCantidadEnergiaInyectadaOpe_R','fechaInicial=2018-12-01&fechaFinal=2019-01-31&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
 {% for key,value in info%}
- {% set año= key %}
-     {% for key2,value2 in value %}
-        {% set mes= key2 %}
-            {% for key3,value3 in value2 %}
-                {% set dia= key3 %}
-                    {% for key4,value4 in value3 %}
-                        {{año/mes/dia}}
-                        <br>
-                        tipo:{{key4}} valor: {{value4}}
-                    {% endfor %}
-            {% endfor %}
-
-     {% endfor %}
-
+  {{key}}
 {% endfor%}
 
 
