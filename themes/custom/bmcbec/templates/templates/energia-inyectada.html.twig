@@ -1,5 +1,23 @@
 {% set info=enviar_post_ws('getCantidadEnergiaInyectadaOpe_R','fechaInicial=2018-12-01&fechaFinal=2019-01-31&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
+{% for key,value in info%}
+ {% set año= key %}
+     {% for key2,value2 in value %}
+        {% set mes= key2 %}
+            {% for key3,value3 in value2 %}
+                {% set dia= key3 %}
+                    {% for key4,value4 in value3 %}
+                        {{año/mes/dia}}
+                        <br>
+                        tipo:{{key4}} valor: {{value4}}
+                    {% endfor %}
+            {% endfor %}
+
+     {% endfor %}
+
+{% endfor%}
+
+
 {{ attach_library('bmcbec/chartJS') }}
 <div class="well" align="center">
     <div class="bmcbec-dp-left">
@@ -373,9 +391,17 @@
     <p class="helpText">Consulta un periodo hasta 395 días</p></div>
     <div class="bmcbec-dp-fix"></div>
 </div>
-
-<canvas id="canvas" width="400" height="400"></canvas>
-
+<div class="chart-container" >
+<canvas id="canvas" ></canvas>
+</div>
+<style type="text/css">
+    .chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 80vw;
+}
+</style>
 
 
 <script type="text/javascript">

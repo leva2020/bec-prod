@@ -27,10 +27,7 @@ class ServiciosController extends ControllerBase
         $client = \Drupal::httpClient();
         $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
         $request = $client->post($url, array('headers' => $headers, 'body' => $param));        
-        $response = array('state' => 1,'response' =>json_decode($request->getBody()) );
-        print "<pre>";
-        print_r($response);   
-        print "</pre>";   
+        $response = array('state' => 1,'response' =>json_decode($request->getBody()) );        
       } catch (Exception $e) {
         $response = array('state' => 0,'response' =>$e->getMessage() );
       }
