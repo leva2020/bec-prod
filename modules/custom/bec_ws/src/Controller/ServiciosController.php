@@ -60,6 +60,7 @@ class ServiciosController extends ControllerBase
       }
         print "<pre>";
         print_r($info);
+        die("test back");
     }
 
 }
