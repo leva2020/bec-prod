@@ -1,19 +1,59 @@
-header.navbar{
-}
+header {
+    height: 70px;
+    z-index: 500;
+    &::after{
+	    border-color: $sec-blue;
+	    background-color: $main-blue;
+	}
+    
+    .container {
+    	position: relative;
+	}
 
-@media (min-width: 1921px){
-	header.navbar{
-		left: 50%;
-		width: 1920px;
-		margin-left: -960px
+	#logo {
+	    position: relative;
+	    top: 0;
+	    left: 0;
+	    z-index: 501;
+	    float: left;
+	    margin: 10px 0;
+	    a{
+		    display: block;
+		    background-repeat: no-repeat;
+		    background-position: left bottom;
+		    text-indent: -9999px;
+    		width: 228px;
+    		height: 49px;
+    		background-image: url(../../images/logo_bmc_bec.png);
+	    }
 	}
 }
 
-@media (max-width: 1290px){
-}
 
-@media (max-width: 1120px){
-}
-
-@media (max-width: 480px){
+@media only screen and (min-width: $tablet){
+	header {
+    	height: 155px;
+    	&::after {
+		    content: "";
+		    position: absolute;
+		    top: 80px;
+		    right: 0;
+		    left: 0;
+		    height: 75px;
+		    border-width: 5px 0 0;
+		    border-style: solid;
+		}
+    	#logo{
+    	    position: absolute;
+		    top: 15px;
+		    left: 15px;
+		    float: none;
+		    margin: 0;
+    	}
+    	.site_search {
+			position: absolute;
+		    top: 20px;
+		    right: 0;
+		}
+	}
 }

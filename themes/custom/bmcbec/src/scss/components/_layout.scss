@@ -1,0 +1,546 @@
+section{
+	.header-section{
+		h1{
+			font-size: 3.4rem;
+		}
+		h2{
+			font-size: 2.8rem;
+		}
+	}
+	p{
+		font-size: 1.5rem;
+	}
+	.intro{
+		font-size: 1.8rem;
+	}
+	.header-section, .body-section{
+		h1, h2, h3, h4, h5, p{
+			text-align: left;
+			&.color-text-blue{
+				color: $main-blue;	
+			}
+			&.color-text-white{
+				color: white;
+			}
+		}
+		&.text-center{
+			h1, h2, h3, h4, h5, p{
+				text-align: center;
+			}
+		}
+	}
+	&.breadcrumb{
+		margin: 0;
+		nav{
+			margin: 12px 0;
+			text-align: left;
+			ol.breadcrumb {
+			    padding: 0;
+			    margin: 0;
+			    font-size: 12px;
+			    background: transparent;
+			}
+		} 
+	}
+	&.content{
+		padding: 40px 0;
+	}
+	&.advanced-component{
+		padding: 60px 0;
+		a{
+			&.main-green{
+				columns: white;
+			}
+		}
+	}
+	&.text-with-image_video{
+		.header-section h2{
+			margin: 20px 0 10px;
+		}
+	}
+	&.news{
+		article{
+			padding: 10px 0;
+			text-align: left;
+			.content{
+				margin-top: 10px;
+				p{
+					margin: 8px 0;
+				}
+			}
+		}
+		.aside{
+			article{
+				.wrapper-image{
+					width: 25%;
+				}
+				.content{
+					width: 75%;
+					padding: 10px;
+				}
+				.wrapper-image, .content{
+					float: left;
+				}
+			}
+		}
+	}
+	&.publications{
+		article{
+			padding: 10px 0;
+			.wrapper-image{
+				width: 25%;
+			}
+			.content{
+				width: 75%;
+				padding: 10px 15px;
+				text-align: left;
+				a{
+					font-weight: bold;
+					font-size: 120%;
+					color: $main-blue;
+				}
+				em{
+					margin-top: 10px;
+				}
+				a, em, p{
+					width: 100%;
+					float: left;
+				}
+			}
+			.wrapper-image, .content{
+				float: left;
+			}
+		}
+	}
+	&.codeblock{
+		padding: 0;
+		iframe{
+			width: 100%;
+		}
+	}
+	&.grid{
+		.content{
+			margin-top: 10px;
+		}
+	}
+}
+
+nav.sub{
+	position: relative;
+    overflow: hidden;
+    height: 100%;
+    margin-bottom: 24px;
+    padding: 0;
+    text-align: left;
+    border-radius: 0;
+    p.heading {
+	    font-size: 18px;
+	    padding: 0;
+	    margin: 0;
+	    a{
+	    	color: $main-blue;	
+	    }
+	    a, span {
+		    display: block;
+		    padding: 15px;
+		}
+	}
+	ul{
+		font-size: 15px;
+	    border-width: 0 0 1px;
+	    border-style: solid;
+	    border-color: rgba(238,238,238,1);
+	    li{
+	    	border-width: 1px 0 0;
+    		border-style: solid;
+    		border-color: rgba(238,238,238,1);
+    		a{
+    			padding: 15px;
+    		}
+	    }
+	}
+}
+
+.promo_pods {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    margin-bottom: 24px;
+    text-align: left;
+    .item{
+    	position: relative;
+    	margin-bottom: 24px;
+    	border-radius: 0;
+    	.heading{
+    		display: block;
+		    margin: 0 0 4px;
+		    font-size: 18px;
+		    margin-bottom: 20px;
+    	}
+    	.text {
+		    display: block;
+		    margin-bottom: 16px;
+		}
+		&.color-bg-sec-blue, &.color-bg-main-blue, &.color-bg-green{
+			.heading, p, a{
+				color: white;
+			}
+		}
+		a{
+			img{
+				transition: transform 0.2s ease-in-out;
+			}
+			.overlayicon{
+				top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			    width: 100% !important;
+			    height: 100% !important;
+			    position: absolute;
+			    text-align: center;
+			    padding: 0;
+			    margin: 0;
+			    transition: background-color .2s ease-in-out 0s,opacity .2s ease-in-out 0s;
+			    background-color: rgba(0,0,0,.25);
+			    opacity: 0;
+			    i{
+			    	top: 50%;
+				    left: 0;
+				    color: #fff;
+				    width: 100%;
+				    vertical-align: middle;
+				    padding: 0;
+				    margin: 0;
+				    transition: color .2s ease-in-out 0s;
+				    position: absolute;
+				    margin-top: -7px;
+			    }
+			}
+			&:hover{
+				img{
+    				transform: scale(1.3);
+				}
+				.overlayicon{
+					background-color: rgba(0,0,0,.75);
+    				opacity: 1;
+				}
+			}
+		}
+		img{
+			overflow: hidden;
+			height: auto;
+		}
+		.image{
+			margin: 0 0 8px;
+		}
+		&.imagepod, &.videopod {
+		    a{
+		    	display: block;
+		    }
+		    img{
+		    	width: 100%;
+    			margin: 0;
+		    }
+		}
+		&.lists{
+			border-color: #dddddd;
+		}
+		.listing{
+			padding: 0;
+		    margin: 0 0 8px;
+		    border-width: 0 0 1px;
+		    border-style: solid;
+		    border-color: rgba(238,238,238,1);
+		    .item{
+		    	margin: 0;
+			    padding: 0;
+			    border-width: 1px 0 0;
+			    border-style: solid;
+			    border-color: rgba(238,238,238,1);
+			    p.heading {
+				    font-size: 14px;
+				    margin: 8px 0;
+				}
+				.meta {
+				    margin: 0 0 8px;
+				}
+		    }
+		    &.blog{
+		    	.item {
+		    		p.heading{
+		    			margin: 8px 0 0;
+		    		}
+		    	}
+		    }
+		}
+		a.see_all {
+		    top: 20px;
+		    right: 16px;
+		}
+    }
+    .image {
+    	overflow: hidden;
+    	padding: 0;
+    }
+}
+
+div.meta {
+    font-size: 12px;
+    div {
+	    padding-top: 8px;
+	    overflow: hidden;
+	    height: 100%;
+	}
+}
+
+.item div.meta {
+    margin-top: 16px;
+}
+
+.page_component {
+    position: relative;
+    margin-bottom: 24px;
+    &.image img {
+	    display: block;
+	    overflow: hidden;
+	    max-width: 100%;
+	    height: auto;
+	}
+	&.textblock, &.listing {
+	    margin: 0;
+	}
+}
+
+.tabbed, .accordion {
+	.panel{
+		border-radius: 0;
+    	box-shadow: 0 none;
+	}
+	.panel-heading {
+	    padding: 0;
+	    font-size: 14px;
+	    background: white;
+	    .panel-title {
+			padding: 0;
+	    	font-size: 14px;
+	    	color: $main-blue;
+	    	a{
+	    		display: block;
+			    padding: 12px;
+			    text-decoration: none;
+	    	}
+		}
+	}
+	.panel-body{
+		ul{
+			margin-left: 16px;
+    		list-style: disc outside;
+    		li{
+    			margin-bottom: 4px;
+    		}
+		}
+	}
+}
+
+.tabbed {
+	.nav {
+		* {
+			border-radius: 0;
+			box-shadow: 0 none;
+		}
+		li {
+			a {
+			    padding: 16px;
+			}
+		}
+	}
+	.nav-tabs{
+		li{
+			&.active{
+				a{
+					background: transparent;
+				}
+			}
+		}
+	}
+}
+
+.listing {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    padding-top: 8px;
+    margin-top: 16px;
+    .item{
+    	padding-bottom: 16px;
+    	margin-bottom: 24px;
+    	.image{
+    		margin-bottom: 8px;
+    	}
+    	.heading{
+    		display: block;
+		    font-size: 18px;
+		    margin: 0 0 8px;
+    	}
+    	a{
+    		img{
+    			transition: transform 0.2s ease-in-out;
+    		}
+    		&:hover{
+    			img{
+    				transform: scale(1.3);
+    			}
+    		}
+    	}
+    }
+    .image{
+    	overflow: hidden;
+    	padding: 0;
+    }
+    &.grid .item {
+	    margin-bottom: 24px;
+	    padding-bottom: 0;
+	}
+}
+
+.advanced-component {
+	.overview {
+	    margin-bottom: 24px;
+	}
+	&.tabbed-listing{
+		.tabbed{
+			.nav, .nav *{
+				border: 0 none;
+			}
+			.nav{
+				li{
+					display: inline-block;
+				    float: none;
+				    margin: 0 -2px;
+				}
+			}
+			.nav-tabs > li > a{
+				padding: 10px 15px;
+			}
+			.tab-content{
+				padding: 32px 0 0;
+    			border: 0 none;
+			}
+		}
+	}
+	.listing {
+	    padding: 0;
+	    margin: 0;
+	}
+	&.banner{
+		.item{
+			position: relative;
+			z-index: 0;
+		}
+		.image {
+		    position: relative;
+		    z-index: 5;
+		}
+		img{
+			display: block;
+			overflow: hidden;
+		}
+		.info {
+		    width: 100%;
+		    z-index: 100;
+		    padding: 15px 0;
+		    color: white;
+		    .container{
+		    	margin-top: 246px;
+		    }
+		    .heading {
+			    margin: 8px 0 12px;
+			    line-height: 1.2;
+			    font-size: 26px;
+			    color: white;
+			}
+		}
+	}
+}
+
+
+@media (min-width: $tablet){
+	.advanced-component.banner .info .heading {
+    	font-size: 30px;
+    }
+}
+
+
+@media (min-width: $medium){
+	nav.sub ul li a:hover {
+	    padding-left: 20px;
+	}
+	.promo_pods .item .heading {
+	    font-size: 20px;
+	}
+	.listing .item .heading {
+	    font-size: 20px;
+	}
+	.tabbed{
+		.nav i {
+		    display: none;
+		}
+		.tab-content {
+		    margin-top: -1px;
+		}
+	}
+	.advanced-component{
+		&.banner{
+			.info {
+			    position: absolute;
+			    top: 0;
+			    bottom: 0;
+			    left: 0;
+			    padding: 0;
+			    .heading {
+				    font-size: 36px;
+				}
+			}
+			.item {
+			    background-repeat: no-repeat;
+			}
+		}
+	}
+}
+
+@media (min-width: $laptop){
+	.promo_pods .item .heading {
+	    font-size: 22px;
+	}
+	.listing .item .heading {
+	    font-size: 22px;
+	}
+	.advanced-component.banner .info .heading {
+	    font-size: 42px;
+	}
+}
+
+@media (min-width: 1025px){
+	.advanced-component{
+		&.banner{
+			.item {
+			    background-position: center top;
+    			background-size: cover;
+			}
+		}
+	}
+}
+
+@media (max-width: 980px){
+	section{
+		.header-section{
+			h2{
+				font-size: 2.5rem;
+			}
+		}
+		.intro{
+			font-size: 1.5rem;
+		}
+	}
+}

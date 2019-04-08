@@ -1,6 +1,5 @@
 footer{
 	width: 100%;
-	background: $main-blue;
 	padding: 60px 0;
 	float: left;
 	.container{
@@ -22,11 +21,11 @@ footer{
 				font-style: normal;
 				line-height: 1.42857143;
 			}
-			h5{
+			h5, .company-details h3{
 				&.heading{
 					font-size: 18px;
 					font-weight: bold;
-					margin: 8px 0 16px;
+					margin-bottom: 16px;
 				}
 			}
 			ul{
@@ -41,16 +40,18 @@ footer{
 
 
 @media (max-width: 480px){
-	footer .container .row{
-		text-align: center;
-		.company-details{
-			padding-bottom: 10px;
-    		border-bottom: 1px solid rgba(255,255,255,0.2);
-    		margin-bottom: 20px;
-		}
-		ul li{
-			width: 100%;
-			padding: 0;
+	footer{
+		padding: 45px 0;
+		.container .row{
+			.company-details{
+				padding-bottom: 10px;
+				border-bottom: 1px solid rgba(255,255,255,0.2);
+				margin-bottom: 20px;
+			}
+			ul li{
+				width: 100%;
+				padding: 0;
+			}
 		}
 	}
 }

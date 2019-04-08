@@ -10,6 +10,15 @@
 			background: lighten($green, 10%);
 		}
 	}
+	&.btn-blue{
+		background: $main-blue;
+		&:hover{
+			background: lighten($main-blue, 10%);
+		}
+	}
+	&.color-text-blue{
+		color: $main-blue;
+	}
 	&:hover{
 		color: #fff;
 	}
