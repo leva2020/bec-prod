@@ -1,0 +1,13 @@
+{%  set resultados = view.result  %}
+<div>
+  <div class="header-section col-md-12 col-xs-12">
+    {% for key , row in resultados %}
+      {%  set data = row._entity  %}
+      <h1 class="color-text-blue">{{ data.field_titulo[0].value }}</h1>
+      <p>{{ data.field_descripcion[0].value }}</p>
+      <div class="wrapper-chart">
+        <img id="becchartframe_left" src="{{ file_url(data.field_image[0].entity.fileuri) }}" alt="{{data.field_image[0].alt}}" title="{{data.field_image[0].title}}">
+      </div>
+    {% endfor %}
+  </div>
+</div>
