@@ -1,6 +1,4 @@
 {%  set resultados = view.result  %}
-<section class="content advanced-component banner">
-  <div class="main-slider slides owl-carousel">
     {% for key , row in resultados %}
       {%  set data = row._entity  %}
       {% if data.field_posicion_contenido[0].value == "izquierda" %}
@@ -80,5 +78,3 @@
         </section>
       {% endif %}
     {% endfor %}
-  </div>
-</section>
