@@ -2,11 +2,11 @@
 
 
 {{info['labels']}}
-
-{% for key,val in info['data']%}
-    test {{key}} | {{val}}
     
-{% endfor %}
+    {% for item in info['data']['NACIONAL'] %}
+        {{item}},
+    {% endfor %}
+    
 
 
 {{ attach_library('bmcbec/chartJS') }}
