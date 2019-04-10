@@ -9,7 +9,7 @@
     {% if items %}
             {% for key, item in items %}
               {% if loop.first %}
-                {% if menu_level == 2 %}
+                {% if menu_level == 1 %}
                   {% if (loop.index is even) %}
                     <li class="even"><a href="{{ item.url }}">
                       <i class="fa fa-user-md"></i>{{ item.title }}</a>
