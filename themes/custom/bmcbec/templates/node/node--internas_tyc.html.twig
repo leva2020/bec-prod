@@ -7,7 +7,7 @@
 					<h1 class="color-text-blue">{{node.title.value}}</h1>
 				</div>
 			</div>
-            {{node.body.value}}
+            {{node.body.value|raw}}
             <h4 style="text-align: center;">
                 <a data-id="9876" href="{{ file_url(node.field_archivo.entity.fileuri) }}" target="_blank" title="{{node.field_archivo.title}}">{{node.field_label_archivo.value}}</a>
             </h4>
