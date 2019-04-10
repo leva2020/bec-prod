@@ -3,6 +3,11 @@
 
 {{info['labels']}}
 
+{% for item in info['data']%}
+    test {{item}}
+    
+{% endfor %}
+
 
 {{ attach_library('bmcbec/chartJS') }}
 <div class="well" align="center">
