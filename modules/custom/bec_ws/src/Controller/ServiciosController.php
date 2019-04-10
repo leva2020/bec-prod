@@ -74,17 +74,6 @@ class ServiciosController extends ControllerBase
           }
       }
 
-
-        print "<pre>";
-        print_r($info);
-        print "</pre>";
-
-        print "<pre>";
-        print_r($format);
-        print "</pre>";
-
-        print $labels;
-
         return array('labels'=>$labels,'data'=>$format);
     }
 
