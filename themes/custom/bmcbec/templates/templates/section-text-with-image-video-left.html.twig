@@ -1,6 +1,8 @@
-{% if data.field_fondo[0].value == "azul" %}
+{% if data.field_fondo.value == "azul" %}
   {%  set class = "color-bg-main-blue"  %}
-{% elseif data.field_fondo[0].value == "gris" %}
+{% elseif data.field_fondo.value == "gris" %}
+  {%  set class = "color-bg-main-gray"  %}
+{% else %}
   {%  set class = "color-bg-main-gray"  %}
 {% endif %}
 <section class="content advanced-component text-with-image_video {{ class }}">
