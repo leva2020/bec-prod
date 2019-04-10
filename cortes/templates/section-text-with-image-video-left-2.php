@@ -6,7 +6,7 @@
 				<div class="row">
 					<!-- INFO -->
 					<div class="header-section col-md-12 col-sm-10 col-xs-12">
-						<h2 class="color-text-blue">Titulo de la sección</h2>
+						<h2 class="color-text-blue">Título de la sección</h2>
 						<div class="text">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis neque et urna iaculis egestas. Sed ut felis a ipsum dapibus scelerisque et varius eros.</p>
 						</div>
