@@ -299,16 +299,51 @@ div.meta {
 }
 
 .page_component {
-    position: relative;
-    margin-bottom: 24px;
-    &.image img {
+  position: relative;
+  margin-bottom: 24px;
+  &.image{
+  	img {
 	    display: block;
 	    overflow: hidden;
 	    max-width: 100%;
 	    height: auto;
-	}
+		}
+		.info{
+			position: absolute;
+	    top: auto;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    background-color: rgba(0,0,0,0.7);
+	    .text{
+	    	padding: 10px;
+		    font-size: 11px;
+		    color: rgba(255,255,255,0.8);
+		    background-color: rgba($main-blue,0.9);
+	    }
+		}
+  }
 	&.textblock, &.listing {
 	    margin: 0;
+	}
+	&.resources{
+		margin-top: 20px;
+		.item{
+			padding: 16px;
+		}
+		h3{
+			width: 100%;
+			font-size: 18px;
+			color: $main-blue;
+			margin: 20px 0;
+			display: inline-block;
+		}
+		.heading{
+			font-size: 18px;
+		}
+		.size{
+			font-size: 12px;
+		}
 	}
 }
 
