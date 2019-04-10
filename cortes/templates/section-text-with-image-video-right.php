@@ -6,13 +6,11 @@
 				<div class="row">
 					<!-- INFO -->
 					<div class="header-section col-md-12 col-sm-10 col-xs-12">
-						<h2 class="color-text-white">Normatividad</h2>
-						<p class="intro color-text-white">
+						<h2>Normatividad</h2>
+						<h4>
 							Documentos de registro ante el Gestor, archivos de ayuda y regulación vigente.
-						</p>
-						<div class="text color-text-white">
-							<p>Documentos de ayuda definidos por el Gestor del Mercado de Gas Natural para el registro de los participantes, contratos marco y resoluciones.</p>
-						</div>
+						</h4>
+						<p>Documentos de ayuda definidos por el Gestor del Mercado de Gas Natural para el registro de los participantes, contratos marco y resoluciones.</p>
 
 						<!--Las clases "btn-blue" "btn-green" definen el color del boton -->
 						<a class="btn btn-green pull-left" href="#">Conocer más</a>

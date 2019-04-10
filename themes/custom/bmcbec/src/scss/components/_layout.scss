@@ -54,8 +54,51 @@ section{
 		}
 	}
 	&.text-with-image_video{
-		.header-section h2{
-			margin: 20px 0 10px;
+		.header-section {
+			h2{
+				color: $main-blue;
+				margin: 20px 0 10px;
+			}
+			h4, h3{
+				font-size: 1.8rem;
+				margin: 8px 0 16px;
+			}
+			h3{
+				color: $main-blue;
+			}
+			p{
+				a{
+					color: $main-blue;
+				}
+			}
+			ul{
+				margin-left: 16px;
+    		list-style: disc outside;
+    		li{
+    			margin-bottom: 5px;
+    		}
+			}
+		}
+		&.color-bg-main-blue{
+			.header-section{
+				h2, h3, h4, p{
+					color: #fff;
+				}
+				p{
+					a{
+						color: #fff;
+						text-decoration: underline;
+					}
+				}
+				ul{
+					li, a{
+	    			color: #fff;
+	    		}
+				}
+				a.btn{
+					background: $main-green;
+				}
+			}
 		}
 	}
 	&.news{
@@ -121,6 +164,11 @@ section{
 	&.grid{
 		.content{
 			margin-top: 10px;
+			a{
+				&:hover{
+					text-decoration: underline;
+				}
+			}
 		}
 	}
 }
@@ -480,6 +528,10 @@ div.meta {
 			.tab-content{
 				padding: 32px 0 0;
     			border: 0 none;
+			}
+			.heading{
+				min-height: 50px;
+				font-size: 18px;
 			}
 		}
 	}

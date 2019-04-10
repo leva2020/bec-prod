@@ -254,6 +254,12 @@ a.see_all {
 	z-index: 200;
 }
 
+table {
+  width: 100%;
+  margin-bottom: 16px;
+  border-style: solid;
+}
+
 @media only screen and (min-width: $medium){
 	#top-link-block {
 	    position: fixed;

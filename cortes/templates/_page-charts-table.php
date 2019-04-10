@@ -7,6 +7,9 @@
 	<?php include'breadcrumb.php'; ?>
 
 	<?php include'section-text-with-image-video-left.php'; ?>
+  <?php include'section-text-with-image-video-right.php'; ?>
+  <?php include'section-text-with-image-video-left-2.php'; ?>
+  <?php include'section-text-with-image-video-right-2.php'; ?>
 
 	<?php include'page-component-titlecenter.php'; ?>	
 	<?php include'page-component-codeblock.php'; ?>

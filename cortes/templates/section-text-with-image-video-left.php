@@ -6,13 +6,9 @@
 				<div class="row">
 					<!-- INFO -->
 					<div class="header-section col-md-12 col-sm-10 col-xs-12">
-						<h2 class="color-text-blue">Mapa Interactivo del Mercado</h2>
-						<p class="intro">
-							Conozca con ayuda de nuestro Mapa Interactivo, el funcionamiento del Mercado de Gas Natural en Colombia.
-						</p>
-						<div class="text">
-							<p>Ubique con facilidad campos de producción, centrales térmicas, estaciones compresoras y el sistema nacional de transporte de gas.</p>
-						</div>
+						<h2>Mapa Interactivo del Mercado</h2>
+						<h4>Conozca con ayuda de nuestro Mapa Interactivo, el funcionamiento del Mercado de Gas Natural en Colombia.</h4>
+						<p>Ubique con facilidad campos de producción, centrales térmicas, estaciones compresoras y el sistema nacional de transporte de gas.</p>
 						
 						<!--Las clases "btn-blue" "btn-green" definen el color del boton -->
 						<a class="btn btn-blue pull-left" href="#">Ver mapa interactivo</a>
