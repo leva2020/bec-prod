@@ -1,4 +1,9 @@
-<section class="content advanced-component text-with-image_video color-bg-main-blue"><!--Las clases "color-bg-main-blue" "color-bg-sec-blue" "color-bg-main-gray" "color-bg-green" definen el color de fondo -->
+{% if data.field_fondo[0].value == "azul" %}
+  {%  set class = "color-bg-main-blue"  %}
+{% elseif data.field_fondo[0].value == "gris" %}
+  {%  set class = "color-bg-main-gray"  %}
+{% endif %}
+<section class="content advanced-component text-with-image_video {{ class }}"><!--Las clases "color-bg-main-blue" "color-bg-sec-blue" "color-bg-main-gray" "color-bg-green" definen el color de fondo -->
 	<div class="container">
 		<!-- ROW -->
 		<div class="row">
