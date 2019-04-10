@@ -106,7 +106,7 @@ hr{
 }
 
 p{
-	margin: 8px 0 16px;
+	margin: 8px 0 16px!important;
 }
 
 .heading{
@@ -125,7 +125,6 @@ p{
 }
 .color-bg-sec-blue{
 	background: $sec-blue;
-  color: #fff;
 }
 .color-bg-main-gray{
 	background: $gray;
@@ -171,8 +170,8 @@ nav.main ul{
 	    padding: 0;
 	    margin: 0;
 	}
-  .form-group, .input-group {
-	    width: 100%
+	.form-group {
+	    width: 100%;
 	}
 	.form-control {
 	    width: 100%;
