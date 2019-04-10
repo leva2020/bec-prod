@@ -2,7 +2,8 @@
     <h3>{{data.field_titulo.value|raw}}</h3>
 
     <div class="list-group">
-        {% for links in data.field_links %}
+        {% for links, key in data.field_links %}
+        {{key}}
             <a href="{{link.url}}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item odd">
                 <p class="heading primary_colour_1-text">{{link.title}}<i class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i></p>
                 <div class="size">Link externo - {{link.url}}</div>
