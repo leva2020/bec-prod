@@ -55,9 +55,37 @@ class ServiciosController extends ControllerBase
           ksort($info[$item->año]);
         }
       }
+      $format=array();
+      $labels="";
+      foreach ($info as $key => $value) {
+        $año=$key;
+          foreach ($value as $key2 => $value2) {
+            $mes=$key2;
+              foreach ($value2 as $key3 => $value3) {
+                $dia=$key3;
+                $labels.=$dia.'/'.$mes.'/'.$año.',';
+                  foreach ($value3 as $key4 => $value4) {                     
+                    if (!is_array($format[$key])) {
+                      $format[$key4]=array();
+                    }                     
+                     array_push($format[$key4],$value4 );
+                  }
+              }
+          }
+      }
+
+
         print "<pre>";
         print_r($info);
         print "</pre>";
+
+        print "<pre>";
+        print_r($format);
+        print "</pre>";
+
+        print $labels;
+
+
     }
 
 }
