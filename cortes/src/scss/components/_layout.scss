@@ -121,6 +121,11 @@ section{
 	&.grid{
 		.content{
 			margin-top: 10px;
+			a{
+				&:hover{
+					text-decoration: underline;
+				}
+			}
 		}
 	}
 }
