@@ -21,6 +21,13 @@
 							{% elseif item1.entity.bundle =="cuadros_informativos" %}
                     			{% include 'listado-1.html.twig' with {'data': item1.entity } %}
 							{% endif %}
+							{% elseif item1.entity.bundle =="links" %}								
+								{% if item1.entity.field_tipo.value =="detalle" %}	
+                    				{% include 'page-component-resources.html.twig' with {'data': item1.entity } %}
+								{% else %}
+                    				{% include 'page-component-quick-links.html.twig' with {'data': item1.entity } %}
+								{% endif %}
+							{% endif %}
 						{% endfor %}
 					{% endfor %}
 
