@@ -78,16 +78,19 @@ $(window).bind("load resize scroll",function(e){
 	$(".image_carousel .gallery .overlayicon").css({width:img6.width(), height:img6.height()});
 	
 	// VALIGN
-	$('.banner .item:nth-child(1) .valign').valign();
-	$('.banner .item:nth-child(2) .valign').valign();
-	$('.banner .item:nth-child(3) .valign').valign();
-	$('.banner .item:nth-child(4) .valign').valign();
-	$('.banner .item:nth-child(5) .valign').valign();
-	$('.banner .item:nth-child(6) .valign').valign();
-	$('.banner .item:nth-child(7) .valign').valign();
-	$('.banner .item:nth-child(8) .valign').valign();
-	$('.banner .item:nth-child(9) .valign').valign();
-	$('.banner .item:nth-child(10) .valign').valign();
-	$('.banner .item:nth-child(11) .valign').valign();
-	$('.banner .item:nth-child(12) .valign').valign();
+	if($('.banner .item .valign').length){
+		$('.banner .item:nth-child(1) .valign').valign();
+		$('.banner .item:nth-child(2) .valign').valign();
+		$('.banner .item:nth-child(3) .valign').valign();
+		$('.banner .item:nth-child(4) .valign').valign();
+		$('.banner .item:nth-child(5) .valign').valign();
+		$('.banner .item:nth-child(6) .valign').valign();
+		$('.banner .item:nth-child(7) .valign').valign();
+		$('.banner .item:nth-child(8) .valign').valign();
+		$('.banner .item:nth-child(9) .valign').valign();
+		$('.banner .item:nth-child(10) .valign').valign();
+		$('.banner .item:nth-child(11) .valign').valign();
+		$('.banner .item:nth-child(12) .valign').valign();
+		
+	}
 });
