@@ -14,8 +14,13 @@
                     {% if item.below %}
                           <li class="has_child even">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
-                            <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
-                            <i class="fa fa-angle-down after hidden-sm hidden-xs"></i>
+                            {% if menu_level != 0 %}
+                              <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
+                              <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
+                            {% else %}
+                              <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
+                              <i class="fa fa-angle-down after hidden-sm hidden-xs"></i>
+                            {% endif %}
                             {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
                     {% else %}
@@ -27,8 +32,13 @@
                     {% if item.below %}
                           <li class="has_child odd">
                             <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
-                            <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
-                            <i class="fa fa-angle-down after hidden-sm hidden-xs"></i>
+                            {% if menu_level != 0 %}
+                              <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
+                              <i class="fa fa-angle-right after hidden-sm hidden-xs"></i>
+                            {% else %}
+                              <i class="fa fa-angle-down after hidden-md hidden-lg"></i>
+                              <i class="fa fa-angle-down after hidden-sm hidden-xs"></i>
+                            {% endif %}
                             {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
                           </li>
                     {% else %}
