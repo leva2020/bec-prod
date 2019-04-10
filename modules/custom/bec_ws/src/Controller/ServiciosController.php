@@ -85,7 +85,7 @@ class ServiciosController extends ControllerBase
 
         print $labels;
 
-        return array('labels'=>$labels,'data'=>$info);
+        return array('labels'=>$labels,'data'=>$format);
     }
 
 }
