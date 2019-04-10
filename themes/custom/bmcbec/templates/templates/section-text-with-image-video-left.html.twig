@@ -1,4 +1,9 @@
-<section class="content advanced-component text-with-image_video color-bg-main-gray">
+{% if data.field_fondo[0].value == "azul" %}
+  {%  set class = "color-bg-main-blue"  %}
+{% elseif data.field_fondo[0].value == "gris" %}
+  {%  set class = "color-bg-main-gray"  %}
+{% endif %}
+<section class="content advanced-component text-with-image_video {{ class }}">
 	<div class="container">
 		<!-- ROW -->
 		<div class="row">
