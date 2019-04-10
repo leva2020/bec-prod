@@ -3,7 +3,7 @@
 		<a href="#">Header link</a>
 	</p>
 	<ul class="nav"> 
-		<li>
+		<li class="active">
 			<a href="#"><span>item link</span></a>
 		</li>
 		<li>
