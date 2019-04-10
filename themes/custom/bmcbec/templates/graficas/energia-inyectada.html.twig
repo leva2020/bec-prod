@@ -401,13 +401,13 @@ var randomColor = function(opacity) {
 };
 
 var lineChartData = {
-    labels: [  {{info['labels']}}  ],
+    labels: [  "{{info['labels']}}"  ],
     datasets: [
          {
          label: "Cantidad Nacional (MBTUD)",
          yAxisID: "y-axis-1",
          fill: "true",
-         data: [ {% for item in info['data']['NACIONAL'] %}{{item}},{% endfor %} ]
+         data: [ "{% for item in info['data']['NACIONAL'] %}{{item}},{% endfor %}" ]
          },
 
 
@@ -415,8 +415,7 @@ var lineChartData = {
          label: "Cantidad Importada (MBTUD)",
          yAxisID: "y-axis-1",
          fill: "false",
-         data: [
-179021,143710,128119,135310,150525,169300,96441,159188,121542,134648,164796,156153,94300,185236,184436,122535,136358,143175,155389,165596,105380,214441,213222,154521,197054,218364,93684,133065,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,         ]
+         data: [ "{%if info['data']['IMPORTADA'] is not empty %} {% for item in info['data']['IMPORTADA'] %}{{item}},{% endfor %} {%endif%}" ]
          },
 
 
