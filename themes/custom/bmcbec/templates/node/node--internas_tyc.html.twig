@@ -1,0 +1,16 @@
+<section class="content">
+		<div class="container">
+
+			<!--header page-->
+			<div class="row">
+				<div class="header-section col-md-12 col-xs-12">
+					<h1 class="color-text-blue">{{node.title.value}}</h1>
+				</div>
+			</div>
+            {{node.body.value|raw}}
+            <h4 style="text-align: center;">
+                <a data-id="9876" href="{{ file_url(node.field_archivo.entity.fileuri) }}" target="_blank" title="{{node.field_archivo.title}}">{{node.field_label_archivo.value}}</a>
+            </h4>
+		</div>
+	</section>
+	{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}

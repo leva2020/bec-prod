@@ -1,0 +1,17 @@
+<div class="page_component quick-links">
+  {{data.field_titulo.value|raw}}
+
+  <div class="panel-body panel panel-default">
+    <nav class="row">
+      <ul>
+        {% for link in data.field_links %}
+          <li class="col-md-4 col-xs-6 odd">
+            <a href="{{link.url}}" target="_blank" title="Link will open in a new window/tab">
+              <i class="fa fa-angle-right"></i>{{link.title}}<i class="fa fa-external-link after"></i>
+            </a>
+          </li>
+		    {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</div>

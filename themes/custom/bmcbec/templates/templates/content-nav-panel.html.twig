@@ -2,7 +2,7 @@
 	{% for link in data.field_link %}
 		{% if loop.first %}
 			<p class="heading">
-				<a href="#">{{ link.title }}</a>
+				<a href="{{ link.url }}">{{ link.title }}</a>
 			</p>
 			<ul class="nav">
 		{% elseif loop.last %}
