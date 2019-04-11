@@ -258,6 +258,19 @@ table {
   width: 100%;
   margin-bottom: 16px;
   border-style: solid;
+  tbody tr td {
+    border-width: 0 0 1px;
+    border-style: solid;
+  }
+  tr th, tr td {
+    padding: 8px;
+  }
+  tr td{
+    h1,h2,h3,h4,h5,h6{
+      color: $main-blue;
+      margin: 10px 0;
+    }
+  }
 }
 
 @media only screen and (min-width: $medium){

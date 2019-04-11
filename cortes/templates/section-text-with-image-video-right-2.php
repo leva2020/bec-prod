@@ -10,7 +10,7 @@
 						<h3>
 							Indicadores CREG del Mercado Primario (MP)
 						</h3>
-						<p>En este reporte podrá encontrar la información relacionada con los Indicadores CREG del Mercado Primario, establecidos en la Resolución CREG 001 de 2017 y Resolución CREG 114 de 2017</p>
+						<p>En este reporte podrá encontrar la información relacionada con los <a href="#">Indicadores CREG del Mercado Primario</a>, establecidos en la Resolución CREG 001 de 2017 y Resolución CREG 114 de 2017</p>
 
 						<ul>
 							<li>
