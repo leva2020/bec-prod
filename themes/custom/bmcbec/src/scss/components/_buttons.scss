@@ -4,6 +4,14 @@
     position: relative;
 	transition: all 0.2s ease-in-out 0s;
 	box-shadow: 0px 2px 0px rgba(0,0,0,0.2);
+	&.btn-white{
+		background: white;
+		color: $main-blue;
+		&:hover{
+			color: $main-blue;
+			background: lighten(#ccc, 5%);
+		}
+	}
 	&.btn-green{
 		background: $green;
 		&:hover{
