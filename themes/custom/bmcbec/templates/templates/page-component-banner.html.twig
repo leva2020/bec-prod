@@ -12,7 +12,12 @@
             <div class="info">
                 <div class="container valign">
                     <div class="row">
-                        <div class="col-md-6 col-xs-12 text-right pull-right">
+                        {% if data.field_posicion_contenido.value == "izquierda" %}
+                          <div class="col-md-6 col-xs-12 text-right pull-left">
+                        {% endif %}
+                        {% if data.field_posicion_contenido.value == "derecha" %}
+                          <div class="col-md-6 col-xs-12 text-right pull-right">
+                        {% endif %}
                             <p class="heading main">{{ data.field_titulo.value }}</p>
                             <div class="text">
                                 {{ data.field_descripcion_html.value|raw }}
