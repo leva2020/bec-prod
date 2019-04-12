@@ -23,11 +23,11 @@
                 <!-- ITEM -->
                 {% for item in data.field_cuadros %}
                   <div class="item col-md-4 col-sm-6 col-xs-12">
-                    {% if item.entity.field_titulo.value =='verde' %}
+                    {% if item.entity.field_backrgound.value =='verde' %}
                       <div class="content-box color-bg-green">
-                    {% elseif item.entity.field_titulo.value =='azulc' %}
+                    {% elseif item.entity.field_backrgound.value =='azulc' %}
                       <div class="content-box color-bg-sec-blue">
-                    {% elseif item.entity.field_titulo.value =='azul' %}
+                    {% elseif item.entity.field_backrgound.value =='azul' %}
                       <div class="content-box color-bg-main-blue">
                     {% endif %}
                       {% for item1 in item.entity.field_link %}
