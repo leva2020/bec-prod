@@ -5,19 +5,15 @@
               <div class="panel-heading" role="tab" id="heading-{{loop.index}}">
                   <p class="heading panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapse-1459-1" aria-expanded="false" aria-controls="collapse-1459-1" class="collapsed">
-                        {% for item1 in item.entity.field_acordeon_1 %}
-                          {{item1.entity.field_titulo.value}}
-                        {% endfor %}
+                        {{item.entity.field_titulo.value}}
                           <i class="fa fa-chevron-down pull-right after highlight"></i>
                       </a>
                   </p>
               </div>
               <div id="collapse-1459-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-1459-1" aria-expanded="false" style="height: 0px;">
                   <div class="panel-body">
-                    {% for item1 in item.entity.field_acordeon_1 %}
-                      {% for item2 in item1.entity.field_archivos %}
-                        {{item2.entity.field_label_archivo.value}}
-                      {% endfor %}
+                    {% for item1 in item.entity.field_archivos %}
+                        {{item1.entity.field_label_archivo.value}}
                     {% endfor %}
                   </div>
               </div>
