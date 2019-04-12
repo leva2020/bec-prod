@@ -76,7 +76,7 @@ class ServiciosController extends ControllerBase
             $mes=$key2;
               foreach ($value2 as $key3 => $value3) {
                 $dia=$key3;
-                array_push($labels, $dia.'/'.$mes.'/'.$año.',');
+                array_push($labels, $dia.'/'.$mes.'/'.$año);
                   foreach ($value3 as $key4 => $value4) {                     
                     if (!is_array($format[$key4])) {
                       $format[$key4]=array();
@@ -110,7 +110,7 @@ class ServiciosController extends ControllerBase
             $mes=$key2;
               foreach ($value2 as $key3 => $value3) {
                 $dia=$key3;
-                array_push($labels, $dia.'/'.$mes.'/'.$año.',');
+                array_push($labels, $dia.'/'.$mes.'/'.$año);
                 array_push($format, $value3);
               }
           }
