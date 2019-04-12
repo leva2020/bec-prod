@@ -40,11 +40,11 @@ class ServiciosController extends ControllerBase
       if ($formatear) {
         switch ($metodo) {
           case 'getCantidadEnergiaInyectadaOpe_R':
-            $data=$this->formatearData($data['response'],$fechaCompleta,$filtro,$campos,$cantidad);
+            $data=$this->energiaInyectada($data['response'],$fechaCompleta,$filtro,$campos,$cantidad);
             break;
 
           case 'getCantidadEnergiaSuministrar':
-            $data=$this->formatearData($data['response'],$fechaCompleta,$cantidad);
+            $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
             break;
           
           default:
