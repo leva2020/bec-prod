@@ -1,8 +1,8 @@
 {% if data.entity.field_titulo.value %}
 <div class="page_component accordion">
     <div class="panel-group" id="accordion-{{item_test}}" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
             {% for item in data %}
+        <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="heading-{{loop.index}}-{{item_test}}">
                   <p class="heading panel-title">
                       <a data-toggle="collapse" data-parent="#accordion-{{item_test}}" href="#collapse-{{loop.index}}-{{item_test}}" aria-expanded="false" aria-controls="collapse-{{loop.index}}-{{item_test}}" class="collapsed">
@@ -18,8 +18,8 @@
                     {% endfor %}
                   </div>
               </div>
-            {% endfor %}
         </div>
+            {% endfor %}
     </div>
 </div>
 {% endif %}
