@@ -38,12 +38,25 @@ class ServiciosController extends ControllerBase
       $url=\Drupal::config('bec_ws.settings')->get('url_base').$metodo;
       $data=$this->sendPostRequest($url,$param);
       if ($formatear) {
-        $data=$this->formatearData($data['response'],$fechaCompleta,$filtro,$campos,$cantidad);
+        switch ($metodo) {
+          case 'getCantidadEnergiaInyectadaOpe_R':
+            $data=$this->energiaInyectada($data['response'],$fechaCompleta,$filtro,$campos,$cantidad);
+            break;
+
+          case 'getCantidadEnergiaSuministrar':
+            $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
+            break;
+          
+          default:
+            # code...
+            break;
+        }
+        
       }
       return $data;
     }
 
-    public function formatearData($data,$fechaCompleta,$filtro,$campos,$cantidad){
+    public function energiaInyectada($data,$fechaCompleta,$filtro,$cantidad){
       $info=array();
       foreach ($data as $item) {          
         if ($fechaCompleta) {                  
@@ -70,6 +83,35 @@ class ServiciosController extends ControllerBase
                     }                     
                      array_push($format[$key4],$value4 );
                   }
+              }
+          }
+      }
+
+        return array('labels'=>$labels,'data'=>$format);
+    }
+
+    public function energiaSuministrar($data,$fechaCompleta,$cantidad){
+      $info=array();
+      foreach ($data as $item) {          
+        if ($fechaCompleta) {                  
+          if (isset($info[$item->año][$item->mes][$item->dia])) {
+            $info[$item->año][$item->mes][$item->dia]=$info[$item->año][$item->mes][$item->dia]+$item->$cantidad;
+          }else{
+            $info[$item->año][$item->mes][$item->dia]=$item->$cantidad;            
+          }        
+          ksort($info[$item->año]);
+        }
+      }
+      $format=array();
+      $labels=array();
+      foreach ($info as $key => $value) {
+        $año=$key;
+          foreach ($value as $key2 => $value2) {
+            $mes=$key2;
+              foreach ($value2 as $key3 => $value3) {
+                $dia=$key3;
+                array_push($labels, $dia.'/'.$mes.'/'.$año.',');
+                array_push($format, $value3);
               }
           }
       }
