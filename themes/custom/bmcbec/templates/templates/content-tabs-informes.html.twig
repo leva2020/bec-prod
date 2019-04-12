@@ -14,15 +14,7 @@
                 </blockquote>
                 <h3><a href="{{item.entity.field_link.url}}" title="{{item.entity.field_link.title}}">{{item.entity.field_link.title}}</a></h3>
               </div>
-              <section class="content advanced-component">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6 pull-right">
-                      {% include 'page-component-accordion-1.html.twig' with {'data': item.entity.field_acordeon_1 } %}
-                    </div>
-                  </div>
-                </div>
-              </section>
+              {% include 'page-component-accordion-1.html.twig' with {'data': item.entity.field_acordeon_1 } %}
             </div>
           {% endfor %}
         </div>
