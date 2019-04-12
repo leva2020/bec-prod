@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
           <h2 class="heading main">{{ data.field_titulo.value }}</h2>
           <div class="text ">
-            <p><span class="intro">{{ data.field_descripcion_html.value|raw }}</span></p>
+            <p><span class="intro">{{ data.field_descripcion.value|raw }}</span></p>
           </div>
         </div>
       </div>
@@ -30,19 +30,14 @@
                     {% elseif item.entity.field_backrgound.value =='azul' %}
                       <div class="content-box color-bg-main-blue">
                     {% endif %}
-                      {% for item1 in item.entity.field_link %}
-                        <a href="{{ item1.url }}" title="{{ item1.title }}">
-                      {% endfor %}
+                        <a href="{{ item.entity.field_cta.url }}" title="{{ item.entity.field_cta.title }}">
                       <div class="image">
                         <img src="{{file_url(item.entity.field_imagen.entity.fileuri)}}" title="{{item.entity.field_imagen.title}}" alt="{{item.entity.field_imagen.alt}}">
                       </div>
                         <p class="heading">{{ item.entity.field_titulo.value }}</p>
-
-                      {{item.entity.field_descripcion_1.value|raw}}
+                        <p>{{item.entity.field_descripcion.value|raw}}</p>
                       </a>
-                      {% for item1 in item.entity.field_link %}
-                        <a role="button" class="btn btn-white" href="{{ item1.url }}">{{ item1.title }}</a>
-                      {% endfor %}
+                        <a role="button" class="btn btn-white" href="{{ item.entity.field_cta.url }}">{{ item.entity.field_cta.title }}</a>
                     </div>
                   </div>
                 {% endfor %}
