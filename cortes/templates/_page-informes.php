@@ -37,23 +37,12 @@
               </blockquote>
               <h3><a href="/informes" title="Título">Consulte aquí</a></h3>
             </div>
+            <?php include'page-component-accordion.php'; ?>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-
-  <section class="content advanced-component">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 pull-right">
-          <?php include'page-component-accordion.php'; ?>          
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <section class="content advanced-component tabbed-listing color-bg-main-gray">
     <div class="container">
@@ -128,6 +117,22 @@
       </div>
       <!--// ROW -->
 
+    </div>
+  </section>
+
+  <section class="content advanced-component">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+          <div class="page_component alert alert-danger alert-dismissible" role="alert">
+            <div class="info">
+              <p align="center">
+                La información presentada en los informes, es recopilada por el Gestor del Mercado de Gas Natural, en el cumplimiento de las funciones asignadas por la Comisión de Regulación de Energía y Gas (CREG), conforme a lo establecido en la Resolución CREG 114 de 2017
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
