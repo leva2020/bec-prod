@@ -54,6 +54,14 @@ class ServiciosController extends ControllerBase
           case 'getCantidadTomadaTransportadoresTramo':
             $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
           break;
+
+          case 'getCantidadTomadaComercializadores':
+            $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
+          break;
+
+          case 'getCantidadTomadaDiariamenteSnt':
+            $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
+          break;
           
           default:
             # code...
