@@ -1,10 +1,20 @@
-{% include 'banners.html.twig' with {'data': node.field_banner_principal.entity } %}
-{% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}
-{% include 'section-grid-list.html.twig' with {'data': node.field_cuadros_listado_tipo_2 } %}
-{% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
-{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
-{% for item in node.field_graficas %}
-	{% if item.entity.field_template is not empty%}
-		{% include item.entity.field_template.value with {'data': item } %}
+{% include 'banners.html.twig' with {'data': node.field_banner_principal.entity } %}	
+	
+	{% if node.field_cuadros_listado_tipo_2 is not empty%}
+		{% include 'section-grid-list.html.twig' with {'data': node.field_cuadros_listado_tipo_2 } %}
 	{% endif %}
-{% endfor %}
+	
+	{% if node.field_cuadros_listado_ct is not empty%}
+		{% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
+	{% endif %}
+
+	{% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}
+	
+	{% for item in node.field_graficas %}
+		{% if item.entity.field_template is not empty%}
+			{% include item.entity.field_template.value with {'data': item } %}
+		{% endif %}
+	{% endfor %}
+
+	{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+
