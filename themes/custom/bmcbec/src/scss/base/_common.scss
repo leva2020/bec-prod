@@ -166,6 +166,9 @@ nav.main ul{
 .site_search {
     padding: 0;
     position: relative;
+    @media screen and (max-width: 767px) {
+    	padding: 15px;
+    }
     form {
 	    padding: 0;
 	    margin: 0;
@@ -252,6 +255,22 @@ a.see_all {
 
 #top-link-block{
 	z-index: 200;
+	@media screen and (max-width: 991px) {
+		position: relative;
+	    float: left;
+	    width: 100%;
+	}
+	a{
+		@media screen and (max-width: 991px) {
+		    float: left;
+		    width: 100%;
+		    margin: 0;
+			text-align: center;
+		    border-radius: 0;
+		    border: 0 none;
+		    box-shadow: 0 none;
+		}
+	}
 }
 
 table {

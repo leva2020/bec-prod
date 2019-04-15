@@ -1,13 +1,16 @@
 .navigation {
     position: relative;
     z-index: 5;
+    @media screen and (max-width: 767px) {
+    	margin: 0 -15px;
+    }
     a.expand{
 	    position: absolute;
 	    top: 0;
-	    right: 0;
+	    right: 15px;
 	    z-index: 300;
-	    width: 80px;
-	    height: 80px;
+	    width: 40px;
+	    height: 70px;
 	    display: block;
 	    text-indent: -9999px;
 	    span {
@@ -15,7 +18,7 @@
 		    width: 40px;
 		    height: 3px;
 		    position: absolute;
-		    left: 30px;
+		    left: 0;
 		    opacity: 1;
 		    background-color: $main-blue;
 		    transition: transform 0.2s ease-in-out 0s, opacity 0.1s ease-in-out 0s;
@@ -29,12 +32,74 @@
 			    top: 45px;
 			}
 		}
+		&.active{
+			span{
+				&.top, &.bottom{
+					top: 33px;
+				}
+				&.top{
+					transform: rotate(-45deg);
+				}
+				&.mid{
+					opacity: 0;
+				}
+				&.bottom{
+					transform: rotate(45deg);
+				}
+			}
+		}
 	}
 	.reveal {
 	    display: none;
+	    float: left;
+    	width: 100%;
 	}
 	nav.main{
 	    border-color: $sec-blue;
+	    @media screen and (max-width: 767px) {
+	    	clear: both;
+		    padding-top: 0;
+		    position: relative;
+	    	background-color: $main-blue; 
+	    	ul{
+	    		position: relative;
+			    clear: both;
+			    border-width: 0 0 1px;
+			    border-style: solid;
+			    li{
+			    	display: block;
+				    border-width: 1px 0 0;
+				    border-style: solid;
+				    a{
+				    	min-height: 60px;
+					    padding: 22px 15px;
+					    display: block;
+				    }
+				    i{
+				    	color: #fff;
+				    	font-size: 26px;
+    					padding-top: 17px;
+    					background: $green;
+				    }
+				    &.open{
+				    	> ul{
+				    		display: block;
+						    position: relative;
+						    top: auto;
+						    left: auto;
+				    	}
+				    	ul{
+				    		background-color: $sec-blue;
+				    	}
+				    }
+			    }
+			    ul{
+			    	display: none;
+				    padding-right: 60px;
+				    border-width: 1px 0 0;
+			    }
+	    	}
+	    }
 	    ul, ul li {
 	    	border-color: #ffffff;
 	    	border-color: rgba(255,255,255,0.3);
@@ -71,8 +136,43 @@
 	nav.top {
 	    height: auto;
 	    font-size: 12px;
+	    @media screen and (max-width: 767px) {
+	    	width: 100%;
+	    	> ul{
+	    		position: relative;
+			    clear: both;
+			    float: none!important;
+			    margin: 0!important;
+			    width: 100%;
+			    li{
+			    	display: block;
+			    	a{
+			    		display: block;
+    					padding: 15px 0;
+			    	}
+			    }
+	    	}
+	    	.dropdown-menu {
+			    position: relative;
+			    float: none;
+			    width: 100%;
+			    box-shadow: none;
+			    margin: 0 0 15px;
+			    padding: 0;
+			    a{
+			    	padding: 10px 15px;
+			    }
+			}
+	    }
 	    > ul {
 		    color: #999;
+		}
+		li{
+			&:last-child{
+				.dropdown-menu{
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 }
@@ -98,7 +198,7 @@
 		    ul {
 			    overflow: visible;
 			    line-height: 1;
-			    font-size: 18px;
+			    font-size: 14px;
 			    li {
 				    float: left;
 				    display: inline;
@@ -110,7 +210,7 @@
 					    display: block;
 					    float: left;
 					    height: 70px;
-					    padding: 25px 10px;
+					    padding: 25px 8px;
 					}
 					i {
 						top: 23px;
@@ -185,13 +285,16 @@
 
 @media only screen and (min-width: $medium){
 	.navigation nav.main{
-		ul li {
-			a, ul li a {
-			    padding-right: 15px;
-			    padding-left: 15px;
-			}
-			i {
-    			right: 10px;
+		ul {
+			font-size: 16px;
+			li {
+				a, ul li a {
+				    padding-right: 15px;
+				    padding-left: 15px;
+				}
+				i {
+	    			right: 10px;
+				}
 			}
 		}
 	}
@@ -200,6 +303,7 @@
 
 @media only screen and (min-width: $laptop){
 	.navigation nav.main ul {
+		font-size: 18px;
 		li{
 			&:hover > ul{
 				left: 0;

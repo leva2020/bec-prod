@@ -3,6 +3,15 @@ var $ = jQuery,
 	w_screen = jQuery(window).width();
 
 jQuery(document).ready(function() {
+
+	$(".navigation a.expand").click(function(){
+		$(this).toggleClass("active");
+		$(".navigation .reveal").slideToggle();
+	});
+
+	$(".navigation .reveal nav.main ul li i").click(function(){
+		$(this).parent().toggleClass("open");
+	});
 	
 	if($("section.image-carousel").length > 0){
 		$("section.image-carousel .owl-carousel").owlCarousel({

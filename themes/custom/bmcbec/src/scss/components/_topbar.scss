@@ -6,9 +6,15 @@
 	.left {
 		float: left;
 		margin: 0 0 0 20%;
+		@media screen and (max-width: 480px) {
+			margin: 15px;
+		}
 		span {
 			color: $sec-blue;
 			font-size: 95%;
+			@media screen and (max-width: 768px) {
+				font-size:12px;
+			}
 		}
 	}
 	.right{
@@ -22,6 +28,9 @@
 			margin: 0 0 0 15px;
 			list-style: none;
 			font-size:95%;
+			@media screen and (max-width: 768px) {
+				font-size:12px;
+			}
 		}
 	}
 	.owi_button { 
