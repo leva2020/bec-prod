@@ -20,6 +20,7 @@
     "gulp-uglify": "^3.0.1"
   },
   "dependencies": {
+    "natives": "^1.1.6",
     "normalize.scss": "^0.1.0"
   }
 }
