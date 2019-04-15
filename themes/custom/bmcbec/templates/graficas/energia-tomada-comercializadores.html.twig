@@ -1,0 +1,235 @@
+{% set info=enviar_post_ws('getCantidadTomadaComercializadores','fechaInicial=2018-06-01&fechaFinal=2019-03-31&codigoPozo=0',1,1,'','','cantidad')  %}
+
+{{ attach_library('bmcbec/chartJS') }}
+
+<div class="well" align="center">
+    <div class="bmcbec-dp-left">
+        <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
+        <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
+        <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
+        <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
+    <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
+    <div class="bmcbec-dp-right">
+    <form method="post" action="">
+    <input type="text" class="span2" value="2019-02-01" id="dpd1" name="formDateBegin" data-date="2019-02-01" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" readonly="readonly">
+    <input type="text" class="span2" value="2019-03-31" id="dpd2" name="formDateEnd" data-date="2019-03-31" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" readonly="readonly">
+    
+    <select name="formRouteCode">
+    <option value="0" selected="">-- Todos los Tramos --</option>
+    <optgroup label="Seleccione un Tramo">
+        <option value="93">ABEJAS-PAUTO</option>
+        <option value="95">ACORDIONERO-DINA ECOPETROL</option>
+        <option value="186">AGUAZUL-YOPAL</option>
+        <option value="75">AKACIAS-TOQUI TOQUI</option>
+        <option value="101">AKACIAS-YARIGUI</option>
+        <option value="104">APAMATE-ARAGUATO</option>
+        <option value="175">APIAY-CENTAUROS</option>
+        <option value="131">APIAY-OCOA</option>
+        <option value="130">APIAY-USME</option>
+        <option value="105">ARAGUATO-ARAUCA</option>
+        <option value="106">ARAUCA-ARRAYAN</option>
+        <option value="103">ARIANA-CALDAS VIEJO</option>
+        <option value="122">ARMENIA-YUMBO/CALI</option>
+        <option value="107">ARRAYAN-BALAY</option>
+        <option value="108">BALAY-BALCON</option>
+        <option value="109">BALCON-BARQUEREÑA</option>
+        <option value="116">BALLENA-BARRANCABERMEJA</option>
+        <option value="110">BALLENA-LA MAMI</option>
+        <option value="134">BARRANCABERMEJA-BUCARAMANGA</option>
+        <option value="117">BARRANCABERMEJA-SEBASTOPOL</option>
+        <option value="112">BARRANQUILLA-CARTAGENA</option>
+        <option value="169">BARRANQUILLA-LA MAMI</option>
+        <option value="81">BOCA-ACORDIONERO</option>
+        <option value="156">BOCA-POZO</option>
+        <option value="89">BONGA MAMEY-CERRO GORDO</option>
+        <option value="152">BUCARAMANGA-BARRANCABERMEJA</option>
+        <option value="151">BUCARAMANGA-GIBRALTAR</option>
+        <option value="182">BUCARAMANGA-TANE/CACOTA</option>
+        <option value="141">BUENOS AIRES-IBAGUE</option>
+        <option value="176">CALI-PRADERA</option>
+        <option value="68">CANTAGALLO-LLANITO</option>
+        <option value="166">CARTAGENA-BARRANQUILLA</option>
+        <option value="150">CARTAGENA-MAMONAL</option>
+        <option value="113">CARTAGENA-SINCELEJO</option>
+        <option value="85">CENTAUROS-CAMPO SANTIAGO</option>
+        <option value="84">CENTAUROS-GRANADA</option>
+        <option value="87">CERRITO-ABANICO</option>
+        <option value="88">CERRITO-JAMUNDI</option>
+        <option value="142">CHICORAL-FLANDES</option>
+        <option value="158">COGUA-LA BELLEZA</option>
+        <option value="157">COGUA-SABANA_F</option>
+        <option value="172">COGUA-SABANA_I</option>
+        <option value="67">CUPIAGÜA-CANTAGALLO</option>
+        <option value="73">CUPIAGÜA-TENAY</option>
+        <option value="129">CUSIANA-APIAY</option>
+        <option value="133">CUSIANA-EL PORVENIR</option>
+        <option value="70">EL CENTRO-PROVINCIA</option>
+        <option value="102">EL DIFICIL-CERRO GORDO</option>
+        <option value="174">EL PORVENIR-GBS_I</option>
+        <option value="146">EL PORVENIR-LA BELLEZA</option>
+        <option value="149">FLANDES-GUANDO</option>
+        <option value="136">FLANDES-RICAURTE</option>
+        <option value="148">FLOREÑA-YOPAL</option>
+        <option value="153">GBS_I-GBS_F</option>
+        <option value="183">GBS_I-LA BELLEZA</option>
+        <option value="135">GIBRALTAR-BUCARAMANGA</option>
+        <option value="179">GIBRALTAR-TANE/CACOTA</option>
+        <option value="90">GUADUAS-CAMPO SANTIAGO</option>
+        <option value="86">GUADUAS-CERRITO</option>
+        <option value="178">GUALANDAY-BUENOS AIRES</option>
+        <option value="180">GUALANDAY-CHICORAL</option>
+        <option value="162">GUALANDAY-MARIQUITA</option>
+        <option value="165">GUALANDAY-MONTAÑUELO</option>
+        <option value="124">GUALANDAY-NEIVA</option>
+        <option value="137">GUANDO-FUSAGASUGA</option>
+        <option value="164">JAMUNDI-POPAYAN</option>
+        <option value="173">JOBO-SINCELEJO</option>
+        <option value="127">LA BELLEZA-COGUA</option>
+        <option value="128">LA BELLEZA-EL PORVENIR</option>
+        <option value="159">LA BELLEZA-GBS_F</option>
+        <option value="171">LA BELLEZA-GBS_I</option>
+        <option value="147">LA BELLEZA-VASCONIA</option>
+        <option value="97">LA CIRA INFANTAS-PULI</option>
+        <option value="115">LA CRECIENTE-SINCELEJO</option>
+        <option value="111">LA MAMI-BARRANQUILLA</option>
+        <option value="78">LA PUNTA-SANTO DOMINGO</option>
+        <option value="80">LISAMA-BOCA</option>
+        <option value="77">LISAMA-LA PUNTA</option>
+        <option value="69">LLANITO-EL CENTRO</option>
+        <option value="98">MANA-TUCURINCA</option>
+        <option value="181">MARIQUITA-BUENOS AIRES</option>
+        <option value="123">MARIQUITA-GUALANDAY</option>
+        <option value="120">MARIQUITA-PEREIRA</option>
+        <option value="125">MONTAÑUELO-GUALANDAY</option>
+        <option value="132">MORICHAL-YOPAL</option>
+        <option value="177">NEIVA-CHICORAL</option>
+        <option value="168">NEIVA-GUALANDAY</option>
+        <option value="138">NEIVA-HOBO</option>
+        <option value="99">NELSON-ABEJAS</option>
+        <option value="170">OCOA-CENTAUROS</option>
+        <option value="72">ORIPAYA-PROVINCIA</option>
+        <option value="94">PAYOA-SERAFIN</option>
+        <option value="121">PEREIRA-ARMENIA</option>
+        <option value="96">PLAYA ROJA-MATACHINES</option>
+        <option value="82">POZO-BOCA</option>
+        <option value="139">PRADERA-POPAYAN</option>
+        <option value="71">PROVINCIA-SANTA CLARA</option>
+        <option value="155">RAMALES AISLADOS_I-RAMALES AISLADOS_F</option>
+        <option value="92">RIOHACHA-CARAMELO</option>
+        <option value="154">SABANA_I-SABANA_F</option>
+        <option value="79">SANTO DOMINGO-CALDAS VIEJO</option>
+        <option value="140">SARDINATA-CUCUTA</option>
+        <option value="167">SEBASTOPOL-BARRANCABERMEJA</option>
+        <option value="144">SEBASTOPOL-MEDELLIN</option>
+        <option value="118">SEBASTOPOL-VASCONIA</option>
+        <option value="163">SINCELEJO-CARTAGENA</option>
+        <option value="114">SINCELEJO-JOBO</option>
+        <option value="143">TANE/CACOTA-PAMPLONA</option>
+        <option value="100">TEMPRANILLO-RANCHO HERMOSO</option>
+        <option value="74">TENAY-AKACIAS</option>
+        <option value="91">TENAY-CARAMELO</option>
+        <option value="83">TOQUI TOQUI-CENTAUROS</option>
+        <option value="76">TOQUI TOQUI-LISAMA</option>
+        <option value="161">VASCONIA-BARRANCABERMEJA</option>
+        <option value="126">VASCONIA-LA BELLEZA</option>
+        <option value="119">VASCONIA-MARIQUITA</option>
+        <option value="160">VASCONIA-SEBASTOPOL</option>
+        <option value="185">YOPAL-MORICHAL</option>
+        <option value="145">YUMBO/CALI-CALI</option>
+        <option value="184">YUMBO/CALI-PRADERA</option>
+    </optgroup>
+    </select>
+    <input type="submit" value="Consultar" class="bmcbec-dp-button">
+    </form>
+    <p class="helpText">Consulta un periodo hasta 395 días</p></div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+
+
+
+<div class="chart-container" >
+<canvas id="canvas" ></canvas>
+</div>
+<style type="text/css">
+    .chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 80vw;
+}
+</style><script type="text/javascript">
+
+
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+
+var lineChartData = {
+        labels: [  {% for item in info['labels'] %}"{{item}}",{% endfor %}  ],
+    datasets: [
+         {
+         label: "Cantidad (MBTUD)",
+         data: [ {% for item in info['data'] %}"{{item}}",{% endfor %} ]
+         },
+
+    ]
+    };
+  
+    $.each(lineChartData.datasets, function(i, dataset) {
+        dataset.borderColor = randomColor(0.4);
+        dataset.backgroundColor = randomColor(1);
+        dataset.pointBorderColor = randomColor(0.7);
+        dataset.pointBackgroundColor = randomColor(0.5);
+        dataset.pointBorderWidth = 1;
+    });
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas");
+        window.myLine = Chart.Line(ctx, {
+            data: lineChartData,
+            options: {
+                responsive: true,
+                hoverMode: 'label',
+                stacked: false,
+                title:{
+                    display:false,
+                    text:'CANTIDAD DE ENERGÍA TOMADA POR COMERCIALIZADORES',
+                    fontSize: 16,
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            offsetGridLines: false
+                        },
+                        ticks: {
+                             userCallback: function(dataLabel, index) {
+                                 return index % 2 === 0 ? dataLabel : '';
+                             }
+                        }
+                    }],
+                    yAxes: [{
+                        type: "linear",
+                        display: true,
+                        position: "left",
+                        id: "y-axis-1",
+                    }],
+                }
+            }
+        });
+    };
+
+    $('#randomizeData').click(function() {
+        lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        window.myLine.update();
+    });
+
+    var c=document.getElementById("canvas");
+    var ctx=c.getContext("3d");
+    ctx.font="30px Arial";
+
+
+    </script>

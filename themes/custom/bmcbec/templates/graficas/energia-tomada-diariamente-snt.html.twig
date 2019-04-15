@@ -1,0 +1,123 @@
+{% set info=enviar_post_ws('getCantidadTomadaDiariamenteSnt','fechaInicial=2018-06-01&fechaFinal=2019-01-01&codigoTipoDemanda=0',1,1,'','','cantidad_mbtud')  %}
+
+{{ attach_library('bmcbec/chartJS') }}
+
+<div class="well" align="center">
+    <div class="bmcbec-dp-left">
+        <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
+        <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
+        <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
+        <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
+    <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
+    <div class="bmcbec-dp-right">
+    <form method="post" action="">
+    <input type="text" class="span2" value="2019-02-01" id="dpd1" name="formDateBegin" data-date="2019-02-01" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" readonly="readonly">
+    <input type="text" class="span2" value="2019-03-31" id="dpd2" name="formDateEnd" data-date="2019-03-31" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" readonly="readonly">
+    
+    <select name="formWellCode">
+    <option value="0" selected="">-- Todos Tipos de Demanda --</option>
+    <optgroup label="Seleccione un Tipo de Demanda">
+        <option value="2">NO REGULADO</option>
+        <option value="1">REGULADO</option>
+    </optgroup>
+    </select>
+    <input type="submit" value="Consultar" class="bmcbec-dp-button">
+    </form>
+    <p class="helpText">Consulta un periodo hasta 395 días</p></div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+
+
+
+<div class="chart-container" >
+<canvas id="canvas" ></canvas>
+</div>
+<style type="text/css">
+    .chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 80vw;
+}
+</style><script type="text/javascript">
+
+
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+
+var lineChartData = {
+        labels: [  {% for item in info['labels'] %}"{{item}}",{% endfor %}  ],
+    datasets: [
+         {
+         label: "Cantidad (MBTUD)",
+         data: [ {% for item in info['data'] %}"{{item}}",{% endfor %} ]
+         },
+
+    ]
+    };
+  
+    $.each(lineChartData.datasets, function(i, dataset) {
+        dataset.borderColor = randomColor(0.4);
+        dataset.backgroundColor = randomColor(1);
+        dataset.pointBorderColor = randomColor(0.7);
+        dataset.pointBackgroundColor = randomColor(0.5);
+        dataset.pointBorderWidth = 1;
+    });
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas");
+        window.myLine = Chart.Line(ctx, {
+            data: lineChartData,
+            options: {
+                responsive: true,
+                hoverMode: 'label',
+                stacked: false,
+                title:{
+                    display:false,
+                    text:'CANTIDAD DE ENERGÍA TOMADA DIARIAMENTE POR EL SNT',
+                    fontSize: 16,
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            offsetGridLines: false
+                        },
+                        ticks: {
+                             userCallback: function(dataLabel, index) {
+                                 return index % 2 === 0 ? dataLabel : '';
+                             }
+                        }
+                    }],
+                    yAxes: [{
+                        type: "linear",
+                        display: true,
+                        position: "left",
+                        id: "y-axis-1",
+                    }, /*{
+                        type: "linear",
+                        display: true,
+                        position: "right",
+                        id: "y-axis-2",
+                    }*/
+                    ],
+                }
+            }
+        });
+    };
+
+    $('#randomizeData').click(function() {
+        lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        window.myLine.update();
+    });
+
+    var c=document.getElementById("canvas");
+    var ctx=c.getContext("3d");
+    ctx.font="30px Arial";
+
+
+    </script>
