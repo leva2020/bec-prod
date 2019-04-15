@@ -1,12 +1,22 @@
+{% if data.field_tipo_legal.value == "verde" %}
+  {%  set class = "alert-success"  %}
+{% elseif data.field_tipo_legal.value == "amarillo" %}
+  {%  set class = "alert-warning"  %}
+{% elseif data.field_tipo_legal.value == "error" %}
+  {%  set class = "alert-danger"  %}
+{% elseif data.field_tipo_legal.value == "azul" %}
+  {%  set class = "alert-info"  %}
+{% else %}
+  {%  set class = ""  %}
+{% endif %}
 <section class="content advanced-component">
 	<div class="container">
   		<div class="row">
     		<div class="col-md-8 col-md-offset-2 col-xs-12">
-		      	<div class="page_component alert alert-danger alert-dismissible" role="alert">
+		      	<div class="page_component alert {{ class }} alert-dismissible" role="alert">
 		        	<div class="info">
 		          		<div align="center">
 		            		{{data.field_legal.value|raw}}
-							{{data.field_tipo_legal.value|raw}}
 		          		</div>
 		        	</div>
 		      	</div>
