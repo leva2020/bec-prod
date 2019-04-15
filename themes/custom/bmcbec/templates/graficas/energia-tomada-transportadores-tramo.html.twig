@@ -1,7 +1,7 @@
 {% set info=enviar_post_ws('getCantidadTomadaTransportadoresTramo','fechaInicial%0A=2018-01-01&fechaFinal=2019-01-01&codigoPozo=0',1,1,'','','cantidad')  %}
 
 {{ attach_library('bmcbec/chartJS') }}
-<div class="well" align="center">
+<div class="filter-graphic" align="center">
     <div class="bmcbec-dp-left">
         <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
         <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
