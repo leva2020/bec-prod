@@ -98,7 +98,7 @@
 		    ul {
 			    overflow: visible;
 			    line-height: 1;
-			    font-size: 18px;
+			    font-size: 14px;
 			    li {
 				    float: left;
 				    display: inline;
@@ -110,7 +110,7 @@
 					    display: block;
 					    float: left;
 					    height: 70px;
-					    padding: 25px 10px;
+					    padding: 25px 8px;
 					}
 					i {
 						top: 23px;
@@ -185,13 +185,16 @@
 
 @media only screen and (min-width: $medium){
 	.navigation nav.main{
-		ul li {
-			a, ul li a {
-			    padding-right: 15px;
-			    padding-left: 15px;
-			}
-			i {
-    			right: 10px;
+		ul {
+			font-size: 16px;
+			li {
+				a, ul li a {
+				    padding-right: 15px;
+				    padding-left: 15px;
+				}
+				i {
+	    			right: 10px;
+				}
 			}
 		}
 	}
@@ -200,6 +203,7 @@
 
 @media only screen and (min-width: $laptop){
 	.navigation nav.main ul {
+		font-size: 18px;
 		li{
 			&:hover > ul{
 				left: 0;
