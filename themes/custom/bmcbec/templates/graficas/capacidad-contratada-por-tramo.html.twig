@@ -1,0 +1,206 @@
+{% set info=enviar_post_ws('getCapacidadContratadaTramoGrupoGasoductos','fechaInicial=2018-06-01&fechaFinal=2019-01-01&tramoOGrupo=',1,1,'','','cantidad')  %}
+
+{{ attach_library('bmcbec/chartJS') }}
+<div class="filter-graphic" align="center">
+    <div class="bmcbec-dp-left">
+        <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
+        <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
+        <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
+        <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
+    <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
+    <div class="bmcbec-dp-right">
+    <form method="post" action="">
+    <input type="text" class="span2 editable" value="2019-02-01" id="dpd1" name="formDateBegin" data-date="2019-02-01" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days">
+
+    <input type="text" class="span2 editable" value="2019-04-30" id="dpd2" name="formDateEnd" data-date="2019-04-30" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days">
+    <select name="formRouteCode">
+    <option value="" selected="">-- Tramos o Grupos de Gasoductos --</option>
+    <optgroup label="Elegir Tramo">
+        <option value="1455">AGUAZUL - YOPAL</option>
+        <option value="1040">APIAY - OCOA</option>
+        <option value="1039">APIAY - USME</option>
+        <option value="1029">ARMENIA - YUMBO/CALI</option>
+        <option value="1068">BALLENA - ARMENIA</option>
+        <option value="1064">BALLENA - BARRANCABERMEJA</option>
+        <option value="1077">BALLENA - BARRANQUILLA</option>
+        <option value="1078">BALLENA - CARTAGENA</option>
+        <option value="1070">BALLENA - GUALANDAY</option>
+        <option value="1080">BALLENA - JOBO</option>
+        <option value="1076">BALLENA - LA MAMI</option>
+        <option value="1124">BALLENA - MAMONAL</option>
+        <option value="1066">BALLENA - MARIQUITA</option>
+        <option value="1075">BALLENA - NEIVA</option>
+        <option value="1067">BALLENA - PEREIRA</option>
+        <option value="1176">BALLENA - SABANA_F</option>
+        <option value="1074">BALLENA - SEBASTOPOL</option>
+        <option value="1079">BALLENA - SINCELEJO</option>
+        <option value="1065">BALLENA - VASCONIA</option>
+        <option value="1069">BALLENA - YUMBO/CALI</option>
+        <option value="1010">BARRANCABERMEJA - BUCARAMANGA</option>
+        <option value="1002">BARRANCABERMEJA - MARIQUITA</option>
+        <option value="1181">BARRANCABERMEJA - MONTAÑUELO</option>
+        <option value="1012">BARRANCABERMEJA - NEIVA</option>
+        <option value="1168">BARRANCABERMEJA - SABANA_F</option>
+        <option value="1011">BARRANCABERMEJA - SEBASTOPOL</option>
+        <option value="1001">BARRANCABERMEJA - VASCONIA</option>
+        <option value="1005">BARRANCABERMEJA - YUMBO/CALI</option>
+        <option value="1087">BARRANQUILLA - CARTAGENA</option>
+        <option value="1190">BARRANQUILLA - LA MAMI</option>
+        <option value="1128">BUCARAMANGA - BARRANCABERMEJA</option>
+        <option value="1046">BUENOS AIRES - IBAGUE</option>
+        <option value="1196">CARTAGENA - BARRANQUILLA</option>
+        <option value="1197">CARTAGENA - LA MAMI</option>
+        <option value="1127">CARTAGENA - MAMONAL</option>
+        <option value="1090">CARTAGENA - SINCELEJO</option>
+        <option value="1178">CENTAUROS - GRANADA</option>
+        <option value="1048">CHICORAL - FLANDES</option>
+        <option value="1180">COGUA - SABANA_F</option>
+        <option value="1036">CUSIANA - APIAY</option>
+        <option value="1114">CUSIANA - ARMENIA</option>
+        <option value="1171">CUSIANA - BARRANCABERMEJA</option>
+        <option value="1096">CUSIANA - COGUA</option>
+        <option value="1035">CUSIANA - EL PORVENIR</option>
+        <option value="1170">CUSIANA - GBS_F</option>
+        <option value="1182">CUSIANA - GRANADA</option>
+        <option value="1116">CUSIANA - GUALANDAY</option>
+        <option value="1095">CUSIANA - LA BELLEZA</option>
+        <option value="1112">CUSIANA - MARIQUITA</option>
+        <option value="1117">CUSIANA - NEIVA</option>
+        <option value="1038">CUSIANA - OCOA</option>
+        <option value="1113">CUSIANA - PEREIRA</option>
+        <option value="1172">CUSIANA - SABANA_F</option>
+        <option value="1175">CUSIANA - SEBASTOPOL</option>
+        <option value="1037">CUSIANA - USME</option>
+        <option value="1111">CUSIANA - VASCONIA</option>
+        <option value="1115">CUSIANA - YUMBO/CALI</option>
+        <option value="1093">EL PORVENIR - LA BELLEZA</option>
+        <option value="1122">FLANDES - GUANDO</option>
+        <option value="1063">FLANDES - RICAURTE</option>
+        <option value="1118">FLOREÑA - YOPAL</option>
+        <option value="1132">GBS_I - GBS_F</option>
+        <option value="1042">GIBRALTAR - BUCARAMANGA</option>
+        <option value="1030">GUALANDAY - NEIVA</option>
+        <option value="1043">GUANDO - FUSAGASUGA</option>
+        <option value="1195">JOBO - LA MAMI</option>
+        <option value="1193">JOBO - MAMONAL</option>
+        <option value="1186">JOBO - SINCELEJO</option>
+        <option value="1230">LA BELLEZA - SEBASTOPOL</option>
+        <option value="1097">LA BELLEZA - VASCONIA</option>
+        <option value="1188">LA CRECIENTE - BARRANQUILLA</option>
+        <option value="1174">LA CRECIENTE - CARTAGENA</option>
+        <option value="1199">LA CRECIENTE - LA MAMI</option>
+        <option value="1198">LA CRECIENTE - MAMONAL</option>
+        <option value="1081">LA CRECIENTE - SINCELEJO</option>
+        <option value="1083">LA MAMI - BARRANQUILLA</option>
+        <option value="1023">MARIQUITA - ARMENIA</option>
+        <option value="1025">MARIQUITA - GUALANDAY</option>
+        <option value="1026">MARIQUITA - NEIVA</option>
+        <option value="1022">MARIQUITA - PEREIRA</option>
+        <option value="1024">MARIQUITA - YUMBO/CALI</option>
+        <option value="1031">MONTAÑUELO - GUALANDAY</option>
+        <option value="1062">NEIVA - HOBO</option>
+        <option value="1027">PEREIRA - ARMENIA</option>
+        <option value="1028">PEREIRA - YUMBO/CALI</option>
+        <option value="1044">PRADERA - POPAYAN</option>
+        <option value="1134">RAMALES AISLADOS_I - RAMALES AISLADOS_F</option>
+        <option value="1045">SARDINATA - CUCUTA</option>
+        <option value="1057">SEBASTOPOL - LA BELLEZA</option>
+        <option value="1060">SEBASTOPOL - MEDELLIN</option>
+        <option value="1051">SEBASTOPOL - VASCONIA</option>
+        <option value="1191">SINCELEJO - BARRANQUILLA</option>
+        <option value="1179">SINCELEJO - CARTAGENA</option>
+        <option value="1092">SINCELEJO - JOBO</option>
+        <option value="1192">SINCELEJO - LA MAMI</option>
+        <option value="1049">TANE/CACOTA - PAMPLONA</option>
+        <option value="1015">VASCONIA - ARMENIA</option>
+        <option value="1013">VASCONIA - MARIQUITA</option>
+        <option value="1014">VASCONIA - PEREIRA</option>
+        <option value="1184">VASCONIA - SEBASTOPOL</option>
+        <option value="1016">VASCONIA - YUMBO/CALI</option>
+        <option value="1453">YOPAL - MORICHAL</option>
+        <option value="1050">YUMBO/CALI - CALI</option>
+    </optgroup>
+    </select>
+    <input type="submit" value="Consultar" class="bmcbec-dp-button">
+    </form>
+    <p class="helpText">Consulta un periodo hasta 365 días</p></div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+
+<div class="chart-container" >
+<canvas id="canvas" ></canvas>
+</div>
+<style type="text/css">
+    .chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 80vw;
+}
+</style>
+<script type="text/javascript">
+
+
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+
+var lineChartData = {
+    labels: [
+    <?php
+
+
+    ?>
+
+
+
+    'feb./2019',  'mar./2019',  'abr./2019',
+
+    ],
+
+
+
+    datasets: [
+         {
+         label: "CON INTERRUPCIONES",
+         data: [
+156149,13135,0,         ]
+         },
+         {
+         label: "FIRME",
+         data: [
+26919,4021,0,         ]
+         },
+    ]
+};
+
+$.each(lineChartData.datasets, function(i, dataset) {
+        dataset.borderColor = randomColor(0.4);
+        dataset.backgroundColor = randomColor(1);
+        dataset.pointBorderColor = randomColor(0.7);
+        dataset.pointBackgroundColor = randomColor(0.5);
+        dataset.pointBorderWidth = 1;
+});
+
+window.onload = function () {
+    var chartEl = document.getElementById("canvas");
+    window.myLine = new Chart(chartEl, {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            title: {
+                display: false,
+                text: 'CAPACIDAD CONTRATADA POR TRAMO O GRUPO DE GASODUCTOS',
+                fontSize: 16,
+            },
+            tooltips: {
+                mode: 'label',
+                enabled: true
+                //custom: customTooltips
+            }
+        }
+    });
+};
+    </script>
