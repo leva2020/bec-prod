@@ -18,7 +18,9 @@
             {% for key1, item in data.field_slide_imagenes %}
               <div class="item">
                 <div class="image">
-                  <a href="{{item.entity.field_link.url}}" title="{{item.entity.field_imagen.titles}}" target="blank">
+                  {% for key2, link in item.entity.field_link %}
+                    <a href="{{link.url}}" title="{{item.entity.field_imagen.titles}}" target="blank">
+                  {% endfor %}
                     <img src="{{ file_url(item.entity.field_imagen.entity.fileuri) }}?anchor=center&mode=crop&width=300&height=160&rnd=131157462210000000" alt="{{item.entity.field_imagen.alt}}" title="{{item.entity.field_imagen.title}}">
                     <div class="overlayicon">
                       <i class="fa fa-external-link after"></i>
