@@ -19,7 +19,11 @@
           <div class="tab-content responsive hidden-xs hidden-sm">
             <div id="tab-name-2252-1" role="tabpanel" class="tab-pane active">
               <!-- LISTING -->
-              <div class="row listing section grid">
+              {%  set class = ""  %}
+              {% if data.field_cuadros|length < 3 %}
+                {%  set class = "text-center"  %}
+              {% endif %}
+              <div class="row listing section grid{{ class }}">
                 <!-- ITEM -->
                 {% for item in data.field_cuadros %}
                   <div class="item col-md-4 col-sm-6 col-xs-12">
