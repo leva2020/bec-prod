@@ -14,6 +14,9 @@
 				<div id="right_col" class="col-sm-8 pull-left" role="main">
           {% include 'page-component-image-2.html.twig' with {'node': node }  %}
           {% include 'page-component-textblock.html.twig' with {'texto': node.body.value } %}
+					{% for key, item in node.field_archivos_links %}
+						{% include 'page-component-custom-links.html.twig' with {'texto': item.entity.field_descripcion_1.value } %}
+					{% endfor %}
 				</div>
 
 				<!--menu lateral-->

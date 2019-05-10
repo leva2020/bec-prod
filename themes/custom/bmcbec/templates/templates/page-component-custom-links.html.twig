@@ -1,0 +1,22 @@
+<div class="page_component resources">
+    <h3>{{data.field_titulo.value|raw}}</h3>
+
+    <div class="list-group">
+        {% for item1 in data.field_archivos_links %}
+					{% if item1.entity.bundle =="archivos_con_descripcion" %}
+            <a href="{{ file_url(item1.entity.field_archivo.entity.fileuri) }}" target="_blank" class="item list-group-item odd">>{{ item1.entity.field_descripcion.value }}</a>
+					{% elseif item1.entity.bundle =="links_con_descripcion" %}
+            {% if item1.entity.field_tipo_link.value =="interno" %}
+              <a href="{{link.url}}" target="_blank" title="Link will open in a new window/tab">
+                <i class="fa fa-angle-right"></i>{{link.title}}<i class="fa fa-external-link after"></i>
+              </a>
+            {% else %}
+              <a href="{{link.url}}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item odd">
+                  <p class="heading primary_colour_1-text">{{link.title}}<i class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i></p>
+                  <div class="size">Link externo - {{link.url}}</div>
+              </a>
+            {% endif %}
+					{% endif %}
+		{% endfor %}
+    </div>
+</div>
