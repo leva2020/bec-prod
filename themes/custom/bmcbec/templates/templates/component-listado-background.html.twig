@@ -1,4 +1,10 @@
-  <section class="content advanced-component tabbed-listing color-bg-main-gray">
+{% if data.field__background_.value %}
+  {%  set class = " color-bg-main-gray"  %}
+{% else %}
+  {%  set class = ""  %}
+{% endif %}
+
+  <section class="content advanced-component tabbed-listing{{ class }} ">
     <div class="container">
 
       <!-- ROW - OVERVIEW -->
