@@ -1,2 +1,63 @@
+<section class="content">
+		<div class="container">
 
-{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+			<!--header page-->
+			<div class="row">
+				<div class="header-section col-md-12 col-xs-12">
+					<h1 class="color-text-blue">{{node.title.value}}</h1>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<!--contenido-->
+				<div id="right_col" class="col-sm-8 pull-left" role="main">
+                    {% include 'page-component-image.html.twig' with {'node': node }  %}
+
+				</div>
+
+				<!--menu lateral-->
+				<div id="left_col" class="col-sm-4 col-lg-3 pull-right">
+
+					{% for key, item in node.field_bloque_lateral %}
+						{% for key1, item1 in item.entity.field_opciones %}
+							{% if loop.first %}
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
+									{% include 'content-nav-panel.html.twig' with {'data': item1.entity } %}
+								{% endif %}
+								<div class="promo_pods ">
+							{% elseif loop.last %}
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
+									{% include 'content-promopods-default-panel-1.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_2" %}
+									{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_3" %}
+									{% include 'content-promopods-list-panel.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_4" %}
+									{% include 'content-promopods-default-panel.html.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_5" %}
+									{% include 'content-promopods-image-panel.html.twig' with {'data': item1.entity } %}
+								{% endif %}
+								</div>
+							{% else %}
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
+									{% include 'content-promopods-default-panel-1.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_2" %}
+									{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_3" %}
+									{% include 'content-promopods-list-panel.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_4" %}
+									{% include 'content-promopods-default-panel.html.html.twig' with {'data': item1.entity } %}
+								{% elseif item1.entity.bundle =="menu_lateral_tipo_5" %}
+									{% include 'content-promopods-image-panel.html.twig' with {'data': item1.entity } %}
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+	{% if node.field_banner_inferior.entity.field_titulo.value or node.field_banner_inferior.entity.field_descripcion_html.value %}
+		{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+	{% endif %}
