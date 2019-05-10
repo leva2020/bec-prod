@@ -15,7 +15,7 @@
           {% include 'page-component-image-2.html.twig' with {'node': node }  %}
           {% include 'page-component-textblock.html.twig' with {'texto': node.body.value } %}
 					{% for key, item in node.field_archivos_links %}
-						{% include 'page-component-custom-links.html.twig' with {'texto': item.entity.field_descripcion_1.value } %}
+						{% include 'page-component-custom-links.html.twig' with {'data': item.entity } %}
 					{% endfor %}
 				</div>
 
