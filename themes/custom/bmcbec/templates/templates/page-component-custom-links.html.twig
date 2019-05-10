@@ -9,16 +9,18 @@
                   <div class="size">{{ item1.entity.field_descripcion.value }}</div>
               </a>
 					{% elseif item1.entity.bundle =="links_con_descripcion" %}
-            {% if item1.entity.field_tipo_link.value =="interno" %}
-              <a href="{{item1.entity.field_link.url}}" target="_blank" class="item list-group-item">
-                  <p class="heading primary_colour_1-text">{{item1.entity.field_link.title}}<i class="fa fa-chain pull-right after highlight primary_colour_1-text"></i></p>
-              </a>
-            {% else %}
-              <a href="{{item1.entity.field_link.url}}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item">
-                  <p class="heading primary_colour_1-text">{{item1.entity.field_link.title}}<i class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i></p>
-                  <div class="size">Link externo - {{item1.entity.field_link.url}}</div>
-              </a>
-            {% endif %}
+            {% for link in item1.entity.field_link %}
+                {% if item1.entity.field_tipo_link.value =="interno" %}
+                  <a href="{{link.url}}" target="_blank" class="item list-group-item">
+                      <p class="heading primary_colour_1-text">{{link.title}}<i class="fa fa-chain pull-right after highlight primary_colour_1-text"></i></p>
+                  </a>
+                {% else %}
+                  <a href="{{link.url}}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item">
+                      <p class="heading primary_colour_1-text">{{link.title}}<i class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i></p>
+                      <div class="size">Link externo - {{link.url}}</div>
+                  </a>
+                {% endif %}
+        {% endfor %}
 					{% endif %}
 		{% endfor %}
     </div>
