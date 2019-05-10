@@ -40,7 +40,7 @@
                     {% elseif item.entity.field_backrgound.value =='azul' %}
                       <div class="content-box color-bg-main-blue">
                     {% endif %}
-                        <a href="{{ item.entity.field_cta.url }}" title="{{ item.entity.field_cta.title }}">
+                        <a href="{{ item.entity.field_cta.uri|replace({'entity:': '/'}) }}" title="{{ item.entity.field_cta.title }}">
                       <div class="image">
                         <img src="{{file_url(item.entity.field_imagen.entity.fileuri)}}" title="{{item.entity.field_imagen.title}}" alt="{{item.entity.field_imagen.alt}}">
                       </div>
