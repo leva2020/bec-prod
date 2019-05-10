@@ -12,7 +12,6 @@
             {% if item1.entity.field_tipo_link.value =="interno" %}
               <a href="{{item1.entity.field_link.url}}" target="_blank" class="item list-group-item">
                   <p class="heading primary_colour_1-text">{{item1.entity.field_link.title}}<i class="fa fa-chain pull-right after highlight primary_colour_1-text"></i></p>
-                  <div class="size">Link externo - {{item1.entity.field_link.url}}</div>
               </a>
             {% else %}
               <a href="{{item1.entity.field_link.url}}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item">
