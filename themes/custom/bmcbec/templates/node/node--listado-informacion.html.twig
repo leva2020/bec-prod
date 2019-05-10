@@ -5,7 +5,7 @@
   {% include 'component-listado-background.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
 {% elseif node.field_cuadros_listado_ct.entity.bundle =="cuadros_listado_2" %}
   {% include 'component-listado-background.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
-{% endif %}{{ node.field_iframe.url }}
+{% endif %}{{ node.field_iframe.uri }}
 {% if node.field_iframe.url and node.field_iframe.url != '' %}
 	<iframe id="becchartframe" width="100%" height="1300" src="{{ node.field_iframe.url }}" style="height:1300px; border:0;" scrolling="no"></iframe>
 {% endif %}
