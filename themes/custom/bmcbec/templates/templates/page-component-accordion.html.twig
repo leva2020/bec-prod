@@ -3,13 +3,13 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="heading-1-{{ id }}">
                 <p class="heading panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion-{{ id }}" href="#collapse-1459-1" aria-expanded="false" aria-controls="collapse-1459-1" class="collapsed">
+                    <a data-toggle="collapse" data-parent="#accordion-{{ id }}" href="#collapse-1459-1-{{ id }}" aria-expanded="false" aria-controls="collapse-1459-1-{{ id }}" class="collapsed">
                         {{ data.field_titulo.value }}
                         <i class="fa fa-chevron-down pull-right after highlight"></i>
                     </a>
                 </p>
             </div>
-            <div id="collapse-1459-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-1459-1" aria-expanded="false" style="height: 0px;">
+            <div id="collapse-1459-1-{{ id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-1459-1-{{ id }}" aria-expanded="false" style="height: 0px;">
                 <div class="panel-body">
                     {{ data.field_descripcion_1.value|raw }}
                 </div>
