@@ -12,8 +12,10 @@
 			<div class="row">
 				<!--contenido-->
 				<div id="right_col" class="col-sm-8 pull-left" role="main">
-                    {% include 'page-component-image-1.html.twig' with {'node': node }  %}
-
+          {% include 'page-component-image-1.html.twig' with {'node': node }  %}
+					{% for key, item in node.field_slide_imagenes %}
+						{% include 'page-component-resources.html.twig' with {'data': item.entity } %}
+					{% endfor %}
 				</div>
 
 				<!--menu lateral-->
