@@ -4,16 +4,20 @@
     <div class="list-group">
         {% for item1 in data.field_archivos_links %}
 					{% if item1.entity.bundle =="archivos_con_descripcion" %}
-            <a href="{{ file_url(item1.entity.field_archivo.entity.fileuri) }}" target="_blank" class="item list-group-item odd">>{{ item1.entity.field_descripcion.value }}</a>
+              <a href="{{ file_url(item1.entity.field_archivo.entity.fileuri) }}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item">
+                  <p class="heading primary_colour_1-text">{{ item1.entity.field_label_archivo.value }}<i class="fa fa-download pull-right after highlight primary_colour_1-text"></i></p>
+                  <div class="size">{{ item1.entity.field_descripcion.value }}</div>
+              </a>
 					{% elseif item1.entity.bundle =="links_con_descripcion" %}
             {% if item1.entity.field_tipo_link.value =="interno" %}
-              <a href="{{link.url}}" target="_blank" title="Link will open in a new window/tab">
-                <i class="fa fa-angle-right"></i>{{link.title}}<i class="fa fa-external-link after"></i>
+              <a href="{{item1.entity.field_link.url}}" target="_blank" class="item list-group-item">
+                  <p class="heading primary_colour_1-text">{{item1.entity.field_link.title}}<i class="fa fa-chain pull-right after highlight primary_colour_1-text"></i></p>
+                  <div class="size">Link externo - {{item1.entity.field_link.url}}</div>
               </a>
             {% else %}
-              <a href="{{link.url}}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item odd">
-                  <p class="heading primary_colour_1-text">{{link.title}}<i class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i></p>
-                  <div class="size">Link externo - {{link.url}}</div>
+              <a href="{{item1.entity.field_link.url}}" title="Link will open in a new window/tab" target="_blank" class="item list-group-item">
+                  <p class="heading primary_colour_1-text">{{item1.entity.field_link.title}}<i class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i></p>
+                  <div class="size">Link externo - {{item1.entity.field_link.url}}</div>
               </a>
             {% endif %}
 					{% endif %}
