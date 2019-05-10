@@ -24,12 +24,12 @@
 					{% for key, item in node.field_bloque_lateral %}
 						{% for key1, item1 in item.entity.field_opciones %}
 							{% if loop.first %}
+								<div class="promo_pods ">
 								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
 									{% include 'content-promopods-default-panel-1.html.twig' with {'data': item1.entity } %}
 								{% elseif item1.entity.bundle =="menu_lateral_tipo_2" %}
 									{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}
 								{% endif %}
-								<div class="promo_pods ">
 							{% elseif loop.last %}
 								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
 									{% include 'content-promopods-default-panel-1.html.twig' with {'data': item1.entity } %}
