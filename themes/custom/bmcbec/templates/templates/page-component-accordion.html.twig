@@ -1,9 +1,9 @@
 <div class="page_component accordion">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel-group" id="accordion-{{ id }}" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="heading-1">
+            <div class="panel-heading" role="tab" id="heading-1-{{ id }}">
                 <p class="heading panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-1459-1" aria-expanded="false" aria-controls="collapse-1459-1" class="collapsed">
+                    <a data-toggle="collapse" data-parent="#accordion-{{ id }}" href="#collapse-1459-1" aria-expanded="false" aria-controls="collapse-1459-1" class="collapsed">
                         {{ data.field_titulo.value }}
                         <i class="fa fa-chevron-down pull-right after highlight"></i>
                     </a>

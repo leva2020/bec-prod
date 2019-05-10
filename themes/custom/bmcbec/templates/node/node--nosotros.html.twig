@@ -13,15 +13,15 @@
 				<!--contenido-->
 				<div id="right_col" class="col-sm-8 pull-right" role="main">
                     {% include 'page-component-image.html.twig' with {'node': node }  %}
-					{% for item in node.field_contenido_paragraph %}
+					{% for key, item in node.field_contenido_paragraph %}
 						{% include 'page-component-textblock.html.twig' with {'texto': item.entity.field_descripcion_1.value } %}
-						{% for item1 in item.entity.field_acordeon %}
-							{% if item1.entity.bundle =="acodeon" %}	
-								{% include 'page-component-accordion.html.twig' with {'data': item1.entity } %}
+						{% for key1, item1 in item.entity.field_acordeon %}
+							{% if item1.entity.bundle =="acodeon" %}
+								{% include 'page-component-accordion.html.twig' with {'data': item1.entity, 'id': key ~ key1 } %}
 							{% elseif item1.entity.bundle =="cuadros_informativos" %}
                     			{% include 'listado-1.html.twig' with {'data': item1.entity } %}
-							{% elseif item1.entity.bundle =="links" %}								
-								{% if item1.entity.field_tipo.value =="detalle" %}	
+							{% elseif item1.entity.bundle =="links" %}
+								{% if item1.entity.field_tipo.value =="detalle" %}
                     				{% include 'page-component-resources.html.twig' with {'data': item1.entity } %}
 								{% else %}
                     				{% include 'page-component-quick-links.html.twig' with {'data': item1.entity } %}
@@ -34,16 +34,16 @@
 
 				<!--menu lateral-->
 				<div id="left_col" class="col-sm-4 col-lg-3 pull-left">
-				
-					{% for item in node.field_menu_lateral %}	
-						{% for item1 in item.entity.field_opciones %}
+
+					{% for key, item in node.field_menu_lateral %}
+						{% for key1, item1 in item.entity.field_opciones %}
 							{% if loop.first %}
-								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}	
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
 									{% include 'content-nav-panel.html.twig' with {'data': item1.entity } %}
 								{% endif %}
 								<div class="promo_pods ">
 							{% elseif loop.last %}
-								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}	
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
 									{% include 'content-promopods-default-panel-1.html.twig' with {'data': item1.entity } %}
 								{% elseif item1.entity.bundle =="menu_lateral_tipo_2" %}
 									{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}
@@ -56,7 +56,7 @@
 								{% endif %}
 								</div>
 							{% else %}
-								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}	
+								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
 									{% include 'content-promopods-default-panel-1.html.twig' with {'data': item1.entity } %}
 								{% elseif item1.entity.bundle =="menu_lateral_tipo_2" %}
 									{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}
@@ -68,7 +68,7 @@
 									{% include 'content-promopods-image-panel.html.twig' with {'data': item1.entity } %}
 								{% endif %}
 							{% endif %}
-						{% endfor %}	
+						{% endfor %}
 					{% endfor %}
 				</div>
 			</div>
