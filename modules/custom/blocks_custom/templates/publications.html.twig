@@ -14,20 +14,17 @@
                         {% if publicaciones %}
                             {% for empresa in publicaciones %}
                                 <article>
-
-{% set imagestyle = {
+                                    {% set imagestyle = {
                                         '#theme':      'image_style',
                                         '#style_name': 'custom_118x120',
                                         '#uri':        empresa.field_imagen_desktop.entity.uri.value,
                                         '#alt':        '',
                                     } %}
-
-                                   <img src="{{ uri }}" alt="" />
                                     <div class="wrapper-image"><a
                                                 href="/publicaciones/posts/noticias/noticias/g-070-b-inf-información-subasta-úselo-o-véndalo-de-corto-plazo-de-transporte/"
                                                 title="">
-{{ imagestyle }} 
-</a>
+                                            {{ imagestyle }}
+                                        </a>
                                     </div>
                                     <div class="content"><a
                                                 href="/publicaciones/posts/noticias/noticias/gas-natural-para-la-competitividad-industrial/">
