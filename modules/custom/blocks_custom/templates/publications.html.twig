@@ -1,0 +1,20 @@
+<h2>{{ titulo }}</h2>
+{% if publicaciones %}
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Publicaciones!!!</div>
+        </div>
+
+        <table class="table table-bordered table-striped table-hover">
+            <tbody>
+            {% for empresa in publicaciones %}
+                <tr>
+                    <td>{{ empresa.get('title').value }}</td>
+                    <td>{{ empresa.get('body').value }}</td>
+                    <td class="text-right">{{ empresa.get('field_lead').value }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
