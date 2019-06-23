@@ -1,20 +1,80 @@
-<h2>{{ titulo }}</h2>
-{% if publicaciones %}
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">Publicaciones!!!</div>
-        </div>
+<section class="content advanced-component publications">
+    <div data-os-animation="fadeIn" data-os-animation-delay="0">
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 column">
+                        <div class="header-section col-md-12 col-xs-12">
+                            <h1 class="color-text-blue">Noticias del Gestor</h1>
 
-        <table class="table table-bordered table-striped table-hover">
-            <tbody>
-            {% for empresa in publicaciones %}
-                <tr>
-                    <td>{{ empresa.get('title').value }}</td>
-                    <td>{{ empresa.get('body').value }}</td>
-                    <td class="text-right">{{ empresa.get('field_lead').value }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                            <p>Conozca la regulación vigente, eventos, fechas importantes y documentos del Gestor de Gas
+                                Natural.</p>
+                        </div>
+
+                        {% if publicaciones %}
+                            {% for empresa in publicaciones %}
+                                <article>
+
+{% set imagestyle = {
+                                        '#theme':      'image_style',
+                                        '#style_name': 'custom_118x120',
+                                        '#uri':        empresa.field_imagen_desktop.entity.uri.value,
+                                        '#alt':        '',
+                                    } %}
+
+                                   <img src="{{ uri }}" alt="" />
+                                    <div class="wrapper-image"><a
+                                                href="/publicaciones/posts/noticias/noticias/g-070-b-inf-información-subasta-úselo-o-véndalo-de-corto-plazo-de-transporte/"
+                                                title="">
+{{ imagestyle }} 
+</a>
+                                    </div>
+                                    <div class="content"><a
+                                                href="/publicaciones/posts/noticias/noticias/gas-natural-para-la-competitividad-industrial/">
+                                            {{ empresa.get('title').value }}
+                                        </a>
+                                        <em>Noviembre 22 de 2018</em>
+                                        <p>{{ empresa.get('field_descripcion').value }}</p>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="wrapper-cta">
+                            <a class="btn btn-blue pull-left" href="#">Ver otras Noticias del Gestor</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 column">
+                        <div>
+                            <div class="header-section col-md-12 col-xs-12">
+                                <h1 class="color-text-blue">Resultados del Mercado</h1>
+                            </div>
+
+                            <div class="wrapper-chart">
+                                <iframe id="becchartframe_left_1"
+                                        src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/cuadro-mercado-resumen-de-contratos-homepage-marquee.cshtml"></iframe>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="header-section col-md-12 col-xs-12">
+                                <h1 class="color-text-blue">Comportamiento Transaccional del Mercado</h1>
+
+                                <p>En esta gráfica se puede visualizar el comportamiento del mercado en términos de
+                                    precios (expresados en USD/MBTU), negociados según la modalidad contractual para
+                                    cada uno de los mercados.</p>
+
+                                <div class="wrapper-chart">
+                                    <iframe id="becchartframe_left"
+                                            src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/cuadro-mercado-comportamiento-transaccional-mercado-homepage.cshtml"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-{% endif %}
+</section>
+

@@ -21,6 +21,7 @@ class PublicationsCustomBlock extends BlockBase {
         $query =    Drupal::entityQuery('node')
             ->condition('type', 'publicaciones')
             ->execute();
+	$empresas = [];
 
         if (!empty($query)) {
             foreach ($query as $empresaId) {
@@ -31,7 +32,7 @@ class PublicationsCustomBlock extends BlockBase {
 
         return array(
             '#theme' => 'blocks_custom',
-            '#titulo' => $this->t('Listado de publicaciones'),
+            '#titulo' => $this->t('Listado de publicaciones custom'),
             '#publicaciones' => $empresas
         );
     }
