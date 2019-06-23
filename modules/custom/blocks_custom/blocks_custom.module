@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Contains formularios.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Theme hook
+ */
+function blocks_custom_theme($existing, $type, $theme, $path)
+{
+    return ['blocks_custom' =>
+        [
+            'variables' => [
+                'titulo' => 'Título por defecto',
+                'descripcion' => 'descripción por defecto',
+                'publicaciones' => NULL
+            ],
+            'template' => 'publications'
+        ]];
+}

@@ -1,0 +1,6 @@
+name: BLOQUES PERSONALIZADOS
+description: Bloques personalizados
+package: BEC Custom
+type: module
+core: 8.x
+version: 1.0
