@@ -1,12 +1,12 @@
 <section class="content">
     <div class="container">
+        {{ dump(node) }}
         <div class="row">
             <div class="col-xs-12">
                 <h1 class="heading" itemprop="name headline">{{ node.title.value }}</h1>
             </div>
         </div>
         <div class="row">
-            <!-- CONTENT COL -->
             <div id="right_col" class="col-sm-8 pull-right" role="main">
                 <!-- IMAGE -->
                 {% set imagestyle = {
@@ -18,73 +18,54 @@
                 <div class="page_component image">
                     {{ imagestyle }}
                 </div>
-                <!--// IMAGE -->
                 {{ node.body.value | raw }}
-                <p>{{ node.body.value }}</p>
                 <!-- META -->
-
                 <div class="meta panel panel-default">
                     <div class="panel-body">
                         <div>
-                        <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                            Publicado por
-BEC                            el
-                        </span>
-
-                            <time itemprop="datePublished" datetime="2019-06-21"><span class="date">21 Jun 2019</span>
+                            <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                Publicado por BEC el
+                            </span>
+                            <time itemprop="datePublished" datetime="2019-06-21">
+                                <span class="date">21 Jun 2019</span>
                             </time>
                         </div>
                         <div class="row">
-
-            <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
-                    <span><a href="/publicaciones/?category=2978" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>, </span>
-                    <span><a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">Noticias del Gestor</a></span>
-</span>
+                            <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
+                                <span>
+                                    <a href="/publicaciones/?category=2978" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>,
+                                </span>
+                                <span>
+                                    <a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">
+                                        Noticias del Gestor
+                                    </a>
+                                </span>
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 <!--// META -->
 
-                <!-- AUTHOR BIO -->
-
-                <!-- PAGE COMPONENT AUTHOR BIO -->
-                <div class="page_component author_bio panel panel-default" style="display:none;">
-                    <!-- OWI - OFMG 20171010 -->
-                    <div class="panel-body">
-                        <p class="heading">Sobre el autor</p>
-                        <div class="info">
-                            <p class="heading" itemtype="http://schema.org/Person" itemscope="itemscope"
-                               itemprop="author">
-                                BEC </p>
-                            <div class="text">
-                                <p>Gestor del Mercado de Gas Natural en Colombia</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--// PAGE COMPONENT AUTHOR BIO -->
-
-                <!--// AUTHOR BIO -->
-
                 <!-- PAGINATION  -->
 
                 <nav id="pager">
                     <ul class="pager nav">
-                        <li class="previous odd"><a
-                                    href="/publicaciones/posts/noticias/noticias/en-mayo-demanda-de-energía-en-el-país-subió-4-8-por-ciento/"><span><i
-                                            class="fa fa-angle-left"></i>Antiguo</span></a></li>
-                        <li class="all hidden-xs even"><a
-                                    href="/publicaciones/"><span>Todas las publicaciones</span></a></li>
+                        <li class="previous odd">
+                            <a href="/publicaciones/posts/noticias/noticias/en-mayo-demanda-de-energía-en-el-país-subió-4-8-por-ciento/">
+                                <span>
+                                    <i class="fa fa-angle-left"></i>
+                                    Antiguo
+                                </span>
+                            </a>
+                        </li>
+                        <li class="all hidden-xs even">
+                            <a href="/publicaciones">
+                                <span>Todas las publicaciones</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
-
-                <!--// PAGINATION -->
-
-                <!-- COMMENTS -->
-
-
-                <!--// COMMENTS -->
             </div>
             <!--// CONTENT COL -->
 
