@@ -29,6 +29,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'news' => NULL
                 ],
                 'template' => 'news'
+            ],
+        'news_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Título por defecto',
+                    'descripcion' => 'descripción por defecto',
+                    'news' => NULL
+                ],
+                'template' => 'interests'
             ]
     ];
 }
