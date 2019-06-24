@@ -1,6 +1,5 @@
 <section class="content">
     <div class="container">
-        {{ dump(node) }}
         <div class="row">
             <div class="col-xs-12">
                 <h1 class="heading" itemprop="name headline">{{ node.title.value }}</h1>
@@ -26,8 +25,8 @@
                             <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                                 Publicado por BEC el
                             </span>
-                            <time itemprop="datePublished" datetime="2019-06-21">
-                                <span class="date">21 Jun 2019</span>
+                            <time itemprop="datePublished" datetime="{{ node.published_at.value|date('Y-m-d') }}">
+                                <span class="date">{{ node.published_at.value|date('j M Y') }}</span>
                             </time>
                         </div>
                         <div class="row">
