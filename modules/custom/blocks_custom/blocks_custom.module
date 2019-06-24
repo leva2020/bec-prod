@@ -37,7 +37,7 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'descripcion' => 'descripción por defecto',
                     'news' => NULL
                 ],
-                'template' => 'filters_publications'
+                'template' => 'filters-publications'
             ]
     ];
 }
