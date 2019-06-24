@@ -12,5 +12,4 @@ class BlocksCustomController extends ControllerBase {
             '#markup' => $this->t('Hola mundo !!'),
         );
     }
-
 }

@@ -10,11 +10,11 @@ use Drupal\node\Entity\Node;
  * Definición de nuestro bloque
  *
  * @Block(
- *   id = "publications_block",
- *   admin_label = @Translation("Publicaciones")
+ *   id = "news_block",
+ *   admin_label = @Translation("Noticias")
  * )
  */
-class PublicationsCustomBlock extends BlockBase
+class NewsCustomBlock extends BlockBase
 {
     /**
      * {@inheritdoc}
@@ -35,7 +35,7 @@ class PublicationsCustomBlock extends BlockBase
 
         return array(
             '#theme' => 'blocks_custom',
-            '#titulo' => $this->t('Listado de publicaciones custom'),
+            '#titulo' => $this->t('Listado de noticias custom'),
             '#publicaciones' => $empresas
         );
     }
