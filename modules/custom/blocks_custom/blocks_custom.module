@@ -30,7 +30,7 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                 ],
                 'template' => 'news'
             ],
-        'news_block_custom' =>
+        'interests_block' =>
             [
                 'variables' => [
                     'titulo' => 'Título por defecto',
