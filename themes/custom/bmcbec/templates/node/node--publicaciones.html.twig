@@ -1,49 +1,25 @@
 <section class="content">
     <div class="container">
-        <!-- ROW -->
         <div class="row">
-
             <div class="col-xs-12">
-                <h1 class="heading" itemprop="name headline">{{node.title.value}}</h1>
+                <h1 class="heading" itemprop="name headline">{{ node.title.value }}</h1>
             </div>
-
         </div>
-        <!--// ROW -->
-        <!-- ROW -->
         <div class="row">
-
             <!-- CONTENT COL -->
             <div id="right_col" class="col-sm-8 pull-right" role="main">
-
                 <!-- IMAGE -->
-
+                {% set imagestyle = {
+                    '#theme':      'image_style',
+                    '#style_name': 'medio',
+                    '#uri':        node.field_imagen_desktop.entity.uri.value,
+                    '#alt':        '',
+                } %}
                 <div class="page_component image">
-                    <img src="/media/1633/comunicados.png?anchor=center&amp;mode=crop&amp;width=1140&amp;height=550&amp;rnd=131520243240000000"
-                         alt="">
-
+                    {{ imagestyle }}
                 </div>
-
                 <!--// IMAGE -->
-
-                <p>Respetados señores:</p>
-                <p>La Bolsa Mercantil de Colombia en su calidad de Gestor del Mercado de Gas Natural se permite publicar
-                    la información referente a la unificación de puntos sobre el Sistema Nacional de Transporte - SNT,
-                    declarada por los agentes Transportadores, en cumplimiento de lo establecido en el parágrafo del
-                    artículo 15, de la Resolución CREG 021 de 2019.</p>
-                <p>Dicha información podrá ser consultada en la página web del Boletín Electrónico Central - BEC
-                    www.bmcbec.com.co en la sección Informes &gt;&gt; Informes de Mercado &gt;&gt; 2019 &gt;&gt;
-                    Información de Transporte – Unificación de puntos sobre el SNT.</p>
-                <p>Cualquier inquietud adicional, con gusto será atendida a través del correo electrónico
-                    gestordegas@bolsamercantil.com.co o a través de la línea (1) 6292529 Ext. 128, 380, 383 y 385.</p>
-                <p class="p1">Cordialmente,</p>
-                <p class="p1">LEYDI DIANA RINCÓN RINCÓN<br>Directora de Mercados Energéticos&nbsp;</p>
-                <p class="p1">&nbsp;</p>
-                <p class="p1"><span>Para descargar el comunicado, por favor hacer&nbsp;</span><a
-                            href="/media/2941/g-035-b-inf-publicación-unificación-de-puntos-sobre-el-snt.pdf"
-                            target="_blank" title="G-035  Publicación unificación de puntos sobre el SNT">clic acá</a>
-                </p>
-
-
+                <p>{{ node.body.value }}</p>
                 <!-- META -->
 
                 <div class="meta panel panel-default">
