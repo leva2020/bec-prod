@@ -30,7 +30,7 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                 ],
                 'template' => 'news'
             ],
-        'filters_publications_block' =>
+        'filters_publications_block_custom' =>
             [
                 'variables' => [
                     'titulo' => 'Título por defecto',

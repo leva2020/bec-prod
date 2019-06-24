@@ -34,7 +34,7 @@ class FiltersPublicationsCustomBlock extends BlockBase
         }
 
         return array(
-            '#theme' => 'filters_publications_custom',
+            '#theme' => 'filters_publications_block_custom',
             '#titulo' => $this->t('Filtros Publicaciones'),
             '#news' => $empresas
         );
