@@ -34,9 +34,9 @@ class NewsCustomBlock extends BlockBase
         }
 
         return array(
-            '#theme' => 'blocks_custom',
+            '#theme' => 'news_block_custom',
             '#titulo' => $this->t('Listado de noticias custom'),
-            '#publicaciones' => $empresas
+            '#news' => $empresas
         );
     }
 

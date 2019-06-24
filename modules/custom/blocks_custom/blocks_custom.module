@@ -11,13 +11,24 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 function blocks_custom_theme($existing, $type, $theme, $path)
 {
-    return ['blocks_custom' =>
-        [
-            'variables' => [
-                'titulo' => 'Título por defecto',
-                'descripcion' => 'descripción por defecto',
-                'publicaciones' => NULL
+    return [
+        'blocks_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Título por defecto',
+                    'descripcion' => 'descripción por defecto',
+                    'publicaciones' => NULL
+                ],
+                'template' => 'publications'
             ],
-            'template' => 'publications'
-        ]];
+        'news_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Título por defecto',
+                    'descripcion' => 'descripción por defecto',
+                    'news' => NULL
+                ],
+                'template' => 'news'
+            ]
+    ];
 }
