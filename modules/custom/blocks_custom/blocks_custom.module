@@ -30,14 +30,14 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                 ],
                 'template' => 'news'
             ],
-        'interests_block' =>
+        'filters_publications_block' =>
             [
                 'variables' => [
                     'titulo' => 'Título por defecto',
                     'descripcion' => 'descripción por defecto',
                     'news' => NULL
                 ],
-                'template' => 'interests'
+                'template' => 'filters_publications'
             ]
     ];
 }
