@@ -50,14 +50,14 @@
 
                 <nav id="pager">
                     <ul class="pager nav">
-                        <li class="previous odd">
+                        <!--<li class="previous odd">
                             <a href="/publicaciones/posts/noticias/noticias/en-mayo-demanda-de-energía-en-el-país-subió-4-8-por-ciento/">
                                 <span>
                                     <i class="fa fa-angle-left"></i>
                                     Antiguo
                                 </span>
                             </a>
-                        </li>
+                        </li>-->
                         <li class="all hidden-xs even">
                             <a href="/publicaciones">
                                 <span>Todas las publicaciones</span>
@@ -71,6 +71,7 @@
 
             <div id="left_col" class="col-sm-4 col-lg-3 pull-left" role="complementary">
                 <!-- SUB - FILTER -->
+                {{ drupal_block('interests_block') }}
                 <nav class="sub panel panel-default">
                     <p class="heading primary_colour_1-text">
                         <a class="primary_colour_1-text" href="/publicaciones/">Todas las publicaciones</a>
