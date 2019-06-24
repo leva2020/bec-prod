@@ -7,6 +7,7 @@ base:
       //netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css: {type: external}
       dist/css/plugins.css: {}
       dist/css/main.css: {}
+      src/scss/leva.css: {}
   js:
     dist/js/greenSock/minified/TweenMax.min.js: {}
     dist/js/owl.carousel.js: {}
