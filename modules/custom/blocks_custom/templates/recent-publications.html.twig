@@ -2,24 +2,28 @@
     <div class="listing blog">
         <p class="heading">Publicaciones Recientes</p>
 
-        <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
-            <div class="info">
-                <a href="/publicaciones/posts/noticias/noticias/g-035-publicación-unificación-de-puntos-sobre-el-snt/"
-                   itemprop="url">
+        {% if recents %}
+            {% for empresa in recents %}
+                <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
+                    <div class="info">
+                        <a href="{{ path('entity.node.canonical', {'node': recent.id}) }}" itemprop="url">
+                            <p class="heading" itemprop="name headline">
+                                {{ recent.title.value }}
+                            </p>
+                        </a>
 
-                    <p class="heading" itemprop="name headline">
-                        G-035 Publicación unificación de puntos sobre el SNT - block
-                    </p>
-                </a>
-
-            </div>
-            <div class="meta">
-                <div>
-                    <time itemprop="datePublished"><span class="date">21 Jun 2019</span></time>
+                    </div>
+                    <div class="meta">
+                        <div>
+                            <time itemprop="datePublished">
+                                <span class="date">{{ node.published_at.value|date('j M Y') }}</span>
+                            </time>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
+            {% endfor %}
+        {% endif %}
+        <!--<div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
             <div class="info">
                 <a href="/publicaciones/posts/noticias/noticias/en-mayo-demanda-de-energía-en-el-país-subió-4-8-por-ciento/"
                    itemprop="url">
@@ -52,7 +56,7 @@
                     <time itemprop="datePublished"><span class="date">20 Jun 2019</span></time>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     <a class="see_all" href="/publicaciones/">Ver todos</a>
 </div>

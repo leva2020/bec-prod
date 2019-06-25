@@ -23,8 +23,10 @@ class RecentPublicationsCustomBlock extends BlockBase
     {
         $query = Drupal::entityQuery('node')
             ->condition('type', 'publicaciones')
+            ->sort('created', 'DESC')
+            ->range(0, 4)
             ->execute();
-        $empresas = [];
+        $publications = [];
 
         if (!empty($query)) {
             foreach ($query as $empresaId) {
@@ -36,7 +38,7 @@ class RecentPublicationsCustomBlock extends BlockBase
         return array(
             '#theme' => 'recent_publications_block_custom',
             '#titulo' => $this->t('Filtros Publicaciones'),
-            '#news' => $empresas
+            '#recents' => $publications
         );
     }
 
