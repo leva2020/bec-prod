@@ -3,7 +3,7 @@
         <a class="primary_colour_1-text" href="/publicaciones/">Todas las publicaciones</a>
     </p>
     <ul class="nav">
-        {{% set currentYear = "now"|date('Y') %}
+        {% set currentYear = "now"|date('Y') %}
         {{ currentYear }}
         {% for i in 0..4 %}
             <li class="odd">
