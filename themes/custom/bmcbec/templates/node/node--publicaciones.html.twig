@@ -43,11 +43,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--// META -->
-
-                <!-- PAGINATION  -->
-
                 <nav id="pager">
                     <ul class="pager nav">
                         <!--<li class="previous odd">
@@ -67,141 +62,31 @@
                 </nav>
             </div>
             <!--// CONTENT COL -->
-
-
             <div id="left_col" class="col-sm-4 col-lg-3 pull-left" role="complementary">
-                <!-- SUB - FILTER -->
                 {{ drupal_block('filters_publications_block') }}
-                <!--// SUB - FILTER -->
 
-
-                <!-- SUB - FILTER -->
-                <nav class="sub panel panel-default">
-                    <p class="heading primary_colour_1-text"><span>Categorías</span></p>
-                    <ul class="nav">
-                        <li class="odd">
-                            <a href="/publicaciones/?category=2978" rel="NOINDEX, FOLLOW">
-                                Noticias
-                            </a>
-                        </li>
-                        <li class="even">
-                            <a href="/publicaciones/?category=1567" rel="NOINDEX, FOLLOW">
-                                Boletines
-                            </a>
-                        </li>
-                        <li class="odd">
-                            <a href="/publicaciones/?category=1728" rel="NOINDEX, FOLLOW">
-                                Lavado de Activos
-                            </a>
-                        </li>
-                        <li class="even">
-                            <a href="/publicaciones/?category=1568" rel="NOINDEX, FOLLOW">
-                                Interrupción de los Servicios
-                            </a>
-                        </li>
-                        <li class="odd">
-                            <a href="/publicaciones/?category=2759" rel="NOINDEX, FOLLOW">
-                                Criterios de idoneidad
-                            </a>
-                        </li>
-                        <li class="even">
-                            <a href="/publicaciones/?category=2875" rel="NOINDEX, FOLLOW">
-                                Ayudas Audiovisuales
-                            </a>
-                        </li>
-                        <li class="odd">
-                            <a href="/publicaciones/?category=4438" rel="NOINDEX, FOLLOW">
-                                Foro Prime
-                            </a>
-                        </li>
-                    </ul>
-
-                </nav>
-                <!--// SUB -->
-
-
-                <!-- SUB  -->
-
-
-                <!--// SUB -->
-                <!-- PROMO PODS -->
+                {{ drupal_block('filters_categories_block') }}
                 <div class="promo_pods ">
-
                     <div class="item panel panel-default odd">
                         <div class="panel-body primary_colour_1-bg">
                             <a href="/sitios-de-interés/"><p class="heading secondary_colour_3-text">Sitios de
                                     Interés </p></a>
                             <div class="info">
-                                <div class="text secondary_colour_3-text"><p>Conozca&nbsp;todas las entidades que hacen
-                                        parte del sector del Gas Natural&nbsp;en Colombia.</p></div>
-
-                                <p class="link"><a href="/sitios-de-interés/"
-                                                   class="btn primary_colour_2-bg secondary_colour_3-text">Ver todos</a>
+                                <div class="text secondary_colour_3-text">
+                                    <p>Conozca&nbsp;todas las entidades que hacen
+                                        parte del sector del Gas Natural&nbsp;en Colombia.
+                                    </p>
+                                </div>
+                                <p class="link">
+                                    <a href="/sitios-de-interés/" class="btn primary_colour_2-bg secondary_colour_3-text">
+                                        Ver todos
+                                    </a>
                                 </p>
-
                             </div>
                         </div>
                     </div>
-
                     <div class="item lists panel panel-default even">
-                        <div class="panel-body">
-                            <div class="listing blog">
-                                <p class="heading">Publicaciones Recientes</p>
-
-                                <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
-                                    <div class="info">
-                                        <a href="/publicaciones/posts/noticias/noticias/g-035-publicación-unificación-de-puntos-sobre-el-snt/"
-                                           itemprop="url">
-
-                                            <p class="heading" itemprop="name headline">
-                                                G-035 Publicación unificación de puntos sobre el SNT
-                                            </p>
-                                        </a>
-
-                                    </div>
-                                    <div class="meta">
-                                        <div>
-                                            <time itemprop="datePublished"><span class="date">21 Jun 2019</span></time>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
-                                    <div class="info">
-                                        <a href="/publicaciones/posts/noticias/noticias/en-mayo-demanda-de-energía-en-el-país-subió-4-8-por-ciento/"
-                                           itemprop="url">
-
-                                            <p class="heading" itemprop="name headline">
-                                                En mayo, demanda de energía en el país subió 4,8 por ciento
-                                            </p>
-                                        </a>
-
-                                    </div>
-                                    <div class="meta">
-                                        <div>
-                                            <time itemprop="datePublished"><span class="date">20 Jun 2019</span></time>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
-                                    <div class="info">
-                                        <a href="/publicaciones/posts/noticias/noticias/por-el-uso-eficiente-de-la-energía/"
-                                           itemprop="url">
-
-                                            <p class="heading" itemprop="name headline">
-                                                Por el uso eficiente de la energía
-                                            </p>
-                                        </a>
-
-                                    </div>
-                                    <div class="meta">
-                                        <div>
-                                            <time itemprop="datePublished"><span class="date">20 Jun 2019</span></time>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="see_all" href="/publicaciones/">Ver todos</a>
-                        </div>
+                        {{ drupal_block('recent_publications_block') }}
                     </div>
                 </div>
                 <!--// PROMO PODS -->
