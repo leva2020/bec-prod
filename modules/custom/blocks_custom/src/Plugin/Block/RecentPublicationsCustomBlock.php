@@ -29,9 +29,9 @@ class RecentPublicationsCustomBlock extends BlockBase
         $publications = [];
 
         if (!empty($query)) {
-            foreach ($query as $empresaId) {
-                $empresa = Node::load($empresaId);
-                $empresas[] = $empresa;
+            foreach ($query as $publicationId) {
+                $publication = Node::load($publicationId);
+                $publications[] = $publication;
             }
         }
 
