@@ -1,11 +1,10 @@
 <div class="panel-body">
     <div class="listing blog">
         <p class="heading">Publicaciones Recientes</p>
-
         {% if recents %}
             {% for recent in recents %}
                 {% if recent.id != node.id %}
-                    <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
+                    <div class="item even" name="{{ node.id }}-{{ recent.id }} " itemscope="" itemtype="http://schema.org/BlogPosting">
                         <div class="info">
                             <a href="{{ path('entity.node.canonical', {'node': recent.id}) }}" itemprop="url">
                                 <p class="heading" itemprop="name headline">
