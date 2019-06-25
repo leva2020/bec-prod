@@ -18,14 +18,14 @@
                 <div class="row">
                     {% if news %}
                         {% for new in news %}
-                            {% if loop.index is divisible by(2) %}
+                            {% if loop.index is divisible by(2) ||  loop.index == 1 %}
                                 <div class="col-md-4">
                             {% endif %}
                             <article>
                                 {% set imagestyle = {
                                     '#theme':      'image_style',
                                     '#style_name': 'custom_118x120',
-                                    '#uri':        empresa.field_imagen_desktop.entity.uri.value,
+                                    '#uri':        new.field_imagen_desktop.entity.uri.value,
                                     '#alt':        '',
                                 } %}
                                 <div class="wrapper-image">
@@ -35,13 +35,13 @@
                                 </div>
                                 <div class="content">
                                     <a href="{{ path('entity.node.canonical', {'node': new.id}) }}">
-                                        Gas natural para la competitividad industrial
+                                        {{ new.get('title').value }}
                                     </a>
                                     <p>Fuente: La República</p>
-                                    <p>Fecha: Noviembre 23 de 2018</p>
+                                    <p>Fecha: {{ new.published_at.value|date('F j de Y') }}</p>
                                 </div>
                             </article>
-                            {% if loop.index is divisible by(2) %}
+                            {% if loop.index is divisible by(2) || loop.index > 1 %}
                                 </div>
                             {% endif %}
                         {% endfor %}
