@@ -9,7 +9,7 @@
                 <a href="/publicaciones/?created[min]={{ currentYear }}-01-01&created[max]={{ currentYear }}-12-31"
                    rel="NOINDEX, FOLLOW">Año {{ currentYear }}</a>
             </li>
-            {% set currentYear - 1 %}
+            {% set currentYear = currentYear - 1 %}
         {% endfor %}
     </ul>
 </nav>
