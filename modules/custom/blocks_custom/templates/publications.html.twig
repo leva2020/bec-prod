@@ -29,7 +29,7 @@
                                         <a href="{{ path('entity.node.canonical', {'node': empresa.id}) }}">
                                             {{ empresa.get('title').value }}
                                         </a>
-                                        <em>Noviembre 22 de 2018</em>
+                                        <em>{{ empresa.published_at.value|date('j M Y') }}</em>
                                         <p>{{ empresa.get('field_descripcion').value }}</p>
                                     </div>
                                 </article>
