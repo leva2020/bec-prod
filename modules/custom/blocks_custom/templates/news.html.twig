@@ -1,1 +1,101 @@
-<h1>Bloque noticias</h1>
+<section class="content advanced-component news">
+    <div data-os-animation="fadeIn" data-os-animation-delay="0">
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="header-section col-md-12 col-xs-12">
+                        <h1 class="color-text-blue">Noticias del Sector</h1>
+
+                        <hr class="x1-5"/>
+                        <p><a href="/noticias-sector/" title="Noticias Sector">Ver otras Noticias del Sector</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="container">
+                <div class="row">
+                    {% if news %}
+                        {% for new in news %}
+                            {% if loop.index is divisible by(2) %}
+                                <div class="col-md-4">
+                            {% endif %}
+                            <article>
+                                {% set imagestyle = {
+                                    '#theme':      'image_style',
+                                    '#style_name': 'custom_118x120',
+                                    '#uri':        empresa.field_imagen_desktop.entity.uri.value,
+                                    '#alt':        '',
+                                } %}
+                                <div class="wrapper-image">
+                                    <a href="{{ path('entity.node.canonical', {'node': new.id}) }}">
+                                        {{ imagestyle }}
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <a href="{{ path('entity.node.canonical', {'node': new.id}) }}">
+                                        Gas natural para la competitividad industrial
+                                    </a>
+                                    <p>Fuente: La República</p>
+                                    <p>Fecha: Noviembre 23 de 2018</p>
+                                </div>
+                            </article>
+                            {% if loop.index is divisible by(2) %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                    <div class="col-md-4 aside">
+                        <div class="header-section">
+                            <h2 class="color-text-blue">Le puede interesar</h2>
+
+                            <hr class="x1"/>
+                        </div>
+
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

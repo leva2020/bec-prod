@@ -23,6 +23,8 @@ class PublicationsCustomBlock extends BlockBase
     {
         $query = Drupal::entityQuery('node')
             ->condition('type', 'publicaciones')
+            ->sort('created', 'DESC')
+            ->range(0, 4)
             ->execute();
         $empresas = [];
 

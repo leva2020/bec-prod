@@ -22,21 +22,23 @@ class NewsCustomBlock extends BlockBase
     public function build()
     {
         $query = Drupal::entityQuery('node')
-            ->condition('type', 'publicaciones')
+            ->condition('type', 'noticias')
+            ->sort('created', 'DESC')
+            ->range(0, 4)
             ->execute();
-        $empresas = [];
+        $news = [];
 
         if (!empty($query)) {
-            foreach ($query as $empresaId) {
-                $empresa = Node::load($empresaId);
-                $empresas[] = $empresa;
+            foreach ($query as $newId) {
+                $new = Node::load($newId);
+                $news[] = $new;
             }
         }
 
         return array(
             '#theme' => 'news_block_custom',
             '#titulo' => $this->t('Listado de noticias custom'),
-            '#news' => $empresas
+            '#news' => $news
         );
     }
 
