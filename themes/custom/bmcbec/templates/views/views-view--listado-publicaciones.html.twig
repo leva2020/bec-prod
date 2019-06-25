@@ -52,28 +52,6 @@
                     {% endfor %}
                 </div>
                 {{ pager }}
-                <nav id="pagination" class="text-center">
-                    <ul class="pagination">
-                        <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?page=2"
-                               aria-label="Previous"><i class="fa fa-angle-left"></i>Anterior</a>
-                        </li>
-                        <li class="even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?page=1">1</a>
-                        </li>
-                        <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?page=2">2</a>
-                        </li>
-                        <li class="active even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?page=3" class="disabled">3<span
-                                        class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?page=4"
-                               aria-label="Next">Siguiente<i class="fa fa-angle-right after"></i></a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
             <div id="left_col" class="col-sm-3 col-sm-pull-6" role="complementary">
                 {{ drupal_block('filters_publications_block') }}
