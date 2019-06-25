@@ -26,7 +26,6 @@
                                     <p>{{ data.field_descripcion[0].value }}</p>
                                 </div>
                             </div>
-
                             <div class="meta panel panel-default">
                                 <div class="panel-body">
                                     <div>
@@ -40,10 +39,10 @@
                                     <div class="row">
                                         <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
                                             <span>
-                                                <a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">Noticias del Gestor</a>,
+                                                <a href="/publicaciones/" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">Noticias del Gestor</a>,
                                             </span>
                                             <span>
-                                                <a href="/publicaciones/?category=2978" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>
+                                                <a href="/noticias" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>
                                             </span>
                                         </span>
                                     </div>
@@ -53,50 +52,25 @@
                     {% endfor %}
                 </div>
                 <nav id="pagination" class="text-center">
+                    {% ser pag = view.pager %}
+                    {{ pag }}
                     <ul class="pagination">
                         <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=2"
+                            <a href="http://www.bmcbec.com.co/publicaciones/?page=2"
                                aria-label="Previous"><i class="fa fa-angle-left"></i>Anterior</a>
                         </li>
                         <li class="even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=1">1</a>
+                            <a href="http://www.bmcbec.com.co/publicaciones/?page=1">1</a>
                         </li>
                         <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=2">2</a>
+                            <a href="http://www.bmcbec.com.co/publicaciones/?page=2">2</a>
                         </li>
                         <li class="active even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=3" class="disabled">3<span
+                            <a href="http://www.bmcbec.com.co/publicaciones/?page=3" class="disabled">3<span
                                         class="sr-only">(current)</span></a>
                         </li>
                         <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=4">4</a>
-                        </li>
-                        <li class="even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=5">5</a>
-                        </li>
-                        <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=6">6</a>
-                        </li>
-                        <li class="even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=7">7</a>
-                        </li>
-                        <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=8">8</a>
-                        </li>
-                        <li class="even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=9">9</a>
-                        </li>
-                        <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=10">10</a>
-                        </li>
-
-                        <li class="even">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=11">...</a>
-
-                        </li>
-
-                        <li class="odd">
-                            <a href="http://www.bmcbec.com.co/publicaciones/?category=2979&amp;page=4"
+                            <a href="http://www.bmcbec.com.co/publicaciones/?page=4"
                                aria-label="Next">Siguiente<i class="fa fa-angle-right after"></i></a>
                         </li>
                     </ul>
