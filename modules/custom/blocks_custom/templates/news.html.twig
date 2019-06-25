@@ -18,7 +18,7 @@
                 <div class="row">
                     {% if news %}
                         {% for new in news %}
-                            {% if loop.index is divisible by(2) ||  loop.index == 1 %}
+                            {% if loop.index is divisible by(2) or  loop.index == 1 %}
                                 <div class="col-md-4">
                             {% endif %}
                             <article>
@@ -41,7 +41,7 @@
                                     <p>Fecha: {{ new.published_at.value|date('F j de Y') }}</p>
                                 </div>
                             </article>
-                            {% if loop.index is divisible by(2) || loop.index > 1 %}
+                            {% if loop.index is divisible by(2) or loop.index > 1 %}
                                 </div>
                             {% endif %}
                         {% endfor %}
