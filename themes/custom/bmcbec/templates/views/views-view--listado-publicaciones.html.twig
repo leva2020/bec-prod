@@ -12,10 +12,10 @@
                     {% for key , row in resultados %}
                         {% set data = row._entity %}
                         <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
-                            <a href="/publicaciones/posts/noticias/noticias/g-008-b-inf-servicios-tecnolo-gicos/"
+                            <a href="{{ path('entity.node.canonical', {'node': data.id}) }}"
                                itemprop="url">
                                 <div class="image">
-                                    <img src="{{ file_url(data.field_image[0].entity.fileuri) }}" itemprop="image">
+                                    <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}" itemprop="image">
                                 </div>
                                 <p class="heading" itemprop="name headline">
                                     {{ data.field_titulo[0].value }}
@@ -23,10 +23,7 @@
                             </a>
                             <div class="info">
                                 <div class="text" itemprop="articleBody">
-                                    <p>La BMC Bolsa Mercantil de Colombia S.A., en
-                                        calidad de Gestor del Mercado de Gas Natural, se permite informar a los
-                                        participantes del mercado
-                                    </p>
+                                    <p>{{ data.field_descripcion[0].value }}</p>
                                 </div>
                             </div>
 
@@ -36,8 +33,8 @@
                                         <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                                             Publicado por BEC el
                                         </span>
-                                        <time itemprop="datePublished" datetime="2019-02-20">
-                                            <span class="date">20 Feb 2019</span>
+                                        <time itemprop="datePublished" datetime="{{ data.published_at.value|date('Y-m-d') }}">
+                                            <span class="date">{{ data.published_at.value|date('j M Y') }}</span>
                                         </time>
                                     </div>
                                     <div class="row">
