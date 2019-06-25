@@ -1,8 +1,3 @@
-{% set resultados = view.result %}
-{{ dump(resultados) }}
-{% for key , row in resultados %}
-      {%  set data = row._entity  %}
-{% endfor %}
 <section class="content">
     <div class="container">
         <div class="row">
@@ -13,133 +8,52 @@
         <div class="row">
             <div id="mid_col" class="col-sm-6 col-sm-push-3" role="main">
                 <div class="listing blog">
-                    <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
-                        <a href="/publicaciones/posts/noticias/noticias/g-008-b-inf-servicios-tecnolo-gicos/"
-                           itemprop="url">
-                            <div class="image"><img
-                                        src="/media/2165/gestor.jpg?anchor=center&amp;mode=crop&amp;width=1140&amp;height=550&amp;rnd=131777013400000000"
-                                        alt="" itemprop="image"></div>
-
-                            <p class="heading" itemprop="name headline">
-                                G-008 B INF Servicios Tecnológicos
-                            </p>
-                        </a>
-
-                        <div class="info">
-
-                            <div class="text" itemprop="articleBody"><p>La BMC Bolsa Mercantil de Colombia S.A., en
-                                    calidad de Gestor del Mercado de Gas Natural, se permite informar a los
-                                    participantes del mercado que el día de hoy a partir de las 10:30 p.m. y hasta las
-                                    6:00 a.m. del día de mañana</p></div>
-                        </div>
-
-                        <div class="meta panel panel-default">
-                            <div class="panel-body">
-                                <div>
-                        <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                            Publicado por
-BEC                            el
-                        </span>
-
-                                    <time itemprop="datePublished" datetime="2019-02-20"><span
-                                                class="date">20 Feb 2019</span></time>
+                    {% set resultados = view.result %}
+                    {% for key , row in resultados %}
+                        {% set data = row._entity %}
+                        <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
+                            <a href="/publicaciones/posts/noticias/noticias/g-008-b-inf-servicios-tecnolo-gicos/"
+                               itemprop="url">
+                                <div class="image">
+                                    <img src="{{ file_url(data.field_image[0].entity.fileuri) }}" itemprop="image">
                                 </div>
-                                <div class="row">
+                                <p class="heading" itemprop="name headline">
+                                    {{ data.field_titulo[0].value }}
+                                </p>
+                            </a>
+                            <div class="info">
+                                <div class="text" itemprop="articleBody">
+                                    <p>La BMC Bolsa Mercantil de Colombia S.A., en
+                                        calidad de Gestor del Mercado de Gas Natural, se permite informar a los
+                                        participantes del mercado
+                                    </p>
+                                </div>
+                            </div>
 
-            <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
-                    <span><a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">Noticias del Gestor</a>, </span>
-                    <span><a href="/publicaciones/?category=2978" title="Noticias"
-                             rel="NOINDEX, FOLLOW">Noticias</a></span>
-</span>
+                            <div class="meta panel panel-default">
+                                <div class="panel-body">
+                                    <div>
+                                        <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                            Publicado por BEC el
+                                        </span>
+                                        <time itemprop="datePublished" datetime="2019-02-20">
+                                            <span class="date">20 Feb 2019</span>
+                                        </time>
+                                    </div>
+                                    <div class="row">
+                                        <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
+                                            <span>
+                                                <a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">Noticias del Gestor</a>,
+                                            </span>
+                                            <span>
+                                                <a href="/publicaciones/?category=2978" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>
+                                            </span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
-                        <a href="/publicaciones/posts/noticias/noticias/g-007-b-inf-publicacio-n-indicadores-creg-del-mercado-primario-febrero-de-2019/"
-                           itemprop="url">
-                            <div class="image"><img
-                                        src="/media/2165/gestor.jpg?anchor=center&amp;mode=crop&amp;width=1140&amp;height=550&amp;rnd=131777013400000000"
-                                        alt="" itemprop="image"></div>
-
-                            <p class="heading" itemprop="name headline">
-                                G-007 B INF Publicación Indicadores CREG del Mercado Primario - Febrero de 2019
-                            </p>
-                        </a>
-
-                        <div class="info">
-
-                            <div class="text" itemprop="articleBody"><p>La BMC Bolsa Mercantil de Colombia S.A., en
-                                    calidad de Gestor del Mercado de Gas Natural, se permite divulgar a los
-                                    participantes del mercado y al público en general, los resultados del cálculo de los
-                                    indicadores del mercado primario (MP) para febrero de 2019, de conformidad con lo
-                                    establecido en la Resolución CREG 114 de 2017.</p></div>
-                        </div>
-
-                        <div class="meta panel panel-default">
-                            <div class="panel-body">
-                                <div>
-                        <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                            Publicado por
-BEC                            el
-                        </span>
-
-                                    <time itemprop="datePublished" datetime="2019-02-08"><span
-                                                class="date">08 Feb 2019</span></time>
-                                </div>
-                                <div class="row">
-
-            <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
-                    <span><a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">Noticias del Gestor</a>, </span>
-                    <span><a href="/publicaciones/?category=2978" title="Noticias"
-                             rel="NOINDEX, FOLLOW">Noticias</a></span>
-</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
-                        <a href="/publicaciones/posts/noticias/noticias/participantes-del-mercado-de-gas-natural-en-colombia/"
-                           itemprop="url">
-                            <div class="image"><img
-                                        src="/media/2165/gestor.jpg?anchor=center&amp;mode=crop&amp;width=1140&amp;height=550&amp;rnd=131777013400000000"
-                                        alt="" itemprop="image"></div>
-
-                            <p class="heading" itemprop="name headline">
-                                Participantes del Mercado de Gas Natural en Colombia.
-                            </p>
-                        </a>
-
-                        <div class="info">
-
-                            <div class="text" itemprop="articleBody"><p class="p1">Modificación Información
-                                    Transaccional y Operativa – Proceso de auditoría anual</p></div>
-                        </div>
-
-                        <div class="meta panel panel-default">
-                            <div class="panel-body">
-                                <div>
-                        <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                            Publicado por
-BEC                            el
-                        </span>
-
-                                    <time itemprop="datePublished" datetime="2019-01-28"><span
-                                                class="date">28 Jan 2019</span></time>
-                                </div>
-                                <div class="row">
-
-            <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
-                    <span><a href="/publicaciones/?category=2978" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>, </span>
-                    <span><a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">Noticias del Gestor</a></span>
-</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    {% endfor %}
                 </div>
                 <nav id="pagination" class="text-center">
                     <ul class="pagination">
