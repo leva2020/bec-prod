@@ -35,25 +35,9 @@
         <div class="row">
             <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT TEXT -->
                 <div class="page_component textblock">
-                    <h2 style="text-align: justify;">Bienvenido a nuestro Mapa Interactivo</h2>
-                    <p style="text-align: justify;">El mapa interactivo ubica&nbsp;los campos de producción y el sistema
-                        nacional de transporte&nbsp;(SNT) para el mercado de Gas Natural en Colombia. Los principales
-                        campos de producción se encuentran en la Guajira y en Casanare. El SNT cuenta con dos grandes
-                        sistemas conectados, uno en la costa y el otro para el interior del país.</p>
-                    <p style="text-align: justify;"><strong><em>TENGA EN CUENTA: </em></strong></p>
-                    <ul>
-                        <li style="text-align: justify;" class="odd"><em>La información reflejada en el mapa interactivo
-                                corresponde a la información del mes inmediatamente anterior al mes de la consulta.</em>
-                        </li>
-                        <li style="text-align: justify;" class="even"><em>La información para cada tramo está expresada
-                                en KPCD.</em></li>
-                        <li style="text-align: justify;" class="odd"><em>Dar clic sobre el mapa para mayor información.&nbsp;</em>
-                        </li>
-                    </ul>
-                    <p style="text-align: justify;">&nbsp;</p>
-                    <p style="text-align: justify;">&nbsp;</p>
+                    <h2 style="text-align: justify;">{{ node.title.value }}</h2>
+                    {{ node.body.value | raw }}
                 </div>
-                <!--// PAGE COMPONENT TEXT -->
             </div>
         </div>
     </div>
@@ -66,9 +50,10 @@
                 <div class="page_component codeblock">
                     <div class="map-fullsize"><a href="./../../../../../../App_Plugins/BECMap/map_site/index.cshtml"
                                                  target="_blank">Ver Mapa en pantalla completa</a></div>
-                    <iframe class="becmap" width="100%" height="1750"
-                            src="http://www.bmcbec.com.co/App_Plugins/BECMap/map_site/index.cshtml" frameborder="0"
-                            style="min-height:600px; height:600px; border:0;" scrolling="no"></iframe>
+                    <object class="becmap" width="100%" height="1750" data="{{ node.field_mapa.value }}" frameborder="0"
+                            style="min-height:600px; height:600px; border:0;" scrolling="no">
+
+                    </object>
 
                     <style>
                         .map-fullsize {
