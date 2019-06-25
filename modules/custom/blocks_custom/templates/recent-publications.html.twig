@@ -4,7 +4,7 @@
 
         {% if recents %}
             {% for recent in recents %}
-                {% if recent.id !== node.id %}
+                {% if recent.id != node.id %}
                     <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
                         <div class="info">
                             <a href="{{ path('entity.node.canonical', {'node': recent.id}) }}" itemprop="url">
