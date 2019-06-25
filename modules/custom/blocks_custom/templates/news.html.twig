@@ -37,8 +37,8 @@
                                     <a href="{{ path('entity.node.canonical', {'node': new.id}) }}">
                                         {{ new.get('title').value }}
                                     </a>
-                                    <p>Fuente: La República</p>
-                                    <p>Fecha: {{ new.published_at.value|date('F j de Y') }}</p>
+                                    <p>{{ empresa.get('field_descripcion').value }}</p>
+                                    <p>Fecha: {{ new.published_at.value|date('F j \de Y') }}</p>
                                 </div>
                             </article>
                             {% if loop.index is divisible by(2) and loop.index > 0 %}
@@ -50,10 +50,8 @@
                     <div class="col-md-4 aside">
                         <div class="header-section">
                             <h2 class="color-text-blue">Le puede interesar</h2>
-
                             <hr class="x1"/>
                         </div>
-
                         <article>
                             <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
                                                           title="Ayudas Audiovisuales"><img alt=""
