@@ -37,8 +37,8 @@
                                     <a href="{{ path('entity.node.canonical', {'node': new.id}) }}">
                                         {{ new.get('title').value }}
                                     </a>
-                                    <p>{{ empresa.get('field_descripcion').value }}</p>
-                                    <p>Fecha: {{ new.published_at.value|date('F j \de Y') }}</p>
+                                    <p>{{ new.get('field_descripcion').value }}</p>
+                                    <p>Fecha: {{ new.published_at.value|date('j M Y') }}</p>
                                 </div>
                             </article>
                             {% if loop.index is divisible by(2) and loop.index > 0 %}
