@@ -2,25 +2,29 @@
     <div class="listing blog">
         <p class="heading">Publicaciones Recientes</p>
         {% if recents %}
+            {% set aux = 0 %}
             {% for recent in recents %}
-                {% if recent.id != node.id %}
-                    <div class="item even" name="{{ node.id }}-{{ recent.id }} " itemscope="" itemtype="http://schema.org/BlogPosting">
-                        <div class="info">
-                            <a href="{{ path('entity.node.canonical', {'node': recent.id}) }}" itemprop="url">
-                                <p class="heading" itemprop="name headline">
-                                    {{ recent.title.value }}
-                                </p>
-                            </a>
+                {% if recent.id != nid %}
+                    {% if aux < 3 %}
+                        <div class="item even" name="{{ nid }}-{{ recent.id }} " itemscope="" itemtype="http://schema.org/BlogPosting">
+                            <div class="info">
+                                <a href="{{ path('entity.node.canonical', {'node': recent.id}) }}" itemprop="url">
+                                    <p class="heading" itemprop="name headline">
+                                        {{ recent.title.value }}
+                                    </p>
+                                </a>
 
-                        </div>
-                        <div class="meta">
-                            <div>
-                                <time itemprop="datePublished">
-                                    <span class="date">{{ recent.published_at.value|date('j M Y') }}</span>
-                                </time>
+                            </div>
+                            <div class="meta">
+                                <div>
+                                    <time itemprop="datePublished">
+                                        <span class="date">{{ recent.published_at.value|date('j M Y') }}</span>
+                                    </time>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
+                    {% aux = aux + 1 %}
                 {% endif %}
             {% endfor %}
         {% endif %}

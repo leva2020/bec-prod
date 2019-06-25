@@ -27,6 +27,11 @@ class RecentPublicationsCustomBlock extends BlockBase
             ->range(0, 4)
             ->execute();
         $publications = [];
+        $nid = 0;
+        $node = \Drupal::routeMatch()->getParameter('node');
+        if ($node instanceof \Drupal\node\NodeInterface) {
+            $nid = $node->id();
+        }
 
         if (!empty($query)) {
             foreach ($query as $publicationId) {
@@ -38,7 +43,8 @@ class RecentPublicationsCustomBlock extends BlockBase
         return array(
             '#theme' => 'recent_publications_block_custom',
             '#titulo' => $this->t('Filtros Publicaciones'),
-            '#recents' => $publications
+            '#recents' => $publications,
+            '#nid' => $nid
         );
     }
 
