@@ -3,21 +3,13 @@
         <a class="primary_colour_1-text" href="/publicaciones/">Todas las publicaciones</a>
     </p>
     <ul class="nav">
-        <li class="odd">
-            <a href="/publicaciones/?year=2019" rel="NOINDEX, FOLLOW">Año 2019</a>
-        </li>
-        <li class="even">
-            <a href="/publicaciones/?year=2018" rel="NOINDEX, FOLLOW">Año 2018</a>
-        </li>
-        <li class="odd">
-            <a href="/publicaciones/?year=2017" rel="NOINDEX, FOLLOW">Año 2017</a>
-        </li>
-        <li class="even">
-            <a href="/publicaciones/?year=2016" rel="NOINDEX, FOLLOW">Año 2016</a>
-        </li>
-        <li class="odd">
-            <a href="/publicaciones/?year=2015" rel="NOINDEX, FOLLOW">Año 2015</a>
-        </li>
-        </li>
+        {% set currentYear = now.year %}
+        {% for i in 0..4 %}
+            <li class="odd">
+                <a href="/publicaciones/?created[min]={{ currentYear }}-01-01&created[max]={{ currentYear }}-12-31"
+                   rel="NOINDEX, FOLLOW">Año {{ currentYear }}</a>
+            </li>
+            {% set currentYear - 1 %}
+        {% endfor %}
     </ul>
 </nav>
