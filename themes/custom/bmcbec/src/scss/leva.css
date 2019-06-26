@@ -11,3 +11,11 @@
 .promo_pods .primary_colour_2-bg {
     background-color: rgba(102, 201, 137, 1);
 }
+
+ul > li.active > a {
+    color: rgba(11, 90, 156, 1);
+}
+
+ul > li > a {
+    color: rgba(46,137,182,1);
+}
