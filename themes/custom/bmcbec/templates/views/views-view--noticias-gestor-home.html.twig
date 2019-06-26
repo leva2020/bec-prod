@@ -25,7 +25,8 @@
                                     <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
                                         {{ data.field_titulo[0].value }}
                                     </a>
-                                    <em>fecha</em>
+                                    {% set newsDate = data.created.value|date('j M Y') %}
+                                    <em>{% trans %} {{ newsDate }}{% endtrans %}</em>
                                     <p>{{ data.field_descripcion[0].value }}</p>
                                 </div>
                             </article>
