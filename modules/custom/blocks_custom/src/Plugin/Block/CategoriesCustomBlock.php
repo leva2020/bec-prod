@@ -22,48 +22,37 @@ class CategoriesCustomBlock extends BlockBase
     public function build()
     {
         $vid = 'publicaciones';
-        $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0, 1, true);
+        $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
 
-        /*$tree = [];
-        foreach ($terms as $tree_object) {
-            $this->buildTree($tree, $tree_object, $vid);
-        }*/
+        for ($i = 0; $i < count($terms); $i++) {
+            $weight = $terms[$i];
+            if($weight < $terms[$i + 1]->weight) {
+                $child = [
+                    "id" => $terms[$i + 1]->tid,
+                    "name" => $terms[$i + 1]->name,
+                    "weight" => $terms[$i + 1]->weight
+                ];
+            }
+            $term_data[$terms[$i]->tid] = [
+                "id" => $terms[$i]->tid,
+                "name" => $terms[$i]->name,
+                "weight" => $terms[$i]->weight,
+                "childs" => [$child]
+            ];
+        }
+        /*foreach ($terms as $term) {
+            $auxAnt = term->weight;
 
-        foreach ($terms as $term) {
-            $term_data[] = array(
+            $term_data[$term->tid] = array(
                 "id" => $term->tid,
                 "name" => $term->name,
+                "weight" => $term->weight,
             );
-        }
+        }*/
         return array(
             '#theme' => 'categories_block_custom',
             '#titulo' => $this->t('Listado Categorias'),
             '#terms' => $term_data
         );
     }
-
-    protected function buildTree(&$tree, $object, $vocabulary) {
-        if ($object->depth != 0) {
-            return;
-        }
-        $tree[$object->tid] = $object;
-        $tree[$object->tid]->children = [];
-        $object_children = &$tree[$object->tid]->children;
-
-        $children = $this->entityTypeManager->getStorage('taxonomy_term')->loadChildren($object->tid);
-        if (!$children) {
-            return;
-        }
-
-        $child_tree_objects = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($vocabulary, $object->tid);
-
-        foreach ($children as $child) {
-            foreach ($child_tree_objects as $child_tree_object) {
-                if ($child_tree_object->tid == $child->id()) {
-                    $this->buildTree($object_children, $child_tree_object, $vocabulary);
-                }
-            }
-        }
-    }
-
 }
