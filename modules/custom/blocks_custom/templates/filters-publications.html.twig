@@ -6,7 +6,7 @@
         {% set currentYear = "now"|date('Y') %}
         {% for i in 0..4 %}
             <li class="odd">
-                <a href="/publicaciones/?categoria=noticiascreated[min]={{ currentYear }}-01-01&created[max]={{ currentYear }}-12-31"
+                <a href="/publicaciones/?categoria=noticias&created[min]={{ currentYear }}-01-01&created[max]={{ currentYear }}-12-31"
                    rel="NOINDEX, FOLLOW">Año {{ currentYear }}</a>
             </li>
             {% set currentYear = currentYear - 1 %}
