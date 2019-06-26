@@ -8,6 +8,15 @@
                         {{ term.name }}
                     </a>
                 </li>
+                {% if term.child %}
+                    <ul>
+                        {% for child in term.child %}
+                            <a href="/publicaciones/?categoria={{ child.name }}" rel="NOINDEX, FOLLOW">
+                                {{ child.name }}
+                            </a>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             {% endfor %}
         </ul>
     {% endif %}
