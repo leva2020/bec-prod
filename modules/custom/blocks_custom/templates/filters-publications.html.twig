@@ -18,17 +18,19 @@
                 {% else %}
                     {% set numMonth = 12 %}
                 {% endif %}
-                <ul class="nav">
-                    {% for i in numMonth..1 %}
-                        <li class="odd">
-                            <a href="/publicaciones/?created[min]={{ currentYear }}-{{ i }}-01&created[max]={{ currentYear }}-{{ i }}-31"
-                               rel="NOINDEX, FOLLOW">
-                                <i class="fa fa-angle-right"></i>
-                                Mes {{ i }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
+                {% if currentYear == year %}
+                    <ul class="nav">
+                        {% for i in numMonth..1 %}
+                            <li class="odd">
+                                <a href="/publicaciones/?created[min]={{ currentYear }}-{{ i }}-01&created[max]={{ currentYear }}-{{ i }}-31"
+                                   rel="NOINDEX, FOLLOW">
+                                    <i class="fa fa-angle-right"></i>
+                                    Mes {{ i }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </li>
             {% set currentYear = currentYear - 1 %}
         {% endfor %}
