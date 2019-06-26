@@ -2,11 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                {% if  get.categoria %}
-                    <h1 itemprop="name headline">{{ get.categoria }}</h1>
-                {% else %}
-                    <h1 itemprop="name headline">Publicaciones</h1>
-                {% endif %}
+                {{ drupal_block('title_filters_categories_block') }}
             </div>
         </div>
         <div class="row">
