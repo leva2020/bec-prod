@@ -11,33 +11,23 @@
                                 Natural.</p>
                         </div>
 
-                        {% if publicaciones %}
-                            {% for empresa in publicaciones %}
-                                <article>
-                                    {% set imagestyle = {
-                                        '#theme':      'image_style',
-                                        '#style_name': 'custom_118x120',
-                                        '#uri':        empresa.field_imagen_desktop.entity.uri.value,
-                                        '#alt':        '',
-                                    } %}
-                                    <div class="wrapper-image">
-                                        <a href="{{ path('entity.node.canonical', {'node': empresa.id}) }}">
-                                            {{ imagestyle }}
-                                        </a>
-                                    </div>
-                                    <div class="content">
-                                        <a href="{{ path('entity.node.canonical', {'node': empresa.id}) }}">
-                                            {{ empresa.get('title').value }}
-                                        </a>
-                                        <em>{{ empresa.published_at.value|date('j M Y') }}</em>
-                                        <p>{{ empresa.get('field_descripcion').value }}</p>
-                                    </div>
-                                </article>
-                            {% endfor %}
-                        {% endif %}
-
+                        {% set resultados = view.result %}
+                        {% for key , row in resultados %}
+                            {% set data = row._entity %}
+                            <article>
+                                <div class="wrapper-image">
+                                    {{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}
+                                </div>
+                                <div class="content">
+                                    {{ data.field_titulo[0].value }}
+                                    <em>{{ data.create[0].value}}</em>
+                                    <p>{{ data.field_descripcion[0].value }}</p>
+                                </div>
+                            </article>
+                        {% endfor %}
                         <div class="wrapper-cta">
-                            <a class="btn btn-blue pull-left" href="publicaciones?categoria=Noticias%20del%20Gestor">Ver otras Noticias del Gestor</a>
+                            <a class="btn btn-blue pull-left" href="publicaciones?categoria=Noticias%20del%20Gestor">Ver
+                                otras Noticias del Gestor</a>
                         </div>
                     </div>
 
