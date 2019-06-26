@@ -35,8 +35,8 @@
                                             Publicado por BEC el
                                         </span>
                                         <time itemprop="datePublished"
-                                              datetime="{{ data.published_at.value|date('Y-m-d') }}">
-                                            <span class="date">{{ data.published_at.value|date('j M Y') }}</span>
+                                              datetime="{{ data.created.value|date('Y-m-d') }}">
+                                            <span class="date">{{ data.created.value|date('j M Y') }}</span>
                                         </time>
                                     </div>
                                     <div class="row">
@@ -46,7 +46,9 @@
                                                    rel="NOINDEX, FOLLOW">Noticias del Gestor</a>,
                                             </span>
                                             <span>
-                                                <a href="/publicaciones?categoria=noticias" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>
+                                                <a href="/publicaciones?categoria=Noticias" title="Noticias" rel="NOINDEX, FOLLOW">
+                                                    Noticias
+                                                </a>
                                             </span>
                                         </span>
                                     </div>
