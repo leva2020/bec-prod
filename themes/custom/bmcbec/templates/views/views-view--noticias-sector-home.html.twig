@@ -29,7 +29,8 @@
                             <div name="{{ loop.index0 }} - {{ loop.index0 is divisible by(2) }}"
                                  class="wrapper-image">
                                 <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
-                                    {{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}
+                                    <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}"
+                                         itemprop="image">
                                 </a>
                             </div>
                             <div class="content">
