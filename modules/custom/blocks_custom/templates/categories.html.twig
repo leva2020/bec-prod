@@ -5,7 +5,7 @@
             {% for term in terms %}
                 <li class="odd">
                     <a href="/publicaciones/?categoria={{ term.name }}" rel="NOINDEX, FOLLOW">
-                        {{ term.name }}
+                        {{ term.name }} - {{ term.weight }} - {{ term.parent }}
                     </a>
                 </li>
             {% endfor %}

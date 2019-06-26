@@ -26,7 +26,9 @@ class CategoriesCustomBlock extends BlockBase
         foreach ($terms as $term) {
             $term_data[] = array(
                 "id" => $term->tid,
-                "name" => $term->name
+                "name" => $term->name,
+                "weight" => $term->weight,
+                "parent" => $term->parent,
             );
         }
         return array(
