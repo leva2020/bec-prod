@@ -1,0 +1,97 @@
+<section class="content advanced-component news">
+    <div data-os-animation="fadeIn" data-os-animation-delay="0">
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="header-section col-md-12 col-xs-12">
+                        <h1 class="color-text-blue">Noticias del Sector</h1>
+                        <hr class="x1-5"/>
+                        <p>
+                            <a href="/publicaciones?categoria=Noticias%20del%20Sector" title="Noticias Sector">
+                                Ver otras
+                                Noticias del Sector
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container">
+                <div class="row">
+                    {% set resultados = view.result %}
+                    {% for key , row in resultados %}
+                        {% set data = row._entity %}
+                        {% if loop.index0 is divisible by(2) or  loop.index == 0 %}
+                            <div class="col-md-4">
+                        {% endif %}
+                        <article>
+                            <div name="{{ loop.index0 }} - {{ loop.index0 is divisible by(2) }}"
+                                 class="wrapper-image">
+                                <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
+                                    {{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}
+                                </a>
+                            </div>
+                            <div class="content">
+                                <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                    {{ data.field_titulo[0].value }}
+                                </a>
+                                <p>{{ data.field_descripcion[0].value }}</p>
+                                <p>Fecha:</p>
+                            </div>
+                        </article>
+                        {% if loop.index is divisible by(2) and loop.index > 0 %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <div class="col-md-4 aside">
+                        <div class="header-section">
+                            <h2 class="color-text-blue">Le puede interesar</h2>
+                            <hr class="x1"/>
+                        </div>
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+
+                        <article>
+                            <div class="wrapper-image"><a href="/ayudas-audiovisuales/"
+                                                          title="Ayudas Audiovisuales"><img alt=""
+                                                                                            src="http://www.bmcbec.com.co/media/1739/infomes_small.png"/>
+                                </a></div>
+
+                            <div class="content"><a href="/ayudas-audiovisuales/" target=""
+                                                    title="Ayudas Audiovisuales">Ayudas Audiovisuales</a></div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
