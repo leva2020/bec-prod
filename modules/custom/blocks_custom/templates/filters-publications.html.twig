@@ -5,9 +5,30 @@
     <ul class="nav">
         {% set currentYear = "now"|date('Y') %}
         {% for i in 0..4 %}
-            <li class="odd">
-                <a href="/publicaciones/?categoria=noticias&created[min]={{ currentYear }}-01-01&created[max]={{ currentYear }}-12-31"
-                   rel="NOINDEX, FOLLOW">Año {{ currentYear }}</a>
+            {% set auxClass = '' %}
+            {% if currentYear == year %}
+                {% set auxClass = 'active' %}
+            {% endif %}
+            <li class="odd {{ auxClass }}">
+                <a href="/publicaciones/?created[min]={{ currentYear }}-01-01&created[max]={{ currentYear }}-12-31"
+                   rel="NOINDEX, FOLLOW">Año {{ currentYear }}
+                </a>
+                {% if i == 0 %}
+                    {% set numMonth = "now"|date('n') %}
+                {% else %}
+                    {% set numMonth = 12 %}
+                {% endif %}
+                <ul class="nav">
+                    {% for i in numMonth..1 %}
+                        <li class="odd">
+                            <a href="/publicaciones/?created[min]={{ currentYear }}-{{ i }}-01&created[max]={{ currentYear }}-{{ i }}-31"
+                               rel="NOINDEX, FOLLOW">
+                                <i class="fa fa-angle-right"></i>
+                                Mes {{ i }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </li>
             {% set currentYear = currentYear - 1 %}
         {% endfor %}

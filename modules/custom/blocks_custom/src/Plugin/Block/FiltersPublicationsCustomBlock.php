@@ -21,22 +21,19 @@ class FiltersPublicationsCustomBlock extends BlockBase
      */
     public function build()
     {
-        $query = Drupal::entityQuery('node')
-            ->condition('type', 'publicaciones')
-            ->execute();
-        $empresas = [];
-
-        if (!empty($query)) {
-            foreach ($query as $empresaId) {
-                $empresa = Node::load($empresaId);
-                $empresas[] = $empresa;
-            }
+        $year = '';
+        $month = '';
+        if($_GET['created']) {
+            $year = $_GET['created']['min'];
+            $year = explode('-', $year)[0];
+            $month = explode('-', $year)[1];
         }
 
         return array(
             '#theme' => 'filters_publications_block_custom',
             '#titulo' => $this->t('Filtros Publicaciones'),
-            '#news' => $empresas
+            '#year' => $year,
+            '#month' => $month
         );
     }
 
