@@ -37,6 +37,8 @@
                                         <time itemprop="datePublished"
                                               datetime="{{ data.created.value|date('Y-m-d') }}">
                                             <span class="date">{{ data.created.value|date('j M Y') }}</span>
+                                            {% set newsDate = data.created.value|date('j M Y') %}
+                                            {% trans %} {{ newsDate }}{% endtrans %}
                                         </time>
                                     </div>
                                     <div class="row">
