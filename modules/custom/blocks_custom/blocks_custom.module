@@ -44,7 +44,7 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                 'variables' => [
                     'titulo' => 'Título por defecto',
                     'descripcion' => 'descripción por defecto',
-                    'news' => NULL
+                    'terms' => NULL
                 ],
                 'template' => 'categories'
             ],

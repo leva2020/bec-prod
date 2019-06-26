@@ -21,22 +21,18 @@ class CategoriesCustomBlock extends BlockBase
      */
     public function build()
     {
-        $query = Drupal::entityQuery('node')
-            ->condition('type', 'publicaciones')
-            ->execute();
-        $empresas = [];
-
-        if (!empty($query)) {
-            foreach ($query as $empresaId) {
-                $empresa = Node::load($empresaId);
-                $empresas[] = $empresa;
-            }
+        $vid = 'publicaciones';
+        $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+        foreach ($terms as $term) {
+            $term_data[] = array(
+                "id" => $term->tid,
+                "name" => $term->name
+            );
         }
-
         return array(
             '#theme' => 'categories_block_custom',
-            '#titulo' => $this->t('Filtros Publicaciones'),
-            '#news' => $empresas
+            '#titulo' => $this->t('Listado Categorias'),
+            '#terms' => $term_data
         );
     }
 
