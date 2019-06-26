@@ -5,14 +5,14 @@
             {% for term in terms %}
                 <li class="odd">
                     <a href="/publicaciones/?categoria={{ term.name }}" rel="NOINDEX, FOLLOW">
-                        {{ term.name }}
+                        {{ term.name }} - {{ term.weight }}
                     </a>
                 </li>
                 {% if term.child %}
                     <ul>
                         {% for child in term.child %}
                             <a href="/publicaciones/?categoria={{ child.name }}" rel="NOINDEX, FOLLOW">
-                                {{ child.name }}
+                                {{ child.name }} - {{ term.weight }}
                             </a>
                         {% endfor %}
                     </ul>
