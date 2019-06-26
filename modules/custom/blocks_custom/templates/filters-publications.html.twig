@@ -19,7 +19,7 @@
                     {% set numMonth = 12 %}
                 {% endif %}
                 {% if currentYear == year %}
-                    <!--<ul class="nav">
+                    <ul class="nav">
                         {% for i in numMonth..1 %}
                             <li class="odd">
                                 <a href="/publicaciones/?created[min]={{ currentYear }}-{{ i }}-01&created[max]={{ currentYear }}-{{ i }}-31"
@@ -29,7 +29,7 @@
                                 </a>
                             </li>
                         {% endfor %}
-                    </ul>-->
+                    </ul>
                 {% endif %}
             </li>
             {% set currentYear = currentYear - 1 %}

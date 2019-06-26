@@ -19,3 +19,15 @@ ul > li.active > a {
 ul > li > a {
     color: rgba(46,137,182,1);
 }
+
+nav.sub ul ul {
+    font-size: 85%;
+}
+
+nav.sub ul li.active a {
+    font-weight: 500;
+}
+
+nav.sub ul ul li a {
+    padding: 10px 15px;
+}
