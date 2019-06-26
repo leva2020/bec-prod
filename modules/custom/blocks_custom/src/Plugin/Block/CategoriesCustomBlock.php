@@ -52,7 +52,8 @@ class CategoriesCustomBlock extends BlockBase
         return array(
             '#theme' => 'categories_block_custom',
             '#titulo' => $this->t('Listado Categorias'),
-            '#terms' => $term_data
+            '#terms' => $term_data,
+            '#title' => $_GET['categoria']
         );
     }
 }

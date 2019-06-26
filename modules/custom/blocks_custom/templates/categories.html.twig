@@ -1,18 +1,18 @@
 <nav class="sub panel panel-default">
     {% if terms %}
-        <p class="heading primary_colour_1-text"><span>Categorías</span></p>
+        <p class="heading primary_colour_1-text"><span>Categorías - {{ title }}</span></p>
         <ul class="nav">
             {% for term in terms %}
                 <li class="odd">
                     <a href="/publicaciones/?categoria={{ term.name }}" rel="NOINDEX, FOLLOW">
-                        {{ term.name }} - {{ term.weight }}
+                        {{ term.name }}
                     </a>
                 </li>
                 {% if term.child %}
                     <ul>
                         {% for child in term.child %}
                             <a href="/publicaciones/?categoria={{ child.name }}" rel="NOINDEX, FOLLOW">
-                                {{ child.name }} - {{ term.weight }}
+                                {{ child.name }}
                             </a>
                         {% endfor %}
                     </ul>
