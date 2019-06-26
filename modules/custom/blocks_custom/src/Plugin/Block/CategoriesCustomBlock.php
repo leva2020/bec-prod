@@ -31,7 +31,8 @@ class CategoriesCustomBlock extends BlockBase
         $result = [];
 
         foreach ($tree as $term) {
-            $result[] = $term->getTerm();
+            $result['tid'] = $term->tid;
+            $result['name'] = $term->name;
         }
 
         /*$vid = 'publicaciones';
