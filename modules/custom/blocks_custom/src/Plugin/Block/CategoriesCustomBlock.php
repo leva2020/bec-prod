@@ -22,7 +22,7 @@ class CategoriesCustomBlock extends BlockBase
     public function build()
     {
         $vid = 'publicaciones';
-        $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0);
+        $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid, 0, 1, true);
 
         /*$tree = [];
         foreach ($terms as $tree_object) {
