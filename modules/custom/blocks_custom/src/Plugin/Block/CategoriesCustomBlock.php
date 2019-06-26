@@ -33,8 +33,6 @@ class CategoriesCustomBlock extends BlockBase
             $term_data[] = array(
                 "id" => $term->tid,
                 "name" => $term->name,
-                "weight" => $term->children,
-                "parent" => $term->parents,
             );
         }
         return array(
