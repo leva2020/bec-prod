@@ -11,7 +11,7 @@
                         {% set imagestyle = {
                             '#theme':      'image_style',
                             '#style_name': 'large',
-                            '#uri':        node.field_banner_principal[0].entity.uri.value,
+                            '#uri':        node.field_imagen.entity.uri.value,
                             '#alt':        '',
                         } %}
                         {{ imagestyle }}
@@ -54,11 +54,11 @@
             <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT CODE -->
                 <div class="page_component codeblock">
                     <div class="map-fullsize">
-                        <a href="{{ node.field_mapa.url }}" target="_blank">
-                            Ver Mapa en pantalla completa
+                        <a href="{{ node.field_mapa.0.url }}" target="_blank">
+                            Ver Mapa en pantalla completa...
                         </a>
                     </div>
-                    <iframe class="becmap" width="100%" height="1750" src="{{ node.field_mapa.url }}" frameborder="0"
+                    <iframe class="becmap" width="100%" height="1750" src="{{ node.field_mapa.0.url }}" frameborder="0"
                             style="min-height:600px; height:600px; border:0;" scrolling="no">
                     </iframe>
 
