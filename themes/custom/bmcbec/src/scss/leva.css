@@ -31,3 +31,8 @@ nav.sub ul li.active a {
 nav.sub ul ul li a {
     padding: 10px 15px;
 }
+
+.content .advanced-component .grid .secondary_colour_1-bg {
+    background-color: rgba(46,137,182,1);
+    color: rgba(255,255,255,1);
+}
