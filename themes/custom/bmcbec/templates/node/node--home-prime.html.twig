@@ -3,9 +3,10 @@
         <div class="umb-grid">
             <div class="grid-section">
                 <div>
-                    user:
-                    {% if logged_in %}
-                        <p>The user is authenticated".</p>
+                    {% if !logged_in %}
+                    {% redirect '/user/login' %}
+                    {% else %}
+                        logueado
                     {% endif %}
                     <div class="container">
                         <div class="row clearfix">
@@ -26,7 +27,8 @@
                                     <h2 style="font-size: 40px;">{{ node.field_modulo_1.value }}</h2>
                                     <p><br><br><br></p>
                                     <p style="font-size: 20px;">
-                                        <a href="{{ node.field_iframe.0.url }}" target="_blank" title="Escuela Bolsa Mercantil">
+                                        <a href="{{ node.field_iframe.0.url }}" target="_blank"
+                                           title="Escuela Bolsa Mercantil">
                                             Acceder Aquí &gt;
                                         </a>
                                     </p>
