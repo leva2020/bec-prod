@@ -1,13 +1,10 @@
+{% if logged_in %}{% else %}
+    <script>window.location.href = '/user/login'</script>{% endif %}
 <section class="content advanced-component grid secondary_colour_2-bg">
     <div class="" data-os-animation="fadeIn" data-os-animation-delay="0">
         <div class="umb-grid">
             <div class="grid-section">
                 <div>
-                    {% if logged_in %}
-                        logueado
-                    {% else %}
-                        <script>window.location.href = '/user/login'</script>
-                    {% endif %}
                     <div class="container">
                         <div class="row clearfix">
                             <div class="col-md-6 column">
@@ -41,3 +38,280 @@
         </div>
     </div>
 </section>
+
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+                <div class="page_component codeblock">
+                    <iframe id="BI1" width="100%" height="900"
+                            src="{{ node.field_bloque_2.0.url }}"
+                            style="height:900px; border:0;" scrolling="no">
+                    </iframe>
+                    <style>
+                        #pos_4003 + section > div {
+                            width: 100% !important;
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        #pos_4003 + section > div > div > div {
+                            width: 100% !important;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+<section class="content advanced-component grid secondary_colour_1-bg">
+    <div class="" data-os-animation="fadeIn" data-os-animation-delay="0">
+
+
+        <div class="umb-grid">
+            <div class="grid-section">
+                <div>
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-6 column">
+                                <div>
+
+
+                                    <h3 class="heading main secondary_colour_3-text">Aquí encontrará</h3>
+                                    <div class="text secondary_colour_3-text">
+                                        <p style="text-align: justify;"><br>Está página es exclusiva para Usuarios
+                                            Premium. En este sitio encontrará<span>&nbsp;</span><em>información
+                                                privilegiada</em><span>&nbsp;</span>sobre el&nbsp;<strong>Mercado de Gas
+                                                Natural en Colombia</strong>.</p>
+                                        <p style="text-align: justify;">Los informes y reportes disponibles en esta
+                                            sección, son diseñados&nbsp;con la última tecnología en&nbsp;<em>Inteligencia
+                                                de Negocio (BI),&nbsp;</em>que le permitirá conocer&nbsp;con mayor
+                                            detalle la información relacionada con el Gestor del Mercado de Gas Natural.
+                                        </p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div>
+
+
+                                    <p>
+                                        <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/pnJTiDD7i_0?rel=0&amp;showinfo=0"
+                                                frameborder="0" allow="autoplay; encrypted-media"
+                                                allowfullscreen=""></iframe>
+                                    </p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+                <div class="page_component codeblock">
+                    <iframe id="BI2" width="100%" height="900"
+                            src="https://app.powerbi.com/view?r=eyJrIjoiZDdhOGY3MDctMzMxYy00M2VkLWFjMWMtOTE5MGE2OGJlMjQ3IiwidCI6IjZkNjBhNTIxLWZlNzMtNDg3Ni1hZDZiLTViZTg3MzBlNjQwYiIsImMiOjR9"
+                            style="height:900px; border:0;" scrolling="no"></iframe>
+
+                    <style>
+                        #pos_4005 + section > div {
+                            width: 100% !important;
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        #pos_4005 + section > div > div > div {
+                            width: 100% !important;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content advanced-component image_carousel secondary_colour_3-bg">
+    <div class="container">
+
+        <div class="row overview " data-os-animation="fadeIn" data-os-animation-delay="0s">
+            <div class="col-md-8 col-sm-10 col-xs-12">
+                <h3 class="heading main ">Informes Disponibles</h3>
+                <div class="text ">
+                    <p>Entre las siguientes opciones por favor elija el informe de su interés</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="gallery slides slick-initialized slick-slider">
+                    <div class="slick-list draggable" tabindex="0">
+                        <div class="slick-track"
+                             style="opacity: 1; width: 4275px; transform: translate3d(-1140px, 0px, 0px);">
+                            <div class="item even slick-slide slick-cloned" index="-4" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/informe-mensual/page-components/"> <img
+                                                src="/media/2058/informe-mensual_1.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131710520870000000"
+                                                alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide slick-cloned" index="-3" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/información-operativa-punto-de-inyeccion/">
+                                        <img src="/media/2366/bec_-_banner_reportes-01-01.png?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131856251330000000"
+                                             alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item even slick-slide slick-cloned" index="-2" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/igas-express/"> <img
+                                                src="/media/2389/bec_-_banner_reportes-01-01-02.png?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131870543560000000"
+                                                alt="iGas Express">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide slick-cloned" index="-1" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/producción-nacional-e-importación-de-gas-natural/">
+                                        <img src="/media/2771/produccio-n-nacional-e-importacio-n-de-gas.png?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=132004892940000000"
+                                             alt="Producción Nacional e Importación de Gas Natural">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide slick-active" index="0" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/comportamiento-operativo/"> <img
+                                                src="/media/2054/comportamiento-operativo.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131709720120000000"
+                                                alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item even slick-slide slick-active" index="1" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/owi_temp_prime/usuarios-registrados/indicadores-macroeconomicos/"> <img
+                                                src="/media/2055/indicadores-macroeconómicos.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131709720120000000"
+                                                alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide slick-active" index="2" style="width: 285px;">
+                                <div class="image">
+                                    <a href="http://www.bmcbec.com.co/prime/usuarios-registrados/precios-internacionales/">
+                                        <img src="/media/2053/precios_de_referencia_internacionales.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131709720110000000"
+                                             alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item even slick-slide slick-active" index="3" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/informe-mensual/page-components/"> <img
+                                                src="/media/2058/informe-mensual_1.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131710520870000000"
+                                                alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide" index="4" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/información-operativa-punto-de-inyeccion/">
+                                        <img src="/media/2366/bec_-_banner_reportes-01-01.png?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131856251330000000"
+                                             alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item even slick-slide" index="5" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/igas-express/"> <img
+                                                src="/media/2389/bec_-_banner_reportes-01-01-02.png?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131870543560000000"
+                                                alt="iGas Express">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide" index="6" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/producción-nacional-e-importación-de-gas-natural/">
+                                        <img src="/media/2771/produccio-n-nacional-e-importacio-n-de-gas.png?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=132004892940000000"
+                                             alt="Producción Nacional e Importación de Gas Natural">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide slick-cloned" index="7" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/comportamiento-operativo/"> <img
+                                                src="/media/2054/comportamiento-operativo.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131709720120000000"
+                                                alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item even slick-slide slick-cloned" index="8" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/owi_temp_prime/usuarios-registrados/indicadores-macroeconomicos/"> <img
+                                                src="/media/2055/indicadores-macroeconómicos.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131709720120000000"
+                                                alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item odd slick-slide slick-cloned" index="9" style="width: 285px;">
+                                <div class="image">
+                                    <a href="http://www.bmcbec.com.co/prime/usuarios-registrados/precios-internacionales/">
+                                        <img src="/media/2053/precios_de_referencia_internacionales.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131709720110000000"
+                                             alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                            <div class="item even slick-slide slick-cloned" index="10" style="width: 285px;">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/informe-mensual/page-components/"> <img
+                                                src="/media/2058/informe-mensual_1.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=160&amp;rnd=131710520870000000"
+                                                alt="">
+                                        <div class="overlayicon" style="width: 284px; height: 151px;"><i
+                                                    class="fa fa-link"></i></div>
+                                    </a></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="slick-prev" style="display: table;"><i class="fa fa-angle-left"></i></div>
+                    <div class="slick-next" style="display: table;"><i class="fa fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
