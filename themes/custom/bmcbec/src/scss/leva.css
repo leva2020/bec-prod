@@ -40,11 +40,11 @@ nav.sub ul ul li a {
 
 /* CSS CARRUSEL */
 .secondary_colour_3-bg.image_carousel .slick-next {
-    color: rgba(46, 137, 182, 1);
+    color: rgba(255,255,255,0.75);
 }
 
 .secondary_colour_3-bg.image_carousel .slick-prev {
-    color: rgba(46, 137, 182, 1);
+    color: rgba(255,255,255,0.75);
 }
 
 .secondary_colour_3-bg.image_carousel .slick-prev {
@@ -61,7 +61,6 @@ nav.sub ul ul li a {
 }
 
 .image_carousel .slick-next {
-    right: 41px;
     left: auto;
 }
 
