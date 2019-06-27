@@ -1,0 +1,37 @@
+<section class="content advanced-component image_carousel secondary_colour_3-bg">
+    <div class="container">
+        <div class="row overview " data-os-animation="fadeIn" data-os-animation-delay="0s">
+            <div class="col-md-8 col-sm-10 col-xs-12">
+                <h3 class="heading main ">Informes Disponibles</h3>
+                <div class="text ">
+                    <p>Entre las siguientes opciones por favor elija el informe de su interés</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="gallery slides">
+                    {% if reports %}
+                    {% for report in reports %}
+                        <div class="item">
+                            <div class="image">
+                                <a href="/prime/usuarios-registrados/informe-mensual/page-components/">
+                                    {% set imagestyle = {
+                                        '#theme':      'image_style',
+                                        '#style_name': 'custom_360x171',
+                                        '#uri':        report.field_image.entity.uri.value,
+                                        '#alt':        '',
+                                    } %}
+                                    {{ imagestyle }}
+                                    <div class="overlayicon">
+                                        <i class="fa fa-link"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

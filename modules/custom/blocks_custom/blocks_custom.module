@@ -68,6 +68,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'title' => NULL
                 ],
                 'template' => 'title-publications'
+            ],
+        'reports_prime_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Título por defecto',
+                    'descripcion' => 'descripción por defecto',
+                    'reports' => NULL
+                ],
+                'template' => 'reports-prime'
             ]
     ];
 }
