@@ -67,11 +67,8 @@
     </div>
 </section>
 
-<!--
 <section class="content advanced-component grid secondary_colour_1-bg">
     <div class="" data-os-animation="fadeIn" data-os-animation-delay="0">
-
-
         <div class="umb-grid">
             <div class="grid-section">
                 <div>
@@ -79,36 +76,20 @@
                         <div class="row clearfix">
                             <div class="col-md-6 column">
                                 <div>
-
-
-                                    <h3 class="heading main secondary_colour_3-text">Aquí encontrará</h3>
                                     <div class="text secondary_colour_3-text">
-                                        <p style="text-align: justify;"><br>Está página es exclusiva para Usuarios
-                                            Premium. En este sitio encontrará<span>&nbsp;</span><em>información
-                                                privilegiada</em><span>&nbsp;</span>sobre el&nbsp;<strong>Mercado de Gas
-                                                Natural en Colombia</strong>.</p>
-                                        <p style="text-align: justify;">Los informes y reportes disponibles en esta
-                                            sección, son diseñados&nbsp;con la última tecnología en&nbsp;<em>Inteligencia
-                                                de Negocio (BI),&nbsp;</em>que le permitirá conocer&nbsp;con mayor
-                                            detalle la información relacionada con el Gestor del Mercado de Gas Natural.
-                                        </p>
+                                        {{ node.body.value | raw }}
                                     </div>
-
-
                                 </div>
                             </div>
                             <div class="col-md-6 column">
                                 <div>
-
-
                                     <p>
                                         <iframe width="560" height="315"
-                                                src="https://www.youtube.com/embed/pnJTiDD7i_0?rel=0&amp;showinfo=0"
+                                                src="{{ node.field_video.0.url }}"
                                                 frameborder="0" allow="autoplay; encrypted-media"
-                                                allowfullscreen=""></iframe>
+                                                allowfullscreen="">
+                                        </iframe>
                                     </p>
-
-
                                 </div>
                             </div>
                         </div>
@@ -121,6 +102,7 @@
     </div>
 </section>
 
+<!--
 <section class="content advanced-component standard-components">
     <div class="container">
         <div class="row">
