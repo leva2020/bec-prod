@@ -12,6 +12,7 @@ base:
     dist/js/greenSock/minified/TweenMax.min.js: {}
     dist/js/owl.carousel.js: {}
     dist/js/main.min.js: {}
+    src/js/slick.js: {}
   dependencies:
     - core/jquery
     - core/underscore
