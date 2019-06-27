@@ -8,8 +8,13 @@
 
                     <!-- OFMG OWI - 20171004 -->
                     <div class="image">
-                        <img src="/media/1506/promigas2.png?center=0.52083333333333337,0.50666666666666671&amp;mode=crop&amp;width=1600&amp;height=550&amp;rnd=131401735250000000"
-                             alt="">
+                        {% set imagestyle = {
+                            '#theme':      'image_style',
+                            '#style_name': 'large',
+                            '#uri':        node.field_banner_principal[0].entity.uri.value,
+                            '#alt':        '',
+                        } %}
+                        {{ imagestyle }}
                     </div>
                     <!-- end - OFMG OWI - 20171004 -->
 
@@ -48,11 +53,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT CODE -->
                 <div class="page_component codeblock">
-                    <div class="map-fullsize"><a href="{{ node.field_mapa.value }}"
-                                                 target="_blank">Ver Mapa en pantalla completa</a></div>
-                    <iframe class="becmap" width="100%" height="1750" src="{{ node.field_mapa.value }}" frameborder="0"
+                    <div class="map-fullsize">
+                        <a href="{{ node.field_mapa.url }}" target="_blank">
+                            Ver Mapa en pantalla completa
+                        </a>
+                    </div>
+                    <iframe class="becmap" width="100%" height="1750" src="{{ node.field_mapa.url }}" frameborder="0"
                             style="min-height:600px; height:600px; border:0;" scrolling="no">
-
                     </iframe>
 
                     <style>
