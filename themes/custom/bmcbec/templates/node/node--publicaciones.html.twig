@@ -25,17 +25,17 @@
                             <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                                 Publicado por BEC el
                             </span>
-                            <time itemprop="datePublished" datetime="{{ node.published_at.value|date('Y-m-d') }}">
-                                <span class="date">{{ node.published_at.value|date('j M Y') }}</span>
+                            <time itemprop="datePublished" datetime="{{ node.created.value|date('Y-m-d') }}">
+                                <span class="date">{{ node.created.value|date('j M Y') }}</span>
                             </time>
                         </div>
                         <div class="row">
                             <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
                                 <span>
-                                    <a href="/publicaciones/?category=2978" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>,
+                                    <a href="/publicaciones/?categoria=Noticias" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>,
                                 </span>
                                 <span>
-                                    <a href="/publicaciones/?category=2979" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">
+                                    <a href="publicaciones?categoria=Noticias%20del%20Gestor" title="Noticias del Gestor" rel="NOINDEX, FOLLOW">
                                         Noticias del Gestor
                                     </a>
                                 </span>
@@ -45,14 +45,6 @@
                 </div>
                 <nav id="pager">
                     <ul class="pager nav">
-                        <!--<li class="previous odd">
-                            <a href="/publicaciones/posts/noticias/noticias/en-mayo-demanda-de-energía-en-el-país-subió-4-8-por-ciento/">
-                                <span>
-                                    <i class="fa fa-angle-left"></i>
-                                    Antiguo
-                                </span>
-                            </a>
-                        </li>-->
                         <li class="all hidden-xs even">
                             <a href="/publicaciones">
                                 <span>Todas las publicaciones</span>
