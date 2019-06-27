@@ -12,24 +12,25 @@
             <div class="col-xs-12">
                 <div class="gallery slides">
                     {% if reports %}
-                    {% for report in reports %}
-                        <div class="item">
-                            <div class="image">
-                                <a href="/prime/usuarios-registrados/informe-mensual/page-components/">
-                                    {% set imagestyle = {
-                                        '#theme':      'image_style',
-                                        '#style_name': 'custom_360x171',
-                                        '#uri':        report.field_image.entity.uri.value,
-                                        '#alt':        '',
-                                    } %}
-                                    {{ imagestyle }}
-                                    <div class="overlayicon">
-                                        <i class="fa fa-link"></i>
-                                    </div>
-                                </a>
+                        {% for report in reports %}
+                            <div class="item">
+                                <div class="image">
+                                    <a href="/prime/usuarios-registrados/informe-mensual/page-components/">
+                                        {% set imagestyle = {
+                                            '#theme':      'image_style',
+                                            '#style_name': 'custom_360x171',
+                                            '#uri':        report.field_image.entity.uri.value,
+                                            '#alt':        '',
+                                        } %}
+                                        {{ imagestyle }}
+                                        <div class="overlayicon">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
