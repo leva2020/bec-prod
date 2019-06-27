@@ -1,0 +1,37 @@
+<section class="content advanced-component grid secondary_colour_2-bg">
+    <div class="" data-os-animation="fadeIn" data-os-animation-delay="0">
+        <div class="umb-grid">
+            <div class="grid-section">
+                <div>
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-6 column">
+                                <div>
+                                    {% set imagestyle = {
+                                        '#theme':      'image_style',
+                                        '#style_name': 'large',
+                                        '#uri':        node.field_imagen_desktop.entity.uri.value,
+                                        '#alt':        '',
+                                    } %}
+                                    {{ imagestyle }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 column">
+                                <div>
+                                    <p><br><br></p>
+                                    <h2 style="font-size: 40px;">{{ node.field_modulo_1.value }}</h2>
+                                    <p><br><br><br></p>
+                                    <p style="font-size: 20px;">
+                                        <a href="{{ node.field_iframe.0.url }}" target="_blank" title="Escuela Bolsa Mercantil">
+                                            Acceder Aquí &gt;
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
