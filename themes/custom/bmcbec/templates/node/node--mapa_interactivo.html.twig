@@ -90,10 +90,16 @@
                     {% endif %}
                     {% set imagestyle = {
                         '#theme':      'image_style',
-                        '#style_name': 'custom_118x120',
+                        '#style_name': 'custom_264x264',
                         '#uri':        icon.entity.uri.value,
                         '#alt':        '',
                     } %}
+                    {% if loop.index == 4 %}
+                        <div class="col-md-3 column">
+                            <div>
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="col-md-3 column">
                         <div>
                             {{ imagestyle }}
@@ -110,6 +116,12 @@
                                         <hr>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if loop.index == 5 %}
+                        <div class="col-md-3 column">
+                            <div>
                             </div>
                         </div>
                     {% endif %}
