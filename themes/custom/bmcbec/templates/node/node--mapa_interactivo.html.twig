@@ -83,54 +83,39 @@
     <div class="os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0">
         <div class="umb-grid">
             <div class="grid-section">
-                <div>
-                    <div class="container">
+                {% for icon in node.field_listado_c %}
+                    {% if loop.index0 is divisible by(4) or  loop.index == 0 %}
+                        <div class="container">
                         <div class="row clearfix">
-                            {% set imagestyle = {
-                                '#theme':      'image_style',
-                                '#style_name': 'custom_118x120',
-                                '#uri':        node.field_listado_c.0.entity.uri.value,
-                                '#alt':        '',
-                            } %}
-                            <div class="col-md-3 column">
-                                <div>
-                                    {{ imagestyle }}
-                                    <h5 style="text-align: center;">{{ node.field_listado_c.0.alt }}</h5>
-                                </div>
-                            </div>
-
+                    {% endif %}
+                    {% set imagestyle = {
+                        '#theme':      'image_style',
+                        '#style_name': 'custom_118x120',
+                        '#uri':        icon.entity.uri.value,
+                        '#alt':        '',
+                    } %}
+                    <div class="col-md-3 column">
+                        <div>
+                            {{ imagestyle }}
+                            <h5 style="text-align: center;">{{ icon.0.alt }}</h5>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <div class="container">
-                        <div class="row clearfix">
-                            <div class="col-md-12 column">
-                                <div>
-                                    <hr>
-                                </div>
-                            </div>
+                    {% if loop.index is divisible by(4) and loop.index > 0 %}
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="container">
-                        <div class="row clearfix">
-                            <div class="col-md-3 column">
-                                <div>
-                                    <img src="/media/1262/bmc-bec-contenido-mapa-interactivo-icono-planta-regasificacion.png"
-                                         alt="Planta de Regasificación">
-
-                                    <h5 style="text-align: center;">Planta de Regasificación</h5>
+                        </div>
+                        <div class="container">
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    <div>
+                                        <hr>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
-
-
     </div>
 </section>
 
