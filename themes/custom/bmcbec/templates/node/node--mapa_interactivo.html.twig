@@ -100,12 +100,6 @@
                             <h5 style="text-align: center;">{{ icon.0.alt }}</h5>
                         </div>
                     </div>
-                    {% if loop.index == 5 %}
-                        <div class="col-md-3 column">
-                            <div>
-                            </div>
-                        </div>
-                    {% endif %}
                     {% if loop.index is divisible by(4) and loop.index > 0 %}
                         </div>
                         </div>
@@ -116,6 +110,12 @@
                                         <hr>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if loop.index == 4 %}
+                        <div class="col-md-3 column">
+                            <div>
                             </div>
                         </div>
                     {% endif %}
