@@ -23,5 +23,6 @@ chartJS:
     dist/js/chartJS/Chart.bundle.min.js: {}
     dist/js/chartJS/Chart.js: {}
     dist/js/chartJS/Chart.min.js: {}
+    src/js/slick.js: {}
   dependencies:
     - core/jquery
