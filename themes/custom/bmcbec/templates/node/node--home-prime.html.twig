@@ -3,9 +3,10 @@
         <div class="umb-grid">
             <div class="grid-section">
                 <div>
-                    {%  for role in node.Owner.roles %}
-                        {{ role.entity.label }}
-                    {% endfor %}
+                    user:
+                    {% if logged_in %}
+                        <p>The user is authenticated".</p>
+                    {% endif %}
                     <div class="container">
                         <div class="row clearfix">
                             <div class="col-md-6 column">
