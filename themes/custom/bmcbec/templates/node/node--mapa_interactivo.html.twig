@@ -4,7 +4,6 @@
             <div class="slick-track" style="opacity: 1; width: 1378px;">
                 <div class="item short secondary_colour_3-bg odd slick-slide slick-active" index="0"
                      style="width: 1378px; position: relative; left: 0px; top: 0px; z-index: 900; opacity: 1;">
-                    <!-- OFMG OWI - 20171004 -->
                     <div class="image">
                         {% set imagestyle = {
                             '#theme':      'image_style',
@@ -14,9 +13,6 @@
                         } %}
                         {{ imagestyle }}
                     </div>
-                    <!-- end - OFMG OWI - 20171004 -->
-
-                    <!-- OFMG OWI - 20171004 -->
                     <div class="info">
                         <div class="container valign" style="margin-top: 237px;">
                             <!-- ROW -->
@@ -59,7 +55,6 @@
                     <iframe class="becmap" width="100%" height="1750" src="{{ node.field_mapa.0.url }}" frameborder="0"
                             style="" scrolling="no">
                     </iframe>
-
                     <style>
                         .map-fullsize {
                             text-align: right;
@@ -80,7 +75,6 @@
                         }
                     </style>
                 </div>
-                <!--// PAGE COMPONENT CODE -->
             </div>
         </div>
     </div>
@@ -141,11 +135,10 @@
                 <div class="page_component alert alert-warning alert-dismissible fade in" role="alert">
                     <div class="info">
                         <p>
-                            {{ node.field_tipo_legal.value }}
+                            {{ node.field_legal.value }}
                         </p>
                     </div>
                 </div>
-                <!--// PAGE COMPONENT ALERT -->
             </div>
         </div>
     </div>
