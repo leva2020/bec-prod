@@ -3,6 +3,9 @@
         <div class="umb-grid">
             <div class="grid-section">
                 <div>
+                    {%  for role in node.Owner.roles %}
+                        {{ role.entity.label }}
+                    {% endfor %}
                     <div class="container">
                         <div class="row clearfix">
                             <div class="col-md-6 column">
