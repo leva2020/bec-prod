@@ -101,7 +101,7 @@ $(window).bind("load resize scroll",function(e){
 	$('.banner .item:nth-child(12) .valign').valign();
 });
 
-if($(".image_carousel").length > 0) {
+if($(".image_carousel .item").length > 0) {
 	$(".image_carousel .slides").slick({
 		arrows: true,
 		prevArrow: '<div class="slick-prev"><i class="fa fa-angle-left"></i>',
