@@ -95,3 +95,6 @@
         <!--// ROW -->
     </div>
 </section>
+{% if node.field_banner_inferior.entity.field_titulo.value or node.field_banner_inferior.entity.field_descripcion_html.value %}
+    {% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+{% endif %}
