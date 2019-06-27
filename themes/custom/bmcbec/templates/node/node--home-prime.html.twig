@@ -3,10 +3,10 @@
         <div class="umb-grid">
             <div class="grid-section">
                 <div>
-                    {% if !logged_in %}
-                    {% redirect '/user/login' %}
-                    {% else %}
+                    {% if logged_in %}
                         logueado
+                    {% else %}
+                        {% redirect '/user/login' %}
                     {% endif %}
                     <div class="container">
                         <div class="row clearfix">
