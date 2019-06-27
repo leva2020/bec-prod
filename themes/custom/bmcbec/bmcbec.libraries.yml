@@ -13,6 +13,7 @@ base:
     dist/js/owl.carousel.js: {}
     dist/js/main.min.js: {}
     src/js/slick.js: {}
+    src/js/leva.js: {}
   dependencies:
     - core/jquery
     - core/underscore
