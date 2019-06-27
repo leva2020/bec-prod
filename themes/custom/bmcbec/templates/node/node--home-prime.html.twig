@@ -6,7 +6,7 @@
                     {% if logged_in %}
                         logueado
                     {% else %}
-                        {% redirect '/user/login' %}
+                        {% do redirect '/user/login' %}
                     {% endif %}
                     <div class="container">
                         <div class="row clearfix">
