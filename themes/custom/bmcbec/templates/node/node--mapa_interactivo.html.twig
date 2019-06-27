@@ -86,15 +86,19 @@
                 <div>
                     <div class="container">
                         <div class="row clearfix">
-                            field:
-                            1: {{ node.field_listado_c.0.entity.uri.value }}
-                            1: {{ node.field_listado_c.0.entity.alt.value }}
+                            {% set imagestyle = {
+                                '#theme':      'image_style',
+                                '#style_name': 'custom_118x120',
+                                '#uri':        node.field_listado_c.0.entity.uri.value,
+                                '#alt':        '',
+                            } %}
                             <div class="col-md-3 column">
                                 <div>
-                                    <img src="/media/1256/bmc-bec-contenido-mapa-interactivo-icono-central-termica.png">
-                                    <h5 style="text-align: center;">Central Térmica</h5>
+                                    {{ imagestyle }}
+                                    <h5 style="text-align: center;">{{ node.field_listado_c.0.entity.alt }}</h5>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
