@@ -131,3 +131,7 @@ block-video-prime {
     height: 258px;
     background-image:url(../../images/plantilla-banner-web-premium_21.png?width=750&amp;height=258)
 }
+
+.form-submit {
+    background-color: rgba(11,90,156,1);
+}
