@@ -87,14 +87,10 @@ function blocks_custom_theme($existing, $type, $theme, $path)
 *
 *  hook_form_alter implement
 */
-function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_id){
+function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
     global $base_url;
-    $prefix = '<div class="container"><div class="row">
-        <div class="col-xs-12">
-            <h1 class="heading">Acceso Prime</h1>
-        </div>
-    </div>
-    <div class="row">
+    $prefix = '
         <div id="left_col" class="col-sm-8" role="main">
             <p class="img-login-content" style="text-align: center;"></p>
             <p>&nbsp;</p>
@@ -110,9 +106,9 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
                 porterior al Congreso Naturgas 2018</p>
             <p>&nbsp;</p>
             <div class="login-user-bk"><span class="legend-user-login">Ingrese los Datos de Acceso a la Sección Prime:</span>';
-    $suffix = '<br><a href="/user/password">¿Olvido su contraseña?</a></div></div></div></div>';
+    $suffix = '<br><a href="/user/password">¿Olvido su contraseña?</a></div></div>';
     $myConfig = \Drupal::config('fancy_login.settings');
-    $site_name= \Drupal::config('system.site')->get('name');
+    $site_name = \Drupal::config('system.site')->get('name');
     if ($form_id == 'user_login_form') {
         $form['#prefix'] = $prefix;
         $form['name']['#title'] = 'Correo Electrónico (será su usuario) ';
@@ -122,16 +118,16 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
         $form['#suffix'] = $suffix;
     }
 
-    if($form_id == 'user_register_form' ){
+    if ($form_id == 'user_register_form') {
         $form['#prefix'] = $prefix;
         $form['name']['#title'] = !empty($myConfig->get('forgot_form_username')) ? $myConfig->get('forgot_form_username') : 'Username';
         $form['#suffix'] = $suffix;
     }
-    if($form_id == 'user_register_form' ){
-        $form['account']['mail']['#description'] =!empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : '';
-        $form['account']['mail']['#title']=!empty($myConfig->get('register_form_mail')) ? $myConfig->get('register_form_mail') : 'Email Address.';
-        $form['account']['name']['#description'] =!empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : "";
-        $form['account']['name']['#title']=!empty($myConfig->get('register_form_name')) ? $myConfig->get('register_form_name') : 'Username';
-        $form['actions']['submit']['#value'] =!empty($myConfig->get('register_form_button')) ? $myConfig->get('register_form_button') : 'Create new account.';
+    if ($form_id == 'user_register_form') {
+        $form['account']['mail']['#description'] = !empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : '';
+        $form['account']['mail']['#title'] = !empty($myConfig->get('register_form_mail')) ? $myConfig->get('register_form_mail') : 'Email Address.';
+        $form['account']['name']['#description'] = !empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : "";
+        $form['account']['name']['#title'] = !empty($myConfig->get('register_form_name')) ? $myConfig->get('register_form_name') : 'Username';
+        $form['actions']['submit']['#value'] = !empty($myConfig->get('register_form_button')) ? $myConfig->get('register_form_button') : 'Create new account.';
     }
 }
