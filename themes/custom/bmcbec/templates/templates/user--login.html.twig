@@ -8,11 +8,13 @@
         <div class="row">
             <div id="left_col" class="col-sm-8" role="main">
                 <p style="text-align: center;">
-                    <img style="width: 100%; height: auto;" src="/media/1974/plantilla-banner-web-premium_21.png" data-id="4009">
+                    <img style="width: 100%; height: auto;" src="/media/1974/plantilla-banner-web-premium_21.png"
+                         data-id="4009">
                 </p>
                 <p>&nbsp;</p>
                 <p style="text-align: right;">
-                    <a style="background-color: rgba(11,90,156,1);" href="{{ path('user.register') }}" title="Registro a Prime" class="btn primary_colour_1-bg secondary_colour_3-text">
+                    <a style="background-color: rgba(11,90,156,1);" href="{{ path('user.register') }}"
+                       title="Registro a Prime" class="btn primary_colour_1-bg secondary_colour_3-text">
                         <span>Aún no estoy inscrito, registrarme</span>
                     </a>
                 </p>
@@ -70,3 +72,164 @@
         display: none;
     }
 </style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="heading">Acceso Prime</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div id="left_col" class="col-sm-8" role="main">
+            <p style="text-align: center;">
+                <img style="width: 100%; height: auto;" src="/media/1974/plantilla-banner-web-premium_21.png" alt=""
+                     data-id="4009">
+            </p>
+            <p>&nbsp;</p>
+            <p style="text-align: right;">
+                <a href="/user/register/" title="Registro a Prime"
+                   class="btn primary_colour_1-bg secondary_colour_3-text">
+                    <span>Aún no estoy inscrito, registrarme</span>
+                </a>
+            </p>
+            <p>&nbsp;</p>
+            <p style="text-align: justify;">Si ya está registrado, ingrese al&nbsp;<em><strong>Acceso
+                        Prime</strong></em>&nbsp;con su correo electrónico (usuario)&nbsp;y contraseña, enviados
+                porterior al Congreso Naturgas 2018</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            form
+        </div>
+    </div>
+</div>
+
+<!-- FORM -->
+<form action="/prime/login/" enctype="multipart/form-data" method="post" novalidate="novalidate"><input
+            name="__RequestVerificationToken" type="hidden"
+            value="cMTnUP0NtvnKyyOOZcQ8RYhOy12ueQEr3j0e_PiCiJKclSs5DdrH0fwl5NrD2TbaoVrFEBEHHo-fLhQ2x7iIqOOEiVrkQEQiOpJcNpt8RKE1">
+    <div class="login" style="margin:10px; padding:20px; background-color:#f9f9f9; border:1px #CCC solid;">
+        <fieldset>
+            <legend>Ingrese los Datos de Acceso a la Sección Prime:</legend>
+            <div class="form-group">
+                <label for="Username" class="control-label">
+                    <!-- Username --> Correo Electrónico (será su usuario) <em class="req">*</em>
+                </label>
+                <input autocapitalize="off" class="form-control" data-val="true"
+                       data-val-required="The Username field is required." id="Username" name="Username"
+                       type="text" value="">
+                <span class="field-validation-valid" data-valmsg-for="Username" data-valmsg-replace="false">El Usuario es requerido</span>
+            </div>
+
+            <div class="form-group">
+                <label for="Password" class="control-label">
+                    <!-- Password --> Contraseña <em class="req">*</em>
+                </label>
+                <input class="form-control" data-val="true"
+                       data-val-required="The Password field is required." id="Password" name="Password"
+                       type="password">
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="false">La Contraseña es requerida</span>
+            </div>
+
+        </fieldset>
+        <fieldset>
+            <button class="btn primary_colour_1-bg secondary_colour_3-text" type="submit">
+                <span>Iniciar Sesión</span>
+            </button>
+            <!-- <a style="font-size:80%; margin-left:40px;" href="/prime/recuperar-clave/">Olvide mi Clave</a> -->
+        </fieldset>
+    </div>
+    <input name="ufprt" type="hidden"
+           value="D630EA3F1FC2DA155BB4A46FFD4AD9FDCD3CE9D394BE4A56D59CA83161C591761CE1E32FA00788A96DFF22EF41095F2DE5C1F9A87F15BB10C8521332AC8758BF5E3F81450DCF4395CE4987CC2FFA437C1C64FBFF971DB1C34C981464F07C964DD644C831AF08C9A932AB348022CB518EB6A5A0D787771799BF8EE5721A0FE8EC5B8F823FDBF4457B0F618F68712953883B78F49F0960993855BCEE297428B428">
+</form>
+<!--// FORM -->
+
+</div>
+<!--// CONTENT COL -->
+
+<div id="right_col" class="col-sm-4 col-lg-3 col-lg-offset-1" role="complementary">            <!-- SUB  -->
+
+
+    <!--// SUB -->
+    <!-- PROMO PODS -->
+    <div class="promo_pods ">
+
+        <div class="item panel panel-default odd">
+            <div class="panel-body primary_colour_2-bg">
+                <p class="heading secondary_colour_3-text">Nuestras Oficinas </p>
+                <div class="info">
+                    <div class="text secondary_colour_3-text"><p>Calle 113 No. 7-21<br>Piso 15 Torre A <br>Edif.&nbsp;Teleport
+                            Business Park<br>Pbx: +57(1) 629-2529<br>Bogotá D.C., Colombia</p></div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="item codeblock even">
+            &nbsp;&nbsp;
+        </div>
+
+        <div class="item lists panel panel-default odd">
+            <div class="panel-body">
+                <div class="listing blog">
+                    <p class="heading">Publicaciones Recientes</p>
+
+                    <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
+                        <div class="info">
+                            <a href="/publicaciones/posts/noticias/noticias/diez-contratos-más-en-el-negocio-de-hidrocarburos/"
+                               itemprop="url">
+
+                                <p class="heading" itemprop="name headline">
+                                    Diez contratos más en el negocio de hidrocarburos
+                                </p>
+                            </a>
+
+                        </div>
+                        <div class="meta">
+                            <div>
+                                <time itemprop="datePublished"><span class="date">27 Jun 2019</span></time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
+                        <div class="info">
+                            <a href="/publicaciones/posts/noticias/noticias/g-037-publicación-definitiva-de-la-oferta-de-ptdvf-y-cidvf/"
+                               itemprop="url">
+
+                                <p class="heading" itemprop="name headline">
+                                    G-037 Publicación Definitiva de la Oferta de PTDVF y CIDVF
+                                </p>
+                            </a>
+
+                        </div>
+                        <div class="meta">
+                            <div>
+                                <time itemprop="datePublished"><span class="date">26 Jun 2019</span></time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item even" itemscope="" itemtype="http://schema.org/BlogPosting">
+                        <div class="info">
+                            <a href="/publicaciones/posts/noticias/noticias/producción-de-gas-crece-10-5-en-lo-que-va-del-año/"
+                               itemprop="url">
+
+                                <p class="heading" itemprop="name headline">
+                                    Producción de gas crece 10,5% en lo que va del año
+                                </p>
+                            </a>
+
+                        </div>
+                        <div class="meta">
+                            <div>
+                                <time itemprop="datePublished"><span class="date">26 Jun 2019</span></time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="see_all" href="/publicaciones/">Ver todos</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
