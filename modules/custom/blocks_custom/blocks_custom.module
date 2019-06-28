@@ -116,6 +116,16 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
         </div></div>
         <div id="right_col" class="col-sm-4 col-lg-3 col-lg-offset-1" role="complementary">
                 <div class="promo_pods ">
+                    <div class="item panel panel-default even">
+                        <div class="panel-body primary_colour_1-bg">
+                            <a href="/sitios-de-interés/"><p class="heading secondary_colour_3-text">Sitios de Interés </p></a>
+                            <div class="info">
+                                <div class="text secondary_colour_3-text"><p>Conozca&nbsp;todas las entidades que hacen parte del sector del Gas Natural&nbsp;en Colombia.</p>
+                                </div>
+                                <p class="link"><a href="/sitios-de-interés/" class="btn primary_colour_2-bg secondary_colour_3-text">Ver todos</a></p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="item panel panel-default odd">
                         <div class="panel-body primary_colour_2-bg">
                             <p class="heading secondary_colour_3-text">Nuestras Oficinas </p>
@@ -129,12 +139,6 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item codeblock even">
-                        &nbsp;&nbsp;
-                    </div>
-                    <div class="item lists panel panel-default odd">
-                        {{ drupal_block("recent_publications_block") }}
                     </div>
                 </div>
             </div>
