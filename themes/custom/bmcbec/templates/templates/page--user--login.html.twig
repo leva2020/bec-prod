@@ -21,47 +21,26 @@
                 <p>&nbsp;</p>
 
                 <!-- FORM -->
-                <form action="/prime/usuarios-registrados/" enctype="multipart/form-data" method="post"
-                      novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden"
-                                                     value="3tYnoyo03EUjgL637giBE-2jC2GnKQdY_kgiUO6s69ZGooHMq5_9KrG_Yu0avDzOzRCtkHrX5DsZnsNy5ppToXWt4oLwQXPmQK8ZmQ3FZrw1">
-                    <div class="login"
-                         style="margin:10px; padding:20px; background-color:#f9f9f9; border:1px #CCC solid;">
-                        <fieldset>
-                            <legend>Ingrese los Datos de Acceso a la Sección Prime:</legend>
-                            <div class="form-group">
-                                <label for="Username" class="control-label">
-                                    <!-- Username --> Correo Electrónico (será su usuario) <em class="req">*</em>
-                                </label>
-                                <input autocapitalize="off" class="form-control valid" data-val="true"
-                                       data-val-required="The Username field is required." id="Username" name="Username"
-                                       type="text" value="">
-                                <span class="field-validation-valid" data-valmsg-for="Username"
-                                      data-valmsg-replace="false">El Usuario es requerido</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Password" class="control-label">
-                                    <!-- Password --> Contraseña <em class="req">*</em>
-                                </label>
-                                <input class="form-control valid" data-val="true"
-                                       data-val-required="The Password field is required." id="Password" name="Password"
-                                       type="password">
-                                <span class="field-validation-valid" data-valmsg-for="Password"
-                                      data-valmsg-replace="false">La Contraseña es requerida</span>
-                            </div>
-
-                        </fieldset>
-                        <fieldset>
-                            <button class="btn primary_colour_1-bg secondary_colour_3-text" type="submit">
-                                <span>Iniciar Sesión</span>
-                            </button>
-                            <!-- <a style="font-size:80%; margin-left:40px;" href="/prime/recuperar-clave/">Olvide mi Clave</a> -->
-                        </fieldset>
-                    </div>
-                    <input name="ufprt" type="hidden"
-                           value="8DAF447500BE61A9B4807D835B048723C5D7121E4928E531E655FE7083C9AECB4A31E8669CF5CE36B50BB83996BE24F5E27B1852E2CB99FD954D14AAF24C5F80498A085EBC655D210222946540698C7DBA44E51B180A37940673451E448F59E05611EBC0C45238C2D7631FDC97240CB31FD5D0D4F283F5AFB3EDCE1F2AD4433C55CD66E5509F0AE008EE501B867B8EC3564FF4C46033ADC0248EFB7B8F9EC5B1">
-                </form>
+                {{ messages }}
+                {{ page.content }}
                 <!--// FORM -->
+                <div id="login_bottom_part">
+                    {% if create_accounts %}
+                        <div class="password_link">
+                            <a href="{{ path('user.pass') }}">{{ '¿Olvido su contraseña?'|t }}</a>
+                        </div>
+                    {% endif %}
+                    {% if forgot_password %}
+                        <div class="register_link">
+                            <a href="{{ path('user.register') }}">{{ 'Registrarse'|t }}</a>
+                        </div>
+                    {% endif %}
+                    {% if back_to_homes %}
+                        <div class="back_link">
+                            <a href="{{ url('<front>') }}">&larr; {{ 'Inicio'|t }} {{ site_name }}</a>
+                        </div>
+                    {% endif %}
+                </div>
 
             </div>
             <!--// CONTENT COL -->
