@@ -156,20 +156,16 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
                 </div>
             </div>
         </div></div><br><br><br>';
-    $myConfig = \Drupal::config('fancy_login.settings');
-    $site_name = \Drupal::config('system.site')->get('name');
+
     if ($form_id == 'user_login_form') {
         $form['#prefix'] = $prefix;
         $form['name']['#title'] = 'Correo Electrónico (será su usuario) ';
-        // $form['name']['#description'] = !empty($myConfig->get('username_description')) ? $myConfig->get('username_description') : t('Enter your @s username.', array('@s' =>$site_name));
         $form['pass']['#title'] = 'Contraseña';
-        // $form['pass']['#description'] = !empty($myConfig->get('password_description')) ? $myConfig->get('password_description') : '';
         $form['#suffix'] = $suffix;
     }
 
     if ($form_id == 'user_register_form') {
         $form['#prefix'] = $prefix;
-        // $form['name']['#title'] = !empty($myConfig->get('forgot_form_username')) ? $myConfig->get('forgot_form_username') : 'Username';
         $form['account']['mail']['#title'] =  'Correo Electrónico (será su usuario) ';
         $form['account']['name']['#title'] = 'Nombre Completo';
         $form['actions']['submit']['#value'] = 'Registrarme';
@@ -179,6 +175,7 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
     if ($form_id == 'user_pass') {
         $form['#prefix'] = $prefix;
         $form['name']['#title'] = 'Correo Electrónico (será su usuario) ';
+        $form['actions']['submit']['#value'] = 'Recuperar';
         $form['#suffix'] = $suffix;
     }
 }
