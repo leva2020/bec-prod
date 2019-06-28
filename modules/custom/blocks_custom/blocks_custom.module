@@ -80,3 +80,30 @@ function blocks_custom_theme($existing, $type, $theme, $path)
             ]
     ];
 }
+
+/*
+*
+*  hook_form_alter implement
+*/
+function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_id){
+    global $base_url;
+    $myConfig = \Drupal::config('fancy_login.settings');
+    $site_name= \Drupal::config('system.site')->get('name');
+    if ($form_id == 'user_login_form') {
+        $form['name']['#title'] = 'Correo Electrónico (será su usuario) ';
+        // $form['name']['#description'] = !empty($myConfig->get('username_description')) ? $myConfig->get('username_description') : t('Enter your @s username.', array('@s' =>$site_name));
+        $form['pass']['#title'] = 'Contraseña';
+        // $form['pass']['#description'] = !empty($myConfig->get('password_description')) ? $myConfig->get('password_description') : '';
+    }
+
+    if($form_id == 'user_register_form' ){
+        $form['name']['#title'] = !empty($myConfig->get('forgot_form_username')) ? $myConfig->get('forgot_form_username') : 'Username';
+    }
+    if($form_id == 'user_register_form' ){
+        $form['account']['mail']['#description'] =!empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : '';
+        $form['account']['mail']['#title']=!empty($myConfig->get('register_form_mail')) ? $myConfig->get('register_form_mail') : 'Email Address.';
+        $form['account']['name']['#description'] =!empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : "";
+        $form['account']['name']['#title']=!empty($myConfig->get('register_form_name')) ? $myConfig->get('register_form_name') : 'Username';
+        $form['actions']['submit']['#value'] =!empty($myConfig->get('register_form_button')) ? $myConfig->get('register_form_button') : 'Create new account.';
+    }
+}
