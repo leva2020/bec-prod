@@ -89,17 +89,47 @@ function blocks_custom_theme($existing, $type, $theme, $path)
 */
 function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_id){
     global $base_url;
+    $prefix = '<div class="container"><div class="row">
+        <div class="col-xs-12">
+            <h1 class="heading">Acceso Prime</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div id="left_col" class="col-sm-8" role="main">
+            <p style="text-align: center;">
+                <img style="width: 100%; height: auto;" src="/media/1974/plantilla-banner-web-premium_21.png" alt=""
+                     data-id="4009">
+            </p>
+            <p>&nbsp;</p>
+            <p style="text-align: right;">
+                <a href="/user/register/" title="Registro a Prime"
+                   class="btn primary_colour_1-bg secondary_colour_3-text">
+                    <span>Aún no estoy inscrito, registrarme</span>
+                </a>
+            </p>
+            <p>&nbsp;</p>
+            <p style="text-align: justify;">Si ya está registrado, ingrese al&nbsp;<em><strong>Acceso
+                        Prime</strong></em>&nbsp;con su correo electrónico (usuario)&nbsp;y contraseña, enviados
+                porterior al Congreso Naturgas 2018</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            ';
+    $suffix = '</div></div></div>';
     $myConfig = \Drupal::config('fancy_login.settings');
     $site_name= \Drupal::config('system.site')->get('name');
     if ($form_id == 'user_login_form') {
+        $form['#prefix'] = $prefix;
         $form['name']['#title'] = 'Correo Electrónico (será su usuario) ';
         // $form['name']['#description'] = !empty($myConfig->get('username_description')) ? $myConfig->get('username_description') : t('Enter your @s username.', array('@s' =>$site_name));
         $form['pass']['#title'] = 'Contraseña';
         // $form['pass']['#description'] = !empty($myConfig->get('password_description')) ? $myConfig->get('password_description') : '';
+        $form['#suffix'] = $suffix;
     }
 
     if($form_id == 'user_register_form' ){
+        $form['#prefix'] = $prefix;
         $form['name']['#title'] = !empty($myConfig->get('forgot_form_username')) ? $myConfig->get('forgot_form_username') : 'Username';
+        $form['#suffix'] = $suffix;
     }
     if($form_id == 'user_register_form' ){
         $form['account']['mail']['#description'] =!empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : '';
