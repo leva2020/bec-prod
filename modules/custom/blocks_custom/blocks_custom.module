@@ -89,7 +89,26 @@ function blocks_custom_theme($existing, $type, $theme, $path)
 */
 function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-    global $base_url;
+    if ($form_id == 'user_register_form') {
+        $register = '<a href="/user/login/" title="Inicio Sesión en Prime"
+                class="btn secondary_colour_3-text primary_colour_1-bk">
+                <span>Ya estoy inscrito. Iniciar Sesión</span>
+                </a>';
+        $text = '<p style="text-align: justify;">Regístrese&nbsp; en la&nbsp;<em><strong>Versión Prime</strong></em> y&nbsp;tenga acceso a información exclusiva sobre el <strong>Mercado de Gas Natural en Colombia</strong>.<br><br></p>';
+        $titleForm = 'Diligencie la siguiente información:';
+    }
+    if ($form_id == 'user_login_form') {
+        $register = '<a href="/user/register/" title="Registro a Prime"
+                   class="btn secondary_colour_3-text primary_colour_1-bk">
+                    <span>Aún no estoy inscrito, registrarme</span>
+                </a>';
+        $text = '<p style="text-align: justify;">Si ya está registrado, ingrese al&nbsp;<em><strong>Acceso
+                        Prime</strong></em>&nbsp;con su correo electrónico (usuario)&nbsp;y contraseña, enviados
+                porterior al Congreso Naturgas 2018</p>
+            <p>&nbsp;</p>';
+        $titleForm = 'Ingrese los Datos de Acceso a la Sección Prime:';
+    }
+
     $prefix = '<div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -101,17 +120,11 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
             <p class="img-login-content" style="text-align: center;"></p>
             <p>&nbsp;</p>
             <p class="content-btn-register">
-                <a href="/user/register/" title="Registro a Prime"
-                   class="btn secondary_colour_3-text primary_colour_1-bk">
-                    <span>Aún no estoy inscrito, registrarme</span>
-                </a>
+                '. $register.'
             </p>
             <p>&nbsp;</p>
-            <p style="text-align: justify;">Si ya está registrado, ingrese al&nbsp;<em><strong>Acceso
-                        Prime</strong></em>&nbsp;con su correo electrónico (usuario)&nbsp;y contraseña, enviados
-                porterior al Congreso Naturgas 2018</p>
-            <p>&nbsp;</p>
-            <div class="login-user-bk"><span class="legend-user-login">Ingrese los Datos de Acceso a la Sección Prime:</span>';
+            '. $text .'
+            <div class="login-user-bk"><span class="legend-user-login">'. $titleForm .'</span>';
     $suffix = '<br><a href="/user/password">¿Olvido su contraseña?</a>
         </div></div>
         <div id="right_col" class="col-sm-4 col-lg-3 col-lg-offset-1" role="complementary">
@@ -156,14 +169,16 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
 
     if ($form_id == 'user_register_form') {
         $form['#prefix'] = $prefix;
-        $form['name']['#title'] = !empty($myConfig->get('forgot_form_username')) ? $myConfig->get('forgot_form_username') : 'Username';
+        // $form['name']['#title'] = !empty($myConfig->get('forgot_form_username')) ? $myConfig->get('forgot_form_username') : 'Username';
+        $form['account']['mail']['#title'] =  'Correo Electrónico (será su usuario) ';
+        $form['account']['name']['#title'] = 'Nombre Completo';
+        $form['actions']['submit']['#value'] = 'Registrarme';
         $form['#suffix'] = $suffix;
     }
-    if ($form_id == 'user_register_form') {
-        $form['account']['mail']['#description'] = !empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : '';
-        $form['account']['mail']['#title'] = !empty($myConfig->get('register_form_mail')) ? $myConfig->get('register_form_mail') : 'Email Address.';
-        $form['account']['name']['#description'] = !empty($myConfig->get('register_mail_desc')) ? $myConfig->get('register_mail_desc') : "";
-        $form['account']['name']['#title'] = !empty($myConfig->get('register_form_name')) ? $myConfig->get('register_form_name') : 'Username';
-        $form['actions']['submit']['#value'] = !empty($myConfig->get('register_form_button')) ? $myConfig->get('register_form_button') : 'Create new account.';
+
+    if ($form_id == 'user_pass') {
+        $form['#prefix'] = $prefix;
+        $form['name']['#title'] = 'Correo Electrónico (será su usuario) ';
+        $form['#suffix'] = $suffix;
     }
 }
