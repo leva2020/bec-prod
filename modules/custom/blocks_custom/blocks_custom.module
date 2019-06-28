@@ -98,9 +98,9 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
         <div id="left_col" class="col-sm-8" role="main">
             <p class="img-login-content" style="text-align: center;"></p>
             <p>&nbsp;</p>
-            <p style="text-align: right;">
+            <p class="content-btn-register">
                 <a href="/user/register/" title="Registro a Prime"
-                   class="btn primary_colour_1-bg secondary_colour_3-text">
+                   class="btn secondary_colour_3-text primary_colour_1-bk">
                     <span>Aún no estoy inscrito, registrarme</span>
                 </a>
             </p>
@@ -109,9 +109,8 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
                         Prime</strong></em>&nbsp;con su correo electrónico (usuario)&nbsp;y contraseña, enviados
                 porterior al Congreso Naturgas 2018</p>
             <p>&nbsp;</p>
-            <p>&nbsp;</p>
             <div class="login-user-bk"><span class="legend-user-login">Ingrese los Datos de Acceso a la Sección Prime:</span>';
-    $suffix = '<p>&nbsp;</p><p>&nbsp;</p><a href="/user/password">¿Olvido su contraseña?</a></div></div></div></div>';
+    $suffix = '<br><a href="/user/password">¿Olvido su contraseña?</a></div></div></div></div>';
     $myConfig = \Drupal::config('fancy_login.settings');
     $site_name= \Drupal::config('system.site')->get('name');
     if ($form_id == 'user_login_form') {

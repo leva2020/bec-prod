@@ -118,6 +118,16 @@ block-video-prime {
     border-bottom: 1px solid #e5e5e5;
 }
 
+.content-btn-register {
+    text-align: right;
+}
+
+.primary_colour_1-bk {
+    background-color: rgba(11,90,156,1);
+}
+
 .img-login-content {
-    background-image:url(../../images/plantilla-banner-web-premium_21.png)
+    width: 750px;
+    height: 258px;
+    background-image:url(../../images/plantilla-banner-web-premium_21.png?width=750&amp;height=258)
 }
