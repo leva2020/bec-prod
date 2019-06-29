@@ -21,10 +21,11 @@ class MenuPrimeCustomBlock extends BlockBase
      */
     public function build()
     {
+        $user = \Drupal::currentUser()->getUsername();
         return array(
             '#theme' => 'filters_publications_block_custom',
             '#titulo' => $this->t('Menu Prime'),
-            '#user' => 'leva2020@gmail.com'
+            '#user' => $user
         );
     }
 
