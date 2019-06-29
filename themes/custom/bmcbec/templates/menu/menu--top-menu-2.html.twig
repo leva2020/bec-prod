@@ -28,22 +28,23 @@
 </ul>
 <ul class="pull-right">
     {% endif %}
+    <a href="#" class="dropdown-toggle" rel="menu-0-0" data-toggle="dropdown" role="button" aria-expanded="false">
+        <i class="fa fa-user highlight"></i>
+        {{ "Welcome #{given_name}" }}
+        <i class="fa fa-angle-down after"></i></a>
+    <ul class="dropdown-menu pull-right" role="menu">
+        <li>
+            <a href="/prime/usuarios-registrados">
+                <i class="fa fa-user-md"></i>
+                Inicio Prime
+            </a>
+            <a href="/user/logout">
+                <i class="fa fa-user-md"></i>
+                Cerrar Sesión
+            </a>
+        </li>
+    </ul>
     {% elseif loop.last %}
-        <a href="#" class="dropdown-toggle" rel="menu-0-0" data-toggle="dropdown" role="button" aria-expanded="false"><i
-                    class="fa fa-user highlight"></i>{{ given_name }}<i class="fa fa-angle-down after"></i></a>
-        <ul class="dropdown-menu pull-right" role="menu">
-            <li>
-                <a href="/prime/usuarios-registrados">
-                    <i class="fa fa-user-md"></i>
-                    Inicio Prime
-                </a>
-                <a href="/user/logout">
-                    <i class="fa fa-user-md"></i>
-                    Cerrar Sesión
-                </a>
-            </li>
-        </ul>
-
         {% if item.below %}
             {% if (loop.index is even) %}
                 <li class="dropdown even">
