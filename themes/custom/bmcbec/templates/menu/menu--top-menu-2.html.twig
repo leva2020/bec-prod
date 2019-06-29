@@ -51,7 +51,7 @@
                 {% else %}
                     <li class="dropdown odd">
                 {% endif %}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                <a href="#" class="dropdown-toggle" rel="menu-1" data-toggle="dropdown" role="button" aria-expanded="false"><i
                             class="fa fa-user highlight"></i>{{ item.title }}<i class="fa fa-angle-down after"></i></a>
                 <ul class="dropdown-menu pull-right" role="menu">
                 {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
@@ -84,7 +84,7 @@
             {% else %}
                 {% if item.below %}
                     <li class="dropdown even">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        <a href="#" class="dropdown-toggle" rel="menu-2" data-toggle="dropdown" role="button"
                            aria-expanded="false"><i class="fa fa-user highlight"></i>{{ item.title }}<i
                                     class="fa fa-angle-down after"></i></a>
                         <ul class="dropdown-menu pull-right" role="menu">
@@ -106,7 +106,7 @@
             {% else %}
                 {% if item.below %}
                     <li class="dropdown odd">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        <a href="#" class="dropdown-toggle" rel="menu-3" data-toggle="dropdown" role="button"
                            aria-expanded="false"><i class="fa fa-user highlight"></i>{{ item.title }}<i
                                     class="fa fa-angle-down after"></i></a>
                         <ul class="dropdown-menu pull-right" role="menu">
