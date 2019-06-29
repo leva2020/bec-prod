@@ -10,10 +10,10 @@
            class="owi_button">Publicaciones</a>
     </li>
 </ul>
-<ul class="pull-right">
+<!--<ul class="pull-right">
     <a href="#" class="dropdown-toggle" rel="menu-0-0" data-toggle="dropdown" role="button" aria-expanded="false">
         <i class="fa fa-user highlight"></i>
-        {{ "Welcome #{given_name}" }}
+        Edu
         <i class="fa fa-angle-down after"></i></a>
     <ul class="dropdown-menu pull-right" role="menu">
         <li>
@@ -27,8 +27,8 @@
             </a>
         </li>
     </ul>
-</ul>
-
+</ul>-->
+::: {{ user.name.0.value }} :::
 {% macro menu_links(items, attributes, menu_level) %}
     {% import _self as menus %}
     {% if items %}
