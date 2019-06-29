@@ -8,7 +8,27 @@
 
 	{% for item in node.field_graficas %}
 		{% if item.entity.field_template is not empty%}
-			{% include item.entity.field_template.value with {'data': item } %}
+			<section class="content advanced-component standard-components">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+                            <div class="page_component codeblock">
+                                <object id="becchartframe" width="100%" height="700"
+                                        data="{{ item.entity.field_template.value }}"
+                                        style="height:700px; border:0;" scrolling="no">
+                                </object>
+                                <style>
+                                    #pos_2105 + section > div {
+                                        width: 100% !important;
+                                        margin: 0;
+                                        padding: 0;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 		{% endif %}
 	{% endfor %}
 
