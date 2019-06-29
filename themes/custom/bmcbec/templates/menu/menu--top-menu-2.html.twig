@@ -11,107 +11,117 @@
               {% if loop.first %}
                 {% if menu_level == 1 %}
                   {% if (loop.index is even) %}
-                    <li class="even"><a href="{{ item.url }}">
-                      <i class="fa fa-user-md"></i>{{ item.title }}</a>
-                    </li>
+                      <li class="even"><a href="{{ item.url }}">
+                              <i class="fa fa-user-md"></i>{{ item.title }}</a>
+                      </li>
                   {% else %}
-                    <li class="odd">
-                      <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
-                    </li>
+                      <li class="odd">
+                          <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
+                      </li>
                   {% endif %}
                 {% else %}
-                  <ul class="pull-right" style="margin:0 40px 0 20px;">
-                    <li class="odd">
-                      <a href="/publicaciones" class="owi_button">{{ item.title }}</a>
-                    </li>
-                  </ul>
-                  <ul class="pull-right">
-                {% endif %}
-              {% elseif loop.last %}
-                    {% if item.below %}
-                      {% if (loop.index is even) %}
-                        <li class="dropdown even">
-                      {% else %}
-                        <li class="dropdown odd">
-                      {% endif %}
-                        {% if logged_in %}
-                            <a href="#" class="dropdown-toggle" rel="menu-0" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user highlight"></i>edu<i class="fa fa-angle-down after"></i></a>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li>
-                                    <a href="/prime/usuarios-registrados">
-                                        <i class="fa fa-user-md"></i>
-                                        Inicio Prime
-                                    </a>
-                                    <a href="/user/logout">
-                                        <i class="fa fa-user-md"></i>
-                                        Cerrar Sesión
-                                    </a>
-                                </li>
-                            </ul>
-                        {% else %}
-                            <a href="#" class="dropdown-toggle" rel="menu-0" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user highlight"></i>{{ item.title }}<i class="fa fa-angle-down after"></i></a>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-                                </li>
-                                {% else %}
-                                  {% if  menu_level == 1 %}
-                                    {% if (loop.index is even) %}
-                                      <li class="even">
-                                    {% else %}
-                                      <li class="odd">
-                                    {% endif %}
-                                    <a href="{{ item.url }}">
-                                      <i class="fa fa-user-md"></i>{{ item.title }}</a>
-                                    </li>
-                                  {% else %}
-                                      <li style="display:none;" class="even">
-                                          <a class="secondary_colour_1-text" href="{{ item.url }}" target="blank" title="{{ item.title }}">{{ item.title }}<i class="fa fa-external-link after"></i></a>
-                                      </li>
-                                  {% endif %}
-                                {% endif %}
-                            </ul>
-                        {% endif %}
-              {% else %}
-                {% if (loop.index is even) %}
-                  {% if  menu_level == 2 %}
-                    <li class="even">
-                      <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
-                    </li>
-                  {% else %}
-                    {% if item.below %}
-                      <li class="dropdown even">
-                        <a href="#" class="dropdown-toggle" rel="menu-1" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user highlight"></i>{{ item.title }}<i class="fa fa-angle-down after"></i></a>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-                        </ul>
-                      </li>
-                    {% else %}
-                      <li style="display:none;" class="even">
-                          <a class="secondary_colour_1-text" href="{{ item.url }}" target="blank" title="{{ item.title }}">{{ item.title }}<i class="fa fa-external-link after"></i></a>
-                      </li>
-                    {% endif %}
-                  {% endif %}
-                {% else %}
-                  {% if  menu_level == 2 %}
-                    <li class="odd">
-                      <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
-                    </li>
-                  {% else %}
-                    {% if item.below %}
-                      <li class="dropdown odd">
-                        <a href="#" class="dropdown-toggle" rel="menu-2" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user highlight"></i>{{ item.title }}<i class="fa fa-angle-down after"></i></a>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-                        </ul>
-                      </li>
-                    {% else %}
-                      <li style="display:none;" class="odd">
-                          <a class="secondary_colour_1-text" href="{{ item.url }}" target="blank" title="{{ item.title }}">{{ item.title }}<i class="fa fa-external-link after"></i></a>
-                      </li>
-                    {% endif %}
-                  {% endif %}
-                {% endif %}
-              {% endif %}
-            {% endfor %}
+<ul class="pull-right" style="margin:0 40px 0 20px;">
+    <li class="odd">
+        <a href="{{ item.url }}" onclick="ga('send','event','Button','Click','Publicaciones','');"
+           class="owi_button">{{ item.title }}</a>
+    </li>
+</ul>
+<ul class="pull-right">
     {% endif %}
-{% endmacro %}
+    {% elseif loop.last %}
+        {% if logged_in %}
+            <a href="#" class="dropdown-toggle" rel="menu-0" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                        class="fa fa-user highlight"></i>edu<i class="fa fa-angle-down after"></i></a>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="/prime/usuarios-registrados">
+                        <i class="fa fa-user-md"></i>
+                        Inicio Prime
+                    </a>
+                    <a href="/user/logout">
+                        <i class="fa fa-user-md"></i>
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        {% else %}
+            {% if item.below %}
+                {% if (loop.index is even) %}
+                    <li class="dropdown even">
+                {% else %}
+                    <li class="dropdown odd">
+                {% endif %}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                            class="fa fa-user highlight"></i>{{ item.title }}<i class="fa fa-angle-down after"></i></a>
+                <ul class="dropdown-menu pull-right" role="menu">
+                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+                </li>
+            {% else %}
+                {% if  menu_level == 1 %}
+                    {% if (loop.index is even) %}
+                        <li class="even">
+                    {% else %}
+                        <li class="odd">
+                    {% endif %}
+                    <a href="{{ item.url }}">
+                        <i class="fa fa-user-md"></i>{{ item.title }}</a>
+                    </li>
+                {% else %}
+                    <li style="display:none;" class="even">
+                        <a class="secondary_colour_1-text" href="{{ item.url }}" target="blank"
+                           title="{{ item.title }}">{{ item.title }}<i class="fa fa-external-link after"></i></a>
+                    </li>
+                {% endif %}
+            {% endif %}
+            </ul>
+        {% endif %}
+    {% else %}
+        {% if (loop.index is even) %}
+            {% if  menu_level == 2 %}
+                <li class="even">
+                    <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
+                </li>
+            {% else %}
+                {% if item.below %}
+                    <li class="dropdown even">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false"><i class="fa fa-user highlight"></i>{{ item.title }}<i
+                                    class="fa fa-angle-down after"></i></a>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li style="display:none;" class="even">
+                        <a class="secondary_colour_1-text" href="{{ item.url }}" target="blank"
+                           title="{{ item.title }}">{{ item.title }}<i class="fa fa-external-link after"></i></a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            {% if  menu_level == 2 %}
+                <li class="odd">
+                    <a href="{{ item.url }}"><i class="fa fa-sign-in"></i>{{ item.title }}</a>
+                </li>
+            {% else %}
+                {% if item.below %}
+                    <li class="dropdown odd">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false"><i class="fa fa-user highlight"></i>{{ item.title }}<i
+                                    class="fa fa-angle-down after"></i></a>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li style="display:none;" class="odd">
+                        <a class="secondary_colour_1-text" href="{{ item.url }}" target="blank"
+                           title="{{ item.title }}">{{ item.title }}<i class="fa fa-external-link after"></i></a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endmacro %}
