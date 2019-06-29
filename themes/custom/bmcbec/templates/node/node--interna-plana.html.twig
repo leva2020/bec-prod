@@ -1,0 +1,17 @@
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT TEXT -->
+                <div class="page_component textblock">
+                    <h2 style="text-align: center;"><span>{{ node.field_titulo.value }}</span></h2>
+                    <p>{{ node.field_descripcion.value }}</p>
+                    {{ node.body.value | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if node.field_banner_inferior is not empty %}
+    {% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+{% endif %}
+
