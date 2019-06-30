@@ -80,6 +80,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                 ],
                 'template' => 'reports-prime'
             ],
+        'paginator_reports_prime_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Título por defecto',
+                    'descripcion' => 'descripción por defecto',
+                    'reports' => NULL
+                ],
+                'template' => 'paginator-reports-prime'
+            ],
         'filters_publications_block_custom' =>
             [
                 'variables' => [

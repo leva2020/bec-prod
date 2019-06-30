@@ -1,0 +1,46 @@
+{% if reports %}
+    <div class="row clearfix">
+        <div class="col-md-4 column">
+            <div>
+                <p>
+                    <a data-id="3952" href="{{ path('entity.node.canonical', {'node': report.0.id}) }}" title="{{ report.0.title.value }}">
+                        {% set imagestyle = {
+                            '#theme':      'image_style',
+                            '#style_name': 'custom_360x171',
+                            '#uri':        report.0.field_image.entity.uri.value,
+                            '#alt':        '',
+                        } %}
+                        {{ imagestyle }}
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4 column">
+            <div>
+                <h5 style="text-align: center;">
+                    <a data-id="3816"
+                       href="/prime/usuarios-registrados/"
+                       title="Usuarios Registrados">
+                        <br><br><br>&lt;
+                        Inicio
+                    </a>
+                </h5>
+            </div>
+        </div>
+        <div class="col-md-4 column">
+            <div>
+                <p>
+                    <a data-id="3960" href="{{ path('entity.node.canonical', {'node': report.1.id}) }}" title="{{ report.1.title.value }}">
+                        {% set imagestyle = {
+                            '#theme':      'image_style',
+                            '#style_name': 'custom_360x171',
+                            '#uri':        report.1.field_image.entity.uri.value,
+                            '#alt':        '',
+                        } %}
+                        {{ imagestyle }}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endif %}
