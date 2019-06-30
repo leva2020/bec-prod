@@ -186,7 +186,8 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
     if ($form_id == 'user_register_form') {
         $form['#prefix'] = $prefix;
         $form['account']['mail']['#title'] =  'Correo Electrónico (será su usuario) ';
-        $form['account']['name']['#title'] = 'Nombre Completo';
+        $form['account']['name']['#title'] = 'UserName';
+        $form['account']['name']['#value'] = $form['account']['mail']['#value'];
         $form['actions']['submit']['#value'] = 'Registrarme';
         $form['#suffix'] = $suffix;
     }
