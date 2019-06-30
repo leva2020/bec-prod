@@ -21,7 +21,7 @@ class MenuPrimeCustomBlock extends BlockBase
      */
     public function build()
     {
-        $user = \Drupal::currentUser()->getUsername();
+        $user = \Drupal::currentUser()->getEmail();
         return array(
             '#theme' => 'filters_publications_block_custom',
             '#titulo' => $this->t('Menu Prime'),
