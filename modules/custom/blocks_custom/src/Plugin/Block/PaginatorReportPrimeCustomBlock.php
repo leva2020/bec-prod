@@ -34,12 +34,10 @@ class PaginatorReportPrimeCustomBlock extends BlockBase
         }
 
         if (!empty($query)) {
-            $i = 0;
             foreach ($query as $reportId) {
                 $report = Node::load($reportId);
-                if ($reportId != $nid && $i < 2) {
+                if ($reportId != $nid) {
                     $reports[] = $report;
-                    $i ++;
                 }
             }
         }
