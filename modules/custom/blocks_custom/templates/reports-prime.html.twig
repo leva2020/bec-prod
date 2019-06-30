@@ -15,7 +15,7 @@
                         {% for report in reports %}
                             <div class="item">
                                 <div class="image">
-                                    <a href="/prime/usuarios-registrados/informe-mensual/page-components/">
+                                    <a href="{{ path('entity.node.canonical', {'node': report.id}) }}">
                                         {% set imagestyle = {
                                             '#theme':      'image_style',
                                             '#style_name': 'custom_360x171',
