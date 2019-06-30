@@ -1,7 +1,7 @@
 <div class="row clearfix">
     {% if reports %}
         {% for report in reports %}
-            <div name="{{ index0.index }}" class="col-md-4 column">
+            <div name="{{ loop.index }}" class="col-md-4 column">
                 <div>
                     <p>
                         <a data-id="3952" href="{{ path('entity.node.canonical', {'node': report.id}) }}"
@@ -17,8 +17,8 @@
                     </p>
                 </div>
             </div>
-            {% if index0.index < 1 %}
-                <div name="{{ index0.index }}" class="col-md-4 column">
+            {% if loop.index < 2 %}
+                <div name="{{ loop.index }}" class="col-md-4 column">
                     <div>
                         <h5 style="text-align: center;">
                             <a data-id="3816"
