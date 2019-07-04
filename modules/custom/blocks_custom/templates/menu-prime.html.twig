@@ -6,20 +6,35 @@
     </ul>
     <ul class="pull-right">
         <li class="dropdown even">
-            <a href="#" class="dropdown-toggle" rel="menu-1" data-toggle="dropdown" role="button" aria-expanded="false">
-                <i class="fa fa-user highlight"></i>
-                {{ user }}
-                <i class="fa fa-angle-down after"></i></a>
-            <ul class="dropdown-menu pull-right" role="menu">
-                <li class="odd">
-                    <a href="/prime/usuarios-registrados"><i class="fa fa-sign-in"></i>Inicio Prime</a>
-                </li>
-                <li class="even">
-                    <a href="/user/logout">
-                        <i class="fa fa-user-md"></i>Cerrar Sesión</a>
-                </li>
-            </ul>
-
+            {% if user %}
+                <a href="#" class="dropdown-toggle" rel="menu-1" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <i class="fa fa-user highlight"></i>
+                    {{ user }}
+                    <i class="fa fa-angle-down after"></i></a>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li class="odd">
+                        <a href="/prime/usuarios-registrados"><i class="fa fa-sign-in"></i>Inicio Prime</a>
+                    </li>
+                    <li class="even">
+                        <a href="/user/logout">
+                            <i class="fa fa-user-md"></i>Cerrar Sesión</a>
+                    </li>
+                </ul>
+            {% else %}
+                <a href="#" class="dropdown-toggle" rel="menu-1" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <i class="fa fa-user highlight"></i>
+                    Acceso Prime
+                    <i class="fa fa-angle-down after"></i></a>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li class="odd">
+                        <a href="/user/login"><i class="fa fa-sign-in"></i>Iniciar Sesión</a>
+                    </li>
+                    <li class="even">
+                        <a href="/user/register">
+                            <i class="fa fa-user-md"></i>Registrarme</a>
+                    </li>
+                </ul>
+            {% endif %}
         </li>
     </ul>
 </nav>

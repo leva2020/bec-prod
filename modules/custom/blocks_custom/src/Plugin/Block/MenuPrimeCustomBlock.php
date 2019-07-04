@@ -25,7 +25,7 @@ class MenuPrimeCustomBlock extends BlockBase
         return array(
             '#theme' => 'filters_publications_block_custom',
             '#titulo' => $this->t('Menu Prime'),
-            '#user' => $user
+            '#user' => ($user) ? $user : false
         );
     }
 
