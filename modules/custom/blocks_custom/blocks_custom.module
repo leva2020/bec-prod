@@ -116,7 +116,7 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
                 </a>';
         $text = '<p style="text-align: justify;">Regístrese&nbsp; en la&nbsp;<em><strong>Versión Prime</strong></em> y&nbsp;tenga acceso a información exclusiva sobre el <strong>Mercado de Gas Natural en Colombia</strong>.<br><br></p>';
         $titleForm = 'Diligencie la siguiente información:';
-        $legal = '<div class="modal-content">
+        $legal = '<div class="modal-content-">
       <div class="modal-header">
         
        <h4 class="modal-title">Aviso de privacidad y protección de datos personales</h4>
@@ -204,7 +204,7 @@ Si desea no autorizar alguna finalidad puede presentar una solicitud escribiendo
                     </div>
                 </div>
             </div>
-        </div></div><br><br><br><div id="ex1" class="modal">' . $legal . '<a href="#" rel="modal:close">Close</a></div>';
+        </div></div><br><br><br><div id="ex1" class="modal">' . $legal . '</div>';
 
     if ($form_id == 'user_login_form') {
         $form['#prefix'] = $prefix;
