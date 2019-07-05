@@ -17,7 +17,7 @@
                             <article>
                                 <div class="wrapper-image">
                                     {% if data.field_archivo %}
-                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" itemprop="url">
+                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" target="_blank" itemprop="url">
                                             <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}" itemprop="image">
                                         </a>
                                     {% else %}
@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="content">
                                     {% if data.field_archivo %}
-                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" itemprop="url">
+                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" target="_blank" itemprop="url">
                                             {{ data.field_titulo[0].value }}
                                         </a>
                                     {% else %}
@@ -36,8 +36,11 @@
                                             {{ data.field_titulo[0].value }}
                                         </a>
                                     {% endif %}
-                                    {% set newsDate = data.created.value|date('U')|date('j M Y') %}
-                                    <em>{% trans %} {{ newsDate }}{% endtrans %}</em>
+
+                                    {% set newsDate = data.created.value|date('U')|format_date('j M Y') %}
+                                    {% trans %}
+                                        <em>{{ newsDate|placeholder|striptags }}</em>
+                                    {% endtrans %}
                                     <p>{{ data.field_descripcion[0].value }}</p>
                                 </div>
                             </article>
