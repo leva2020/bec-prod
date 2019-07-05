@@ -205,7 +205,7 @@ function legal_accept_label($link = FALSE, $modal = FALSE) {
     $url = \Drupal::urlGenerator()->generate('legal.legal');
 
     if ($modal) {
-      return t('<strong>Accept</strong> <a href=":terms" class="use-ajax" data-dialog-type="modal">Terms & Conditions</a> of Use', array(':terms' => $url));
+      return t('Consulte y valide el Aviso de privacidad y protección de datos personales haciendo <a href=":terms" class="use-ajax" data-dialog-type="modal">CLICK AQUÍ</a> ', array(':terms' => $url));
     }
     else {
       return t('<strong>Accept</strong> <a href=":terms"  target="_blank">Terms & Conditions</a> of Use', array(':terms' => $url));
