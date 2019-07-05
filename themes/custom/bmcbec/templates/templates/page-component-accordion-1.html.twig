@@ -15,7 +15,8 @@
                   <div class="panel-body">
                     {% for item1 in item.entity.field_archivos %}
                         <p>
-                            <a href="{{ item1.entity.field_archivo.entity.fileuri }}" target="_blank">
+                            <a href="{{ file_url(item1.entity.field_archivo.entity.fileuri) }}">hola</a>
+                            <a href="{{ file_url(item1.entity.field_archivo[0].entity.fileuri) }}" target="_blank">
                                 {{item1.entity.field_label_archivo.value}}
                             </a>
                         </p>
