@@ -108,6 +108,7 @@ function blocks_custom_theme($existing, $type, $theme, $path)
 function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
     $pass = '';
+    $legal = '';
     if ($form_id == 'user_register_form') {
         $register = '<a href="/user/login/" title="Inicio Sesión en Prime"
                 class="btn secondary_colour_3-text primary_colour_1-bk">
@@ -115,6 +116,43 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
                 </a>';
         $text = '<p style="text-align: justify;">Regístrese&nbsp; en la&nbsp;<em><strong>Versión Prime</strong></em> y&nbsp;tenga acceso a información exclusiva sobre el <strong>Mercado de Gas Natural en Colombia</strong>.<br><br></p>';
         $titleForm = 'Diligencie la siguiente información:';
+        $legal = '<div class="modal-content">
+      <div class="modal-header">
+        
+       <h4 class="modal-title">Aviso de privacidad y protección de datos personales</h4>
+      </div>
+      <div class="modal-body" style="text-align: justify;">
+      <p>La BMC BOLSA MERCANTIL DE COLOMBIA S.A identificado con NIT 860.071.250-9 ubicada en la Calle 113 # 7 – 21 Teleport Business Park torre A - piso 15 de la ciudad de Bogotá será el responsable del tratamiento y, en tal virtud, podrá recolectar, almacenar y usar su información personal para:</p>
+<p>
+a.	Acceder a los servicios del Gestor del Mercado de Gas previstos en el artículo 6 de la Resolución CREG 114 de 2017.<br>
+b.	Adelantar campañas de actualización de noticias, eventos y/o capacitaciones que realice la Bolsa Mercantil de Colombia, en su condición de Gestor del Mercado de Gas.<br>
+c.	Enviar Boletines informativos sobre el comportamiento del mercado.<br>
+d.	Cumplir con requisitos y/o requerimientos de autoridades administrativas sectoriales y/o judiciales.<br>
+e.	Cumplir con los requisitos legales para el debido conocimiento del cliente, cuando sea el caso.<br>
+f.	Adelantar campañas de actualización de datos e información de cambios en el tratamiento de datos personales.<br>
+g.	Adelantar comunicaciones o contacto vía correo electrónico, SMS, teléfono u otro medio.<br>
+</p>
+<p>
+Así mismo, se le informa que como titular de sus datos personales usted tiene derecho a: (i) Acceder en forma gratuita a los datos proporcionados que hayan sido objeto de tratamiento. (ii) Conocer, actualizar y rectificar su información frente a datos parciales, inexactos, incompletos, fraccionados, que induzcan a error, o a aquellos cuyo tratamiento esté prohibido o no haya sido autorizado. (iii) Solicitar prueba de la autorización otorgada. (iv) Presentar ante la Superintendencia de Industria y Comercio (SIC) quejas por infracciones a lo dispuesto en la normatividad vigente. Revocar la autorización y/o solicitar la supresión del dato, siempre que no exista un deber legal o contractual que impida eliminarlos. (vi) Abstenerse de responder las preguntas sobre datos sensibles.
+</p>
+<p>
+Si desea no autorizar alguna finalidad puede presentar una solicitud escribiendo al correo electrónico servicioalcliente@bolsamercantil.com.co o a través de cualquiera de los canales que BMC BOLSA MERCANTIL DE COLOMBIA S.A ha habilitado para tal fin. Tenga en cuenta que dicha solicitud requerirá cumplir lo descrito en el artículo 2.2.2.25.4.1 del Decreto 1074 de 2015 y el numeral 3.3.1 de la política de protección de datos de BMC BOLSA MERCANTIL DE COLOMBIA S.A la cual se encuentra publicada en www.bolsamercantil.com.co
+</p>
+<p>
+					<input id="ChkAvisocheckid" type="checkbox" class="ChkAvisocheck" name="ChkAvisocheckid">	
+					<span style="display: none;"><input class="text-box single-line" id="registerModel_MemberProperties_3__Value" name="registerModel.MemberProperties[3].Value" type="text" value=""></span>
+<input id="registerModel_MemberProperties_3__Alias" name="registerModel.MemberProperties[3].Alias" type="hidden" value="privacyNotice"><label for="ChkAvisocheckid">El marcar esta casilla y diligenciar el presente formulario se entenderá como una conducta concluyente de que otorga su consentimiento de forma libre y voluntaria a BMC BOLSA MERCANTIL DE COLOMBIA S.A para que trate su información personal de acuerdo con las finalidades descritas anteriormente.</label>
+</p>
+
+      </div>
+      <div class="modal-footer">
+		  <p>
+<span class="ChkAvisospan" style="color: #000;font-weight: bold;">Debe seleccionar la casilla de aceptación de términos</span>
+		   <button type="button" disabled="disabled" class="btn primary_colour_1-bg secondary_colour_3-text footeracceptbtn" data-dismiss="modal">Aceptar</button>
+</p>
+       
+      </div>
+    </div>';
     }
     if ($form_id == 'user_login_form') {
         $pass = '<br><a href="/user/password">¿Olvido su contraseña?</a>';
@@ -140,12 +178,12 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
             <p class="img-login-content" style="text-align: center;"></p>
             <p>&nbsp;</p>
             <p class="content-btn-register">
-                '. $register.'
+                ' . $register . '
             </p>
             <p>&nbsp;</p>
-            '. $text .'
-            <div class="login-user-bk"><span class="legend-user-login">'. $titleForm .'</span>';
-    $suffix = $pass .' </div></div>
+            ' . $text . '
+            <div class="login-user-bk"><span class="legend-user-login">' . $titleForm . '</span>';
+    $suffix = $pass . ' </div></div>
         <div id="right_col" class="col-sm-4 col-lg-3 col-lg-offset-1" role="complementary">
                 <div class="promo_pods ">
                     <div class="item panel panel-default even">
@@ -174,7 +212,7 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
                     </div>
                 </div>
             </div>
-        </div></div><br><br><br><div class="modal-body"></div>';
+        </div></div><br><br><br><div id="ex1" class="modal">' . $legal . '<a href="#" rel="modal:close">Close</a></div>';
 
     if ($form_id == 'user_login_form') {
         $form['#prefix'] = $prefix;
@@ -185,8 +223,8 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
 
     if ($form_id == 'user_register_form') {
         $form['#prefix'] = $prefix;
-        $form['account']['mail']['#title'] =  'Correo Electrónico (será su usuario)';
-        $form['legal']['conditions']['#title'] =  'Consulte y valide el Aviso de privacidad y protección de datos personales haciendo <a href="/legal">CLICK AQUÍ.</a>';
+        $form['account']['mail']['#title'] = 'Correo Electrónico (será su usuario)';
+        $form['legal']['conditions']['#title'] = 'Consulte y valide el Aviso de privacidad y protección de datos personales haciendo <a href="/legal">CLICK AQUÍ.</a>';
         // $form['account']['legal_accept']['#title'] =  'Consulte y valide el Aviso de privacidad y protección de datos personales haciendo';
         $form['actions']['submit']['#value'] = 'Registrarme';
         $form['#suffix'] = $suffix;
