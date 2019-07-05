@@ -23,7 +23,7 @@ class MenuPrimeCustomBlock extends BlockBase
     {
         $user = \Drupal::currentUser()->getEmail();
         return array(
-            '#theme' => 'filters_publications_block_custom',
+            '#theme' => 'menu_login_block_custom',
             '#titulo' => $this->t('Menu Prime'),
             '#user' => ($user) ? $user : false
         );
