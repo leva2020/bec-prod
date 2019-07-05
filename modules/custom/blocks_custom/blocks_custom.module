@@ -186,6 +186,7 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
     if ($form_id == 'user_register_form') {
         $form['#prefix'] = $prefix;
         $form['account']['mail']['#title'] =  'Correo Electrónico (será su usuario)';
+        $form['legal']['conditions']['#title'] =  'Consulte y valide el Aviso de privacidad y protección de datos personales haciendo <a href="/legal">CLICK AQUÍ.</a>';
         // $form['account']['legal_accept']['#title'] =  'Consulte y valide el Aviso de privacidad y protección de datos personales haciendo';
         $form['actions']['submit']['#value'] = 'Registrarme';
         $form['#suffix'] = $suffix;
