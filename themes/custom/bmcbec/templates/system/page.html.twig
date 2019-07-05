@@ -67,8 +67,12 @@
         {% block navigation %}<div class="topbar">
         <div class="left">
             {% set current_date = date()|date('U')|format_date('l d/M/Y H:i') %}
+            {% set current_date_2 = 'now'|date('U')|format_date('l d/M/Y H:i') %}
+            {% set current_date_1 = 'now'|date('l d/M/Y H:i') %}
             {% trans %}
                 <span>{{ current_date|placeholder|striptags }}</span>
+                <span>{{ current_date_1|placeholder|striptags }}</span>
+                <span>{{ current_date_2|placeholder|striptags }}</span>
             {% endtrans %}
         </div>
             {{ page.navigation }}
