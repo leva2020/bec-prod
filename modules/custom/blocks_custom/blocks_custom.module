@@ -119,7 +119,7 @@ function blocks_custom_form_alter(&$form, FormStateInterface $form_state, $form_
         $legal = '<div class="modal-content-">
       <div class="modal-header">
         
-       <h4 class="modal-title">Aviso de privacidad y protección de datos personales</h4>
+       <h3 class="color-text-blue">Aviso de privacidad y protección de datos personales</h3>
       </div>
       <div class="modal-body" style="text-align: justify;">
       <p>La BMC BOLSA MERCANTIL DE COLOMBIA S.A identificado con NIT 860.071.250-9 ubicada en la Calle 113 # 7 – 21 Teleport Business Park torre A - piso 15 de la ciudad de Bogotá será el responsable del tratamiento y, en tal virtud, podrá recolectar, almacenar y usar su información personal para:</p>
