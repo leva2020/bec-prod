@@ -1,0 +1,26 @@
+<div class="header-section">
+    <h2 class="color-text-blue">Le puede interesar</h2>
+    <hr class="x1"/>
+</div>
+{% if interests %}
+    {% for interest in interests %}
+        <article>
+            {% set imagestyle = {
+                '#theme':      'image_style',
+                '#style_name': 'custom_118x120',
+                '#uri':        interest.field_imagen_desktop.entity.uri.value,
+                '#alt':        '',
+            } %}
+            <div class="wrapper-image">
+                <a href="{{ path('entity.node.canonical', {'node': interest.id}) }}" title="{{ interest.get('title').value }}">
+                    {{ imagestyle }}
+                </a>
+            </div>
+            <div class="content">
+                <a href="{{ path('entity.node.canonical', {'node': interest.id}) }}" target="" title="{{ interest.get('title').value }}">
+                    {{ interest.get('title').value }}
+                </a>
+            </div>
+        </article>
+    {% endfor %}
+{% endif %}
