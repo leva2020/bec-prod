@@ -37,7 +37,7 @@
                                         </a>
                                     {% endif %}
 
-                                    {% set newsDate = data.created.value|date('U')|format_date('j M Y') %}
+                                    {% set newsDate = data.created.value|date('U')|format_date('short_dmyyyy') %}
                                     {% trans %}
                                         <em>{{ newsDate|placeholder|striptags }}</em>
                                     {% endtrans %}
