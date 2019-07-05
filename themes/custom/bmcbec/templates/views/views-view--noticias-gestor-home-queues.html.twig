@@ -16,16 +16,27 @@
                             {% set data = row._entity %}
                             <article>
                                 <div class="wrapper-image">
-                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
-                                        <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}"
-                                             itemprop="image">
-                                    </a>
+                                    {% if data.field_archivo %}
+                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" itemprop="url">
+                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}" itemprop="image">
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}" itemprop="image">
+                                        </a>
+                                    {% endif %}
                                 </div>
                                 <div class="content">
-                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
-                                        {{ data.field_titulo[0].value }}
-                                    </a>
-                                    {% set newsDate = data.created.value|date('j M Y') %}
+                                    {% if data.field_archivo %}
+                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" itemprop="url">
+                                            {{ data.field_titulo[0].value }}
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                            {{ data.field_titulo[0].value }}
+                                        </a>
+                                    {% endif %}
+                                    {% set newsDate = data.created.value|date('U')|date('j M Y') %}
                                     <em>{% trans %} {{ newsDate }}{% endtrans %}</em>
                                     <p>{{ data.field_descripcion[0].value }}</p>
                                 </div>
