@@ -21,7 +21,18 @@ class PublicationsCustomBlock extends BlockBase
      */
     public function build()
     {
-        $query = Drupal::entityQuery('node')
+
+        $entity_subqueue = \Drupal::entityManager()->getStorage('entity_subqueue')->load(1);
+        $items = $entity_subqueue->get('items')->getValue();
+
+        if (!empty($items)) {
+            foreach ($items as $empresaId) {
+                $empresa = Node::load($empresaId);
+                $empresas[] = $empresa;
+            }
+        }
+
+        /*$query = Drupal::entityQuery('node')
             ->condition('type', 'publicaciones')
             ->sort('created', 'DESC')
             ->range(0, 4)
@@ -33,7 +44,7 @@ class PublicationsCustomBlock extends BlockBase
                 $empresa = Node::load($empresaId);
                 $empresas[] = $empresa;
             }
-        }
+        }*/
 
         return array(
             '#theme' => 'blocks_custom',
