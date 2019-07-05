@@ -14,7 +14,6 @@ base:
     dist/js/main.min.js: {}
     src/js/slick.js: {}
     src/js/leva.js: {}
-    src/js/modal.js: {}
   dependencies:
     - core/jquery
     - core/underscore

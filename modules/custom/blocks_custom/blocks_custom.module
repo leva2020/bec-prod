@@ -143,14 +143,6 @@ Si desea no autorizar alguna finalidad puede presentar una solicitud escribiendo
 					<span style="display: none;"><input class="text-box single-line" id="registerModel_MemberProperties_3__Value" name="registerModel.MemberProperties[3].Value" type="text" value=""></span>
 <input id="registerModel_MemberProperties_3__Alias" name="registerModel.MemberProperties[3].Alias" type="hidden" value="privacyNotice"><label for="ChkAvisocheckid">El marcar esta casilla y diligenciar el presente formulario se entenderá como una conducta concluyente de que otorga su consentimiento de forma libre y voluntaria a BMC BOLSA MERCANTIL DE COLOMBIA S.A para que trate su información personal de acuerdo con las finalidades descritas anteriormente.</label>
 </p>
-
-      </div>
-      <div class="modal-footer">
-		  <p>
-<span class="ChkAvisospan" style="color: #000;font-weight: bold;">Debe seleccionar la casilla de aceptación de términos</span>
-		   <button type="button" disabled="disabled" class="btn primary_colour_1-bg secondary_colour_3-text footeracceptbtn" data-dismiss="modal">Aceptar</button>
-</p>
-       
       </div>
     </div>';
     }
