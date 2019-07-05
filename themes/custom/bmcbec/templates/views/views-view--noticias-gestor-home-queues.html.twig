@@ -1,0 +1,72 @@
+<section class="content advanced-component publications">
+    <div data-os-animation="fadeIn" data-os-animation-delay="0">
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 column">
+                        <div class="header-section col-md-12 col-xs-12">
+                            <h1 class="color-text-blue">Noticias del Gestor</h1>
+
+                            <p>Conozca la regulación vigente, eventos, fechas importantes y documentos del Gestor de Gas
+                                Natural.</p>
+                        </div>
+
+                        {% set resultados = view.result %}
+                        {% for key , row in resultados %}
+                            {% set data = row._entity %}
+                            <article>
+                                <div class="wrapper-image">
+                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                        <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}"
+                                             itemprop="image">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                        {{ data.field_titulo[0].value }}
+                                    </a>
+                                    {% set newsDate = data.created.value|date('j M Y') %}
+                                    <em>{% trans %} {{ newsDate }}{% endtrans %}</em>
+                                    <p>{{ data.field_descripcion[0].value }}</p>
+                                </div>
+                            </article>
+                        {% endfor %}
+                        <div class="wrapper-cta">
+                            <a class="btn btn-blue pull-left" href="publicaciones?categoria=Noticias%20del%20Gestor">Ver
+                                otras Noticias del Gestor</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 column">
+                        <div>
+                            <div class="header-section col-md-12 col-xs-12">
+                                <h1 class="color-text-blue">Resultados del Mercado</h1>
+                            </div>
+
+                            <div class="wrapper-chart">
+                                <iframe id="becchartframe_left_1"
+                                        src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/cuadro-mercado-resumen-de-contratos-homepage-marquee.cshtml"></iframe>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="header-section col-md-12 col-xs-12">
+                                <h1 class="color-text-blue">Comportamiento Transaccional del Mercado</h1>
+
+                                <p>En esta gráfica se puede visualizar el comportamiento del mercado en términos de
+                                    precios (expresados en USD/MBTU), negociados según la modalidad contractual para
+                                    cada uno de los mercados.</p>
+
+                                <div class="wrapper-chart">
+                                    <iframe id="becchartframe_left"
+                                            src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/cuadro-mercado-comportamiento-transaccional-mercado-homepage.cshtml"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
