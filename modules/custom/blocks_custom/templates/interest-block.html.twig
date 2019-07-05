@@ -7,17 +7,17 @@
         <article>
             {% set imagestyle = {
                 '#theme':      'image_style',
-                '#style_name': 'custom_118x120',
+                '#style_name': 'custom_70x55',
                 '#uri':        interest.field_imagen_desktop.entity.uri.value,
                 '#alt':        '',
             } %}
             <div class="wrapper-image">
-                <a href="{{ path('entity.node.canonical', {'node': interest.id}) }}" title="{{ interest.get('title').value }}">
+                <a href="{{ interest.field_modulo_1.value }}" title="{{ interest.get('title').value }}">
                     {{ imagestyle }}
                 </a>
             </div>
             <div class="content">
-                <a href="{{ path('entity.node.canonical', {'node': interest.id}) }}" target="" title="{{ interest.get('title').value }}">
+                <a href="{{ interest.field_modulo_1.value }}" target="" title="{{ interest.get('title').value }}">
                     {{ interest.get('title').value }}
                 </a>
             </div>
