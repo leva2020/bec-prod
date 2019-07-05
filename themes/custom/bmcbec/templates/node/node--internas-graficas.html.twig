@@ -1,46 +1,44 @@
-	{% if node.field_banner_principal is not empty%}
-		{% include 'banners.html.twig' with {'data': node.field_banner_principal.entity } %}
-	{% endif %}
+{% if node.field_banner_principal is not empty %}
+    {% include 'banners.html.twig' with {'data': node.field_banner_principal.entity } %}
+{% endif %}
 
-	{% if node.field_graficas is not empty%}
-		{% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}
-	{% endif %}
+	{% if node.field_graficas is not empty %}
+        {% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}
+    {% endif %}
 
 	{% for item in node.field_graficas %}
-		{% if item.entity.field_template is not empty%}
-			<section class="content advanced-component standard-components">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
-                            <div class="page_component codeblock">
-                                <object id="becchartframe" width="100%" height="700"
-                                        data="{{ item.entity.field_template.value }}"
-                                        style="height:{{ item.entity.field_alto.value }}px; border:0;" scrolling="no">
-                                </object>
-                                <style>
-                                    #pos_2105 + section > div {
-                                        width: 100% !important;
-                                        margin: 0;
-                                        padding: 0;
-                                    }
-                                </style>
-                            </div>
+        {% if item.entity.field_template is not empty %}
+            <section class="content advanced-component standard-components">
+                <div class="">
+                    <div class="col-xs-12" role="main">
+                        <div class="page_component codeblock">
+                            <object id="becchartframe" width="100%" height="700"
+                                    data="{{ item.entity.field_template.value }}"
+                                    style="height:{{ item.entity.field_alto.value }}px; border:0;" scrolling="no">
+                            </object>
+                            <style>
+                                #pos_2105 + section > div {
+                                    width: 100% !important;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                            </style>
                         </div>
                     </div>
                 </div>
             </section>
-		{% endif %}
-	{% endfor %}
+        {% endif %}
+    {% endfor %}
 
-	{% if node.field_cuadros_listado_ct is not empty%}
-		{% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
-	{% endif %}
+	{% if node.field_cuadros_listado_ct is not empty %}
+        {% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
+    {% endif %}
 
-	{% if node.field_cuadros_listado_tipo_2 is not empty%}
-		{% include 'section-grid-list.html.twig' with {'data': node.field_cuadros_listado_tipo_2 } %}
-	{% endif %}
+	{% if node.field_cuadros_listado_tipo_2 is not empty %}
+        {% include 'section-grid-list.html.twig' with {'data': node.field_cuadros_listado_tipo_2 } %}
+    {% endif %}
 
-	{% if node.field_banner_inferior is not empty%}
-		{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
-	{% endif %}
+	{% if node.field_banner_inferior is not empty %}
+        {% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+    {% endif %}
 
