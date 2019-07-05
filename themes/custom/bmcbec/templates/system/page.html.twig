@@ -65,7 +65,14 @@
 </div>
 {% if page.navigation %}
         {% block navigation %}<div class="topbar">
-        <div class="left"><span>jueves 22/Nov/2018 00:12</span></div>
+        <div class="left">
+            {% set current_date = date()|date('U')|format_date('long') %}
+            <span>{{ 'now'|date('F m/d/Y') }}</span>
+            {% trans %}
+                <span>{{ current_date|placeholder|striptags }}</span>
+            {% endtrans %}
+            <span>jueves 22/Nov/2018 00:12</span>
+        </div>
             {{ page.navigation }}
         <div style="clear:both;"></div>
       </div>
