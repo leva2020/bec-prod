@@ -14,7 +14,11 @@
               <div id="collapse-{{loop.index}}-{{item_test}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-{{loop.index}}-{{item_test}}" aria-expanded="false" style="height: 0px;">
                   <div class="panel-body">
                     {% for item1 in item.entity.field_archivos %}
-                        {{item1.entity.field_label_archivo.value}}
+                        <p>
+                            <a href="{{ item1.entity.field_archivo.entity.fileuri }}" target="_blank">
+                                {{item1.entity.field_label_archivo.value}}
+                            </a>
+                        </p>
                     {% endfor %}
                   </div>
               </div>

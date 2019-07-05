@@ -1,68 +1,83 @@
 {% if data.field__background_.value %}
-  {%  set class = " color-bg-main-gray"  %}
+    {% set class = " color-bg-main-gray" %}
 {% else %}
-  {%  set class = ""  %}
+    {% set class = "" %}
 {% endif %}
 
-  <section class="content advanced-component tabbed-listing{{ class }} ">
+<section class="content advanced-component tabbed-listing{{ class }} ">
     <div class="container">
 
-      <!-- ROW - OVERVIEW -->
-      <div class="row overview os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0s">
-        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-          <h2 class="heading main">{{ data.field_titulo.value }}</h2>
-          <div class="text ">
-            <p><span class="intro">{{ data.field_descripcion.value|raw }}</span></p>
-          </div>
-        </div>
-      </div>
-      <!--// ROW - OVERVIEW -->
-
-      <!-- ROW -->
-      <div class="row">
-        <div class="tabbed col-xs-12" role="tabpanel">
-
-          <div class="tab-content responsive hidden-xs hidden-sm">
-            <div id="tab-name-2252-1" role="tabpanel" class="tab-pane active">
-              <!-- LISTING -->
-              {%  set class = ""  %}
-              {% if data.field_cuadros|length < 3 %}
-                {%  set class = " text-center"  %}
-              {% endif %}
-              <div class="row listing section grid{{ class }}">
-                <!-- ITEM -->
-                {% for item in data.field_cuadros %}
-                  <div class="item col-md-4 col-sm-6 col-xs-12">
-                    {% if item.entity.field_backrgound.value =='verde' %}
-                      <div class="content-box color-bg-green">
-                    {% elseif item.entity.field_backrgound.value =='azulc' %}
-                      <div class="content-box color-bg-sec-blue">
-                    {% elseif item.entity.field_backrgound.value =='azul' %}
-                      <div class="content-box color-bg-main-blue">
-                    {% endif %}
-                        <a href="{{ item.entity.field_cta.uri|replace({'entity:': '/'}) }}" title="{{ item.entity.field_cta.title }}">
-                      <div class="image">
-                        <img src="{{file_url(item.entity.field_imagen.entity.fileuri)}}" title="{{item.entity.field_imagen.title}}" alt="{{item.entity.field_imagen.alt}}">
-                      </div>
-                        <p class="heading">{{ item.entity.field_titulo.value }}</p>
-                        <p>{{item.entity.field_descripcion.value|raw}}</p>
-                      </a>
-                      {% if item.entity.field_cta.title and item.entity.field_cta.title != '' %}
-                        <a role="button" class="btn btn-white" href="{{ item.entity.field_cta.uri|replace({'entity:': '/'}) }}">{{ item.entity.field_cta.title }}</a>
-                      {% endif %}
-                    </div>
-                  </div>
-                {% endfor %}
-              </div>
-              <!--// LISTING  -->
-              <p class="link text-center"><a class="btn"></a></p><!--Elemento fijo-->
+        <!-- ROW - OVERVIEW -->
+        <div class="row overview os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0s">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
+                <h2 class="heading main">{{ data.field_titulo.value }}</h2>
+                <div class="text ">
+                    <p><span class="intro">{{ data.field_descripcion.value|raw }}</span></p>
+                </div>
             </div>
-          </div><div class="panel-group responsive visible-xs visible-sm" id="collapse-undefined"><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#collapse-undefined" href="#collapse-tab-name-2252-1">
-                <i class="fa fa-chevron-down pull-right after highlight"></i>
-              </a></h4></div><div id="collapse-tab-name-2252-1" class="panel-collapse collapse in"><div class="panel-body"></div></div></div></div>
         </div>
-      </div>
-      <!--// ROW -->
+        <!--// ROW - OVERVIEW -->
+        <!-- ROW -->
+        <div class="row">
+            <div class="tabbed col-xs-12" role="tabpanel">
+                <div class="tab-content responsive hidden-xs hidden-sm">
+                    <div id="tab-name-2252-1" role="tabpanel" class="tab-pane active">
+                        <!-- LISTING -->
+                        {% set class = "" %}
+                        {% if data.field_cuadros|length < 3 %}
+                            {% set class = " text-center" %}
+                        {% endif %}
+                        <div class="row listing section grid{{ class }}">
+                            <!-- ITEM -->
+                            {% for item in data.field_cuadros %}
+                            <div class="item col-md-4 col-sm-6 col-xs-12">
+                                {% if item.entity.field_backrgound.value =='verde' %}
+                                <div class="content-box color-bg-green">
+                                    {% elseif item.entity.field_backrgound.value =='azulc' %}
+                                    <div class="content-box color-bg-sec-blue">
+                                        {% elseif item.entity.field_backrgound.value =='azul' %}
+                                        <div class="content-box color-bg-main-blue">
+                                            {% endif %}
+                                            <a href="{{ item.entity.field_cta.uri|replace({'entity:': '/'}) }}"
+                                               title="{{ item.entity.field_cta.title }}">
+                                                <div class="image">
+                                                    <img src="{{ file_url(item.entity.field_imagen.entity.fileuri) }}"
+                                                         title="{{ item.entity.field_imagen.title }}"
+                                                         alt="{{ item.entity.field_imagen.alt }}">
+                                                </div>
+                                                <p class="heading">{{ item.entity.field_titulo.value }}</p>
+                                                <p>{{ item.entity.field_descripcion.value|raw }}</p>
+                                            </a>
+                                            {% if item.entity.field_cta.title and item.entity.field_cta.title != '' %}
+                                                <a role="button" class="btn btn-white"
+                                                   href="{{ item.entity.field_cta.uri|replace({'entity:': '/'}) }}">{{ item.entity.field_cta.title }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <!--// LISTING  -->
+                                <p class="link text-center"><a class="btn"></a></p><!--Elemento fijo-->
+                            </div>
+                        </div>
+                        <div class="panel-group responsive visible-xs visible-sm" id="collapse-undefined">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse"
+                                           data-parent="#collapse-undefined" href="#collapse-tab-name-2252-1">
+                                            <i class="fa fa-chevron-down pull-right after highlight"></i>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse-tab-name-2252-1" class="panel-collapse collapse in">
+                                    <div class="panel-body"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--// ROW -->
 
-    </div>
-  </section>
+            </div>
+</section>
