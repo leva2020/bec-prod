@@ -3,7 +3,7 @@
         <div class="row overview os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0s"
              style="animation-delay: 0s;">
             <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
-                <p class="heading main primary_colour_1-text">{{ node.title.value }}</p>
+                <h1 class="heading main primary_colour_1-text">{{ node.title.value }}</h1>
                 <div class="text ">
                     {{ node.body.value | raw }}
                 </div>
@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
                 <div class="page_component codeblock">
-                    <h1>{{ node.field_titulo_formulario.value }}</h1>
+                    <h1 class="heading">{{ node.field_titulo_formulario.value }}</h1>
                     <iframe id="blockrandom" class="wrapper" src="{{ node.field_modulo_1.value }}" width="100%"
                             height="1500px" frameborder="0" scrolling="yes"></iframe>
                 </div>
