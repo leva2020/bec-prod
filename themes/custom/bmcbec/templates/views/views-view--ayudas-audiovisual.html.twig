@@ -7,8 +7,9 @@
                         <div class="row clearfix">
                             <div class="col-md-12 column">
                                 <div>
-                                    <h1>Ayudas Audiovisuales</h1>
-                                    <p style="text-align: justify;"><span class="intro">Material informativo que le ayudará a entender&nbsp;la estructura y funcionamiento del&nbsp;Mercado de Gas Natural en Colombia.</span>
+                                    <h1 class="heading">Ayudas Audiovisuales</h1>
+                                    <p style="text-align: justify;">
+                                        <span class="intro">Material informativo que le ayudará a entender&nbsp;la estructura y funcionamiento del&nbsp;Mercado de Gas Natural en Colombia.</span>
                                     </p>
                                     <p>&nbsp; &nbsp;&nbsp;</p>
                                 </div>
@@ -65,9 +66,8 @@
                                                 <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" target="_top">
                                                     {{ data.title.value }}
                                                 </a>
-                                            </h5>
-                                            {% set newsDate = data.created.value|date('j M Y') %}
-                                            <p style="text-align: center;">{% trans %} {{ newsDate }}{% endtrans %}</p>
+                                            </h5>video
+                                            <p style="text-align: center;">{{ data.created.value|format_date('video') }}</p>
                                         </div>
                                     </div>
                     {% if key is divisible by(3) and key > 0 %}
