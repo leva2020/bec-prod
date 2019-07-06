@@ -1,0 +1,78 @@
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="heading" itemprop="name headline">{{ node.title.value }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="right_col" class="col-sm-8 pull-right" role="main">
+                <div class="page_component codeblock">
+                    <iframe width="560" height="315" src="{{ node.field_ayuda_audiovisual.value }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+                </div>
+                <div class="meta panel panel-default">
+                    <div class="panel-body">
+                        <div>
+                            <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                Publicado por BEC el
+                            </span>
+                            <time itemprop="datePublished" datetime="{{ node.created.value|date('Y-m-d') }}">
+                                <span class="date">{{ node.created.value|format_date('video') }}</span>
+                            </time>
+                        </div>
+                        <div class="row">
+                            <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
+                                <span>
+                                    <a href="publicaciones/ayudas-audiovisuales" title="Ayudas Audiovisuales" rel="NOINDEX, FOLLOW">
+                                        Ayudas Audiovisuales
+                                    </a>
+                                </span>
+                                <span>
+                                    <a href="/publicaciones/?categoria=Noticias" title="Noticias" rel="NOINDEX, FOLLOW">Noticias</a>,
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <nav id="pager">
+                    <ul class="pager nav">
+                        <li class="all hidden-xs even">
+                            <a href="/publicaciones">
+                                <span>Todas las publicaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="left_col" class="col-sm-4 col-lg-3 pull-left" role="complementary">
+                {{ drupal_block('filters_publications_block') }}
+                {{ drupal_block('filters_categories_block') }}
+                <div class="promo_pods ">
+                    <div class="item panel panel-default odd">
+                        <div class="panel-body primary_colour_1-bg">
+                            <a href="/sitios-de-interés/">
+                                <p class="heading secondary_colour_3-text">Sitios de Interés</p>
+                            </a>
+                            <div class="info">
+                                <div class="text secondary_colour_3-text">
+                                    <p>Conozca&nbsp;todas las entidades que hacen parte del sector del Gas Natural&nbsp;en Colombia.</p>
+                                </div>
+                                <p class="link">
+                                    <a href="/sitios-de-interés/" class="btn primary_colour_2-bg secondary_colour_3-text">
+                                        Ver todos
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item lists panel panel-default even">
+                        {{ drupal_block('recent_publications_block') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% if node.field_banner_inferior.entity.field_titulo.value or node.field_banner_inferior.entity.field_descripcion_html.value %}
+    {% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
+{% endif %}
