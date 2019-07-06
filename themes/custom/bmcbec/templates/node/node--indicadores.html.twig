@@ -14,7 +14,8 @@
                                 {% for file in node.field_archivos_indicadores %}
                                     <li class="odd">
                                         <a href="{{ file_url(file.entity.fileuri) }}" target="_blank">
-                                            <span>archivo</span>
+                                            <span>{{ file.filename }}</span>
+                                            <span>{{ file.description }}</span>
                                         </a>
                                     </li>
                                 {% endfor %}
