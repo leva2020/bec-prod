@@ -24,11 +24,11 @@
                             {% if node.field_participantes.entity %}
                                 {% for participantes in node.field_participantes.entity %}
                                     <div class="item col-md-4 col-sm-6 col-xs-12  odd">
-                                        <a href="/participantes/comercializador-de-gas-importado/">
+                                        <a href="{{ participantes.id }}">
                                             <div class="image">
                                                 <img src="" alt="">
                                             </div>
-                                            <p class="heading primary_colour_1-text">{{ participantes.field_titulo.value }}</p>
+                                            <p class="heading primary_colour_1-text">{{ participantes.title.value }}</p>
                                         </a>
                                         <div class="text ">
                                             <p>
@@ -39,29 +39,8 @@
                                 {% endfor %}
                             {% endif %}
                         </div>
-                        <!--// LISTING  -->
-                        <p class="link text-center"><a class="btn secondary_colour_3-bg primary_colour_1-text"
-                                                       href="/participantes/"></a></p>
                     </div>
                 </div>
-                <div class="panel-group responsive visible-xs visible-sm" id="collapse-undefined">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="accordion-toggle"
-                                   data-toggle="collapse"
-                                   data-parent="#collapse-undefined"
-                                   href="#collapse-tab-name-1905-1">
-                                    <i class="fa fa-chevron-down pull-right after highlight"></i>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapse-tab-name-1905-1" class="panel-collapse collapse in">
-                            <div class="panel-body"></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
 
