@@ -15,11 +15,11 @@
                             <a href="{{ path('entity.node.canonical', {'node': data.id}) }}"
                                itemprop="url">
                                 <div class="image">
-                                    <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}"
+                                    <img src="{{ file_url(data.field_image[0].entity.fileuri) }}"
                                          itemprop="image">
                                 </div>
                                 <p class="heading" itemprop="name headline">
-                                    {{ data.field_titulo[0].value }}
+                                    {{ data.titulo.value }}
                                 </p>
                             </a>
                             <div class="info">
@@ -42,13 +42,7 @@
                                     <div class="row">
                                         <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
                                             <span>
-                                                <a href="/publicaciones?categoria=Noticias del Gestor" title="Noticias del Gestor"
-                                                   rel="NOINDEX, FOLLOW">Noticias del Gestor</a>,
-                                            </span>
-                                            <span>
-                                                <a href="/publicaciones?categoria=Noticias" title="Noticias" rel="NOINDEX, FOLLOW">
-                                                    Noticias
-                                                </a>
+                                                <a href="/publicaciones/ayudas-audiovisuales" title="Ayudas Audiovisuales" rel="NOINDEX, FOLLOW">Ayudas Audiovisuales</a>
                                             </span>
                                         </span>
                                     </div>
