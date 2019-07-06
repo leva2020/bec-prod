@@ -14,7 +14,6 @@
                                 {% for file in node.field_archivos_indicadores %}
                                     <li class="odd">
                                         <a href="{{ file_url(file.entity.fileuri) }}" target="_blank">
-                                            <span>{{ file.filename }}</span>
                                             <span>{{ file.description }}</span>
                                         </a>
                                     </li>
@@ -42,7 +41,7 @@
 <section class="content advanced-component standard-components">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+            <div class="col-xs-12" role="main">
                 <div class="page_component codeblock">
                     <iframe id="becchartframe" width="100%" height="1300" src="{{ node.field_modulo_1.value }}" style="height:1300px; border:0;" scrolling="no">
                     </iframe>
