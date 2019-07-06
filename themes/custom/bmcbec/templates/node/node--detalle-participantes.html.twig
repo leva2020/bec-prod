@@ -1,0 +1,148 @@
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="heading">{{ node.title.value }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="left_col" class="col-sm-8" role="main">
+                <div class="page_component image">
+                    {% set imagestyle = {
+                        '#theme':      'image_style',
+                        '#style_name': 'custom_750x362',
+                        '#uri':        node.field_image.entity.uri.value,
+                        '#alt':        '',
+                    } %}
+                    {{ imagestyle }}
+                </div>
+                {{ node.body.value | raw }}
+            </div>
+            <div id="right_col" class="col-sm-4 col-lg-3 col-lg-offset-1" role="complementary">            <!-- SUB  -->
+                <!-- SUB - add another class after class="sub" to style for other types of nav: class="sub filter" -->
+                <nav class="sub panel panel-default">
+                    <p class="heading primary_colour_1-text">
+                        <a class="primary_colour_1-text" href="/participantes/">
+                            Participantes </a>
+                    </p>
+                    <ul class="nav">
+                        <li class="odd">
+                            <a href="/participantes/comercializador-de-gas-importado/">
+				    <span>
+				    Comercializador de Gas Importado				    </span>
+                            </a>
+
+                        </li>
+                        <li class="even">
+                            <a href="/participantes/productor-comercializador/">
+				    <span>
+				    Productor - Comercializador				    </span>
+                            </a>
+
+                        </li>
+                        <li class="odd">
+                            <a href="/participantes/transportador/">
+				    <span>
+				    Transportador				    </span>
+                            </a>
+
+                        </li>
+                        <li class="even">
+                            <a href="/participantes/generador-térmico/">
+				    <span>
+				    Generador Térmico				    </span>
+                            </a>
+
+                        </li>
+                        <li class="odd">
+                            <a href="/participantes/comercializador/">
+				    <span>
+				    Comercializador				    </span>
+                            </a>
+
+                        </li>
+                        <li class="active even">
+                            <a href="/participantes/usuario-no-regulado/">
+				    <span>
+				    Usuario No Regulado				    </span>
+                            </a>
+
+                        </li>
+                    </ul>
+
+                </nav>
+                <!--// SUB -->
+                <!--// SUB -->
+                <!-- PROMO PODS -->
+                <div class="promo_pods ">
+
+                    <div class="item imagepod odd">
+                        <div class="image">
+                            <a href="http://www.bmcbec.com.co/publicaciones/" target=""> <img
+                                        src="/media/1026/bmc-bec-contenido-noticias-icon-new.jpg?anchor=center&amp;mode=crop&amp;width=360&amp;height=270&amp;rnd=131151341970000000"
+                                        alt="Noticias Recientes">
+                                <div class="overlayicon" style="width: 263px; height: 197px;"><i
+                                            class="fa fa fa-chain"></i></div>
+                            </a></div>
+                    </div>
+
+                    <div class="item panel panel-default even">
+                        <div class="panel-body primary_colour_2-bg">
+                            <p class="heading secondary_colour_3-text">Nuestras Oficinas </p>
+                            <div class="info">
+                                <div class="text secondary_colour_3-text"><p>Calle 113 No. 7-21<br>Piso 15 Torre A <br>Edif.&nbsp;Teleport
+                                        Business Park<br>Pbx: +57(1) 629-2529<br>Bogotá D.C., Colombia</p></div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--// PROMO PODS -->
+            </div>
+
+        </div>
+        <!--// ROW -->
+
+
+    </div>
+</section>
+
+<section class="content advanced-component cta-strip secondary_colour_2-bg">
+    <div class="container">
+
+        <!-- ROW -->
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <p class="heading main primary_colour_1-text">Todo sobre nosotros</p>
+
+            </div>
+
+        </div>
+        <!--// ROW -->
+        <!-- ROW -->
+        <div class="row">
+
+            <div class="col-md-8 col-xs-12">
+
+                <div class="text ">
+                    <p>Conozca cómo desde el <strong>Gestor del Gas Natural en Colombia</strong> en cabeza de la Bolsa
+                        Mercantil de Colombia, promovemos la competitividad del sector en el país.</p>
+                </div>
+
+            </div>
+            <div class="col-md-3 col-xs-12 pull-right">
+
+                <p class="link"><a class="btn btn-block btn-lg primary_colour_2-bg secondary_colour_3-text"
+                                   href="/nosotros/">Más Información</a></p>
+
+            </div>
+
+        </div>
+        <!--// ROW -->
+
+    </div>
+</section>
