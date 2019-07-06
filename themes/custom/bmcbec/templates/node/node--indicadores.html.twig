@@ -1,0 +1,59 @@
+<section class="content advanced-component text-with-image_video secondary_colour_2-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-xs-12 pull-left os-animation animated fadeIn" data-os-animation="fadeIn"
+                 data-os-animation-delay="0">
+                <div class="info">
+                    <h1 class="heading main primary_colour_1-text">Indicadores</h1>
+                    <div class="text ">
+                        <h5><span class="intro">{{ node.title.value }}</span></h5>
+                        <p><span>{{ node.field_descripcion.value }}</span></p>
+                        <p>&nbsp;</p>
+                        <ul>
+                            {% if node.field_archivos_indicadores %}
+                                {% for file in node.field_archivos_indicadores %}
+                                    <li class="odd">
+                                        <a href="{{ file_url(file.entity.fileuri) }}" target="_blank">
+                                            <span>{{ file.entity.filename }}</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12 pull-right">
+                <div class="image video os-animation animated fadeInRight" data-os-animation="fadeInRight"
+                     data-os-animation-delay="0">
+                    {% set imagestyle = {
+                        '#theme':      'image_style',
+                        '#style_name': 'large',
+                        '#uri':        node.field_image.entity.uri.value,
+                        '#alt':        '',
+                    } %}
+                    {{ imagestyle }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+                <div class="page_component codeblock">
+                    <iframe id="becchartframe" width="100%" height="1300" src="{{ node.field_modulo_1.value }}" style="height:1300px; border:0;" scrolling="no">
+                    </iframe>
+                    <style>
+                        #pos_2596 + section > div {
+                            width: 100% !important;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
