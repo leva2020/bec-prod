@@ -18,26 +18,27 @@
                         </a>
                     </li>
                 </ul>
-                {% if node.field_participantes %}
-                    {% for participantes in node.field_participantes %}
-                        {{ participantes.entity.title.value }}
-                    {% endfor %}
-                {% endif %}
                 <div class="tab-content responsive hidden-xs hidden-sm">
                     <div id="tab-name-1905-1" role="tabpanel" class="tab-pane active">
                         <div class="row listing section grid">
                             {% if node.field_participantes %}
                                 {% for participantes in node.field_participantes %}
                                     <div class="item col-md-4 col-sm-6 col-xs-12  odd">
-                                        <a href="{{ participantes.entity.id }}">
+                                        <a href="{{ path('entity.node.canonical', {'node': participantes.entity.id}) }}">
                                             <div class="image">
-                                                <img src="" alt="">
+                                                {% set imagestyle = {
+                                                    '#theme':      'image_style',
+                                                    '#style_name': 'custom_350x263',
+                                                    '#uri':        participantes.entity.field_image.entity.uri.value,
+                                                    '#alt':        '',
+                                                } %}
+                                                {{ imagestyle }}
                                             </div>
                                             <p class="heading primary_colour_1-text">{{ participantes.entity.title.value }}</p>
                                         </a>
                                         <div class="text ">
                                             <p>
-                                                {{ participantes.entity.body.value | raw }}
+                                                {{ participantes.entity.field_descripcion.value }}
                                             </p>
                                         </div>
                                     </div>
