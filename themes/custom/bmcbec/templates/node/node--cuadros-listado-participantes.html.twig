@@ -1,0 +1,82 @@
+<section class="content advanced-component tabbed-listing secondary_colour_3-bg">
+    <div class="container">
+        <div class="row overview os-animation animated fadeIn" data-os-animation="fadeIn" data-os-animation-delay="0s"
+             style="animation-delay: 0s;">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
+                <p class="heading main primary_colour_1-text">{{ node.title.value }}</p>
+                <div class="text ">
+                    {{ node.body.value | raw }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="tabbed col-xs-12" role="tabpanel">
+                <ul class="nav nav-tabs responsive text-center hidden-xs hidden-sm" role="tablist">
+                    <li role="presentation" class="active odd">
+                        <a href="#tab-name-1905-1" aria-controls="tab-name-1905-1" role="tab" data-toggle="tab">
+                            <i class="fa fa-chevron-down pull-right after highlight"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content responsive hidden-xs hidden-sm">
+                    <div id="tab-name-1905-1" role="tabpanel" class="tab-pane active">
+                        <div class="row listing section grid">
+                            {% if node.field_participantes.entity %}
+                                {% for participantes in node.field_participantes.entity %}
+                                    <div class="item col-md-4 col-sm-6 col-xs-12  odd">
+                                        <a href="/participantes/comercializador-de-gas-importado/">
+                                            <div class="image">
+                                                <img src="" alt="">
+                                            </div>
+                                            <p class="heading primary_colour_1-text">{{ participantes.field_titulo.value }}</p>
+                                        </a>
+                                        <div class="text ">
+                                            <p>
+                                                {{ participantes.body.value | raw }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <!--// LISTING  -->
+                        <p class="link text-center"><a class="btn secondary_colour_3-bg primary_colour_1-text"
+                                                       href="/participantes/"></a></p>
+                    </div>
+                </div>
+                <div class="panel-group responsive visible-xs visible-sm" id="collapse-undefined">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle"
+                                   data-toggle="collapse"
+                                   data-parent="#collapse-undefined"
+                                   href="#collapse-tab-name-1905-1">
+                                    <i class="fa fa-chevron-down pull-right after highlight"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-tab-name-1905-1" class="panel-collapse collapse in">
+                            <div class="panel-body"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+                <div class="page_component codeblock">
+                    <h1>{{ node.field_titulo_formulario.value }}</h1>
+                    <iframe id="blockrandom" class="wrapper" src="{{ node.field_modulo_1.value }}" width="100%" height="1500px" frameborder="0" scrolling="yes"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
