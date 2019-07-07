@@ -132,6 +132,12 @@ block-video-prime {
     background-image:url(../../images/plantilla-banner-web-premium_21.png?width=750&amp;height=258)
 }
 
+.img-mas-noticias {
+    width: 263px;
+    height: 197px;
+    background-image:url(../../images/bmc-bec-contenido-noticias-icon-new.jpg?width=263&amp;height=197)
+}
+
 .form-submit {
     background-color: rgba(11,90,156,1);
 }

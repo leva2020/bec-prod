@@ -106,6 +106,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'interests' => NULL
                 ],
                 'template' => 'interest-block'
+            ],
+        'participant_blocks_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Título por defecto',
+                    'descripcion' => 'descripción por defecto',
+                    'participants' => NULL
+                ],
+                'template' => 'participants'
             ]
     ];
 }

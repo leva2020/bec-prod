@@ -1,0 +1,16 @@
+<nav class="sub panel panel-default">
+    {% if participants %}
+        <p class="heading primary_colour_1-text">
+            <a class="primary_colour_1-text" href="/participantes/">Participantes</a>
+        </p>
+        <ul class="nav">
+            {% for participant in participants %}
+                <li class="active even">
+                    <a href="{{ path('entity.node.canonical', {'node': participant.id}) }}">
+                        <span>{{ participant.get('title').value }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</nav>
