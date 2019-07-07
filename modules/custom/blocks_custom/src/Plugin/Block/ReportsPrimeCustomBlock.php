@@ -27,6 +27,12 @@ class ReportsPrimeCustomBlock extends BlockBase
             ->execute();
         $reports = [];
 
+        $query1 = Drupal::entityQuery('node')
+            ->condition('type', 'informe_prime_igas')
+            ->sort('created', 'DESC')
+            ->execute();
+        $reportsIgas = [];
+
         if (!empty($query)) {
             foreach ($query as $reportId) {
                 $report = Node::load($reportId);
@@ -34,10 +40,19 @@ class ReportsPrimeCustomBlock extends BlockBase
             }
         }
 
+        if (!empty($query1)) {
+            foreach ($query1 as $reportId) {
+                $reportIgas = Node::load($reportId);
+                $reportsIgas[] = $reportIgas;
+            }
+        }
+
+        $data = array_merge($reports, $reportsIgas);
+
         return array(
             '#theme' => 'reports_prime_block_custom',
             '#titulo' => $this->t('Listado Reportes'),
-            '#reports' => $reports
+            '#reports' => $data
         );
     }
 
