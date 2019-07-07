@@ -6,78 +6,105 @@
             </div>
         </div>
         <div class="row">
-            <div class="page_component image">
-                {% set imagestyle = {
-                    '#theme':      'image_style',
-                    '#style_name': 'large',
-                    '#uri':        node.field_imagen_desktop.entity.uri.value,
-                    '#alt':        '',
-                } %}
-                {{ imagestyle }}
-            </div>
-            <p style="padding-left: 30px;">
-                <span class="intro">
-                    {{ node.body.value | raw }}
-                </span>
-            </p>    <!-- LISTING -->
-            <div class="listing blog">
-                <div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
-                    <a href="/prime/usuarios-registrados/igas-express/igas-express-2019/igas-express/igas-express/igas-2019/"
-                       itemprop="url">
-                        <p class="heading" itemprop="name headline">
-                            iGas 2019
-                        </p>
-                    </a>
-                    <div class="info">
-                        <div class="text" itemprop="articleBody"></div>
-                    </div>
-                    <div class="meta panel panel-default">
-                        <div class="panel-body">
-                            <div>
-                                <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                                    Publicado por BEC el
-                                </span>
-                                <time itemprop="datePublished" datetime="{{ node.created.value|date('Y-m-d') }}">
-                                    <span class="date">{{ node.created.value|date('j M Y') }}</span>
-                                </time>
-                            </div>
-                            <div class="row">
-                                <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
-                                    <span>
-                                        <a href="/prime/usuarios-registrados/igas-express/?category=9577" title="Índice diario de gas natural" rel="NOINDEX, FOLLOW">Índice diario de gas natural</a>
-                                    </span>
-                                </span>
+            <div id="mid_col" class="col-sm-6 col-sm-push-3" role="main">
+                <div class="page_component image">
+                    {% set imagestyle = {
+                        '#theme':      'image_style',
+                        '#style_name': 'large',
+                        '#uri':        node.field_image.entity.uri.value,
+                        '#alt':        '',
+                    } %}
+                    {{ imagestyle }}
+                </div>
+                <!--// IMAGE -->
+                <p style="padding-left: 30px;">
+                    <span class="intro">{{ node.body.value | raw }}</span>
+                </p>
+                <div class="listing blog">
+                    <div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
+                        <a href="/prime/usuarios-registrados/igas-express/igas-express-2019/igas-express/igas-express/igas-2019/"
+                           itemprop="url">
+
+                            <p class="heading" itemprop="name headline">
+                                iGas 2019
+                            </p>
+                        </a>
+
+                        <div class="info">
+
+                            <div class="text" itemprop="articleBody"></div>
+                        </div>
+
+                        <div class="meta panel panel-default">
+                            <div class="panel-body">
+                                <div>
+                        <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                            Publicado por
+BEC                            el
+                        </span>
+
+                                    <time itemprop="datePublished" datetime="2019-01-01"><span
+                                                class="date">01 Jan 2019</span></time>
+                                </div>
+                                <div class="row">
+
+            <span class="categories col-sm-6 text-right col-xs-12 text-left-xs pull-right">
+                    <span><a href="/prime/usuarios-registrados/igas-express/?category=9577"
+                             title="Índice diario de gas natural" rel="NOINDEX, FOLLOW">Índice diario de gas natural</a></span>
+</span>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
+
             </div>
+            <!--// CONTENT COL -->
+
+            <div id="left_col" class="col-sm-3 col-sm-pull-6" role="complementary">
+                <!-- SUB - FILTER -->
+                <nav class="sub panel panel-default">
+                    <p class="heading primary_colour_1-text">
+                        <a class="primary_colour_1-text" href="/prime/usuarios-registrados/igas-express/">Todas las
+                            publicaciones</a>
+                    </p>
+                    <ul class="nav">
+                        <li class="odd">
+                            <a href="/prime/usuarios-registrados/igas-express/?year=2019" rel="NOINDEX, FOLLOW">Año
+                                2019</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!--// SUB - FILTER -->
+
+
+                <!-- SUB - FILTER -->
+                <nav class="sub panel panel-default">
+                    <p class="heading primary_colour_1-text"><span>Categorías</span></p>
+                    <ul class="nav">
+                        <li class="odd">
+                            <a href="/prime/usuarios-registrados/igas-express/?category=9577" rel="NOINDEX, FOLLOW">
+                                Índice diario de gas natural
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+                <!--// SUB -->
+
+
+                <!-- SUB  -->
+
+
+                <!--// SUB -->
+            </div>
+            <div id="right_col" class="col-sm-3" role="complementary">            <!-- SUB  -->
+
+                <!--// SUB -->
+            </div>
+
         </div>
-        <div id="left_col" class="col-sm-3 col-sm-pull-6" role="complementary">
-            <nav class="sub panel panel-default">
-                <p class="heading primary_colour_1-text">
-                    <a class="primary_colour_1-text" href="/prime/usuarios-registrados/igas-express/">Todas las
-                        publicaciones</a>
-                </p>
-                <ul class="nav">
-                    <li class="odd">
-                        <a href="/prime/usuarios-registrados/igas-express/?year=2019" rel="NOINDEX, FOLLOW">Año
-                            2019</a>
-                    </li>
-                </ul>
-            </nav>
-            <nav class="sub panel panel-default">
-                <p class="heading primary_colour_1-text"><span>Categorías</span></p>
-                <ul class="nav">
-                    <li class="odd">
-                        <a href="/prime/usuarios-registrados/igas-express/?category=9577" rel="NOINDEX, FOLLOW">
-                            Índice diario de gas natural
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div id="right_col" class="col-sm-3" role="complementary"></div>
-    </div>
     </div>
 </section>
