@@ -28,17 +28,17 @@
                                                                                            title="Histórico.xlsx">aquí</a></em></strong>
                                 </h4></div>
                         </div>
-                        <div class="page_component history">
-                            <div class="panel-group" id="history" role="tablist">
+                        <div class="page_component accordion">
+                            <div class="panel-group" id="accordion" role="tablist">
                                 {% if node.field_historial_archivos %}
                                     {% for anio in node.field_historial_archivos %}
                                         {% set loopAnio = loop.index %}
                                         <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="heading-{{ loopAnio }}">
                                                 <p class="heading panel-title">
-                                                    <a data-toggle="collapse" data-parent="#history"
-                                                       href="#history-{{ loopAnio }}" aria-expanded="false"
-                                                       aria-controls="history-{{ loopAnio }}" class="collapsed">
+                                                    <a data-toggle="collapse" data-parent="#accordion"
+                                                       href="#history-{{ loopAnio }}"
+                                                       aria-controls="history-{{ loopAnio }}">
                                                         {{ anio.entity.field_fecha.value }}
                                                         <i class="fa fa-chevron-down pull-right after highlight"></i>
                                                     </a>
@@ -53,17 +53,13 @@
                                                             <a data-toggle="collapse"
                                                                data-parent="#heading-{{ loopAnio }}"
                                                                href="#history-{{ loopAnio }}-{{ loopMes }}"
-                                                               aria-expanded="false"
-                                                               aria-controls="history-{{ loopAnio }}-{{ loopMes }}"
-                                                               class="">
+                                                               aria-controls="history-{{ loopAnio }}-{{ loopMes }}">
                                                                 {{ mes.entity.field_fecha.value }}
                                                                 <i class="fa fa-chevron-down pull-right after highlight"></i>
                                                             </a>
                                                         </p>
                                                     </div>
-                                                    <div id="history-{{ loopAnio }}-{{ loopMes }}"
-                                                         class="panel-collapse collapse in" role="tabpanel"
-                                                         aria-labelledby="history-{{ loopAnio }}-{{ loopMes }}">
+                                                    <div id="history-{{ loopAnio }}-{{ loopMes }}" class="panel-collapse collapse in">
                                                         <div class="panel-body">
                                                             {% for archivo in mes.entity.field_informes_h %}
                                                                 <p>
