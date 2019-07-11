@@ -35,8 +35,8 @@
                 <div class="page_component resources">
                     <div class="list-group">
                         {% for enlaces in node.field_enlaces %}
-                            {% if enlaces.entity.field_link %}
-                                {% for item1 in item.entity.field_link %}
+                            {% if enlaces.entity.field_archivo.entity.field_link %}
+                                {% for item1 in enlaces.entity.field_archivo.entity.field_link %}
                                     <a href="{{ item1.url }}"
                                        class="item list-group-item even">
                                         <p class="heading primary_colour_1-text">{{ item1.url }}<i
