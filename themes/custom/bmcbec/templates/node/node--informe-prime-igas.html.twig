@@ -29,7 +29,7 @@
                                 </h4></div>
                         </div>
                         <div class="page_component accordion">
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel-group" id="accordion" role="tablist">
                                 {% if node.field_historial_archivos %}
                                     {% for anio in node.field_historial_archivos %}
                                         {% set loopAnio = loop.index %}
@@ -38,7 +38,7 @@
                                                 <p class="heading panel-title">
                                                     <a data-toggle="collapse" data-parent="#accordion"
                                                        href="#history-{{ loopAnio }}" aria-expanded="false"
-                                                       aria-controls="history-{{ loopAnio }}" class="">
+                                                       aria-controls="history-{{ loopAnio }}" class="collapsed">
                                                         {{ anio.entity.field_fecha.value }}
                                                         <i class="fa fa-chevron-down pull-right after highlight"></i>
                                                     </a>
