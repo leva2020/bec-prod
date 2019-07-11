@@ -38,7 +38,7 @@
                                                 <p class="heading panel-title">
                                                     <a data-toggle="collapse" data-parent="#accordion"
                                                        href="#collapse-9589-{{ loopAnio }}" aria-expanded="true"
-                                                       aria-controls="collapse-9589-1" class="">
+                                                       aria-controls="collapse-9589-{{ loopAnio }}" class="">
                                                         {{ anio.entity.field_fecha.value }}
                                                         <i class="fa fa-chevron-down pull-right after highlight"></i>
                                                     </a>
@@ -50,8 +50,8 @@
                                                     <div class="panel-heading" role="tab" id="heading-{{ loopAnio }}-{{ loopMes }}">
                                                         <p class="heading panel-title">
                                                             <a data-toggle="collapse" data-parent="#accordion"
-                                                               href="#collapse-9589-{{ loopAnio }}-{{ loopMes }}" aria-expanded="true"
-                                                               aria-controls="collapse-9589-1" class="">
+                                                               href="#collapse-9589-{{ loopAnio }}-{{ loopMes }}" aria-expanded="false"
+                                                               aria-controls="collapse-9589-{{ loopAnio }}-{{ loopMes }}" class="">
                                                                 {{ mes.entity.field_fecha.value }}
                                                                 <i class="fa fa-chevron-down pull-right after highlight"></i>
                                                             </a>
@@ -59,7 +59,7 @@
                                                     </div>
                                                     <div id="collapse-9589-{{ loopAnio }}-{{ loopMes }}"
                                                          class="panel-collapse collapse in" role="tabpanel"
-                                                         aria-labelledby="collapse-9589-1" aria-expanded="true"
+                                                         aria-labelledby="collapse-9589-{{ loopAnio }}-{{ loopMes }}" aria-expanded="false"
                                                          style="">
                                                         <div class="panel-body">
                                                             {% for archivo in mes.entity.field_informes_h %}
