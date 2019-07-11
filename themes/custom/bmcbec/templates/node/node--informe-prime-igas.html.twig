@@ -24,10 +24,10 @@
                     <div class="listing blog">
                         {% if node.field_historial_archivos %}
                             {% for anio in node.field_historial_archivos %}
-                                {{ anio.entity.field_fecha.value }}
-                                {% for mes in anio.field_mes %}
-                                    {{ mes.entity.field_fecha.value }}
-                                    {% for archivo in mes.field_informes_h %}
+                                año: {{ anio.entity.field_fecha.value }}
+                                {% for mes in anio.entity.field_mes %}
+                                    mes: {{ mes.entity.field_fecha.value }}
+                                    {% for archivo in mes.entity.field_informes_h %}
                                         file
                                     {% endfor %}
                                 {% endfor %}
