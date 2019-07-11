@@ -22,18 +22,63 @@
                         <span class="intro">{{ node.body.value | raw }}</span>
                     </p>
                     <div class="listing blog">
-                        {% if node.field_historial_archivos %}
-                            {% for anio in node.field_historial_archivos %}
-                                año: {{ anio.entity.field_fecha.value }}
-                                {% for mes in anio.entity.field_mes %}
-                                    mes: {{ mes.entity.field_fecha.value }}
-                                    {% for archivo in mes.entity.field_informes_h %}
-                                        file
+                        <div class="page_component alert alert-info alert-dismissible fade in" role="alert">
+                            <div class="info"><h4>&nbsp;Descargue histórico <strong><em><a data-id="10547" href=""
+                                                                                           target="_blank"
+                                                                                           title="Histórico.xlsx">aquí</a></em></strong>
+                                </h4></div>
+                        </div>
+                        <div class="page_component accordion">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                {% if node.field_historial_archivos %}
+                                    {% for anio in node.field_historial_archivos %}
+                                        {% set loopAnio = loop.index %}
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="heading-{{ loopAnio }}">
+                                                <p class="heading panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion"
+                                                       href="#collapse-9589-{{ loopAnio }}" aria-expanded="true"
+                                                       aria-controls="collapse-9589-1" class="">
+                                                        {{ anio.entity.field_fecha.value }}
+                                                        <i class="fa fa-chevron-down pull-right after highlight"></i>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            {% for mes in anio.entity.field_mes %}
+                                                {% set loopMes = loop.index %}
+                                                <div id="collapse-9589-{{ loopAnio }}" class="panel panel-default">
+                                                    <div class="panel-heading" role="tab" id="heading-{{ loopAnio }}-{{ loopMes }}">
+                                                        <p class="heading panel-title">
+                                                            <a data-toggle="collapse" data-parent="#accordion"
+                                                               href="#collapse-9589-{{ loopAnio }}-{{ loopMes }}" aria-expanded="true"
+                                                               aria-controls="collapse-9589-1" class="">
+                                                                {{ mes.entity.field_fecha.value }}
+                                                                <i class="fa fa-chevron-down pull-right after highlight"></i>
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                    <div id="collapse-9589-{{ loopAnio }}-{{ loopMes }}"
+                                                         class="panel-collapse collapse in" role="tabpanel"
+                                                         aria-labelledby="collapse-9589-1" aria-expanded="true"
+                                                         style="">
+                                                        <div class="panel-body">
+                                                            {% for archivo in mes.entity.field_informes_h %}
+                                                                <p>
+                                                                    <a data-id="10546" href="/media/2985/10072019.pdf"
+                                                                      target="_blank" title="10072019.pdf">
+                                                                        10 de julio de 2019 - 5.64 USD/MBTU
+                                                                    </a>
+                                                                </p>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
                                     {% endfor %}
-                                {% endfor %}
-
-                            {% endfor %}
-                        {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="left_col" class="col-sm-3 col-sm-pull-6" role="complementary"></div>
