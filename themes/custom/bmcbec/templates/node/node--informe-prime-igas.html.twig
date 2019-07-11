@@ -28,15 +28,15 @@
                                                                                            title="Histórico.xlsx">aquí</a></em></strong>
                                 </h4></div>
                         </div>
-                        <div class="page_component accordion">
-                            <div class="panel-group" id="accordion" role="tablist">
+                        <div class="page_component history">
+                            <div class="panel-group" id="history" role="tablist">
                                 {% if node.field_historial_archivos %}
                                     {% for anio in node.field_historial_archivos %}
                                         {% set loopAnio = loop.index %}
                                         <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="heading-{{ loopAnio }}">
                                                 <p class="heading panel-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion"
+                                                    <a data-toggle="collapse" data-parent="#history"
                                                        href="#history-{{ loopAnio }}" aria-expanded="false"
                                                        aria-controls="history-{{ loopAnio }}" class="collapsed">
                                                         {{ anio.entity.field_fecha.value }}
