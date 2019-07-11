@@ -5,7 +5,7 @@
     </p>
     <ul class="nav">
         {% if recents %}
-            {% for empresa in recents %}
+            {% for recent in recents %}
                 <li class="active">
                     <a href="{{ path('entity.node.canonical', {'node': recent.id}) }}">
                         <span>{{ recent.title.value }}</span>
