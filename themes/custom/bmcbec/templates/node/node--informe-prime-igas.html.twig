@@ -37,7 +37,7 @@
                                             <div class="panel-heading" role="tab" id="heading-{{ loopAnio }}">
                                                 <p class="heading panel-title">
                                                     <a data-toggle="collapse" data-parent="#accordion"
-                                                       href="#collapse-9589-{{ loopAnio }}" aria-expanded="true"
+                                                       href="#collapse-9589-{{ loopAnio }}" aria-expanded="false"
                                                        aria-controls="collapse-9589-{{ loopAnio }}" class="">
                                                         {{ anio.entity.field_fecha.value }}
                                                         <i class="fa fa-chevron-down pull-right after highlight"></i>
@@ -46,9 +46,7 @@
                                             </div>
                                             <div id="collapse-9589-{{ loopAnio }}" class="panel panel-default">
                                                 {% for mes in anio.entity.field_mes %}
-
                                                     {% set loopMes = loop.index %}
-
                                                     <div class="panel-heading" role="tab"
                                                          id="heading-{{ loopAnio }}-{{ loopMes }}">
                                                         <p class="heading panel-title">
