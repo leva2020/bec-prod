@@ -35,17 +35,17 @@
                 <div class="page_component resources">
                     <div class="list-group">
                         {% for enlaces in node.field_enlaces %}
-                            {% if enlaces.entity.field_archivo.entity.field_link %}
-                                {% for item1 in enlaces.entity.field_archivo.entity.field_link %}
-                                    <a href="{{ item1.url }}"
+                            {% if enlaces.entity.field_link %}
+                                {% for item in enlaces.entity.field_link %}
+                                    <a href="{{ item.url }}"
                                        class="item list-group-item even">
-                                        <p class="heading primary_colour_1-text">{{ item1.url }}<i
-                                                    class="fa fa-chain pull-right after highlight primary_colour_1-text"></i>
+                                        <p class="heading primary_colour_1-text">
+                                            {{item.title}}
+                                            <i class="fa fa-chain pull-right after highlight primary_colour_1-text"></i>
                                         </p>
                                         <div class="text list-group-item-text">
                                             <p>{{ enlaces.entity.field_descripcion.value }}</p>
                                         </div>
-
                                     </a>
                                 {% endfor %}
                             {% else %}
