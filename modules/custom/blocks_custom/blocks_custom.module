@@ -115,6 +115,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'participants' => NULL
                 ],
                 'template' => 'participants'
+            ],
+        'list_documents_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Título por defecto',
+                    'descripcion' => 'descripción por defecto',
+                    'participants' => NULL
+                ],
+                'template' => 'list-documents'
             ]
     ];
 }

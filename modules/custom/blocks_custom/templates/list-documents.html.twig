@@ -1,0 +1,17 @@
+<nav class="sub panel panel-default">
+    <p class="heading primary_colour_1-text">
+        <a class="primary_colour_1-text" href="/normatividad/">
+            Normatividad </a>
+    </p>
+    <ul class="nav">
+        {% if recents %}
+            {% for empresa in recents %}
+                <li class="active">
+                    <a href="{{ path('entity.node.canonical', {'node': recent.id}) }}">
+                        <span>{{ recent.title.value }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</nav>

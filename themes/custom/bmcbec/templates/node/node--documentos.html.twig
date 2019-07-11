@@ -1,0 +1,125 @@
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="heading">{{ node.title.value }}</h1>
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- CONTENT COL -->
+            <div id="left_col" class="col-sm-8" role="main">
+
+                <!-- IMAGE -->
+
+                <div class="page_component image">
+                    {% set imagestyle = {
+                        '#theme':      'image_style',
+                        '#style_name': 'custom_750x362',
+                        '#uri':        node.field_imagen_desktop.entity.uri.value,
+                        '#alt':        '',
+                    } %}
+                    {{ imagestyle }}
+                </div>
+                <p>{{ node.field_descripcion.value }}</p>
+                <a id="pos_3058"></a>
+                <div class="page_component resources">
+                    <div class="list-group">
+                        {% for enlaces in node.field_enlaces %}
+                            {% if enlaces.entity.field_link %}
+                                {% for item in enlaces.entity.field_link %}
+                                    <a href="{{ item.url }}" class="item list-group-item odd">
+                                        <p class="heading primary_colour_1-text">
+                                            {{item.title}}
+                                            <i class="fa fa-chain pull-right after highlight primary_colour_1-text"></i>
+                                        </p>
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                                <a href="{{ file_url(enlaces.entity.field_archivo.entity.fileuri) }}" title="Link will open in a new window/tab" target="blank" class="item list-group-item even">
+                                    <p class="heading primary_colour_1-text">{{ enlaces.entity.field_descripcion.value }}<i class="fa fa-download pull-right after highlight primary_colour_1-text"></i></p>
+                                    <!--<div class="size">Descargar - Tamaño del archivo: 365KB</div>-->
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <a id="pos_3061"></a>
+                <div class="page_component textblock">
+                    <p>&nbsp;</p>
+                    <p style="text-align: justify;"><strong>Actualización de Participantes</strong></p>
+                    <p style="text-align: justify;">&nbsp;</p>
+                </div>
+                <a id="pos_1994"></a>
+                <div class="page_component resources">
+                    <div class="list-group">
+                        {% for enlaces in node.field_enlaces %}
+                            {% if enlaces.entity.field_link %}
+                                {% for item in enlaces.entity.field_link %}
+                                    <a href="{{ item.url }}" class="item list-group-item odd">
+                                        <p class="heading primary_colour_1-text">
+                                            {{item.title}}
+                                            <i class="fa fa-chain pull-right after highlight primary_colour_1-text"></i>
+                                        </p>
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                                <a href="{{ file_url(enlaces.entity.field_archivo.entity.fileuri) }}" title="Link will open in a new window/tab" target="blank" class="item list-group-item even">
+                                    <p class="heading primary_colour_1-text">{{ enlaces.entity.field_descripcion.value }}<i class="fa fa-download pull-right after highlight primary_colour_1-text"></i></p>
+                                    <!--<div class="size">Descargar - Tamaño del archivo: 365KB</div>-->
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div id="right_col" class="col-sm-4 col-lg-3 col-lg-offset-1" role="complementary">			<!-- SUB  -->
+                <!-- SUB - add another class after class="sub" to style for other types of nav: class="sub filter" -->
+                {{ drupal_block('list_documents_block') }}
+                <div class="promo_pods ">
+                    <div class="item panel panel-default odd">
+                        <div class="panel-body primary_colour_1-bg">
+                            <a href="/sitios-de-interés/"><p class="heading secondary_colour_3-text">Sitios de Interés </p></a>
+                            <div class="info">
+                                <div class="text secondary_colour_3-text"><p>Conozca&nbsp;todas las entidades que hacen parte del sector del Gas Natural&nbsp;en Colombia.</p></div>
+                                <p class="link"><a href="/sitios-de-interés/" class="btn primary_colour_2-bg secondary_colour_3-text">Ver todos</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item lists panel panel-default even">
+                        {{ drupal_block('recent_publications_block') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background-color: rgba(46,137,182,1);"
+         class="content advanced-component cta-strip secondary_colour_1-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 style="color: #FFF;" class="main secondary_colour_3-text">Participantes Inscritos</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <div class="text secondary_colour_3-text">
+                    <p><span style="color: #FFF;" class="intro">Conozca&nbsp;la información relacionada con&nbsp;los participantes y su rol dentro del mercado mayorista de Gas Natural en Colombia, tales como Productores-Comercializadores, Comercializadores, Comercializadores de Gas Importado, Transportadores, Generadores Térmicos y Usuarios no Regulados.&nbsp;Regístrese&nbsp;como participante.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 pull-right">
+                <p class="link">
+                    <a style="background-color: rgba(102,201,137,1);"
+                       class="btn btn-block btn-lg primary_colour_2-bg secondary_colour_3-text"
+                       href="/participantes/">
+                        Conocer los Participantes
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
