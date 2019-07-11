@@ -24,70 +24,47 @@
                 </div>
                 <a id="pos_1326"></a>
                 <div class="page_component codeblock">
-                    <iframe src="{{ node.field_mapa.0.url }}" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                    <iframe src="{{ node.field_mapa.0.url }}" width="100%" height="500" frameborder="0" style="border:0"
+                            allowfullscreen=""></iframe>
                 </div>
                 <a id="pos_2037"></a>
                 <div class="page_component textblock">
-                    <h3 style="text-align: center; margin-top: 150px;">Herramientas de Ayuda</h3>
+                    <h3 class="heading" style="text-align: center; margin-top: 150px;">Herramientas de Ayuda</h3>
                 </div>
                 <a id="pos_2031"></a>
                 <div class="page_component resources">
                     <div class="list-group">
-                        <a href="http://www.bmcbec.com.co/media/2216/preguntas-frecuentes-vf.pdf"
-                           title="Link will open in a new window/tab" target="blank" class="item list-group-item odd">
-                            <p class="heading primary_colour_1-text">Preguntas Frecuentes - FAQ<i
-                                        class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i>
-                            </p>
+                        {% for enlaces in node.field_enlaces %}
+                            {% if enlaces.entity.field_link %}
+                                {% for item1 in item.entity.field_link %}
+                                    <a href="{{ item1.url }}"
+                                       class="item list-group-item even">
+                                        <p class="heading primary_colour_1-text">{{ item1.url }}<i
+                                                    class="fa fa-chain pull-right after highlight primary_colour_1-text"></i>
+                                        </p>
+                                        <div class="text list-group-item-text">
+                                            <p>{{ enlaces.entity.field_descripcion.value }}</p>
+                                        </div>
 
-                            <div class="text list-group-item-text"><p>El Gestor del Mercado de Gas Natural ha recopilado
-                                    las principales inquietudes acerca del mercado mayorista de gas natural en el país,
-                                    y las pone a disposición del público para su conocimiento.</p></div>
-
-                            <div class="size">Link externo -
-                                http://www.bmcbec.com.co/media/2216/preguntas-frecuentes-vf.pdf
-                            </div>
-                        </a>
-                        <a href="http://www.bmcbec.com.co/media/1626/glosario-del-mercado-mayorista-de-gas-natural.pdf"
-                           title="Link will open in a new window/tab" target="blank" class="item list-group-item even">
-                            <p class="heading primary_colour_1-text">Glosario de términos del Mercado Mayorista del Gas
-                                Natural<i
-                                        class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i>
-                            </p>
-
-                            <div class="text list-group-item-text"><p>En esta sección encontrará&nbsp;una serie de
-                                    términos con sus respectivas definiciones, conforme a la regulación vigente, que le
-                                    serán de ayuda para conocer más a fondo el comportamiento transaccional y operativo
-                                    del mercado de gas natural en Colombia.</p></div>
-
-                            <div class="size">Link externo -
-                                http://www.bmcbec.com.co/media/1626/glosario-del-mercado-mayorista-de-gas-natural.pdf
-                            </div>
-                        </a>
-                        <a href="http://soporte.bmcbec.com.co/login.aspx" title="Link will open in a new window/tab"
-                           target="blank" class="item list-group-item odd">
-                            <p class="heading primary_colour_1-text">Aplicativo Soporte SEGAS<i
-                                        class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i>
-                            </p>
-
-                            <div class="text list-group-item-text"><p>Para nosotros&nbsp;es indispensable generar una
-                                    respuesta ágil y oportuna ante&nbsp;cualquier eventualidad&nbsp;o inquietud que
-                                    tenga un agente registrado.&nbsp;Por lo anterior,&nbsp;lo invitamos a ingresar a
-                                    nuestra herramienta de soporte para generar un seguimiento y una respuesta rápida a
-                                    su solicitud.</p></div>
-
-                            <div class="size">Link externo - http://soporte.bmcbec.com.co/login.aspx</div>
-                        </a>
-                        <a href="/publicaciones/posts/noticias/ayuda-audiovisual/" class="item list-group-item even">
-                            <p class="heading primary_colour_1-text">Ayudas Audiovisuales<i
-                                        class="fa fa-chain pull-right after highlight primary_colour_1-text"></i></p>
-
-                            <div class="text list-group-item-text"><p>Material informativo para entender la estructura y
-                                    funcionamiento del Mercado de Gas Natural en Colombia.</p></div>
-
-                        </a>
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                                <a href="{{ file_url(enlaces.entity.field_archivo.entity.fileuri) }}"
+                                   title="Link will open in a new window/tab" target="blank"
+                                   class="item list-group-item odd">
+                                    <p class="heading primary_colour_1-text">{{ enlaces.entity.field_label_archivo.value }}
+                                        <i class="fa fa-external-link pull-right after highlight primary_colour_1-text"></i>
+                                    </p>
+                                    <div class="text list-group-item-text">
+                                        <p>{{ enlaces.entity.field_descripcion.value }}</p></div>
+                                    <div class="size">Link externo - {{ file_url(enlaces.entity.field_archivo.entity.fileuri) }}</div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
+
             <div id="left_col" class="col-sm-4 col-lg-3 pull-left" role="complementary">
                 <div class="promo_pods ">
                     <div class="item panel panel-default odd">
@@ -149,24 +126,26 @@
 
     </div>
 </section>
-<section style="background-color: rgba(46,137,182,1);" class="content advanced-component cta-strip secondary_colour_1-bg">
+<section style="background-color: rgba(46,137,182,1);"
+         class="content advanced-component cta-strip secondary_colour_1-bg">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <p class="heading main secondary_colour_3-text">Participantes Inscritos</p>
+                <h1 style="color: #FFF;" class="main secondary_colour_3-text">Participantes Inscritos</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-8 col-xs-12">
                 <div class="text secondary_colour_3-text">
-                    <p><span class="intro">Conozca&nbsp;la información relacionada con&nbsp;los participantes y su rol dentro del mercado mayorista de Gas Natural en Colombia, tales como Productores-Comercializadores, Comercializadores, Comercializadores de Gas Importado, Transportadores, Generadores Térmicos y Usuarios no Regulados.&nbsp;Regístrese&nbsp;como participante.</span>
+                    <p><span style="color: #FFF;" class="intro">Conozca&nbsp;la información relacionada con&nbsp;los participantes y su rol dentro del mercado mayorista de Gas Natural en Colombia, tales como Productores-Comercializadores, Comercializadores, Comercializadores de Gas Importado, Transportadores, Generadores Térmicos y Usuarios no Regulados.&nbsp;Regístrese&nbsp;como participante.</span>
                     </p>
                 </div>
             </div>
             <div class="col-md-3 col-xs-12 pull-right">
                 <p class="link">
-                    <a style="background-color: rgba(102,201,137,1);" class="btn btn-block btn-lg primary_colour_2-bg secondary_colour_3-text"
-                                   href="/participantes/">
+                    <a style="background-color: rgba(102,201,137,1);"
+                       class="btn btn-block btn-lg primary_colour_2-bg secondary_colour_3-text"
+                       href="/participantes/">
                         Conocer los Participantes
                     </a>
                 </p>
