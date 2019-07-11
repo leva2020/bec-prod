@@ -37,7 +37,7 @@
                                 {% endfor %}
                             {% else %}
                                 <a href="{{ file_url(enlaces.entity.field_archivo.entity.fileuri) }}" title="Link will open in a new window/tab" target="blank" class="item list-group-item even">
-                                    <p class="heading primary_colour_1-text">{{ enlaces.entity.field_descripcion.value }}<i class="fa fa-download pull-right after highlight primary_colour_1-text"></i></p>
+                                    <p class="heading primary_colour_1-text">{{ enlaces.entity.field_label_archivo.value }}<i class="fa fa-download pull-right after highlight primary_colour_1-text"></i></p>
                                     <!--<div class="size">Descargar - Tamaño del archivo: 365KB</div>-->
                                 </a>
                             {% endif %}
@@ -53,7 +53,7 @@
                 <a id="pos_1994"></a>
                 <div class="page_component resources">
                     <div class="list-group">
-                        {% for enlaces in node.field_enlaces %}
+                        {% for enlaces in node.participan %}
                             {% if enlaces.entity.field_link %}
                                 {% for item in enlaces.entity.field_link %}
                                     <a href="{{ item.url }}" class="item list-group-item odd">
@@ -65,7 +65,7 @@
                                 {% endfor %}
                             {% else %}
                                 <a href="{{ file_url(enlaces.entity.field_archivo.entity.fileuri) }}" title="Link will open in a new window/tab" target="blank" class="item list-group-item even">
-                                    <p class="heading primary_colour_1-text">{{ enlaces.entity.field_descripcion.value }}<i class="fa fa-download pull-right after highlight primary_colour_1-text"></i></p>
+                                    <p class="heading primary_colour_1-text">{{ enlaces.entity.field_label_archivo.value }}<i class="fa fa-download pull-right after highlight primary_colour_1-text"></i></p>
                                     <!--<div class="size">Descargar - Tamaño del archivo: 365KB</div>-->
                                 </a>
                             {% endif %}
