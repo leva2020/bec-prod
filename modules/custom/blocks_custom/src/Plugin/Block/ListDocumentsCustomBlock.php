@@ -43,8 +43,7 @@ class ListDocumentsCustomBlock extends BlockBase
         return array(
             '#theme' => 'list_documents_block_custom',
             '#titulo' => $this->t('Filtros Publicaciones'),
-            '#recents' => $publications,
-            '#nid' => $nid
+            '#recents' => $publications
         );
     }
 
