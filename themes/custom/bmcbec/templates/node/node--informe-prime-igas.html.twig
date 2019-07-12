@@ -50,7 +50,7 @@
                                                     </a>
                                                 </p>
                                             </div>
-                                            <div id="history-{{ loopAnio }}" class="panel panel-default">
+                                            <div id="history-{{ loopAnio }}" class="panel panel-default collapse">
                                                 {% for mes in anio.entity.field_mes %}
                                                     {% set loopMes = loop.index %}
                                                     <div class="panel-heading" role="tab"
@@ -65,13 +65,14 @@
                                                             </a>
                                                         </p>
                                                     </div>
-                                                    <div id="history-{{ loopAnio }}-{{ loopMes }}" class="">
+                                                    <div id="history-{{ loopAnio }}-{{ loopMes }}" class="collapse">
                                                         <div class="panel-body">
                                                             {% for archivo in mes.entity.field_informes_h %}
                                                                 <p>
-                                                                    <a data-id="10546" href="/media/2985/10072019.pdf"
-                                                                       target="_blank" title="10072019.pdf">
-                                                                        10 de julio de 2019 - 5.64 USD/MBTU
+                                                                    <a data-id="10546"
+                                                                       href="{{ file_url(archivo.entity.field_archivo.entity.fileuri) }}"
+                                                                       target="_blank">
+                                                                        {{ archivo.entity.field_label_archivo.value }}
                                                                     </a>
                                                                 </p>
                                                             {% endfor %}
