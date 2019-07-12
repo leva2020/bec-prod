@@ -34,7 +34,7 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="page_component accordion-">
+                        <div class="page_component accordion">
                             <div class="panel-group" id="accordion" role="tablist">
                                 {% if node.field_historial_archivos %}
                                     {% for anio in node.field_historial_archivos %}
@@ -65,7 +65,7 @@
                                                             </a>
                                                         </p>
                                                     </div>
-                                                    <div id="history-{{ loopAnio }}-{{ loopMes }}" class="panel-collapse collapse in">
+                                                    <div id="history-{{ loopAnio }}-{{ loopMes }}" class="">
                                                         <div class="panel-body">
                                                             {% for archivo in mes.entity.field_informes_h %}
                                                                 <p>
