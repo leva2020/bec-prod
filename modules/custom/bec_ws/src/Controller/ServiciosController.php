@@ -36,6 +36,7 @@ class ServiciosController extends ControllerBase
 
     public function enviarPeticionPost($metodo,$param,$formatear,$fechaCompleta,$filtro,$campos,$cantidad){
       $url=\Drupal::config('bec_ws.settings')->get('url_base').$metodo;
+      $url = 'wstest.bmcbec.com.co/api/BEC/'.$metodo;
       $data=$this->sendPostRequest($url,$param);
       if ($formatear) {
         switch ($metodo) {
