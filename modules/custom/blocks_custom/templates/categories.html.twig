@@ -4,14 +4,18 @@
         <ul class="nav">
             {% for term in terms %}
                 <li class="odd">
-                    {% if term.name == 'Ayudas audivisuales' %}
+                    {% if term.name == 'Boletines' %}
+                        <a href="/boletines" rel="NOINDEX, FOLLOW">
+                            {{ term.name }}
+                        </a>
+                    {% else if term.name == 'Ayudas audivisuales' %}
                         <a href="/publicaciones/ayudas-audiovisuales" rel="NOINDEX, FOLLOW">
                             {{ term.name }}
                         </a>
-                    {% else %}
-                        <a href="/publicaciones/?categoria={{ term.name }}" rel="NOINDEX, FOLLOW">
-                            {{ term.name }}
-                        </a>
+                        {% else %}
+                            <a href="/publicaciones/?categoria={{ term.name }}" rel="NOINDEX, FOLLOW">
+                                {{ term.name }}
+                            </a>
                     {% endif %}
                 </li>
                 {% if term.child %}
