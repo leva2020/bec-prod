@@ -18,10 +18,12 @@
                     <div class="list-group">
                         {% if node.field_documentos_remitidos %}
                             {% for archivo in node.field_documentos_remitidos %}
-                                <a href="{{ file_url(archivo.entity.field_archivo.entity.fileuri) }}"
+                                <a href="{{ file_url(archivo.entity.fileuri) }}"
                                    title="Link will open in a new window/tab" target="blank"
                                    class="item list-group-item odd">
-                                    <p class="heading primary_colour_1-text">{{ archivo.entity.field_titulo.value }}
+                                    <p class="heading primary_colour_1-text">
+                                        {{ archivo.description }}-
+                                        {{ archivo.entity.field_titulo.value }}
                                         <i class="fa fa-download pull-right after highlight primary_colour_1-text"></i>
                                     </p>
                                     <div class="text list-group-item-text"><p>{{ node.created.value|date('M Y') }}</p></div>
