@@ -22,8 +22,12 @@
                                    title="Link will open in a new window/tab" target="blank"
                                    class="item list-group-item odd">
                                     <p class="heading primary_colour_1-text">
+                                        {{ archivo.field_titulo }} -
+                                        {{ archivo.field_titulo.value }} -
                                         {{ archivo.entity.field_titulo.value }} -
                                         {{ archivo.entity.description }} +
+                                        {{ archivo.description }} +
+                                        {{ archivo.description.value }}
                                         {{ archivo.entity.description.value }}
                                         <i class="fa fa-download pull-right after highlight primary_colour_1-text"></i>
                                     </p>
