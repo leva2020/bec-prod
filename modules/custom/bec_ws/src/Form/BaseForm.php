@@ -37,7 +37,7 @@ class BaseForm extends FormBase  {
       '#type' => 'textfield',
       '#default_value' => $config->get('url_base'),
       '#title' => t('URL Base del WS a consumir'),
-      '#required' => TRUE,      
+      '#required' => TRUE,
     );
 
     $form['submit'] = array(
@@ -59,10 +59,10 @@ class BaseForm extends FormBase  {
    public function submitForm(array &$form, FormStateInterface $form_state) {
      //Se obtiene variable de configuracion para editar
      try{
-      $config = \Drupal::service('config.factory')->getEditable('bec_ws.settings');      
-      $config->set('url_base',$form['f1']['url_base']['#value'])->save();    
+      $config = \Drupal::service('config.factory')->getEditable('bec_ws.settings');
+      $config->set('url_base',$form['f1']['url_base']['#value'])->save();
       drupal_set_message(t("Se han actualizado los valores de configuración satisfactoriamente"));
-     } catch (EXception $e){
+     } catch (Exception $e){
       drupal_set_message(t("Se ha producido un error al actualizar los valores de configuración."), "error");
      }
     }

@@ -1,85 +1,91 @@
-{% set info=enviar_post_ws('getCapacidadDisponiblePrimaria','anoInicial=2018&mesInicial=12&anoFinal=2019&mesFinal=02&codigoOperador=228&codigopunto=120',1,1,'','','cantidad')  %}
+{% set af = "now"|date("Y", "America/Bogota") %}
+{% set ai = "now"|date_modify("-1 year")|date("Y", "America/Bogota") %}
+{% set mf = "now"|date("m", "America/Bogota") %}
+{% set mi = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
+
+{% set info = enviar_post_ws('getCapacidadDisponiblePrimaria','anoInicial=' ~ai~ '&mesInicial=' ~mi~ '&anoFinal=' ~af~ '&mesFinal=' ~mf~ '&codigoOperador=228&codigopunto=120', 1, 1, '', '', 'cantidad')  %}
 
 {{ attach_library('bmcbec/chartJS') }}
-<div class="filter-graphic" align="center">
+
+<div class="well" align="center">
     <div class="bmcbec-dp-left">
         <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
         <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
         <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
         <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
-    <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
+    </div>
     <div class="bmcbec-dp-right">
     <form method="post" action="">
-    <input type="text" class="span2 editable" value="2019-02-01" id="dpd1" name="formDateBegin" data-date="2019-02-01" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days">
-    <input type="text" class="span2 editable" value="2019-04-30" id="dpd2" name="formDateEnd" data-date="2019-04-30" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days">
-
-    <select name="formOperatorCode" id="formOperatorCode">
+    <input type="text" class="span2 editable" value="{{ ai }}-{{ mi }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ ai }}-{{ mi }}" data-date-format="yyyy-mm" data-date-viewmode="months" data-date-minviewmode="days">
+    <input type="text" class="span2 editable" value="{{ af }}-{{ mf }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ af }}-{{ mf }}" data-date-format="yyyy-mm" data-date-viewmode="months" data-date-minviewmode="days">
+    
+    <select name="paramsFilter[codigoOperador]" id="formOperatorCode">
     <!-- <option value="0" selected>-- Transportador --</option>-->
-    <optgroup label="Todos los Operadores">
-        <option value="71">COINOBRAS GAS S.A. ESP - COINOBRAS GAS S.A. ESP</option>
-        <option value="213">PROMIGAS S.A. E.S.P. - PROMIGAS S.A. E.S.P.</option>
-        <option value="193">PROMIORIENTE S.A. E.S.P - PROMIORIENTE S.A. E.S.P</option>
-        <option value="214">PROMOTORA DE GASES DEL SUR S.A. E.S.P. - PROMOTORA DE GASES DEL SUR S.A. E.S.P.</option>
-        <option value="211">TRANSOCCIDENTE S.A. E.S.P. - TRANSOCCIDENTE S.A. E.S.P.</option>
-        <option value="228" selected="">TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP - Transportadora de Gas Internacional S.A. E.S.P. - TGI S.A. ESP</option>
-        <option value="205">TRANSPORTADORA DE METANO E.S.P S.A - TRANSPORTADORA DE METANO E.S.P S.A</option>
+    <!--optgroup label="Todos los Operadores"-->
+        <option value="71" >COINOBRAS GAS S.A. ESP - COINOBRAS GAS S.A. ESP</option>
+        <option value="213" >PROMIGAS S.A. E.S.P. - PROMIGAS S.A. E.S.P.</option>
+        <option value="193" >PROMIORIENTE S.A. E.S.P - PROMIORIENTE S.A. E.S.P</option>
+        <option value="214" >PROMOTORA DE GASES DEL SUR S.A. E.S.P. - PROMOTORA DE GASES DEL SUR S.A. E.S.P.</option>
+        <option value="211" >TRANSOCCIDENTE S.A. E.S.P. - TRANSOCCIDENTE S.A. E.S.P.</option>
+        <option value="228"  selected >TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP - Transportadora de Gas Internacional S.A. E.S.P. - TGI S.A. ESP</option>
+        <option value="205" >TRANSPORTADORA DE METANO E.S.P S.A - TRANSPORTADORA DE METANO E.S.P S.A</option>
     </optgroup>
     </select>
-
-    <select name="formRouteCode" id="formRouteCode">
-    <option value="0" selected="">-- Todos los tramos --</option>
+    
+    <select name="paramsFilter[codigopunto]" id="formRouteCode">
+    <option value="0" selected>-- Todos los tramos --</option>
     <optgroup label="Tramos o Grupo de Gasoductos">
-        <option value="132">MORICHAL-YOPAL</option>
-        <option value="146">EL PORVENIR-LA BELLEZA</option>
-        <option value="118">SEBASTOPOL-VASCONIA</option>
-        <option value="126">VASCONIA-LA BELLEZA</option>
-        <option value="129">CUSIANA-APIAY</option>
-        <option value="167">SEBASTOPOL-BARRANCABERMEJA</option>
-        <option value="121">PEREIRA-ARMENIA</option>
-        <option value="127">LA BELLEZA-COGUA</option>
-        <option value="130">APIAY-USME</option>
-        <option value="124">GUALANDAY-NEIVA</option>
-        <option value="84">CENTAUROS-GRANADA</option>
-        <option value="153">GBS_I-GBS_F</option>
-        <option value="133">CUSIANA-EL PORVENIR</option>
-        <option value="147">LA BELLEZA-VASCONIA</option>
-        <option value="119">VASCONIA-MARIQUITA</option>
-        <option value="165">GUALANDAY-MONTAÑUELO</option>
-        <option value="125">MONTAÑUELO-GUALANDAY</option>
-        <option value="168">NEIVA-GUALANDAY</option>
-        <option value="116">BALLENA-BARRANCABERMEJA</option>
-        <option value="162">GUALANDAY-MARIQUITA</option>
-        <option value="122">ARMENIA-YUMBO/CALI</option>
-        <option value="128">LA BELLEZA-EL PORVENIR</option>
-        <option value="117">BARRANCABERMEJA-SEBASTOPOL</option>
-        <option value="123">MARIQUITA-GUALANDAY</option>
-        <option value="160">VASCONIA-SEBASTOPOL</option>
-        <option value="120" selected="">MARIQUITA-PEREIRA</option>
-        <option value="131">APIAY-OCOA</option>
-        <option value="157">COGUA-SABANA_F</option>
+        <option value="132" >MORICHAL-YOPAL</option>
+        <option value="146" >EL PORVENIR-LA BELLEZA</option>
+        <option value="118" >SEBASTOPOL-VASCONIA</option>
+        <option value="126" >VASCONIA-LA BELLEZA</option>
+        <option value="129" >CUSIANA-APIAY</option>
+        <option value="167" >SEBASTOPOL-BARRANCABERMEJA</option>
+        <option value="121" >PEREIRA-ARMENIA</option>
+        <option value="127" >LA BELLEZA-COGUA</option>
+        <option value="130" >APIAY-USME</option>
+        <option value="124" >GUALANDAY-NEIVA</option>
+        <option value="84" >CENTAUROS-GRANADA</option>
+        <option value="153" >GBS_I-GBS_F</option>
+        <option value="133" >CUSIANA-EL PORVENIR</option>
+        <option value="147" >LA BELLEZA-VASCONIA</option>
+        <option value="119" >VASCONIA-MARIQUITA</option>
+        <option value="165" >GUALANDAY-MONTAÑUELO</option>
+        <option value="125" >MONTAÑUELO-GUALANDAY</option>
+        <option value="168" >NEIVA-GUALANDAY</option>
+        <option value="116" >BALLENA-BARRANCABERMEJA</option>
+        <option value="162" >GUALANDAY-MARIQUITA</option>
+        <option value="122" >ARMENIA-YUMBO/CALI</option>
+        <option value="128" >LA BELLEZA-EL PORVENIR</option>
+        <option value="117" >BARRANCABERMEJA-SEBASTOPOL</option>
+        <option value="123" >MARIQUITA-GUALANDAY</option>
+        <option value="160" >VASCONIA-SEBASTOPOL</option>
+        <option value="120"  selected >MARIQUITA-PEREIRA</option>
+        <option value="131" >APIAY-OCOA</option>
+        <option value="157" >COGUA-SABANA_F</option>
     </optgroup>
     </select>
-
-    <input type="submit" value="Consultar" class="bmcbec-dp-button">
+    
+    <input type="submit" value="Consultar" class="bmcbec-dp-button" />
     </form>
-    <p class="helpText">Consulta un periodo hasta 3650 días</p></div>
+    </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
-<div class="chart-container" >
-<canvas id="canvas" ></canvas>
-</div>
-<style type="text/css">
-    .chart-container {
-  position: relative;
-  margin: auto;
-  height: 80vh;
-  width: 80vw;
-}
-</style>
+<div class="bmcbec-fix"></div>
 
+<!-- GRAPHIC CONSTRUCTOR -->
+<div class="canvas-holder-text">
+    <h4><text>Resultados:</text></h4>
+        <p>Se est&#225; mostrando informaci&#243;n de  3 resultados encontrados con los filtros aplicados.</p>
+        <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+
+</div>
+<div class="canvas-holder">
+    <h3 align="center">CAPACIDAD DISPONIBLE PRIMARIA</h3>
+    <canvas id="canvas" />
+</div>
 
 <script type="text/javascript">
-
 
 var randomScalingFactor = function() {
     return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
@@ -91,23 +97,19 @@ var randomColor = function(opacity) {
 var config = {
     type: 'line',
     data: {
-        labels: [  'feb./2019',  'mar./2019',  'abr./2019',  ],
+        labels: {{ info['labels']|json_encode|raw }},
         datasets: [
-
-             {
-             label: "CAPACIDAD DISPONIBLE PRIMARIA",
-             data: [
-36962,37095,36567,             ]
-             },
-
-        ]
+            {
+                label: "CAPACIDAD DISPONIBLE PRIMARIA",
+                data: {{ info["dataDataSets"]|json_encode()|raw }}
+            }]
     },
     options: {
         responsive: true,
         maintainAspectRatio: true,
         title:{
             display:false,
-            text:'CAPACIDAD DISPONIBLE PRIMARIA - TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP',
+            text:'CAPACIDAD DISPONIBLE PRIMARIA - {{ info['info']['transportador'] }}',
             fontSize: 16,
         },
         tooltips: {
@@ -115,6 +117,9 @@ var config = {
         },
         hover: {
             mode: 'dataset'
+        },
+        legend: {
+            position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
         },
         scales: {
             xAxes: [{
@@ -135,7 +140,6 @@ var config = {
     }
 };
 
-
 $.each(config.data.datasets, function(i, dataset) {
     dataset.borderColor = randomColor(0.4);
     dataset.backgroundColor = randomColor(0.5);
@@ -148,6 +152,4 @@ window.onload = function() {
     var ctx = document.getElementById("canvas").getContext("2d");
     window.myLine = new Chart(ctx, config);
 };
-    </script>
-
-
+</script>

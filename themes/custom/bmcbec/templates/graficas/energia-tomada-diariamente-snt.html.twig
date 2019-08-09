@@ -78,6 +78,9 @@ var lineChartData = {
                     text:'CANTIDAD DE ENERGÍA TOMADA DIARIAMENTE POR EL SNT',
                     fontSize: 16,
                 },
+                legend: {
+                    position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+                },
                 scales: {
                     xAxes: [{
                         display: true,

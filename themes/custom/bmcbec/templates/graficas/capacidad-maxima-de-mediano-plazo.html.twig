@@ -1,0 +1,93 @@
+{% set info = enviar_post_ws('getCapacidadMaximaMedianoPlazo', 'codigoOperador=228', 1, 1, '', '', 'cantidad')  %}
+
+{{ attach_library('bmcbec/chartJS') }}
+
+<div class="well" align="center">
+    <div class="bmcbec-dp-right">
+        <form method="post" action="">
+            <select name="paramsFilter[codigoOperador]">
+                <optgroup label="Operadores">
+                    <option value="71" >COINOBRAS GAS S.A. ESP</option>
+                    <option value="213" >PROMIGAS S.A. E.S.P.</option>
+                    <option value="193" >PROMIORIENTE S.A. E.S.P</option>
+                    <option value="214" >PROMOTORA DE GASES DEL SUR S.A. E.S.P.</option>
+                    <option value="211" >TRANSOCCIDENTE S.A. E.S.P.</option>
+                    <option value="228"  selected >TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP</option>
+                    <option value="205" >TRANSPORTADORA DE METANO E.S.P S.A</option>
+                </optgroup>
+            </select>
+            <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+        </form>
+    </div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+<div class="bmcbec-fix"></div>
+
+
+<!-- GRAPHIC CONSTRUCTOR -->
+<div class="canvas-holder-text">
+    <h4><text>Resultados:</text></h4>
+    <p>Se est&#225; mostrando informaci&#243;n de  25 resultados encontrados con los filtros aplicados.</p>
+    <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+</div>
+<div class="canvas-holder">
+    <h3 align="center">CAPACIDAD MÁXIMA DE MEDIANO PLAZO</h3>
+    <canvas id="chart" />
+</div>
+<script type="text/javascript">
+
+{% if info['paramsFilter'] is not null %}
+var codigoOperador = '{{ info['paramsFilter']['codigoOperador'] }}';
+$("option[value=" + codigoOperador + "]").attr('selected', 'selected');
+{% endif %}
+
+var randomColorFactor = function() {
+    return Math.round(Math.random() * 255);
+};
+var randomColor = function() {
+    return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',.7)';
+};
+
+var barChartData = {
+    labels: {{ info["labels"]|json_encode|raw }},
+    datasets: [
+        {% for key, dataSet in info["dataDataSets"] %}
+        {
+            hidden: false,
+            label: "{{ key }}",
+            data: {{ dataSet|json_encode|raw }}
+        },
+        {% endfor %}
+    ]
+};
+
+$.each(barChartData.datasets, function(i, dataset) {
+    dataset.borderColor = randomColor(0.4);
+    dataset.backgroundColor = randomColor(0.5);
+    dataset.pointBorderColor = randomColor(0.7);
+    dataset.pointBackgroundColor = randomColor(0.5);
+    dataset.pointBorderWidth = 1;
+});
+
+window.onload = function() {
+    
+     var chartEl = document.getElementById("chart");
+    window.myLine = new Chart(chartEl, {
+        type: 'line',
+        data: barChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            title: {
+                display: true,
+                text: 'Unidades (KPCD)',
+                fontSize: 16,
+            },
+            legend: {
+                position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+            }
+        }
+    });
+};
+</script>
+<!-- END OF GRAPHIC CONSTRUCTOR -->

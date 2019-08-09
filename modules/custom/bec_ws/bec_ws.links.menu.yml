@@ -1,0 +1,5 @@
+bec_ws.homepage:
+  title: BEC WS
+  description: 'Configurar el modulo que permite administrar el servicio de datos'
+  parent: system.admin_config_services
+  route_name: bec_ws.content

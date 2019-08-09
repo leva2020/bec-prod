@@ -1,4 +1,4 @@
-<section class="content advanced-component standard-components">
+{# <section class="content advanced-component standard-components">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
@@ -19,4 +19,147 @@
             </div>
         </div>
     </div>
-</section>
+</section> #}
+
+{% set info = enviar_post_ws('getPrecioNegociadoPorTramo','puntoTramo=116&pCodigoModalidad=1',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
+
+{{ attach_library('bmcbec/chartJS') }}
+
+{# {{ dump(info) }}#}
+{# {{ info['paramsFilter']['puntoTramo'] == '116' ? 'selected' }}#}
+<div class="well" align="center">
+    <div class="bmcbec-dp-right">
+    <form method="post" action="">
+        <select name="paramsFilter[puntoTramo]">
+            <optgroup label="Elegir Tramo">
+                <option value="116" selected>BALLENA-BARRANCABERMEJA</option>
+                <option value="110" >BALLENA-LA MAMI</option>
+                <option value="133" >CUSIANA-EL PORVENIR</option>
+                <option value="115" >LA CRECIENTE-SINCELEJO</option>
+            </optgroup>
+        </select>
+        <select name="paramsFilter[pCodigoModalidad]">
+            <optgroup label="Elegir Modalidad">
+                <option value="21" >C1</option>
+                <option value="22" >C2</option>
+                <option value="5" >CON INTERRUPCIONES</option>
+                <option value="6" >CONTINGENCIA</option>
+                <option value="1" selected>FIRME</option>
+                <option value="23" >FIRME AL 95%</option>
+                <option value="2" >FIRMEZA CONDICIONADA</option>
+                <option value="3" >OPCI&#211;N DE COMPRA</option>
+                <option value="4" >OPCI&#211;N DE COMPRA CONTRA EXP</option>
+                <option value="16" >OTRAS</option>
+                <option value="8" >TAKE OR PAY</option>
+            </optgroup>
+        </select>
+        <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+    </form>
+    </div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+<div class="bmcbec-fix"></div>
+
+<!-- GRAPHIC CONSTRUCTOR -->
+<div class="canvas-holder-text">
+    <h4><text>Resultados:</text></h4>
+        <p>Se est&#225; mostrando informaci&#243;n de  181 resultados encontrados con los filtros aplicados.</p>
+        <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+
+</div>
+<div class="canvas-holder">
+    <h3 align="center">PRECIO NEGOCIADO POR TRAMO</h3>
+    <canvas id="chart" />
+</div>
+
+<script type="text/javascript">
+
+{% if info['paramsFilter'] is not null %}
+var puntoTramo = {{ info['paramsFilter']['puntoTramo'] }};
+$("option[value=" + puntoTramo + "]").attr('selected', 'selected');
+
+var pCodigoModalidad = {{ info['paramsFilter']['pCodigoModalidad'] }};
+$("option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
+{% endif %}
+
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+
+{# {{ info["labels"]|json_encode|raw }}; #}
+{# {{ info["dataDataSets"]["precio_minimo"]|json_encode|raw }}; #}
+
+{# [{% for item in info['labels'] %}"{{item}}",{% endfor %}]; #}
+
+var lineChartData = {
+    labels: {{ info["labels"]|json_encode|raw }},
+    datasets: [{
+        type: 'line',
+        label: 'Precio Mínimo (USD/KPC)',
+        fill: false,
+        lineTension: 0,
+        hidden: false,
+        data: {{ info["dataDataSets"]["precio_minimo"]|json_encode()|raw }}
+    },{
+        type: 'line',
+        label: 'Precio Promedio (USD/KPC)',
+        hidden: false,
+        fill: false,
+        lineTension: 0,
+        data: {{ info["dataDataSets"]["precio_promedio"]|json_encode()|raw }}
+    },{
+        type: 'line',
+        label: 'Precio Máximo (USD/KPC)',
+        hidden: false,
+        fill: false,
+        lineTension: 0,
+        data: {{ info["dataDataSets"]["precio_maximo"]|json_encode()|raw }}
+    }]
+};
+
+$.each(lineChartData.datasets, function(i, dataset) {
+    var tempColor = randomColor(1);
+        dataset.borderColor = tempColor;
+        dataset.backgroundColor = tempColor;
+        dataset.pointBorderColor = tempColor;
+        dataset.pointBackgroundColor = tempColor;
+        dataset.borderWidth = 3;
+        dataset.pointBorderWidth = 0;
+        dataset.pointHoverRadius = 0;
+        dataset.pointHoverBorderWidth = 0;
+        dataset.pointRadius = 0;
+        dataset.pointHitRadius = 0;
+});
+
+window.onload = function () {
+    var chartEl = document.getElementById("chart");
+    window.myLine = new Chart(chartEl, {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            title: {
+                display:false,
+                text: 'PRECIO NEGOCIADO POR TRAMO',
+                fontSize: 16,
+            },
+            tooltips: {
+                mode: 'label',
+                enabled: true
+                //custom: customTooltips
+            },
+            legend: {
+                position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+            }
+        }
+    });
+};
+</script>
+<!-- END OF GRAPHIC CONSTRUCTOR -->
+<div class="bmcbec-fix"></div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        insertText(365);
+    });
+</script>

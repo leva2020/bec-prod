@@ -193,6 +193,9 @@ var lineChartData = {
                     display:false,
                     text:'CANTIDAD DE ENERGÍA TOMADA POR TRANSPORTADORES POR TRAMO'
                 },
+                legend: {
+                    position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+                },
                 scales: {
                     xAxes: [{
                         display: true,

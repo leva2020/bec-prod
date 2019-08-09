@@ -1,4 +1,4 @@
-bec_ws.configuracion_url_base:
+bec_ws.content:
   path: '/admin/bec_ws/webservice'
   defaults:
     _form: '\Drupal\bec_ws\Form\BaseForm'
