@@ -124,6 +124,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'recents' => NULL
                 ],
                 'template' => 'list-documents'
+            ],
+        'registered_participants_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Participantes Registrados',
+                    'descripcion' => 'Participantes Registrados',
+                    'title' => NULL
+                ],
+                'template' => 'registered-participants'
             ]
     ];
 }
