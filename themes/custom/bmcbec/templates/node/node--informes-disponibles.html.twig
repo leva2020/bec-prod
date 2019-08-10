@@ -41,7 +41,7 @@
         <div class="row">
             <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT TEXT -->
                 <div class="page_component textblock">
-                    <h3>Informes Disponibles</h3>
+                    <h3>{{ node.title.value }}</h3>
                 </div>
                 <!--// PAGE COMPONENT TEXT -->
             </div>
@@ -56,7 +56,24 @@
                 <!-- PAGE COMPONENT TABBED -->
                 <div class="page_component tabbed" role="tabpanel">
                     <ul class="nav nav-tabs responsive hidden-xs hidden-sm" role="tablist">
-                        <li role="presentation" class="odd active">
+                        {% if node.field_informes_d %}
+                            {% for anio in node.field_informes_d %}
+                                {% set loopAnio = loop.index %}
+                                {% if loopAnio == 1  %}
+                                    <li role="presentation" class="odd active">
+                                {% else %}
+                                    <li role="presentation" class="odd">
+                                {% endif %}
+                                    <a href="#tabname-3530-{{ loopAnio }}"
+                                       aria-controls="tabname-3530-1" role="tab"
+                                       data-toggle="tab" aria-expanded="true">
+                                        {{ anio.field_titulo.value }}
+                                        <i class="fa fa-chevron-down pull-right after highlight"></i>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                        <!--<li role="presentation" class="odd active">
                             <a href="#tabname-3530-1"
                                aria-controls="tabname-3530-1" role="tab"
                                data-toggle="tab" aria-expanded="true">
@@ -65,16 +82,39 @@
                             </a>
                         </li>
                         <li role="presentation" class="even">
-                            <a href="#tabname-3530-2" aria-controls="tabname-3530-2" role="tab" data-toggle="tab" aria-expanded="false">
+                            <a href="#tabname-3530-2" aria-controls="tabname-3530-2" role="tab" data-toggle="tab"
+                               aria-expanded="false">
                                 2018
                                 <i class="fa fa-chevron-down pull-right after highlight"></i>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                     <div class="tab-content panel panel-default responsive hidden-xs hidden-sm">
-                        <div id="tabname-3530-1" role="tabpanel" class="tab-pane panel-body active">
+                        {% if node.field_informes_d %}
+                            {% for anio in node.field_informes_d %}
+                                {% set loopAnio = loop.index %}
+                                {% if loopAnio == 1  %}
+                                    <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body active">
+                                {% else %}
+                                        <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body">
+                                {% endif %}
+                                {% for doc in anio.field_archivos %}
+                                    <p>
+                                        <a data-id="11592"
+                                           href="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}"
+                                           target="_blank"
+                                           title="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}">
+                                            {{ doc.entity.field_label_archivo.value }}
+                                        </a>
+                                    </p>
+                                {% endfor %}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <!--<div id="tabname-3530-1" role="tabpanel" class="tab-pane panel-body active">
                             <p>
-                                <a data-id="11592" href="/media/3018/alcance-publicación-declaración-de-producción-2019-2028.pdf"
+                                <a data-id="11592"
+                                   href="/media/3018/alcance-publicación-declaración-de-producción-2019-2028.pdf"
                                    target="_blank"
                                    title="Alcance Publicación Declaración de Producción 2019-2028.pdf">Alcance
                                     Publicación Declaración de Producción 2019-2028
@@ -100,7 +140,7 @@
                                     Resultados comercialización de suministro de gas natural de largo plazo</a>
                                 - <em>14 de agosto de 2018</em>
                             </p>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <!--// PAGE COMPONENT TABBED -->
