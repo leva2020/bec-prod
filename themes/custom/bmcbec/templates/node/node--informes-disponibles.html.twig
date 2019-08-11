@@ -43,7 +43,6 @@
                 <div class="page_component textblock">
                     <h3>{{ node.title.value }}</h3>
                 </div>
-                <!--// PAGE COMPONENT TEXT -->
             </div>
         </div>
     </div>
@@ -59,29 +58,29 @@
                         {% if node.field_informes_d %}
                             {% for anio in node.field_informes_d %}
                                 {% set loopAnio = loop.index %}
-                                {% if loopAnio == 1  %}
+                                {% if loopAnio == 1 %}
                                     <li role="presentation" class="odd active">
                                 {% else %}
                                     <li role="presentation" class="odd">
                                 {% endif %}
-                                    <a href="#tabname-3530-{{ loopAnio }}"
-                                       aria-controls="tabname-3530-1" role="tab"
-                                       data-toggle="tab" aria-expanded="true">
-                                        {{ anio.entity.field_titulo.value }}
-                                        <i class="fa fa-chevron-down pull-right after highlight"></i>
-                                    </a>
+                                <a href="#tabname-3530-{{ loopAnio }}"
+                                   aria-controls="tabname-3530-1" role="tab"
+                                   data-toggle="tab" aria-expanded="true">
+                                    {{ anio.entity.field_titulo.value }}
+                                    <i class="fa fa-chevron-down pull-right after highlight"></i>
+                                </a>
                                 </li>
                             {% endfor %}
                         {% endif %}
                     </ul>
                     <div class="tab-content panel panel-default responsive hidden-xs hidden-sm">
                         {% if node.field_informes_d %}
-                            {% for anio in node.field_informes_d %}
-                                {% set loopAnio = loop.index %}
-                                {% if loopAnio == 1  %}
-                                    <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body active">
-                                {% else %}
-                                        <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body">
+                        {% for anio in node.field_informes_d %}
+                        {% set loopAnio = loop.index %}
+                        {% if loopAnio == 1 %}
+                        <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body active">
+                            {% else %}
+                            <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body">
                                 {% endif %}
                                 {% for doc in anio.entity.field_archivos %}
                                     <p>
@@ -93,42 +92,30 @@
                                         </a>
                                     </p>
                                 {% endfor %}
-                                </div>
+                            </div>
                             {% endfor %}
-                        {% endif %}
-                        <!--<div id="tabname-3530-1" role="tabpanel" class="tab-pane panel-body active">
-                            <p>
-                                <a data-id="11592"
-                                   href="/media/3018/alcance-publicación-declaración-de-producción-2019-2028.pdf"
-                                   target="_blank"
-                                   title="Alcance Publicación Declaración de Producción 2019-2028.pdf">Alcance
-                                    Publicación Declaración de Producción 2019-2028
-                                </a>
-                            </p>
-                            <ul>
-                                <li class="odd"><a data-id="11665"
-                                                   href="/media/3065/declaracion-produccion-2019_2028-soporteact.xlsx"
-                                                   target="_blank"
-                                                   title="Declaracion-produccion-2019_2028-soporteact.xlsx">Soporte
-                                        Declaración Producción 2019-2028 <em>Actualizado</em></a></li>
-                            </ul>
+                            {% endif %}
                         </div>
-                        <div id="tabname-3530-2" role="tabpanel" class="tab-pane panel-body">
-                            <p><a data-id="6601"
-                                  href="/media/2422/proceso-de-comercializacion-de-gas-natural-2018.pdf"
-                                  target="_blank" title="Proceso de Comercializacion de Gas Natural 2018.pdf">Informe
-                                    de resultados del Proceso de Comercialización de Gas Natural 2018</a> - <em>05
-                                    de diciembre de 2018</em></p>
-                            <p><a data-id="5219"
-                                  href="/media/2186/resultados-contratacion-de-lp-y-reservas-de-gas.pdf"
-                                  target="_blank" title="Resultados Contratacion de LP y Reservas de Gas.pdf">Alcance
-                                    Resultados comercialización de suministro de gas natural de largo plazo</a>
-                                - <em>14 de agosto de 2018</em>
-                            </p>
-                        </div>-->
                     </div>
                 </div>
-                <!--// PAGE COMPONENT TABBED -->
+            </div>
+        </div>
+</section>
+
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT ALERT -->
+                <div class="page_component alert alert-warning alert-dismissible fade in" role="alert">
+                    <div class="info">
+                        <p align="center">
+                            <strong>ATENCIÓN</strong>
+                            <br>Puede requerir de&nbsp;programas especiales para abrir&nbsp;algunos archivos.<br>
+                            [ PDF / ZIP / PPT&nbsp;/ XLS / DOC&nbsp;]
+                        </p>
+                    </div>
+                </div>
+                <!--// PAGE COMPONENT ALERT -->
             </div>
         </div>
     </div>
