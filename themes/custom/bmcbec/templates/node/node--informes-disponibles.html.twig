@@ -73,24 +73,9 @@
                                 </li>
                             {% endfor %}
                         {% endif %}
-                        <!--<li role="presentation" class="odd active">
-                            <a href="#tabname-3530-1"
-                               aria-controls="tabname-3530-1" role="tab"
-                               data-toggle="tab" aria-expanded="true">
-                                2019
-                                <i class="fa fa-chevron-down pull-right after highlight"></i>
-                            </a>
-                        </li>
-                        <li role="presentation" class="even">
-                            <a href="#tabname-3530-2" aria-controls="tabname-3530-2" role="tab" data-toggle="tab"
-                               aria-expanded="false">
-                                2018
-                                <i class="fa fa-chevron-down pull-right after highlight"></i>
-                            </a>
-                        </li>-->
                     </ul>
                     <div class="tab-content panel panel-default responsive hidden-xs hidden-sm">
-                        {#{% if node.field_informes_d %}
+                        {% if node.field_informes_d %}
                             {% for anio in node.field_informes_d %}
                                 {% set loopAnio = loop.index %}
                                 {% if loopAnio == 1  %}
@@ -98,7 +83,7 @@
                                 {% else %}
                                         <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body">
                                 {% endif %}
-                                {% for doc in anio.field_archivos %}
+                                {% for doc in anio.entity.field_archivos %}
                                     <p>
                                         <a data-id="11592"
                                            href="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}"
@@ -110,7 +95,7 @@
                                 {% endfor %}
                                 </div>
                             {% endfor %}
-                        {% endif %}#}
+                        {% endif %}
                         <!--<div id="tabname-3530-1" role="tabpanel" class="tab-pane panel-body active">
                             <p>
                                 <a data-id="11592"
