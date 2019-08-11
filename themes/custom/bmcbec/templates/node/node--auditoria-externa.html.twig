@@ -9,7 +9,9 @@
 
                     <h1 class="heading main primary_colour_1-text">Auditoría Externa</h1>
                     <div class="text ">
-                        <p>En esta sección se encuentran los informes emitidos por la auditoría externa en lo referente a los Indicadores de Gestión y los Sistemas de tecnología de la información y comunicaciones.</p>
+                        <p>En esta sección se encuentran los informes emitidos por la auditoría externa en lo referente
+                            a los Indicadores de Gestión y los Sistemas de tecnología de la información y
+                            comunicaciones.</p>
                     </div>
                     <p class="link"><a role="button" class="btn primary_colour_1-bg secondary_colour_3-text"
                                        href="/informes/">Regresar a Todos los Informes</a></p>
@@ -17,10 +19,8 @@
                 <!--// INFO -->
             </div>
             <div class="col-md-6 col-xs-12 pull-left">
-                <div class="image video os-animation animated fadeInLeft" data-os-animation="fadeInLeft"
+                <div class="img-auditorias-ext image video os-animation animated fadeInLeft" data-os-animation="fadeInLeft"
                      data-os-animation-delay="0">
-                    <img alt=""
-                         src="/media/1153/contenido-reportes-informes-3.jpg?anchor=center&amp;mode=crop&amp;width=720&amp;height=495&amp;rnd=131153233690000000">
                 </div>
             </div>
         </div>
@@ -82,8 +82,10 @@
                                            title="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}">
                                             {{ doc.entity.field_label_archivo.value }}
                                         </a>
-                                        <span><span>&nbsp;</span>-</span>
-                                        <em>&nbsp;{{ doc.entity.field_fecha.value }}</em>
+                                        {% if doc.entity.field_fecha.value %}
+                                            <span><span>&nbsp;</span>-</span>
+                                            <em>&nbsp;{{ doc.entity.field_fecha.value }}</em>
+                                        {% endif %}
                                     </p>
                                 {% endfor %}
                             </div>

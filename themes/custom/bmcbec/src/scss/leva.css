@@ -141,6 +141,18 @@ block-video-prime {
     background-image: url(../../images/bmc-bec-contenido-noticias-icon-new.jpg?width=263&amp;height=197)
 }
 
+.img-auditorias-ext {
+    width: 263px;
+    height: 197px;
+    background-image: url(../../images/contenido-reportes-informes-2.jpg?width=555&amp;height=381)
+}
+
+.img-informes-dis {
+    width: 263px;
+    height: 197px;
+    background-image: url(../../images/contenido-reportes-informes-3.jpg?width=555&amp;height=382)
+}
+
 .form-submit {
     background-color: rgba(11, 90, 156, 1);
 }

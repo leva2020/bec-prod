@@ -25,10 +25,8 @@
                 <!--// INFO -->
             </div>
             <div class="col-md-6 col-xs-12 pull-left">
-                <div class="image video os-animation animated fadeInLeft" data-os-animation="fadeInLeft"
+                <div class="image video os-animation animated fadeInLeft img-informes-dis" data-os-animation="fadeInLeft"
                      data-os-animation-delay="0">
-                    <img alt=""
-                         src="/media/1153/contenido-reportes-informes-3.jpg?anchor=center&amp;mode=crop&amp;width=720&amp;height=495&amp;rnd=131153233690000000">
                 </div>
             </div>
         </div>
@@ -90,8 +88,10 @@
                                            title="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}">
                                             {{ doc.entity.field_label_archivo.value }}
                                         </a>
-                                        <span><span>&nbsp;</span>-</span>
-                                        <em>&nbsp;{{ doc.entity.field_fecha.value }}</em>
+                                        {% if doc.entity.field_fecha.value %}
+                                            <span><span>&nbsp;</span>-</span>
+                                            <em>&nbsp;{{ doc.entity.field_fecha.value }}</em>
+                                        {% endif %}
                                     </p>
                                 {% endfor %}
                             </div>
