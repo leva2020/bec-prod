@@ -1,0 +1,150 @@
+{% set now = "now"|date("Y-m-d", "America/Bogota") %}
+{% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
+
+{% set info = enviar_post_ws('getPrecioVentaUsuariosNoRegulados', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoDepartamento=11&codigoCiudad=05001&destinoRueda=G&codigoCentro=05001040',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
+
+{{ attach_library('bmcbec/chartJS') }}
+
+<div class="well" align="center">
+    <div class="bmcbec-dp-right1">
+    <form method="post" action="">
+    <div class="bmcbec-left bmcbec-form-div">
+    <label for="formDestino">Destino Rueda:</label>
+    <select name="paramsFilter[destinoRueda]">
+        <option value="G"  selected >Suministro</option>
+        <option value="T" >Transporte</option>
+        <option value="A" >Suministro y Transporte</option>
+    </select>
+    </div>
+    <div class="bmcbec-left bmcbec-form-div">
+    <label for="formDepto">Departamento:</label>
+    <select name="paramsFilter[codigoDepartamento]" onChange="form.submit();">
+        <option value="0" >Sin Conexi&#243;n al SNT</option>
+        <option value="05" >ANTIOQUIA</option>
+        <option value="08" >ATL&#193;NTICO</option>
+        <option value="11" selected>BOGOT&#193;, D.C.</option>
+        <option value="13" >BOL&#205;VAR</option>
+        <option value="15" >BOYAC&#193;</option>
+        <option value="17" >CALDAS</option>
+        <option value="19" >CAUCA</option>
+        <option value="20" >CESAR</option>
+        <option value="23" >C&#211;RDOBA</option>
+        <option value="25" >CUNDINAMARCA</option>
+        <option value="44" >LA GUAJIRA</option>
+        <option value="47" >MAGDALENA</option>
+        <option value="66" >RISARALDA</option>
+        <option value="68" >SANTANDER</option>
+        <option value="70" >SUCRE</option>
+        <option value="73" >TOLIMA</option>
+        <option value="76" >VALLE DEL CAUCA</option>
+        <option value="85" >CASANARE</option>
+    </select>
+    </div>
+    <div class="bmcbec-left bmcbec-form-div">
+    <label for="formCiudad">Ciudad:</label>
+    <select name="paramsFilter[codigoCiudad]" onChange="form.submit();">
+        <option value="05154" >CAUCASIA</option>
+        <option value="05308" >GIRARDOTA</option>
+        <option value="05001" selected>MEDELL&#205;N</option>
+        <option value="05585" >PUERTO NARE</option>
+    </select>
+    </div>
+    <div class="bmcbec-left bmcbec-form-div">
+    <label for="formCenter">Centro Poblado:</label>
+    <select name="paramsFilter[codigoCentro]">
+    <!-- <option value="0" selected>-- Todos --</option> -->
+    <optgroup label="Centro Poblado">
+    </optgroup>
+    </select>
+    </div>
+    
+    <div class="bmcbec-dp-fix" style="margin-bottom:15px;"></div>
+    
+    <div class="bmcbec-left bmcbec-form-div">
+    <label for="dpd1">Fecha Inicio:</label>
+    <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+    </div>
+    <div class="bmcbec-left bmcbec-form-div">
+    <label for="dpd2">Fecha Fin:</label>
+    <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+    </div>
+    <div class="bmcbec-left bmcbec-form-div" style="padding-top:20px;">
+        <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+    </div>
+    </form>
+    </div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+<div style="clear:both; margin-bottom:30px;"></div>
+
+<!-- GRAPHIC CONSTRUCTOR -->
+<div class="canvas-holder-text">
+    <h4><text>Resultados:</text></h4>
+        <p>La b&#250;squeda no arroj&#243; resultados. Intente ampliando las fechas de la b&#250;squeda o aplicando filtros diferentes.</p>
+
+</div>
+<div class="canvas-holder">
+    <h3 align="center">PRECIO DE VENTA DE GAS A USUARIOS NO REGULADOS <br /> (USD/MBTU)</h3>
+    <canvas id="chart" />
+</div>
+<script type="text/javascript">
+
+{% if info['paramsFilter'] is not null %}
+var destinoRueda = "{{ info['paramsFilter']['destinoRueda'] }}";
+$("option[value=" + destinoRueda + "]").attr('selected', 'selected');
+
+var codigoDepartamento = {{ info['paramsFilter']['codigoDepartamento'] }};
+$("option[value=" + codigoDepartamento + "]").attr('selected', 'selected');
+
+var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+$("input[id='dpd1']").attr('value', fechaInicial);
+
+var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+$("input[id='dpd2']").attr('value', fechaFinal);
+{% endif %}
+
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+
+var lineChartData = {
+    labels: [ 
+    ],
+    datasets: [
+    ]
+};
+
+$.each(lineChartData.datasets, function(i, dataset) {
+    dataset.borderColor = randomColor(0.4);
+    dataset.backgroundColor = dataset.borderColor;
+    dataset.pointBorderColor = dataset.borderColor;
+    dataset.pointBackgroundColor = dataset.borderColor;
+    dataset.pointBorderWidth = 2;
+});
+
+window.onload = function () {
+    var chartEl = document.getElementById("chart");
+    window.myLine = new Chart(chartEl, {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            title: {
+                display:false,
+                text: 'PRECIO DE VENTA DE GAS A USUARIOS NO REGULADOS',
+                fontSize: 16,
+            },
+            tooltips: {
+                mode: 'label',
+                enabled: true
+            },
+            legend: {
+                position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+            }
+        }
+    });
+};
+</script>
+<!-- END OF GRAPHIC CONSTRUCTOR -->
+<div class="bmcbec-fix"></div>

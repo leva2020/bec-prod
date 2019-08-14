@@ -446,4 +446,59 @@ class ServiciosController extends ControllerBase {
             'dataDataSets' => $dataDataSets
         );
     }
+
+    public function getPrecioVentaUsuariosNoRegulados($data) {
+        $labels = array();
+        $dataDataSets = array();
+        $info = array();
+
+        foreach ($data["response"] as $key => $value) {
+            $date = $value->mes . "/" . $value->año;
+
+            $labels[] = $date;
+
+            $dataDataSets[] = $value->capacidad;
+        }
+
+        return $data = array(
+            'info' => $info,
+            'labels' => $labels,
+            'dataDataSets' => $dataDataSets
+        );
+    }
+
+    public function getPTDVFYCIDVF($data) {
+        $labels = array();
+        $dataDataSets = array();
+        $info = array();
+        $dataSets = array();
+
+        foreach ($data['response'] as $key => $value) {
+            $date = $value->mes . "./" . $value->ano;
+
+            if (!in_array($date, $labels)):
+                $labels[] = $date;
+                $dataDataSets["PTDVF (MBTUD)"][$date] = 0;
+                $dataDataSets["CIDVF (MBTUD)"][$date] = 0;
+            endif;
+
+            $dataDataSets["PTDVF (MBTUD)"][$date] += $value->ptdvf;
+            $dataDataSets["CIDVF (MBTUD)"][$date] += $value->cidvf;
+        }
+
+        foreach ($dataDataSets["PTDVF (MBTUD)"] as $tmp):
+            $dataSets["PTDVF (MBTUD)"][] = $tmp;
+        endforeach;
+        foreach ($dataDataSets["CIDVF (MBTUD)"] as $tmp):
+            $dataSets["CIDVF (MBTUD)"][] = $tmp;
+        endforeach;
+
+        $data = array(
+            'info' => $info,
+            'labels' => $labels,
+            'dataDataSets' => $dataSets
+        );
+
+        return $data;
+    }
 }
