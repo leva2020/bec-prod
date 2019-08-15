@@ -8,12 +8,14 @@ base:
       dist/css/plugins.css: {}
       dist/css/main.css: {}
       src/scss/leva.css: {}
+      src/scss/charts.css: {}
   js:
     dist/js/greenSock/minified/TweenMax.min.js: {}
     dist/js/owl.carousel.js: {}
     dist/js/main.min.js: {}
     src/js/slick.js: {}
     src/js/leva.js: {}
+    src/js/tables.js: {}
   dependencies:
     - core/jquery
     - core/underscore
