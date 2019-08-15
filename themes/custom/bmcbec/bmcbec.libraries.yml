@@ -5,10 +5,10 @@ base:
       dist/css/owl.carousel.min.css: {}
       https://fonts.googleapis.com/css?family=Varela+Round: {type: external}
       //netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css: {type: external}
+      src/scss/charts.css: {}
       dist/css/plugins.css: {}
       dist/css/main.css: {}
       src/scss/leva.css: {}
-      src/scss/charts.css: {}
   js:
     dist/js/greenSock/minified/TweenMax.min.js: {}
     dist/js/owl.carousel.js: {}
