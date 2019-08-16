@@ -8,6 +8,7 @@ base:
       dist/css/plugins.css: {}
       dist/css/main.css: {}
       src/scss/leva.css: {}
+      src/scss/charts.css: {}
   js:
     dist/js/greenSock/minified/TweenMax.min.js: {}
     dist/js/owl.carousel.js: {}
