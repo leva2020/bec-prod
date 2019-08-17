@@ -58,8 +58,8 @@
                 <!-- PAGE COMPONENT TABBED -->
                 <div class="page_component tabbed" role="tabpanel">
                     <ul class="nav nav-tabs responsive hidden-xs hidden-sm" role="tablist">
-                        {% if node.field_informes_d %}
-                            {% for anio in node.field_informes_d %}
+                        {% if node.field_informes %}
+                            {% for anio in node.field_informes %}
                                 {% set loopAnio = loop.index %}
                                 {% if loopAnio == 1 %}
                                     <li role="presentation" class="odd active">
@@ -77,8 +77,8 @@
                         {% endif %}
                     </ul>
                     <div class="tab-content panel panel-default responsive hidden-xs hidden-sm">
-                        {% if node.field_informes_d %}
-                        {% for anio in node.field_informes_d %}
+                        {% if node.field_informes %}
+                        {% for anio in node.field_informes %}
                         {% set loopAnio = loop.index %}
                         {% if loopAnio == 1 %}
                         <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body active">
