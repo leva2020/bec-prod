@@ -395,7 +395,8 @@ class ServiciosController extends ControllerBase {
         $data = array(
             'info' => $info,
             'labels' => $labels,
-            'dataDataSets' => $dataSets
+            'dataDataSets' => $dataSets,
+            'dataTables' => $data["response"]
         );
         //         var_dump($data['dataDataSets']);exit;
         //         var_dump($data['dataDataSets']['modalidad']);
@@ -416,7 +417,8 @@ class ServiciosController extends ControllerBase {
 
         $data = array(
             'labels' => $labels,
-            'dataDataSets' => $dataDataSets
+            'dataDataSets' => $dataDataSets,
+            'dataTables' => $data["response"]
         );
 
         return $data;
@@ -443,7 +445,8 @@ class ServiciosController extends ControllerBase {
         return $data = array(
             'info' => $info,
             'labels' => $labels,
-            'dataDataSets' => $dataDataSets
+            'dataDataSets' => $dataDataSets,
+            'dataTables' => $data["response"]
         );
     }
 
