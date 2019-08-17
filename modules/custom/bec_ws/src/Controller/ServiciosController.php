@@ -7,49 +7,53 @@ use Drupal\Component\Serialization\Json;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
-class ServiciosController extends ControllerBase {
+class ServiciosController extends ControllerBase
+{
 
-    public function sendGetRequest($url){
+    public function sendGetRequest($url)
+    {
         try {
             $client = \Drupal::httpClient();
             $request = $client->get($url);
-            $response = array('state' => 1,'response' =>json_decode($request->getBody()) );
+            $response = array('state' => 1, 'response' => json_decode($request->getBody()));
         } catch (Exception $e) {
-            $response = array('state' => 0,'response' =>$e->getMessage() );
+            $response = array('state' => 0, 'response' => $e->getMessage());
         }
 
         return $response;
     }
 
     //Función para enviar peticiones POST a una url con parametros
-    public function sendPostRequest($url, $params) {
+    public function sendPostRequest($url, $params)
+    {
         try {
             $client = \Drupal::httpClient();
             $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
             $request = $client->post($url, array(
-                'headers' => $headers,
-                'body' => $params)
+                    'headers' => $headers,
+                    'body' => $params)
             );
 
             $response = array(
                 'state' => 1,
-                'response' =>json_decode($request->getBody())
+                'response' => json_decode($request->getBody())
             );
         } catch (Exception $e) {
             $response = array(
                 'state' => 0,
-                'response' =>$e->getMessage()
+                'response' => $e->getMessage()
             );
         }
 
         return $response;
     }
 
-    public function enviarPeticionPost($metodo, $params, $formatear, $fechaCompleta, $filtro, $campos, $cantidad) {
+    public function enviarPeticionPost($metodo, $params, $formatear, $fechaCompleta, $filtro, $campos, $cantidad)
+    {
         $url = \Drupal::config('bec_ws.settings')->get('url_base') . $metodo;
 
         $paramsFilter = null;
-        if ( !empty($_POST) ):
+        if (!empty($_POST)):
             if ($paramsFilter = $_POST["paramsFilter"]):
                 $params = null;
                 foreach ($paramsFilter as $key => $param):
@@ -187,74 +191,78 @@ class ServiciosController extends ControllerBase {
         return $info;
     }
 
-    public function energiaInyectada($data,$fechaCompleta,$filtro,$cantidad){
-        $info=array();
+    public function energiaInyectada($data, $fechaCompleta, $filtro, $cantidad)
+    {
+        $info = array();
         foreach ($data as $item) {
             if ($fechaCompleta) {
                 if (isset($info[$item->año][$item->mes][$item->dia][$item->$filtro])) {
-                    $info[$item->año][$item->mes][$item->dia][$item->$filtro]=$info[$item->año][$item->mes][$item->dia][$item->$filtro]+$item->$cantidad;
-                }else{
-                    $info[$item->año][$item->mes][$item->dia][$item->$filtro]=$item->$cantidad;
+                    $info[$item->año][$item->mes][$item->dia][$item->$filtro] = $info[$item->año][$item->mes][$item->dia][$item->$filtro] + $item->$cantidad;
+                } else {
+                    $info[$item->año][$item->mes][$item->dia][$item->$filtro] = $item->$cantidad;
                 }
                 ksort($info[$item->año]);
             }
         }
-        $format=array();
-        $labels=array();
+        $format = array();
+        $labels = array();
         foreach ($info as $key => $value) {
-            $año=$key;
+            $año = $key;
             foreach ($value as $key2 => $value2) {
-                $mes=$key2;
+                $mes = $key2;
                 foreach ($value2 as $key3 => $value3) {
-                    $dia=$key3;
-                    array_push($labels, $dia.'/'.$mes.'/'.$año);
+                    $dia = $key3;
+                    array_push($labels, $dia . '/' . $mes . '/' . $año);
                     foreach ($value3 as $key4 => $value4) {
                         if (!is_array($format[$key4])) {
-                            $format[$key4]=array();
+                            $format[$key4] = array();
                         }
-                        array_push($format[$key4],$value4 );
+                        array_push($format[$key4], $value4);
                     }
                 }
             }
         }
 
-        return array('labels'=>$labels,'data'=>$format);
+        return array('labels' => $labels, 'data' => $format);
     }
 
-    public function energiaSuministrar($data,$fechaCompleta,$cantidad){
-        $info=array();
+    public function energiaSuministrar($data, $fechaCompleta, $cantidad)
+    {
+        $info = array();
         foreach ($data as $item) {
             if ($fechaCompleta) {
                 if (isset($info[$item->año][$item->mes][$item->dia])) {
-                    $info[$item->año][$item->mes][$item->dia]=$info[$item->año][$item->mes][$item->dia]+$item->$cantidad;
-                }else{
-                    $info[$item->año][$item->mes][$item->dia]=$item->$cantidad;
+                    $info[$item->año][$item->mes][$item->dia] = $info[$item->año][$item->mes][$item->dia] + $item->$cantidad;
+                } else {
+                    $info[$item->año][$item->mes][$item->dia] = $item->$cantidad;
                 }
                 ksort($info[$item->año]);
             }
         }
-        $format=array();
-        $labels=array();
+        $format = array();
+        $labels = array();
         foreach ($info as $key => $value) {
-            $año=$key;
+            $año = $key;
             foreach ($value as $key2 => $value2) {
-                $mes=$key2;
+                $mes = $key2;
                 foreach ($value2 as $key3 => $value3) {
-                    $dia=$key3;
-                    array_push($labels, $dia.'/'.$mes.'/'.$año);
+                    $dia = $key3;
+                    array_push($labels, $dia . '/' . $mes . '/' . $año);
                     array_push($format, $value3);
                 }
             }
         }
 
-        return array('labels'=>$labels,'data'=>$format);
+        return array('labels' => $labels, 'data' => $format);
     }
 
-    public function getCapacidadNegociadaPorTramosOGrupoDeGasoductos($data) {
+    public function getCapacidadNegociadaPorTramosOGrupoDeGasoductos($data)
+    {
         return $data;
     }
 
-    public function getPrecioNegociadoPorTramo($data) {
+    public function getPrecioNegociadoPorTramo($data)
+    {
 
         $labels = array();
         $dataDataSets = array();
@@ -283,7 +291,8 @@ class ServiciosController extends ControllerBase {
         return $data;
     }
 
-    public function getCantidadContratadaPuntoEntrega($data) {
+    public function getCantidadContratadaPuntoEntrega($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
@@ -310,7 +319,8 @@ class ServiciosController extends ControllerBase {
         return $data;
     }
 
-    public function getCantidadContratadaPorPuntoDeEntrega($data) {
+    public function getCantidadContratadaPorPuntoDeEntrega($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
@@ -339,7 +349,8 @@ class ServiciosController extends ControllerBase {
         return $data;
     }
 
-    public function getCapacidadContratadaTramoGrupoGasoductos($data) {
+    public function getCapacidadContratadaTramoGrupoGasoductos($data)
+    {
         $labels = array();
         $modalidades = array();
         $dataDataSets = array();
@@ -352,46 +363,47 @@ class ServiciosController extends ControllerBase {
 
         //         var_dump($data);
 
-        foreach ($data['response'] as $key => $value) {
-            $date = $value->mes . "/" . $value->año;
-            //             $date = date("m/Y", strtotime($date));
-            $modalidad = $value->modalidad;
-            $cantidad = $value->cantidad;
+        if ($data['response']) {
+            foreach ($data['response'] as $key => $value) {
+                $date = $value->mes . "/" . $value->año;
+                //             $date = date("m/Y", strtotime($date));
+                $modalidad = $value->modalidad;
+                $cantidad = $value->cantidad;
 
 
-            if (!in_array($date, $labels)):
-                $labels[] = $date;
-                $dataDataSets[$date]['modalidad'] = array();
-            endif;
-
-            if (!in_array($modalidad, $modalidades)):
-                $modalidades[] = $modalidad;
-            endif;
-
-            if (array_key_exists($modalidad, $dataDataSets[$date]['modalidad'])):
-                $dataDataSets[$date]['modalidad'][$modalidad] += $cantidad;
-            else:
-                $dataDataSets[$date]['modalidad'][$modalidad] = $cantidad;
-            endif;
-
-            //             if (array_key_exists($value->modalidad, $dataDataSets['modalidad'])):
-            //                 //                 if (in_array($value->modalidad, $dataDataSets['modalidad'][$key])):
-            //                 $dataDataSets['modalidad'][$value->modalidad][] += $value->cantidad;
-            //             else:
-            //                 $dataDataSets['modalidad'] += array($value->modalidad => $value->cantidad);
-            //             endif;
-        }
-        // var_dump($modalidades);exit;
-        $tmpLabels = $labels;
-        foreach ($dataDataSets as $key => $tmpLabels):
-            foreach ($modalidades as $modalidad):
-                if (!array_key_exists($modalidad, $tmpLabels['modalidad'])):
-                    $dataDataSets[$key]['modalidad'][$modalidad] = 0;
+                if (!in_array($date, $labels)):
+                    $labels[] = $date;
+                    $dataDataSets[$date]['modalidad'] = array();
                 endif;
-                $dataSets[$modalidad][] = $dataDataSets[$key]['modalidad'][$modalidad];
-            endforeach;
-        endforeach;
 
+                if (!in_array($modalidad, $modalidades)):
+                    $modalidades[] = $modalidad;
+                endif;
+
+                if (array_key_exists($modalidad, $dataDataSets[$date]['modalidad'])):
+                    $dataDataSets[$date]['modalidad'][$modalidad] += $cantidad;
+                else:
+                    $dataDataSets[$date]['modalidad'][$modalidad] = $cantidad;
+                endif;
+
+                //             if (array_key_exists($value->modalidad, $dataDataSets['modalidad'])):
+                //                 //                 if (in_array($value->modalidad, $dataDataSets['modalidad'][$key])):
+                //                 $dataDataSets['modalidad'][$value->modalidad][] += $value->cantidad;
+                //             else:
+                //                 $dataDataSets['modalidad'] += array($value->modalidad => $value->cantidad);
+                //             endif;
+            }
+            // var_dump($modalidades);exit;
+            $tmpLabels = $labels;
+            foreach ($dataDataSets as $key => $tmpLabels):
+                foreach ($modalidades as $modalidad):
+                    if (!array_key_exists($modalidad, $tmpLabels['modalidad'])):
+                        $dataDataSets[$key]['modalidad'][$modalidad] = 0;
+                    endif;
+                    $dataSets[$modalidad][] = $dataDataSets[$key]['modalidad'][$modalidad];
+                endforeach;
+            endforeach;
+        }
         $data = array(
             'info' => $info,
             'labels' => $labels,
@@ -404,7 +416,8 @@ class ServiciosController extends ControllerBase {
         return $data;
     }
 
-    public function getCapacidadMaximaMedianoPlazo($data) {
+    public function getCapacidadMaximaMedianoPlazo($data)
+    {
 
         $labels = array();
         $dataDataSets = array();
@@ -424,7 +437,8 @@ class ServiciosController extends ControllerBase {
         return $data;
     }
 
-    public function getCapacidadDisponiblePrimaria($data) {
+    public function getCapacidadDisponiblePrimaria($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
@@ -450,7 +464,8 @@ class ServiciosController extends ControllerBase {
         );
     }
 
-    public function getPrecioVentaUsuariosNoRegulados($data) {
+    public function getPrecioVentaUsuariosNoRegulados($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
@@ -470,7 +485,8 @@ class ServiciosController extends ControllerBase {
         );
     }
 
-    public function getPTDVFYCIDVF($data) {
+    public function getPTDVFYCIDVF($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
