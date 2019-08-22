@@ -400,24 +400,36 @@
     };
 
     var lineChartData = {
-        labels: [  {% for item in info['labels'] %}"{{item}}",{% endfor %}  ],
+        labels: [
+            {% for item in info['data'] %}
+                "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
+            {% endfor %}
+        ],
         datasets: [
             {
                 label: "Cantidad Nacional (MBTUD)",
                 yAxisID: "y-axis-1",
                 fill: "true",
-                data: [ {% for item in info['data']['NACIONAL'] %}"{{item}}",{% endfor %} ]
+                data: [
+                    {% for item in info['data'].cantidad %}
+                        {% if item.tipo_produccion === 'NACIONAL' %}
+                            "{{item}}",
+                        {% endif %}
+                    {% endfor %}
+                ]
             },
-
-
             {
                 label: "Cantidad Importada (MBTUD)",
                 yAxisID: "y-axis-1",
                 fill: "false",
-                data: [ {%if info['data']['IMPORTADA'] is not empty %} {% for item in info['data']['IMPORTADA'] %}"{{item}}",{% endfor %} {%endif%} ]
-            },
-
-
+                data: [
+                    {% for item in info['data'].cantidad %}
+                        {% if item.tipo_produccion === 'IMPORTADA' %}
+                            "{{item}}",
+                        {% endif %}
+                    {% endfor %}
+                ]
+            }
         ]
     };
 
