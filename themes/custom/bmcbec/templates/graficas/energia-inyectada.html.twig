@@ -7,14 +7,14 @@
 {{ attach_library('bmcbec/tables') }}
 {{ attach_library('bmcbec/chartJS') }}
 
-<div class="filter-graphic" align="center">
+<div class="well" align="center">
     <div class="bmcbec-dp-left">
         <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
         <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
         <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
         <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
         <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
-    <div class="bmcbec-dp-right">
+    <div class="bmcbec-dp-left form-div autowidth">
         <form method="post" action="">
             <input type="text" class="span2" value="2019-02-getCantidadEnergiaInyectadaOpe_RComments01" id="dpd1" name="formDateBegin" data-date="2019-02-01" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" >
             <input type="text" class="span2" value="2019-03-31" id="dpd2" name="formDateEnd" data-date="2019-03-31" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days">
@@ -379,17 +379,10 @@
         <p class="helpText">Consulta un periodo hasta 395 días</p></div>
     <div class="bmcbec-dp-fix"></div>
 </div>
-<div class="chart-container" >
-    <canvas id="canvas" ></canvas>
+<div class="canvas-holder">
+    <h3 align="center">CANTIDAD DE ENERGÍA INYECTADA</h3>
+    <canvas id="canvas"></canvas>
 </div>
-<style type="text/css">
-    .chart-container {
-        position: relative;
-        margin: auto;
-        height: 80vh;
-        width: 80vw;
-    }
-</style>
 
 
 <script type="text/javascript">
