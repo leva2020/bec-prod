@@ -60,7 +60,7 @@
     var lineChartData = {
         labels: [
             {% for item in info["dataTables"] %}
-            "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
+                "{{ item.dia }}/{{ item.mes }}/{{ item.ano }}",
             {% endfor %}
         ],
         datasets: [
@@ -68,7 +68,7 @@
                 label: "Cantidad (MBTUD)",
                 data: [
                     {% for item in info["dataTables"] %}
-                    "{{item.cantidad}}",
+                        "{{item.cantidad}}",
                     {% endfor %}
                 ]
             },
@@ -164,7 +164,7 @@
         <tbody>
         {% for key, data in info["dataTables"] %}
             <tr valign="top" align="left">
-                <td>{{ data.año }}</td>
+                <td>{{ data.ano }}</td>
                 <td>{{ data.mes }}</td>
                 <td>{{ data.dia }}</td>
                 <td>{{ data.desc_pozo }}</td>
