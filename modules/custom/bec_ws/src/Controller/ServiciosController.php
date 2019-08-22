@@ -465,4 +465,11 @@ class ServiciosController extends ControllerBase
         );
         return $data;
     }
+
+    public function getCantidadTomadaComercializadores($data) {
+        $data = array(
+            'dataTables' => $data['response']
+        );
+        return $data;
+    }
 }
