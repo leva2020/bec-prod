@@ -1,10 +1,11 @@
-{% set now = "now"|date("Y", "America/Bogota") %}
+{#{% set now = "now"|date("Y", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y", "America/Bogota") %}
 
 {% set monthNow = "now"|date("m", "America/Bogota") %}
 {% set monthAgo = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
+#}
 
-{% set info = enviar_post_ws('getCantidadDeclaradaPorNoComercializadoresNoInyectada', 'anoCarga=' ~yearAgo~ '&anoInicial=' ~yearAgo~ '&anoFinal=' ~now~ '&operador=0&fuente=0&mesInicial=' ~monthAgo~ '&mesFinal=' ~monthNow,1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
+{% set info=enviar_post_ws('getCantidadDeclaradaPorNoComercializadoresNoInyectada','fechaInicial=2018-12-01&fechaFinal=2019-01-31&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {#<link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
@@ -40,7 +41,7 @@
 <!-- GRAPHIC CONSTRUCTOR -->
 <div class="canvas-holder-text">
     <h4>
-        <text>Resultados:</text>
+        <text>Resultados</text>
     </h4>
     <p>Se est&#225; mostrando informaci&#243;n de 1504 resultados encontrados con los filtros aplicados.</p>
     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
@@ -168,7 +169,7 @@
                 <td>{{ data.mes }}</td>
                 <td>{{ data.dia }}</td>
                 <td>{{ data.desc_pozo }}</td>
-                <td>{{ data.cantidad }}</td>
+                <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
             </tr>
         {% endfor %}
         </tbody>
