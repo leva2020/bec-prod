@@ -475,3 +475,77 @@
     //ctx.font="30px Arial";
 
 </script>
+
+
+<!-- END OF GRAPHIC CONSTRUCTOR -->
+<div class="bmcbec-fix"></div>
+
+
+
+{# {{ dump(info["dataTables"]) }}#}
+
+<!-- TABLE CONSTRUCTOR -->
+<div class="table-holder">
+    <h4>Tabla de Resultados</h4>
+    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
+    <table id="ResultTable" class="display" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Día</th>
+            <th>Punto de Entrada</th>
+            <th>Tipo de producción</th>
+            <th>Campo de producción</th>
+            <th>Cantidad (MBTUD)</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Día</th>
+            <th>Punto de Entrada</th>
+            <th>Tipo de producción</th>
+            <th>Campo de producción</th>
+            <th>Cantidad (MBTUD)</th>
+        </tr>
+        </tfoot>
+        <tbody>
+
+        {% for key, data in info["dataTables"] %}
+            <tr valign="top" align="left">
+                <td>{{ data.ano }}</td>
+                <td>{{ data.mes }}</td>
+                <td>{{ data.mes }}</td>
+                <td>{{ data.mes }}</td>
+                <td>{{ data.mes }}</td>
+                <td>{{ data.mes }}</td>
+                {#<td>{{ data.operador_del_campo }}</td>
+                <td>{{ data.campo_punto_snt }}</td>
+                <td>{{ data.socio_productor }}</td>
+                <td align="right" data-order={{ data.ptdvf }}>{{ data.ptdvf }}</td>
+                <td align="right" data-order="{{ data.cidvf }}">{{ data.cidvf }}</td>#}
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Begin - Export Option Table -->
+<div id="table2export">
+    <table id="ResultTable1"></table>
+</div>
+<!-- END - Export Option Table -->
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#ResultTable thead").clone().appendTo("#ResultTable1");
+        $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+        $("#ResultTable tbody").clone().appendTo("#ResultTable1");
+        dataTablesIni();
+    });
+</script>

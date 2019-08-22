@@ -551,8 +551,8 @@ class ServiciosController extends ControllerBase
         $data = array(
             'data' => $info,
             'labels' => $labels,
-            // 'dataDataSets' => $dataSets,
-            // 'dataTables' => $data['response']
+            'dataDataSets' => $dataSets,
+            'dataTables' => $data['response']
         );
 
         return $data;
