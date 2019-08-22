@@ -412,7 +412,7 @@
                 fill: "true",
                 data: [
                     {% for item in info['data'] %}
-                        {% if item.tipo_produccion === 'NACIONAL' %}
+                        {% if item.tipo_produccion == 'NACIONAL' %}
                             "{{item.cantidad}}",
                         {% endif %}
                     {% endfor %}
@@ -424,7 +424,7 @@
                 fill: "false",
                 data: [
                     {% for item in info['data'] %}
-                        {% if item.tipo_produccion === 'IMPORTADA' %}
+                        {% if item.tipo_produccion == 'IMPORTADA' %}
                             "{{item.cantidad}}",
                         {% endif %}
                     {% endfor %}
