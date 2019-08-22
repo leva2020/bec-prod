@@ -451,4 +451,11 @@ class ServiciosController extends ControllerBase
         );
         return $data;
     }
+
+    public function getCantidadAutorizadaNominaciones($data) {
+        $data = array(
+            'dataTables' => $data['response']
+        );
+        return $data;
+    }
 }
