@@ -401,7 +401,7 @@
 
     var lineChartData = {
         labels: [
-            {% for item in info['data'] %}
+            {% for item in info["dataTables"] %}
                 "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
             {% endfor %}
         ],
@@ -411,7 +411,7 @@
                 yAxisID: "y-axis-1",
                 fill: "true",
                 data: [
-                    {% for item in info['data'] %}
+                    {% for item in info["dataTables"] %}
                         {% if item.tipo_produccion == 'NACIONAL' %}
                             "{{item.cantidad}}",
                         {% endif %}
@@ -423,7 +423,7 @@
                 yAxisID: "y-axis-1",
                 fill: "false",
                 data: [
-                    {% for item in info['data'] %}
+                    {% for item in info["dataTables"] %}
                         {% if item.tipo_produccion == 'IMPORTADA' %}
                             "{{item.cantidad}}",
                         {% endif %}
