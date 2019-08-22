@@ -2,10 +2,12 @@
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y", "America/Bogota") %}
 
 {% set monthNow = "now"|date("m", "America/Bogota") %}
+{% set dayNow = "now"|date("dd", "America/Bogota") %}
 {% set monthAgo = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
+{% set dayAgo = "now"|date_modify("-1 year")|date("dd", "America/Bogota") %}
 
 
-{% set info=enviar_post_ws('getCantidadDeclaradaPorNoComercializadoresNoInyectada','fechaInicial=2018-01-01&fechaFinal=2019-01-31&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
+{% set info=enviar_post_ws('getCantidadDeclaradaPorNoComercializadoresNoInyectada','fechaInicial='~yearAgo~'-'~monthAgo~'-'~dayAgo~'&fechaFinal='~now~'-'~monthNow~'-'~dayNow~'&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {#<link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
@@ -175,3 +177,12 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#ResultTable thead").clone().appendTo("#ResultTable1");
+        $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+        $("#ResultTable tbody").clone().appendTo("#ResultTable1");
+        dataTablesIni();
+    });
+</script>
