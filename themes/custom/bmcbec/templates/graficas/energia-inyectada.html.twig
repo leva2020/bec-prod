@@ -411,9 +411,9 @@
                 yAxisID: "y-axis-1",
                 fill: "true",
                 data: [
-                    {% for item in info['data'].cantidad %}
+                    {% for item in info['data'] %}
                         {% if item.tipo_produccion === 'NACIONAL' %}
-                            "{{item}}",
+                            "{{item.cantidad}}",
                         {% endif %}
                     {% endfor %}
                 ]
@@ -423,9 +423,9 @@
                 yAxisID: "y-axis-1",
                 fill: "false",
                 data: [
-                    {% for item in info['data'].cantidad %}
+                    {% for item in info['data'] %}
                         {% if item.tipo_produccion === 'IMPORTADA' %}
-                            "{{item}}",
+                            "{{item.cantidad}}",
                         {% endif %}
                     {% endfor %}
                 ]
