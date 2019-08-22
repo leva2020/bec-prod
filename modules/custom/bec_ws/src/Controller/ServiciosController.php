@@ -458,4 +458,11 @@ class ServiciosController extends ControllerBase
         );
         return $data;
     }
+
+    public function getCantidadTomadaTransportadoresTramo($data) {
+        $data = array(
+            'dataTables' => $data['response']
+        );
+        return $data;
+    }
 }
