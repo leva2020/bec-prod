@@ -472,4 +472,11 @@ class ServiciosController extends ControllerBase
         );
         return $data;
     }
+
+    public function getCantidadTomadaDiariamenteSnt($data) {
+        $data = array(
+            'dataTables' => $data['response']
+        );
+        return $data;
+    }
 }
