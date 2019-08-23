@@ -486,4 +486,55 @@ class ServiciosController extends ControllerBase
         );
         return $data;
     }
+
+    public function getInfGrafIni($data) {
+        $labels = array();
+        $dataDataSets = array();
+        $info = array();
+
+        foreach ($data['response'] as $key => $value) {
+            $date = $value->fecha;
+
+            if (!in_array($date, $labels)):
+                $labels[] = $date;
+                $dataDataSets[$value->desc_modalidad][$key] = $value->capac_cant;
+            else:
+                $dataDataSets[$value->desc_modalidad][$key] += $value->capac_cant;
+            endif;
+        }
+
+        $data = array(
+            'info' => $info,
+            'labels' => $labels,
+            'dataDataSets' => $dataDataSets
+        );
+
+        return $data;
+    }
+
+    public function getPuntoEntregaSuministro($data) {
+        $labels = array();
+        $dataDataSets = array();
+        $info = array();
+
+        foreach ($data['response'] as $key => $value) {
+            $date = $value->mes . "./" . $value->año;
+
+            if (!in_array($date, $labels)):
+                $labels[] = $date;
+                $dataDataSets[$date] = $value->cantidad;
+            else:
+                $dataDataSets[$date] += $value->cantidad;
+            endif;
+        }
+
+        $data = array(
+            'info' => $info,
+            'labels' => $labels,
+            'dataDataSets' => $dataDataSets,
+            'dataTables' => $data["response"]
+        );
+
+        return $data;
+    }
 }

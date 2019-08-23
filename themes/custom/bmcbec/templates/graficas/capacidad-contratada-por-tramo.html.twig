@@ -1,21 +1,136 @@
-<section class="content advanced-component standard-components">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">
-                <div class="page_component codeblock">
-                    <object id="becchartframe" width="100%" height="700"
-                            data="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/transaccional-MP-IT.cshtml"
-                            style="height:700px; border:0;" scrolling="no">
-                    </object>
-                    <style>
-                        #pos_2044 + section > div {
-                            width: 100% !important;
-                            margin: 0;
-                            padding: 0;
-                        }
-                    </style>
-                </div>
-            </div>
-        </div>
+{% set info = enviar_post_ws('getInfGrafIni','puntoTramo=116&pCodigoModalidad=1', 1, 1, '', '', 'cantidad')  %}
+
+{{ attach_library('bmcbec/chartJS') }}
+
+<div class="well" align="center">
+    <!-- <div class="bmcbec-dp-left">
+        <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
+        <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
+        <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
+        <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
+    </div> -->
+    <div class="bmcbec-dp-right">
+        <form method="post" action="">
+            <!-- <input type="text" class="span2" value="2019-07-31" id="dpd1" name="formDateBegin" data-date="2019-07-31" data-date-format="yyyy-mm-dd" data-date-viewmode="days" data-date-minviewmode="days" /> -->
+            <select name="paramsFilter[puntoTramo]">
+                <!-- <option value="" selected>-- Todos los tramos --</option> -->
+                <optgroup label="Elegir Tramo">
+                    <option value="116"  selected >BALLENA-BARRANCABERMEJA</option>
+                    <option value="110" >BALLENA-LA MAMI</option>
+                    <option value="133" >CUSIANA-EL PORVENIR</option>
+                    <option value="115" >LA CRECIENTE-SINCELEJO</option>
+                </optgroup>
+            </select>
+            <select name="paramsFilter[pCodigoModalidad]">
+                <option value="" selected>-- Todas --</option>
+                <optgroup label="Elegir Modalidad">
+                    <option value="21" >C1</option>
+                    <option value="22" >C2</option>
+                    <option value="5" >CON INTERRUPCIONES</option>
+                    <option value="6" >CONTINGENCIA</option>
+                    <option value="1"  selected >FIRME</option>
+                    <option value="23" >FIRME AL 95%</option>
+                    <option value="2" >FIRMEZA CONDICIONADA</option>
+                    <option value="3" >OPCI&#211;N DE COMPRA</option>
+                    <option value="4" >OPCI&#211;N DE COMPRA CONTRA EXP</option>
+                    <option value="16" >OTRAS</option>
+                    <option value="8" >TAKE OR PAY</option>
+                </optgroup>
+            </select>
+            <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+        </form>
     </div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+{# <script type="text/javascript">#}
+{#     var nowTemp = new Date();#}
+{#     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);#}
+    
+{#     var tempDisable = new Date();#}
+{#     tempDisable.setDate(tempDisable.getDate() - 365);#}
+
+{#     var checkin = $('#dpd1').datepicker({#}
+{#         onRender: function (date) {#}
+{#             return date.valueOf() > now.valueOf() ? 'disabled' : '' || date.valueOf() <= tempDisable.valueOf() ? 'disabled' : '';#}
+{#         }#}
+{#     }).data('datepicker');#}
+{# </script>#}
+<div class="bmcbec-fix"></div>
+
+<!-- GRAPHIC CONSTRUCTOR -->
+<div class="canvas-holder-text">
+    <h4><text>Resultados:</text></h4>
+        <p>Se est&#225; mostrando informaci&#243;n de  184 resultados encontrados con los filtros aplicados.</p>
+        <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+
+</div>
+<div class="canvas-holder">
+    <h3 align="center">CAPACIDAD CONTRATADA POR TRAMO</h3>
+    <canvas id="chart" />
+</div>
+<script type="text/javascript">
+
+{% if info['paramsFilter'] is not null %}
+var puntoTramo = {{ (info['paramsFilter']['puntoTramo'])?:0 }};
+$("option[value=" + puntoTramo + "]").attr('selected', 'selected');
+
+var pCodigoModalidad = {{ (info['paramsFilter']['pCodigoModalidad'])?:0 }};
+$("option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
+{% endif %}
+
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+
+var lineChartData = {
+    labels: {{ info["labels"]|json_encode|raw }},
+    datasets: [
+        {% for key, dataSet in info["dataDataSets"] %}
+        {
+            label: "{{ key }}",
+//             lineTension: 0,
+//             fill: "true",
+            data: {{ dataSet|json_encode|raw }}
+        },
+        {% endfor %}
+    ]
+};
+
+$.each(lineChartData.datasets, function(i, dataset) {
+    var tempColor = randomColor(1);
+        dataset.borderColor = tempColor;
+        dataset.backgroundColor = tempColor;
+        dataset.pointBorderColor = tempColor;
+        dataset.pointBackgroundColor = tempColor;
+        dataset.borderWidth = 9;
+        dataset.pointBorderWidth = 0;
+        dataset.pointHoverRadius = 0;
+        dataset.pointHoverBorderWidth = 0;
+        dataset.pointRadius = 0;
+        dataset.pointHitRadius = 0;
+});
+
+window.onload = function () {
+    var chartEl = document.getElementById("chart");
+    window.myLine = new Chart(chartEl, {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            title: {
+                display:false,
+                text: 'CAPACIDAD CONTRATADA POR TRAMO',
+                fontSize: 16,
+            },
+            tooltips: {
+                mode: 'label',
+                enabled: true
+            }
+        }
+    });
+};
+</script>
+<!-- END OF GRAPHIC CONSTRUCTOR -->
+<div class="bmcbec-fix"></div>
 </section>
