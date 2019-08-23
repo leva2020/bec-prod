@@ -479,4 +479,11 @@ class ServiciosController extends ControllerBase
         );
         return $data;
     }
+
+    public function getCantidadTomadaContratosParqueo($data) {
+        $data = array(
+            'dataTables' => $data['response']
+        );
+        return $data;
+    }
 }
