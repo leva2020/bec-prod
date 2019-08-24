@@ -516,22 +516,64 @@ class ServiciosController extends ControllerBase
         $labels = array();
         $dataDataSets = array();
         $info = array();
+        $dataSets = array();
 
-        foreach ($data['response'] as $key => $value) {
+        foreach ($data['response'] as $key => $value):
             $date = $value->mes . "./" . $value->año;
 
             if (!in_array($date, $labels)):
                 $labels[] = $date;
-                $dataDataSets[$date] = $value->cantidad;
+                $dataDataSets["Cantidad (MBTUD)"][$date] = $value->cantidad;
             else:
-                $dataDataSets[$date] += $value->cantidad;
+                $dataDataSets["Cantidad (MBTUD)"][$date] += $value->cantidad;
             endif;
-        }
+        endforeach;
+
+        foreach ($dataDataSets["Cantidad (MBTUD)"] as $tmp):
+            $dataSets["Cantidad (MBTUD)"][] = $tmp;
+        endforeach;
 
         $data = array(
             'info' => $info,
             'labels' => $labels,
-            'dataDataSets' => $dataDataSets,
+            'dataDataSets' => $dataSets,
+            'dataTables' => $data["response"]
+        );
+
+        return $data;
+    }
+
+    public function getAgregadoNacionalSuministro($data) {
+        $labels = array();
+        $dataDataSets = array();
+        $info = array();
+        $dataSets = array();
+
+        foreach ($data['response'] as $key => $value):
+            $date = $value->mes . "./" . $value->año;
+
+            if (!in_array($date, $labels)):
+                $labels[] = $date;
+                $dataDataSets["Cantidad (MBTUD)"][$date] = $value->cantidad;
+                $dataDataSets["Precio promedio"][$date] = $value->precio_prom;
+            else:
+                $dataDataSets["Cantidad (MBTUD)"][$date] += $value->cantidad;
+                $dataDataSets["Precio promedio"][$date] += $value->precio_prom;
+            endif;
+        endforeach;
+
+        foreach ($dataDataSets["Cantidad (MBTUD)"] as $tmp):
+            $dataSets["Cantidad (MBTUD)"][] = $tmp;
+        endforeach;
+
+        foreach ($dataDataSets["Precio promedio"] as $tmp):
+            $dataSets["Precio promedio"][] = $tmp;
+        endforeach;
+
+        $data = array(
+            'info' => $info,
+            'labels' => $labels,
+            'dataDataSets' => $dataSets,
             'dataTables' => $data["response"]
         );
 

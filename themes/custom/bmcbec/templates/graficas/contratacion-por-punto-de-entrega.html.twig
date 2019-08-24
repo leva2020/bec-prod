@@ -423,11 +423,7 @@
     </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
-<script type="text/javascript">
-    datesFieldsValidation(365);
-</script>
 <div class="bmcbec-fix"></div>
-
 
 <!-- GRAPHIC CONSTRUCTOR -->
 <div class="canvas-holder-text">
@@ -442,7 +438,6 @@
 </div>
 <script type="text/javascript">
 
-
 var randomColor = function(opacity) {
     return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
 };
@@ -452,9 +447,8 @@ var lineChartData = {
     datasets: [
         {% for key, dataSet in info["dataDataSets"] %}
         {
-            label: "Cantidad (MBTUD)",
+            label: "{{ key }}",
             yAxisID: "y-axis-1",
-            fill: true,
             data: {{ dataSet|json_encode|raw }}
         },
         {% endfor %}
