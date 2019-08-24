@@ -425,9 +425,8 @@
         })
         .then(response => response.json()
             .then(function (value) {
-                info["dataTables"] = value
                 console.log('estamos::', info);
-                lineChartDataM = {
+                var lineChartDataM = {
                     labels: [
                         {% for item in value %}
                         "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
