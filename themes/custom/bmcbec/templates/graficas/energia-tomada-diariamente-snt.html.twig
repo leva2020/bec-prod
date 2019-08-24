@@ -59,7 +59,9 @@
 </div>
 <script type="text/javascript">
 
-    datesFieldsValidation(395,395);
+    $(document).ready(function () {
+        datesFieldsValidation(395, 395);
+    });
 
     {% if info['paramsFilter'] is not null %}
     var codigoTipoDemanda = {{ (info['paramsFilter']['codigoTipoDemanda'])?:0 }};

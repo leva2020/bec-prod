@@ -169,8 +169,6 @@
 
 <script type="text/javascript">
 
-    datesFieldsValidation(395, 395);
-
     {% if info['paramsFilter'] is not null %}
     var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
     $("input[id='dpd1']").attr('value', fechaInicial);
@@ -284,6 +282,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        datesFieldsValidation(395, 395);
         $("#ResultTable thead").clone().appendTo("#ResultTable1");
         $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
         $("#ResultTable tbody").clone().appendTo("#ResultTable1");

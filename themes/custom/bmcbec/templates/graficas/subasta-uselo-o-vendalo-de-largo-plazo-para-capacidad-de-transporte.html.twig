@@ -317,9 +317,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         dataTablesIni();
+        datesFieldsValidation(395, 395);
     });
-
-    datesFieldsValidation(395, 395);
 
     {% if info['paramsFilter'] is not null %}
     var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';

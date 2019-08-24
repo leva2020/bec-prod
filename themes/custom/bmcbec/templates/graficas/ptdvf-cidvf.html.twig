@@ -512,7 +512,9 @@
 </div>
 <script type="text/javascript">
 
-    datesFieldsValidation(395, 395);
+    $(document).ready(function () {
+        datesFieldsValidation(395, 395);
+    });
 
     {% if info['paramsFilter'] is not null %}
     var operador = "{{ info['paramsFilter']['operador'] }}";

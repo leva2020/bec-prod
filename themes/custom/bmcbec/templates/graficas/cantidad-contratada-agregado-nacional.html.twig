@@ -67,8 +67,6 @@
 
 <script type="text/javascript">
 
-    datesFieldsValidation(395, 395);
-
     {% if info['paramsFilter'] is not null %}
 
     var codigoModalidad = {{ info['paramsFilter']['[codigoModalidad'] }};
@@ -235,6 +233,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        datesFieldsValidation(395, 395);
         dataTablesIni();
     });
 </script>

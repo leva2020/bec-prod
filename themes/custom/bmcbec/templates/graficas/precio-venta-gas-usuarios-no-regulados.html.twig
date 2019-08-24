@@ -105,9 +105,11 @@
 </div>
 <script type="text/javascript">
 
-    {% if info['paramsFilter'] is not null %}
+    $(document).ready(function () {
+        datesFieldsValidation(395, 395);
+    });
 
-    datesFieldsValidation(395, 395);
+    {% if info['paramsFilter'] is not null %}
 
     var destinoRueda = "{{ info['paramsFilter']['destinoRueda'] }}";
     $("option[value=" + destinoRueda + "]").attr('selected', 'selected');

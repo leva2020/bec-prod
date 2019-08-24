@@ -46,8 +46,6 @@
     <canvas id="chart"/>
 </div>
 <script type="text/javascript">
-    datesFieldsValidation(395, 395);
-
     {% if info['paramsFilter'] is not null %}
     var codigoOperador = '{{ info['paramsFilter']['codigoOperador'] }}';
     $("option[value=" + codigoOperador + "]").attr('selected', 'selected');
@@ -146,6 +144,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        datesFieldsValidation(395, 395);
         $("#ResultTable thead").clone().appendTo("#ResultTable1");
         $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
         $("#ResultTable tbody").clone().appendTo("#ResultTable1");

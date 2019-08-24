@@ -446,8 +446,6 @@
 </div>
 <script type="text/javascript">
 
-    datesFieldsValidation(395, 395);
-
     var randomColor = function (opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
     };
@@ -576,6 +574,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        datesFieldsValidation(395, 395);
         $("#ResultTable thead").clone().appendTo("#ResultTable1");
         $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
         $("#ResultTable tbody").clone().appendTo("#ResultTable1");
