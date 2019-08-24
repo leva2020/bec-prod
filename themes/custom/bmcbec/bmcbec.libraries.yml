@@ -22,10 +22,13 @@ base:
 
 chartJS:
   header: true
+  css:
+    src/scss/datepicker.css: {}
   js:
     dist/js/chartJS/Chart.bundle.js: {}
     dist/js/chartJS/Chart.bundle.min.js: {}
     dist/js/chartJS/Chart.js: {}
     dist/js/chartJS/Chart.min.js: {}
+    src/js/bootstrap-datepicker.js: {}
   dependencies:
     - core/jquery
