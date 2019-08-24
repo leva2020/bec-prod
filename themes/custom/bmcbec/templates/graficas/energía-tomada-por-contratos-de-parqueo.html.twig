@@ -14,6 +14,10 @@
 {{ attach_library('bmcbec/tables') }}
 {{ attach_library('bmcbec/chartJS') }}
 
+<script>
+    datesFieldsValidation(395, 395);
+</script>
+
 <div class="well" align="center">
     <div class="bmcbec-dp-left">
         <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
@@ -826,8 +830,6 @@
     <canvas id="canvas"></canvas>
 </div>
 <script type="text/javascript">
-
-    datesFieldsValidation(395, 395);
 
     {% if info['paramsFilter'] is not null %}
     var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
