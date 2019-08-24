@@ -457,6 +457,13 @@
                     ]
                 };
                 console.log('lineChartDataM', lineChartDataM);
+                jQuery.each(lineChartDataM.datasets, function (i, dataset) {
+                    dataset.borderColor = randomColor(0.4);
+                    dataset.backgroundColor = randomColor(1);
+                    dataset.pointBorderColor = randomColor(0.7);
+                    dataset.pointBackgroundColor = randomColor(0.5);
+                    dataset.pointBorderWidth = 1;
+                });
                 createGraph(lineChartDataM);
             })
         )
