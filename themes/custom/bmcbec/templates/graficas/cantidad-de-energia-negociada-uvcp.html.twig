@@ -1,10 +1,7 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set monthNow = "now"|date("m", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
-
-{% set info = enviar_post_ws('getPuntoEntregaSuministro', 'fechaInicial=' ~yearAgo~ '&fechaFinal='~now~'&codigoPunto=&codigoModalidad=', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad')  %}
+{% set info = enviar_post_ws('getInformaciontransaccionalSUVCP_CEN_UVCP', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
@@ -24,12 +21,12 @@
     </div>
     <div class="bmcbec-dp-right">
     <form method="post" action="">
-    <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-    <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-    <select name="paramsFilter[codigoPunto]">
-    <option value="0" selected>-- Todos los Puntos de Entrega --</option>
+    <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
+    <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
+    <select name="paramsFilter[Punto_ruta]">
+    <option value="0" selected>-- Todos los Puntos --</option>
     <optgroup label="Puntos de Entrega">
-        <option value="73" >ABANICO</option>
+        <option value="73" >Abanico</option>
         <option value="95" >ABEJAS</option>
         <option value="266" >ACAE SAN MIGUEL</option>
         <option value="96" >ACORDIONERO</option>
@@ -59,13 +56,13 @@
         <option value="42" >BARRANQUILLA</option>
         <option value="353" >BARRANQUILLA CONEXI&#211;N</option>
         <option value="105" >BEGONIA</option>
-        <option value="253" >BLOQUE ESPERANZA (CAMPO MAYOR)</option>
-        <option value="254" >BLOQUE ESPERANZA (PRUEBA EXTENSA)</option>
-        <option value="255" >BLOQUE VIM 5</option>
+        <option value="253" >Bloque Esperanza (Campo Mayor)</option>
+        <option value="254" >Bloque Esperanza (Prueba Extensa)</option>
+        <option value="255" >Bloque VIM 5</option>
         <option value="66" >BOCA</option>
         <option value="305" >BOLIVAR</option>
         <option value="267" >BONANZA</option>
-        <option value="75" >BONGA MAMEY</option>
+        <option value="75" >Bonga Mamey</option>
         <option value="245" >BOQUER&#211;N</option>
         <option value="260" >BREMEN JOBO</option>
         <option value="307" >BREVA-1</option>
@@ -113,7 +110,7 @@
         <option value="290" >CEIBO</option>
         <option value="68" >CENTAUROS</option>
         <option value="312" >CENTAUROS CONEXI&#211;N</option>
-        <option value="72" >CERRITO</option>
+        <option value="72" >Cerrito</option>
         <option value="76" >CERRO GORDO</option>
         <option value="239" >CERRO MATOSO</option>
         <option value="125" >CHACHARO</option>
@@ -141,7 +138,7 @@
         <option value="295" >CORCEL E</option>
         <option value="138" >COREN</option>
         <option value="139" >COROCORA</option>
-        <option value="247" >CORRA</option>
+        <option value="247" >corra</option>
         <option value="237" >CORRALES</option>
         <option value="140" >CORSUR</option>
         <option value="141" >COSTAYACO</option>
@@ -150,7 +147,7 @@
         <option value="27" >CUCUTA</option>
         <option value="143" >CUERVA</option>
         <option value="53" >CUPIAG&#220;A</option>
-        <option value="262" >CUPIAGUA SUR</option>
+        <option value="262" >Cupiagua Sur</option>
         <option value="361" >CURITO</option>
         <option value="12" >CUSIANA</option>
         <option value="363" >CUSIANA NORTE</option>
@@ -185,11 +182,11 @@
         <option value="93" >EL DIFICIL</option>
         <option value="11" >EL PORVENIR</option>
         <option value="320" >EL PORVENIR CONEXI&#211;N</option>
-        <option value="265" >EPM NO REGULADO</option>
-        <option value="264" >EPM REGULADO</option>
+        <option value="265" >EPM No Regulado</option>
+        <option value="264" >EPM Regulado</option>
         <option value="297" >ESPADARTE</option>
         <option value="146" >ESPINO</option>
-        <option value="240" >EXPORTACI&#211;N VENEZUELA BALLENA</option>
+        <option value="240" >Exportaci&#243;n Venezuela Ballena</option>
         <option value="38" >FLANDES</option>
         <option value="34" >FLORE&#209;A</option>
         <option value="365" >FLORE&#209;A B</option>
@@ -218,7 +215,7 @@
         <option value="272" >HORMIGA</option>
         <option value="302" >HUR&#211;N</option>
         <option value="29" >IBAGUE</option>
-        <option value="238" >IMPORTACI&#211;N VENEZUELA BALLENA</option>
+        <option value="238" >Importaci&#243;n Venezuela Ballena</option>
         <option value="74" >JAMUNDI</option>
         <option value="152" >JIBA</option>
         <option value="45" >JOBO</option>
@@ -236,7 +233,7 @@
         <option value="316" >LA BELLEZA CONEXI&#211;N</option>
         <option value="160" >LA CA&#209;ADA NORTE</option>
         <option value="161" >LA CASONA</option>
-        <option value="85" >LA CIRA INFANTAS</option>
+        <option value="85" >La Cira Infantas</option>
         <option value="40" >LA CRECIENTE</option>
         <option value="303" >LA ESTANCIA</option>
         <option value="162" >LA FLORA</option>
@@ -276,9 +273,9 @@
         <option value="179" >MORROCOY</option>
         <option value="37" >NEIVA</option>
         <option value="89" >NELSON</option>
-        <option value="251" >NELSON CI&#201;NAGA DE ORO</option>
+        <option value="251" >Nelson Ci&#233;naga de Oro</option>
         <option value="250" >NELSON PORQUERO</option>
-        <option value="249" >N&#205;SPERO - TROMB&#211;N</option>
+        <option value="249" >N&#237;spero - Tromb&#243;n</option>
         <option value="242" >NO CONECTADO</option>
         <option value="275" >NUTRIA</option>
         <option value="252" >OBOE</option>
@@ -380,12 +377,12 @@
         <option value="221" >TOROYACO</option>
         <option value="222" >TOY</option>
         <option value="223" >TRINIDAD</option>
-        <option value="248" >TROMB&#211;N</option>
+        <option value="248" >Tromb&#243;n</option>
         <option value="224" >TRONOS</option>
         <option value="225" >TUA</option>
         <option value="88" >TUCURINCA</option>
         <option value="226" >TURPIAL</option>
-        <option value="256" >UNIDAD FLOTANTE DE ALMACENAMIENTO Y REGASIFICACI&#211;N (FSRU)</option>
+        <option value="256" >Unidad Flotante de Almacenamiento y Regasificaci&#243;n (FSRU)</option>
         <option value="14" >USME</option>
         <option value="2" >VASCONIA</option>
         <option value="322" >VASCONIA CONEXI&#211;N</option>
@@ -402,22 +399,6 @@
         <option value="231" >ZOE</option>
     </optgroup>
     </select>
-    <select name="paramsFilter[codigoModalidad]">
-    <option value="0" selected>-- Todas las Modalidades --</option>
-    <optgroup label="Modalidad">
-        <option value="21" >C1</option>
-        <option value="22" >C2</option>
-        <option value="5" >Con Interrupciones</option>
-        <option value="6" >Contingencia</option>
-        <option value="1" >Firme</option>
-        <option value="23" >Firme al 95%</option>
-        <option value="2" >Firmeza Condicionada</option>
-        <option value="3" >Opci&#243;n de Compra</option>
-        <option value="4" >Opci&#243;n de Compra Contra Exp</option>
-        <option value="16" >Otras</option>
-        <option value="8" >Take or Pay</option>
-    </optgroup>
-    </select>
     <input type="submit" value="Consultar" class="bmcbec-dp-button" />
     </form>
     </div>
@@ -425,132 +406,43 @@
 </div>
 <div class="bmcbec-fix"></div>
 
-<!-- GRAPHIC CONSTRUCTOR -->
-<div class="canvas-holder-text">
-    <h4><text>Resultados:</text></h4>
-        <p>Se est&#225; mostrando informaci&#243;n de  32 resultados encontrados con los filtros aplicados.</p>
-        <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
-
-</div>
-<div class="canvas-holder">
-    <h3 align="center">CONTRATACIÓN POR PUNTO DE ENTREGA</h3>
-    <canvas id="canvas"></canvas>
-</div>
-<script type="text/javascript">
-
-var randomColor = function(opacity) {
-    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-};
-
-var lineChartData = {
-    labels: {{ info["labels"]|json_encode|raw }},
-    datasets: [
-        {% for key, dataSet in info["dataDataSets"] %}
-        {
-            label: "{{ key }}",
-            yAxisID: "y-axis-1",
-            data: {{ dataSet|json_encode|raw }}
-        },
-        {% endfor %}
-    ]
-    };
-    
-    $.each(lineChartData.datasets, function(i, dataset) {
-        dataset.borderColor = randomColor(0.4);
-        dataset.backgroundColor = dataset.borderColor;
-        dataset.pointBorderColor = dataset.borderColor;
-        dataset.pointBackgroundColor = dataset.borderColor;
-        dataset.pointBorderWidth = 0;
-    });
-
-    window.onload = function() {
-        var ctx = document.getElementById("canvas");
-        window.myLine = Chart.Line(ctx, {
-            data: lineChartData,
-            options: {
-
-                responsive: true,
-                maintainAspectRatio: true,
-                hoverMode: 'label',
-                stacked: false,
-                title:{
-                    display:false,
-                    text:'CONTRATACIÓN POR PUNTO DE ENTREGA',
-                    fontSize: 16,
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        gridLines: {
-                            offsetGridLines: false
-                        }
-                    }],
-                    yAxes: [{
-                        type: "linear",
-                        display: true,
-                        position: "left",
-                        id: "y-axis-1",
-                    }],
-                }
-            }
-        });
-    };
-
-    $('#randomizeData').click(function() {
-        lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
-
-        lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
-
-        window.myLine.update();
-    });
-
-    var c=document.getElementById("canvas");
-    var ctx=c.getContext("3d");
-    ctx.font="30px Arial";
-
-    </script>
-<!-- END OF GRAPHIC CONSTRUCTOR -->
-<div class="bmcbec-fix"></div>
-
-
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
-<h4>Tabla de Resultados</h4>
+<!-- <h4>Tabla de Resultados</h4> -->
 <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
-<table id="ResultTable" class="display" cellspacing="0" width="100%">
+<table id="ResultTable" class="display cellspacing="0" width="100%" align="center" data-page-length="20">
     <thead>
         <tr>
-            <th>Año</th>
-            <th>Mes</th>
+            <th>Fecha</th>
             <th>Punto de Entrega</th>
-            <th>Modalidad Contractual</th>
-            <th>Cantidad (MBTUD)</th>
-            <th>Precio Promedio Ponderado (USD/MBTU)</th>
+            <th>Cantidad Adjudicada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de la Adjudicación (USD/MBTU)</th>
+            <th>Cantidad Registrada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de Registro (USD/MBTU)</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
-            <th>Año</th>
-            <th>Mes</th>
+            <th>Fecha</th>
             <th>Punto de Entrega</th>
-            <th>Modalidad Contractual</th>
-            <th>Cantidad (MBTUD)</th>
-            <th>Precio Promedio Ponderado (USD/MBTU)</th>
+            <th>Cantidad Adjudicada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de la Adjudicación (USD/MBTU)</th>
+            <th>Cantidad Registrada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de Registro (USD/MBTU)</th>
         </tr>
     </tfoot>
     <tbody>
-
-        {% for key, data in info["dataTables"] %}
-            <tr valign="top" align="left">
-                <td>{{ data.año }}</td>
-                <td>{{ data.mes }}</td>
-                <td>{{ data.desc_punto }}</td>
-                <td>{{ data.modalidad }}</td>
-                <td align="right" data-order={{ data.cantidad }}>{{ data.cantidad }}</td>
-                <td align="right" data-order={{ data.precio_prom }}>{{ data.precio_prom }}</td>
-            </tr>
-        {% endfor %}
-
+        
+    {% for key, data in info %}
+        <tr valign="top" align="left">
+            <td>{{ data.fecha }}</td>
+            <td>{{ data.Punto_ruta }}</td>
+            <td align="right" data-order="{{ data.cantidad_adj }}">{{ data.cantidad_adj }}</td>
+            <td align="right" data-order="{{ data.precio_prom_adj }}">{{ data.precio_prom_adj }}</td>
+            <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
+            <td align="right" data-order="{{ data.precio_prom }}">{{ data.precio_prom }}</td>
+        </tr>
+    {% endfor %}
     </tbody>
 </table>
 </div>
@@ -572,13 +464,12 @@ $(document).ready(function() {
 });
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
-<div class="bmcbec-fix"></div>
 
-{# <script type="text/javascript">#}
-{#     $('form').submit(function () {#}
-{#         return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 365);#}
-{#     });#}
-{#     $(document).ready(function() {#}
-{#         insertText(365);#}
-{#     });#}
+<script type="text/javascript">
+    $('form').submit(function () {
+        //return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 365);
+    });
+    $(document).ready(function() {
+        insertText(365);
+    });
 </script>

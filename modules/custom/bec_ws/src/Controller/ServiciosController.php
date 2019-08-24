@@ -62,6 +62,39 @@ class ServiciosController extends ControllerBase
             endif;
         endif;
 
+        if ( !empty($_GET) ):
+            if ($filterDate = $_GET["quickDate"]):
+                $parametros = array();
+                $params = explode("&", $params);
+
+                foreach ($params as $param):
+                    $tmp = explode("=", $param);
+                    $parametros[$tmp[0]] = $tmp[1];
+                endforeach;
+                $fechaFinal = date_create($parametros["fechaFinal"]);
+
+                if ($filterDate == "1m"):
+                    $fechaInicial = date_format(date_modify($fechaFinal, "-1 month"), "Y-m-d");
+                elseif ($filterDate == "3m"):
+                    $fechaInicial = date_format(date_modify($fechaFinal, "-3 month"), "Y-m-d");
+                elseif ($filterDate == "6m"):
+                    $fechaInicial = date_format(date_modify($fechaFinal, "-6 month"), "Y-m-d");
+                elseif ($filterDate == "1a"):
+                    $fechaInicial = date_format(date_modify($fechaFinal, "-1 year"), "Y-m-d");
+                endif;
+
+                $parametros["fechaInicial"] = $fechaInicial;
+
+                $params= "";
+                foreach ($parametros as $key => $param):
+                    $params .= $key . "=" . $param . "&";
+                endforeach;
+
+                $paramsFilter["fechaInicial"] = $fechaInicial;
+                $paramsFilter["fechaFinal"] = $parametros["fechaFinal"];
+            endif;
+        endif;
+
         $data = $this->sendPostRequest($url, $params);
 
         $info = $this->$metodo($data);
@@ -578,5 +611,38 @@ class ServiciosController extends ControllerBase
         );
 
         return $data;
+    }
+
+    public function getInformaciontransaccionalSUVCP_CEN_UVCP($data) {
+        return $data["response"];
+    }
+
+    public function getInformaciontransaccionalSUVCP_CEN_UVCP_AN($data) {
+        var_dump($data);exit;
+        return $data["response"];
+    }
+
+    public function getCapacidadTransporteNegociadaUVCP($data) {
+        return $data["response"];
+    }
+
+    public function getCapacidadTransporteNegociadaUVCP_AN($data) {
+        return $data["response"];
+    }
+
+    public function getCantidadesAdjudicadasPuntoEntrega($data) {
+        return $data["response"];
+    }
+
+    public function getCPublicacionOfertaSubastaBimestral($data) {
+        return $data["response"];
+    }
+
+    public function getSUVLPCantidadesAdjudicadasPuntoEntrega($data){
+        return $data;
+    }
+
+    public function getSubastaSuministroConInterrupciones($data) {
+        return $data["response"];
     }
 }
