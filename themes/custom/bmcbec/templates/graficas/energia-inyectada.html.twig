@@ -430,15 +430,15 @@
                 var nacional = '';
                 var importadas = '';
                 value.forEach(function(e) {
-                    fechas += e.dia + '/' + e.mes + '/' + e.año + ',';
+                    fechas += e.dia + '/' + e.mes + '/' + e.ano + ',';
                     if (e.tipo_produccion == 'NACIONAL') {
-                        nacional += e.cantidad + ',';
+                        nacional += e.cantidad_mbtud + ',';
                     }
                     if (e.tipo_produccion == 'IMPORTADA') {
-                        importadas += e.cantidad + ',';
+                        importadas += e.cantidad_mbtud + ',';
                     }
                 });
-                console.log('data:', fechas, nacional, importadas)
+                console.log('data:', fechas,' N- ', nacional,' I- ', importadas)
                 var lineChartDataM = {
                     labels: [fechas],
                     datasets: [
