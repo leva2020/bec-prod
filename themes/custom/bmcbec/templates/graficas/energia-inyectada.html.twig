@@ -488,7 +488,7 @@
                 fill: "false",
                 data: [
                     {% for item in info["dataTables"] %}
-                    {% if item.tipo_produccion == 'IMPORTADA' %}
+                    {% if item.tipo_produccion == 'IMPORTADO' %}
                     "{{ item.cantidad }}",
                     {% endif %}
                     {% endfor %}
