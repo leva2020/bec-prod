@@ -386,7 +386,7 @@
                     <option value="231">ZOE</option>
                 </optgroup>
             </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button">
+            <input onclick="postJs()" value="Consultar" class="bmcbec-dp-button">
         </form>
         <p class="helpText">Consulta un periodo hasta 395 días</p></div>
     <div class="bmcbec-dp-fix"></div>
@@ -413,6 +413,24 @@
     var randomColor = function (opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
     };
+
+    function postJs() {
+        var proxyurl = "https://cors-anywhere.herokuapp.com/";
+        var url = "http://wstest.bmcbec.com.co/api/BEC/getCantidadEnergiaInyectadaOpe_New"; // site that doesn’t send Access-Control-*
+        fetch(proxyurl + url, {
+            method: 'POST', headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "fechaInicial=2018-08-02&fechaFinal=2019-08-02&codigoPozo=0"
+        })
+        .then(response => response.json()
+            .then(function (value) {
+            console.log('estamos', value);
+            info["dataTables"] = value
+            })
+        )
+        .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+    }
 
     var lineChartData = {
         labels: [
