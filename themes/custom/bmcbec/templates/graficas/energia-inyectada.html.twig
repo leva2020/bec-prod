@@ -395,6 +395,16 @@
 
 <script type="text/javascript">
 
+    {% if info['paramsFilter'] is not null %}
+    var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
+    $("option[value=" + codigoPozo + "]").attr('selected', 'selected');
+
+    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+    $("input[id='dpd1']").attr('value', fechaInicial);
+
+    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+    $("input[id='dpd2']").attr('value', fechaFinal);
+    {% endif %}
 
     var randomColor = function (opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';

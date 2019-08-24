@@ -24,54 +24,58 @@
     </div>
     <div class="bmcbec-dp-right">
         <form method="post" action="">
-            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-            <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
+            <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
+                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
 
             <select name="paramsFilter[codigoPozo]">
                 <option value="0" selected>-- Todos los Puntos de Entrada --</option>
                 <optgroup label="Seleccione un Punto de Entrada">
-                    <option value="98" >APAMATE</option>
-                    <option value="13" >APIAY</option>
-                    <option value="39" >BALLENA</option>
-                    <option value="75" >BONGA MAMEY</option>
-                    <option value="233" >BULLERENGUE</option>
-                    <option value="54" >CANTAGALLO</option>
-                    <option value="77" >CARAMELO</option>
-                    <option value="43" >CARTAGENA</option>
-                    <option value="72" >CERRITO</option>
-                    <option value="236" >CLARINETE</option>
-                    <option value="237" >CORRALES</option>
-                    <option value="53" >CUPIAG&#220;A</option>
-                    <option value="12" >CUSIANA</option>
-                    <option value="56" >EL CENTRO</option>
-                    <option value="93" >EL DIFICIL</option>
-                    <option value="34" >FLORE&#209;A</option>
-                    <option value="19" >GIBRALTAR</option>
-                    <option value="71" >GUADUAS</option>
-                    <option value="241" >GUAMA</option>
-                    <option value="243" >HOCOL</option>
-                    <option value="45" >JOBO</option>
-                    <option value="160" >LA CA&#209;ADA NORTE</option>
-                    <option value="40" >LA CRECIENTE</option>
-                    <option value="164" >LA HOCHA</option>
-                    <option value="63" >LA PUNTA</option>
-                    <option value="62" >LISAMA</option>
-                    <option value="55" >LLANITO</option>
-                    <option value="37" >NEIVA</option>
-                    <option value="242" >NO CONECTADO</option>
-                    <option value="180" >OPON</option>
-                    <option value="59" >ORIPAYA</option>
-                    <option value="259" >PK8 CUPIAGUA</option>
-                    <option value="57" >PROVINCIA</option>
-                    <option value="86" >PULI</option>
-                    <option value="58" >SANTA CLARA</option>
-                    <option value="26" >SARDINATA</option>
-                    <option value="244" >SPEC</option>
-                    <option value="61" >TOQUI TOQUI</option>
-                    <option value="256" >UNIDAD FLOTANTE DE ALMACENAMIENTO Y REGASIFICACI&#211;N (FSRU)</option>
+                    <option value="98">APAMATE</option>
+                    <option value="13">APIAY</option>
+                    <option value="39">BALLENA</option>
+                    <option value="75">BONGA MAMEY</option>
+                    <option value="233">BULLERENGUE</option>
+                    <option value="54">CANTAGALLO</option>
+                    <option value="77">CARAMELO</option>
+                    <option value="43">CARTAGENA</option>
+                    <option value="72">CERRITO</option>
+                    <option value="236">CLARINETE</option>
+                    <option value="237">CORRALES</option>
+                    <option value="53">CUPIAG&#220;A</option>
+                    <option value="12">CUSIANA</option>
+                    <option value="56">EL CENTRO</option>
+                    <option value="93">EL DIFICIL</option>
+                    <option value="34">FLORE&#209;A</option>
+                    <option value="19">GIBRALTAR</option>
+                    <option value="71">GUADUAS</option>
+                    <option value="241">GUAMA</option>
+                    <option value="243">HOCOL</option>
+                    <option value="45">JOBO</option>
+                    <option value="160">LA CA&#209;ADA NORTE</option>
+                    <option value="40">LA CRECIENTE</option>
+                    <option value="164">LA HOCHA</option>
+                    <option value="63">LA PUNTA</option>
+                    <option value="62">LISAMA</option>
+                    <option value="55">LLANITO</option>
+                    <option value="37">NEIVA</option>
+                    <option value="242">NO CONECTADO</option>
+                    <option value="180">OPON</option>
+                    <option value="59">ORIPAYA</option>
+                    <option value="259">PK8 CUPIAGUA</option>
+                    <option value="57">PROVINCIA</option>
+                    <option value="86">PULI</option>
+                    <option value="58">SANTA CLARA</option>
+                    <option value="26">SARDINATA</option>
+                    <option value="244">SPEC</option>
+                    <option value="61">TOQUI TOQUI</option>
+                    <option value="256">UNIDAD FLOTANTE DE ALMACENAMIENTO Y REGASIFICACI&#211;N (FSRU)</option>
                 </optgroup>
             </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+            <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
         </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
@@ -81,8 +85,10 @@
 
 <!-- GRAPHIC CONSTRUCTOR -->
 <div class="canvas-holder-text">
-    <h4><text>Resultados:</text></h4>
-    <p>Se est&#225; mostrando informaci&#243;n de  1379 resultados encontrados con los filtros aplicados.</p>
+    <h4>
+        <text>Resultados:</text>
+    </h4>
+    <p>Se est&#225; mostrando informaci&#243;n de 1379 resultados encontrados con los filtros aplicados.</p>
     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
 
 </div>
@@ -92,15 +98,25 @@
 </div>
 <script type="text/javascript">
 
+    {% if info['paramsFilter'] is not null %}
+        var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
+        $("option[value=" + codigoPozo + "]").attr('selected', 'selected');
 
-    var randomColor = function(opacity) {
+        var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+        $("input[id='dpd1']").attr('value', fechaInicial);
+
+        var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+        $("input[id='dpd2']").attr('value', fechaFinal);
+    {% endif %}
+
+    var randomColor = function (opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
     };
 
     var lineChartData = {
         labels: [
             {% for item in info["dataTables"] %}
-                "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
+            "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
             {% endfor %}
         ],
         datasets: [
@@ -108,7 +124,7 @@
                 label: "Cantidad (MBTUD)",
                 data: [
                     {% for item in info["dataTables"] %}
-                        "{{item.cantidad}}",
+                    "{{item.cantidad}}",
                     {% endfor %}
                 ]
             },
@@ -116,7 +132,7 @@
         ]
     };
 
-    $.each(lineChartData.datasets, function(i, dataset) {
+    $.each(lineChartData.datasets, function (i, dataset) {
         dataset.borderColor = randomColor(0.4);
         dataset.backgroundColor = randomColor(1);
         dataset.pointBorderColor = randomColor(0.7);
@@ -124,7 +140,7 @@
         dataset.pointBorderWidth = 1;
     });
 
-    window.onload = function() {
+    window.onload = function () {
         var ctx = document.getElementById("canvas");
         window.myLine = Chart.Line(ctx, {
             data: lineChartData,
@@ -132,9 +148,9 @@
                 responsive: true,
                 hoverMode: 'label',
                 stacked: false,
-                title:{
-                    display:false,
-                    text:'CANTIDAD DE ENERGÍA A SUMINISTRAR',
+                title: {
+                    display: false,
+                    text: 'CANTIDAD DE ENERGÍA A SUMINISTRAR',
                     fontSize: 16,
                 },
                 scales: {
@@ -144,7 +160,7 @@
                             offsetGridLines: false
                         },
                         ticks: {
-                            userCallback: function(dataLabel, index) {
+                            userCallback: function (dataLabel, index) {
                                 return index % 2 === 0 ? dataLabel : '';
                             }
                         }
@@ -160,7 +176,7 @@
         });
     };
 
-    $('#randomizeData').click(function() {
+    $('#randomizeData').click(function () {
         lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
 
         lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
@@ -168,9 +184,9 @@
         window.myLine.update();
     });
 
-    var c=document.getElementById("canvas");
-    var ctx=c.getContext("3d");
-    ctx.font="30px Arial";
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("3d");
+    ctx.font = "30px Arial";
 
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
@@ -180,7 +196,8 @@
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
     <h4>Tabla de Resultados</h4>
-    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
+    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
+        la tabla.</p>
     <table id="ResultTable" class="display" cellspacing="0" width="100%">
         <thead>
         <tr>
