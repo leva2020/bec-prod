@@ -416,7 +416,7 @@
 
     function postJs() {
         var proxyurl = "https://cors-anywhere.herokuapp.com/";
-        var url = "http://wstest.bmcbec.com.co/api/BEC/getCantidadEnergiaInyectadaOpe_New"; // site that doesn’t send Access-Control-*
+        var url = "http://wstest.bmcbec.com.co/api/BEC/getCantidadEnergiaInyectadaOpe_R"; // site that doesn’t send Access-Control-*
         fetch(proxyurl + url, {
             method: 'POST', headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -425,17 +425,16 @@
         })
         .then(response => response.json()
             .then(function (value) {
-                console.log('estamos::', value);
                 var fechas = [];
                 var nacional = [];
                 var importadas = [];
                 value.forEach(function(e, index) {
-                    fechas[index] = e.dia + '/' + e.mes + '/' + e.ano;
+                    fechas[index] = e.dia + '/' + e.mes + '/' + e.año;
                     if (e.tipo_produccion == 'NACIONAL') {
-                        nacional[index] = e.cantidad_mbtud + ',';
+                        nacional[index] = e.cantidad + ',';
                     }
-                    if (e.tipo_produccion == 'IMPORTADO') {
-                        importadas[index] = e.cantidad_mbtud + ',';
+                    if (e.tipo_produccion == 'IMPORTADA') {
+                        importadas[index] = e.cantidad + ',';
                     }
                 });
                 console.log('data:', fechas,' N- ', nacional,' I- ', importadas)
