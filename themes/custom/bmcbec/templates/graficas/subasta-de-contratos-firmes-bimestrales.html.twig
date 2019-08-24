@@ -450,6 +450,19 @@
 <!-- END - Export Option Table -->
 
 <script type="text/javascript">
+    datesFieldsValidation(395, 395);
+
+    {% if info['paramsFilter'] is not null %}
+    var codigoPunto = {{ (info['paramsFilter']['codigoPunto'])?:0 }};
+    $("option[value=" + codigoPunto + "]").attr('selected', 'selected');
+
+    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+    $("input[id='dpd1']").attr('value', fechaInicial);
+
+    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+    $("input[id='dpd2']").attr('value', fechaFinal);
+
+    {% endif %}
 $(document).ready(function() {
     dataTablesIni();
 });

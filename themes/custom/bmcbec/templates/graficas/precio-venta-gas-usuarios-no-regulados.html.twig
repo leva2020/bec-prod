@@ -1,12 +1,14 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getPrecioVentaUsuariosNoRegulados', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoDepartamento=0&codigoCiudad=05001&destinoRueda=G&codigoCentro=',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
+{% set info = enviar_post_ws('getPrecioVentaUsuariosNoRegulados', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoDepartamento=0&codigoCiudad=05001&destinoRueda=G&codigoCentro=',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
 {# <script type="text/javascript" src="src/js/tables.js"></script>#}
 
 {{ attach_library('bmcbec/tables') }}
@@ -14,71 +16,75 @@
 
 <div class="well" align="center">
     <div class="bmcbec-dp-right1">
-    <form method="post" action="">
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formDestino">Destino Rueda:</label>
-    <select name="paramsFilter[destinoRueda]">
-        <option value="G"  selected >Suministro</option>
-        <option value="T" >Transporte</option>
-        <option value="A" >Suministro y Transporte</option>
-    </select>
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formDepto">Departamento:</label>
-    <select name="paramsFilter[codigoDepartamento]" onChange="form.submit();">
-        <option value="0" selected >Sin Conexi&#243;n al SNT</option>
-        <option value="05" >ANTIOQUIA</option>
-        <option value="08" >ATL&#193;NTICO</option>
-        <option value="11" >BOGOT&#193;, D.C.</option>
-        <option value="13" >BOL&#205;VAR</option>
-        <option value="15" >BOYAC&#193;</option>
-        <option value="17" >CALDAS</option>
-        <option value="19" >CAUCA</option>
-        <option value="20" >CESAR</option>
-        <option value="23" >C&#211;RDOBA</option>
-        <option value="25" >CUNDINAMARCA</option>
-        <option value="44" >LA GUAJIRA</option>
-        <option value="47" >MAGDALENA</option>
-        <option value="66" >RISARALDA</option>
-        <option value="68" >SANTANDER</option>
-        <option value="70" >SUCRE</option>
-        <option value="73" >TOLIMA</option>
-        <option value="76" >VALLE DEL CAUCA</option>
-        <option value="85" >CASANARE</option>
-    </select>
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formCiudad">Ciudad:</label>
-    <select name="paramsFilter[codigoCiudad]" onChange="form.submit();">
-        <option value="05154" >CAUCASIA</option>
-        <option value="05308" >GIRARDOTA</option>
-        <option value="05001" selected >MEDELL&#205;N</option>
-        <option value="05585" >PUERTO NARE</option>
-    </select>
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formCenter">Centro Poblado:</label>
-    <select name="paramsFilter[codigoCentro]">
-    <!-- <option value="0" selected>-- Todos --</option> -->
-    <optgroup label="Centro Poblado">
-    </optgroup>
-    </select>
-    </div>
-    
-    <div class="bmcbec-dp-fix" style="margin-bottom:15px;"></div>
-    
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="dpd1">Fecha Inicio:</label>
-    <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="dpd2">Fecha Fin:</label>
-    <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-    </div>
-    <div class="bmcbec-left bmcbec-form-div" style="padding-top:20px;">
-        <input type="submit" value="Consultar" class="bmcbec-dp-button" />
-    </div>
-    </form>
+        <form method="post" action="">
+            <div class="bmcbec-left bmcbec-form-div">
+                <label for="formDestino">Destino Rueda:</label>
+                <select name="paramsFilter[destinoRueda]">
+                    <option value="G" selected>Suministro</option>
+                    <option value="T">Transporte</option>
+                    <option value="A">Suministro y Transporte</option>
+                </select>
+            </div>
+            <div class="bmcbec-left bmcbec-form-div">
+                <label for="formDepto">Departamento:</label>
+                <select name="paramsFilter[codigoDepartamento]" onChange="form.submit();">
+                    <option value="0" selected>Sin Conexi&#243;n al SNT</option>
+                    <option value="05">ANTIOQUIA</option>
+                    <option value="08">ATL&#193;NTICO</option>
+                    <option value="11">BOGOT&#193;, D.C.</option>
+                    <option value="13">BOL&#205;VAR</option>
+                    <option value="15">BOYAC&#193;</option>
+                    <option value="17">CALDAS</option>
+                    <option value="19">CAUCA</option>
+                    <option value="20">CESAR</option>
+                    <option value="23">C&#211;RDOBA</option>
+                    <option value="25">CUNDINAMARCA</option>
+                    <option value="44">LA GUAJIRA</option>
+                    <option value="47">MAGDALENA</option>
+                    <option value="66">RISARALDA</option>
+                    <option value="68">SANTANDER</option>
+                    <option value="70">SUCRE</option>
+                    <option value="73">TOLIMA</option>
+                    <option value="76">VALLE DEL CAUCA</option>
+                    <option value="85">CASANARE</option>
+                </select>
+            </div>
+            <div class="bmcbec-left bmcbec-form-div">
+                <label for="formCiudad">Ciudad:</label>
+                <select name="paramsFilter[codigoCiudad]" onChange="form.submit();">
+                    <option value="05154">CAUCASIA</option>
+                    <option value="05308">GIRARDOTA</option>
+                    <option value="05001" selected>MEDELL&#205;N</option>
+                    <option value="05585">PUERTO NARE</option>
+                </select>
+            </div>
+            <div class="bmcbec-left bmcbec-form-div">
+                <label for="formCenter">Centro Poblado:</label>
+                <select name="paramsFilter[codigoCentro]">
+                    <!-- <option value="0" selected>-- Todos --</option> -->
+                    <optgroup label="Centro Poblado">
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="bmcbec-dp-fix" style="margin-bottom:15px;"></div>
+
+            <div class="bmcbec-left bmcbec-form-div">
+                <label for="dpd1">Fecha Inicio:</label>
+                <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1"
+                       name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd"
+                       data-date-viewmode="months" data-date-minviewmode="days"/>
+            </div>
+            <div class="bmcbec-left bmcbec-form-div">
+                <label for="dpd2">Fecha Fin:</label>
+                <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
+                       data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                       data-date-minviewmode="days"/>
+            </div>
+            <div class="bmcbec-left bmcbec-form-div" style="padding-top:20px;">
+                <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
+            </div>
+        </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
@@ -86,88 +92,95 @@
 
 <!-- GRAPHIC CONSTRUCTOR -->
 <div class="canvas-holder-text">
-    <h4><text>Resultados:</text></h4>
-        <p>La b&#250;squeda no arroj&#243; resultados. Intente ampliando las fechas de la b&#250;squeda o aplicando filtros diferentes.</p>
+    <h4>
+        <text>Resultados:</text>
+    </h4>
+    <p>La b&#250;squeda no arroj&#243; resultados. Intente ampliando las fechas de la b&#250;squeda o aplicando filtros
+        diferentes.</p>
 
 </div>
 <div class="canvas-holder">
-    <h3 align="center">PRECIO DE VENTA DE GAS A USUARIOS NO REGULADOS <br /> (USD/MBTU)</h3>
-    <canvas id="chart" />
+    <h3 align="center">PRECIO DE VENTA DE GAS A USUARIOS NO REGULADOS <br/> (USD/MBTU)</h3>
+    <canvas id="chart"/>
 </div>
 <script type="text/javascript">
 
-{% if info['paramsFilter'] is not null %}
-var destinoRueda = "{{ info['paramsFilter']['destinoRueda'] }}";
-$("option[value=" + destinoRueda + "]").attr('selected', 'selected');
+    {% if info['paramsFilter'] is not null %}
 
-var codigoDepartamento = {{ info['paramsFilter']['codigoDepartamento'] }};
-$("option[value=" + codigoDepartamento + "]").attr('selected', 'selected');
+    datesFieldsValidation(395, 395);
 
-var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
-$("input[id='dpd1']").attr('value', fechaInicial);
+    var destinoRueda = "{{ info['paramsFilter']['destinoRueda'] }}";
+    $("option[value=" + destinoRueda + "]").attr('selected', 'selected');
 
-var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
-$("input[id='dpd2']").attr('value', fechaFinal);
-{% endif %}
+    var codigoDepartamento = {{ info['paramsFilter']['codigoDepartamento'] }};
+    $("option[value=" + codigoDepartamento + "]").attr('selected', 'selected');
 
-var randomColor = function(opacity) {
-    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-};
+    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+    $("input[id='dpd1']").attr('value', fechaInicial);
 
-var lineChartData = {
-    labels: {{ info["labels"]|json_encode|raw }},
-    datasets: [
-        {% for key, dataSet in info["dataDataSets"] %}
-        {
-            label: "{{ key }}",
-            fill: false,
-            data: {{ dataSet|json_encode|raw }}
-        },
-        {% endfor %}
-    ]
-};
+    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+    $("input[id='dpd2']").attr('value', fechaFinal);
+    {% endif %}
 
-$.each(lineChartData.datasets, function(i, dataset) {
-    dataset.borderColor = randomColor(0.4);
-    dataset.backgroundColor = dataset.borderColor;
-    dataset.pointBorderColor = dataset.borderColor;
-    dataset.pointBackgroundColor = dataset.borderColor;
-    dataset.pointBorderWidth = 2;
-});
+    var randomColor = function (opacity) {
+        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+    };
 
-window.onload = function () {
-    var chartEl = document.getElementById("chart");
-    window.myLine = new Chart(chartEl, {
-        type: 'line',
-        data: lineChartData,
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            title: {
-                display:false,
-                text: 'PRECIO DE VENTA DE GAS A USUARIOS NO REGULADOS',
-                fontSize: 16,
+    var lineChartData = {
+        labels: {{ info["labels"]|json_encode|raw }},
+        datasets: [
+            {% for key, dataSet in info["dataDataSets"] %}
+            {
+                label: "{{ key }}",
+                fill: false,
+                data: {{ dataSet|json_encode|raw }}
             },
-            tooltips: {
-                mode: 'label',
-                enabled: true
-            },
-            legend: {
-                position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
-            }
-        }
+            {% endfor %}
+        ]
+    };
+
+    $.each(lineChartData.datasets, function (i, dataset) {
+        dataset.borderColor = randomColor(0.4);
+        dataset.backgroundColor = dataset.borderColor;
+        dataset.pointBorderColor = dataset.borderColor;
+        dataset.pointBackgroundColor = dataset.borderColor;
+        dataset.pointBorderWidth = 2;
     });
-};
+
+    window.onload = function () {
+        var chartEl = document.getElementById("chart");
+        window.myLine = new Chart(chartEl, {
+            type: 'line',
+            data: lineChartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                title: {
+                    display: false,
+                    text: 'PRECIO DE VENTA DE GAS A USUARIOS NO REGULADOS',
+                    fontSize: 16,
+                },
+                tooltips: {
+                    mode: 'label',
+                    enabled: true
+                },
+                legend: {
+                    position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+                }
+            }
+        });
+    };
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>
 
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
-<!-- <h4>Tabla de Resultados</h4> -->
-<p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
-<table id="ResultTable" class="display" cellspacing="0" width="100%" data-page-length="20">
-    <thead>
+    <!-- <h4>Tabla de Resultados</h4> -->
+    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
+        la tabla.</p>
+    <table id="ResultTable" class="display" cellspacing="0" width="100%" data-page-length="20">
+        <thead>
         <tr>
             <th>Año</th>
             <th>Mes</th>
@@ -179,8 +192,8 @@ window.onload = function () {
             <th>Precio Mínimo (USD/MBTU)</th>
             <th>Precio Máximo (USD/MBTU)</th>
         </tr>
-    </thead>
-    <tfoot>
+        </thead>
+        <tfoot>
         <tr>
             <th>Año</th>
             <th>Mes</th>
@@ -192,48 +205,48 @@ window.onload = function () {
             <th>Precio Mínimo (USD/MBTU)</th>
             <th>Precio Máximo (USD/MBTU)</th>
         </tr>
-    </tfoot>
-    <tbody>
-    {% for key, data in info["dataTables"] %}
-        <tr valign="top" align="left">
-            <td>{{ data.año }}</td>
-            <td>{{ data.mes }}</td>
-            <td>{{ data.departamento }}</td>
-            <td>{{ data.municipio }}</td>
-            <td>{{ data.centro_poblado }}</td>
-            <td>{{ data.desc_producto }}</td>
-            <td>{{ data.precio_prom }}</td>
-            <td align="right" data-order={{ data.precio_min }}>{{ data.precio_min }}</td>
-            <td align="right" data-order="{{ data.precio_max }}">{{ data.precio_max }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </tfoot>
+        <tbody>
+        {% for key, data in info["dataTables"] %}
+            <tr valign="top" align="left">
+                <td>{{ data.año }}</td>
+                <td>{{ data.mes }}</td>
+                <td>{{ data.departamento }}</td>
+                <td>{{ data.municipio }}</td>
+                <td>{{ data.centro_poblado }}</td>
+                <td>{{ data.desc_producto }}</td>
+                <td>{{ data.precio_prom }}</td>
+                <td align="right" data-order={{ data.precio_min }}>{{ data.precio_min }}</td>
+                <td align="right" data-order="{{ data.precio_max }}">{{ data.precio_max }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 
 <!-- Begin - Export Option Table -->
 <div id="table2export">
-<table id="ResultTable1"></table>
+    <table id="ResultTable1"></table>
 </div>
 <!-- END - Export Option Table -->
 
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $("#ResultTable thead").clone().appendTo("#ResultTable1");
-    $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
-    $("#ResultTable tbody").clone().appendTo("#ResultTable1");
-    dataTablesIni();
-});
+    $(document).ready(function () {
+        $("#ResultTable thead").clone().appendTo("#ResultTable1");
+        $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+        $("#ResultTable tbody").clone().appendTo("#ResultTable1");
+        dataTablesIni();
+    });
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
 
 <script type="text/javascript">
-//     $('form').submit(function () {
-//         //return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 365);
-//     });
-//     $(document).ready(function() {
-//         insertText(365);
-//     });
+    //     $('form').submit(function () {
+    //         //return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 365);
+    //     });
+    //     $(document).ready(function() {
+    //         insertText(365);
+    //     });
 </script>

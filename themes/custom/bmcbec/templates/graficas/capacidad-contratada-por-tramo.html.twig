@@ -1,4 +1,4 @@
-{% set info = enviar_post_ws('getInfGrafIni','puntoTramo=116&pCodigoModalidad=1', 1, 1, '', '', 'cantidad')  %}
+{% set info = enviar_post_ws('getInfGrafIni','puntoTramo=116&pCodigoModalidad=1', 1, 1, '', '', 'cantidad') %}
 
 {{ attach_library('bmcbec/chartJS') }}
 
@@ -15,29 +15,29 @@
             <select name="paramsFilter[puntoTramo]">
                 <!-- <option value="" selected>-- Todos los tramos --</option> -->
                 <optgroup label="Elegir Tramo">
-                    <option value="116"  selected >BALLENA-BARRANCABERMEJA</option>
-                    <option value="110" >BALLENA-LA MAMI</option>
-                    <option value="133" >CUSIANA-EL PORVENIR</option>
-                    <option value="115" >LA CRECIENTE-SINCELEJO</option>
+                    <option value="116" selected>BALLENA-BARRANCABERMEJA</option>
+                    <option value="110">BALLENA-LA MAMI</option>
+                    <option value="133">CUSIANA-EL PORVENIR</option>
+                    <option value="115">LA CRECIENTE-SINCELEJO</option>
                 </optgroup>
             </select>
             <select name="paramsFilter[pCodigoModalidad]">
                 <option value="" selected>-- Todas --</option>
                 <optgroup label="Elegir Modalidad">
-                    <option value="21" >C1</option>
-                    <option value="22" >C2</option>
-                    <option value="5" >CON INTERRUPCIONES</option>
-                    <option value="6" >CONTINGENCIA</option>
-                    <option value="1"  selected >FIRME</option>
-                    <option value="23" >FIRME AL 95%</option>
-                    <option value="2" >FIRMEZA CONDICIONADA</option>
-                    <option value="3" >OPCI&#211;N DE COMPRA</option>
-                    <option value="4" >OPCI&#211;N DE COMPRA CONTRA EXP</option>
-                    <option value="16" >OTRAS</option>
-                    <option value="8" >TAKE OR PAY</option>
+                    <option value="21">C1</option>
+                    <option value="22">C2</option>
+                    <option value="5">CON INTERRUPCIONES</option>
+                    <option value="6">CONTINGENCIA</option>
+                    <option value="1" selected>FIRME</option>
+                    <option value="23">FIRME AL 95%</option>
+                    <option value="2">FIRMEZA CONDICIONADA</option>
+                    <option value="3">OPCI&#211;N DE COMPRA</option>
+                    <option value="4">OPCI&#211;N DE COMPRA CONTRA EXP</option>
+                    <option value="16">OTRAS</option>
+                    <option value="8">TAKE OR PAY</option>
                 </optgroup>
             </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+            <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
         </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
@@ -59,45 +59,49 @@
 
 <!-- GRAPHIC CONSTRUCTOR -->
 <div class="canvas-holder-text">
-    <h4><text>Resultados:</text></h4>
-        <p>Se est&#225; mostrando informaci&#243;n de  184 resultados encontrados con los filtros aplicados.</p>
-        <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+    <h4>
+        <text>Resultados:</text>
+    </h4>
+    <p>Se est&#225; mostrando informaci&#243;n de 184 resultados encontrados con los filtros aplicados.</p>
+    <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
 
 </div>
 <div class="canvas-holder">
     <h3 align="center">CAPACIDAD CONTRATADA POR TRAMO</h3>
-    <canvas id="chart" />
+    <canvas id="chart"/>
 </div>
 <script type="text/javascript">
 
-{% if info['paramsFilter'] is not null %}
-var puntoTramo = {{ (info['paramsFilter']['puntoTramo'])?:0 }};
-$("option[value=" + puntoTramo + "]").attr('selected', 'selected');
+    datesFieldsValidation(395, 395);
 
-var pCodigoModalidad = {{ (info['paramsFilter']['pCodigoModalidad'])?:0 }};
-$("option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
-{% endif %}
+    {% if info['paramsFilter'] is not null %}
+    var puntoTramo = {{ (info['paramsFilter']['puntoTramo'])?:0 }};
+    $("option[value=" + puntoTramo + "]").attr('selected', 'selected');
 
-var randomColor = function(opacity) {
-    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-};
+    var pCodigoModalidad = {{ (info['paramsFilter']['pCodigoModalidad'])?:0 }};
+    $("option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
+    {% endif %}
 
-var lineChartData = {
-    labels: {{ info["labels"]|json_encode|raw }},
-    datasets: [
-        {% for key, dataSet in info["dataDataSets"] %}
-        {
-            label: "{{ key }}",
+    var randomColor = function (opacity) {
+        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+    };
+
+    var lineChartData = {
+        labels: {{ info["labels"]|json_encode|raw }},
+        datasets: [
+            {% for key, dataSet in info["dataDataSets"] %}
+            {
+                label: "{{ key }}",
 //             lineTension: 0,
 //             fill: "true",
-            data: {{ dataSet|json_encode|raw }}
-        },
-        {% endfor %}
-    ]
-};
+                data: {{ dataSet|json_encode|raw }}
+            },
+            {% endfor %}
+        ]
+    };
 
-$.each(lineChartData.datasets, function(i, dataset) {
-    var tempColor = randomColor(1);
+    $.each(lineChartData.datasets, function (i, dataset) {
+        var tempColor = randomColor(1);
         dataset.borderColor = tempColor;
         dataset.backgroundColor = tempColor;
         dataset.pointBorderColor = tempColor;
@@ -108,28 +112,28 @@ $.each(lineChartData.datasets, function(i, dataset) {
         dataset.pointHoverBorderWidth = 0;
         dataset.pointRadius = 0;
         dataset.pointHitRadius = 0;
-});
-
-window.onload = function () {
-    var chartEl = document.getElementById("chart");
-    window.myLine = new Chart(chartEl, {
-        type: 'line',
-        data: lineChartData,
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            title: {
-                display:false,
-                text: 'CAPACIDAD CONTRATADA POR TRAMO',
-                fontSize: 16,
-            },
-            tooltips: {
-                mode: 'label',
-                enabled: true
-            }
-        }
     });
-};
+
+    window.onload = function () {
+        var chartEl = document.getElementById("chart");
+        window.myLine = new Chart(chartEl, {
+            type: 'line',
+            data: lineChartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                title: {
+                    display: false,
+                    text: 'CAPACIDAD CONTRATADA POR TRAMO',
+                    fontSize: 16,
+                },
+                tooltips: {
+                    mode: 'label',
+                    enabled: true
+                }
+            }
+        });
+    };
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>

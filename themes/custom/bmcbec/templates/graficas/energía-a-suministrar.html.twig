@@ -98,6 +98,8 @@
 </div>
 <script type="text/javascript">
 
+    datesFieldsValidation(395, 395);
+
     {% if info['paramsFilter'] is not null %}
         var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
         $("option[value=" + codigoPozo + "]").attr('selected', 'selected');

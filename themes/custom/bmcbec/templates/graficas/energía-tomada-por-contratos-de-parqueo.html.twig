@@ -1,11 +1,10 @@
-{% set now = "now"|date("Y", "America/Bogota") %}
-{% set yearAgo = "now"|date_modify("-1 year")|date("Y", "America/Bogota") %}
-{% set monthNow = "now"|date("m", "America/Bogota") %}
-{% set dayNow = "now"|date("dd", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
-{% set dayAgo = "now"|date_modify("-1 year")|date("dd", "America/Bogota") %}
+{% set now = "now"|date("Y-m-d", "America/Bogota") %}
+{% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set info=enviar_post_ws('getCantidadTomadaContratosParqueo','fechaInicial='~yearAgo~'-'~monthAgo~'-'~dayAgo~'&fechaFinal='~now~'-'~monthNow~'-'~dayNow~'&codigoPozo=0',1,1,'','','cantidad')  %}
+{% set monthNow = "now"|date("m", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
+
+{% set info=enviar_post_ws('getCantidadTomadaContratosParqueo','fechaInicial=' ~yearAgo~ '&fechaFinal='~now~'&codigoPozo=0',1,1,'','','cantidad')  %}
 
 <link rel="stylesheet" type="text/css"
       href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
@@ -24,10 +23,14 @@
     </div>
     <div class="bmcbec-dp-right">
         <form method="post" action="">
-            <input type="text" class="span2" value="2019-06-01" id="dpd1" name="formDateBegin" data-date="2019-06-01" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
-            <input type="text" class="span2" value="2019-07-31" id="dpd2" name="formDateEnd" data-date="2019-07-31" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
+            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
+            <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
+                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
 
-            <select name="formWellCode">
+            <select name="paramsFilter[codigoPozo]">
                 <option value="0" selected>-- Todos los Puntos de Salida --</option>
                 <optgroup label="Seleccione un Punto de Salida">
                     <option value="295" >ABOCOL LINEA NO. 1</option>
@@ -824,6 +827,19 @@
 </div>
 <script type="text/javascript">
 
+    datesFieldsValidation(395, 395);
+
+    {% if info['paramsFilter'] is not null %}
+    var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
+    $("option[value=" + codigoPozo + "]").attr('selected', 'selected');
+
+    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+    $("input[id='dpd1']").attr('value', fechaInicial);
+
+    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+    $("input[id='dpd2']").attr('value', fechaFinal);
+
+    {% endif %}
 
     var randomColor = function(opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';

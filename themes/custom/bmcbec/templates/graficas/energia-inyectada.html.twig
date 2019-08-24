@@ -24,8 +24,12 @@
         <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
     <div class="bmcbec-dp-right">
         <form method="post" action="">
-            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-            <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
+            <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
+                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
             <select name="paramsFilter[codigoPozo]">
                 <option value="0" selected="">-- Todos los Puntos de Entrada --</option>
                 <optgroup label="Seleccione un Punto de Entrada">
@@ -393,20 +397,18 @@
 </div>
 
 <script type="text/javascript">
-    datesFieldsValidation(395,395);
-</script>
 
-<script type="text/javascript">
+    datesFieldsValidation(395, 395);
 
     {% if info['paramsFilter'] is not null %}
-        var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
-        $("option[value=" + codigoPozo + "]").attr('selected', 'selected');
+    var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
+    $("option[value=" + codigoPozo + "]").attr('selected', 'selected');
 
-        var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
-        $("input[id='dpd1']").attr('value', fechaInicial);
+    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+    $("input[id='dpd1']").attr('value', fechaInicial);
 
-        var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
-        $("input[id='dpd2']").attr('value', fechaFinal);
+    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+    $("input[id='dpd2']").attr('value', fechaFinal);
 
     {% endif %}
 
