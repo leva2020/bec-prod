@@ -62,7 +62,7 @@ class ServiciosController extends ControllerBase
             endif;
         endif;
 
-        if ( !empty($_GET) ):
+        if (!empty($_GET)):
             if ($filterDate = $_GET["quickDate"]):
                 $parametros = array();
                 $params = explode("&", $params);
@@ -85,7 +85,7 @@ class ServiciosController extends ControllerBase
 
                 $parametros["fechaInicial"] = $fechaInicial;
 
-                $params= "";
+                $params = "";
                 foreach ($parametros as $key => $param):
                     $params .= $key . "=" . $param . "&";
                 endforeach;
@@ -435,24 +435,27 @@ class ServiciosController extends ControllerBase
         return $data;
     }
 
-    public function getCantidadEnergiaInyectadaOpe_R($data) {
+    public function getCantidadEnergiaInyectadaOpe_R($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
         $dataSets = array();
 
-        foreach ($data['response'] as $key => $value) {
-            $date = $value->mes . "./" . $value->ano;
+        if (isset($data['response'])):
+            foreach ($data['response'] as $key => $value) {
+                $date = $value->mes . "./" . $value->ano;
 
-            if (!in_array($date, $labels)):
-                $labels[] = $date;
-                $dataDataSets["PTDVF (MBTUD)"][$date] = 0;
-                $dataDataSets["CIDVF (MBTUD)"][$date] = 0;
-            endif;
+                if (!in_array($date, $labels)):
+                    $labels[] = $date;
+                    $dataDataSets["PTDVF (MBTUD)"][$date] = 0;
+                    $dataDataSets["CIDVF (MBTUD)"][$date] = 0;
+                endif;
 
-            $dataDataSets["PTDVF (MBTUD)"][$date] += $value->ptdvf;
-            $dataDataSets["CIDVF (MBTUD)"][$date] += $value->cidvf;
-        }
+                $dataDataSets["PTDVF (MBTUD)"][$date] += $value->ptdvf;
+                $dataDataSets["CIDVF (MBTUD)"][$date] += $value->cidvf;
+            }
+        endif;
 
         foreach ($dataDataSets["PTDVF (MBTUD)"] as $tmp):
             $dataSets["PTDVF (MBTUD)"][] = $tmp;
@@ -471,56 +474,64 @@ class ServiciosController extends ControllerBase
         return $data;
     }
 
-    public function getCantidadEnergiaSuministrar($data) {
+    public function getCantidadEnergiaSuministrar($data)
+    {
         $data = array(
             'dataTables' => $data['response']
         );
         return $data;
     }
 
-    public function getCantidadDeclaradaPorNoComercializadoresNoInyectada($data) {
+    public function getCantidadDeclaradaPorNoComercializadoresNoInyectada($data)
+    {
         $data = array(
             'dataTables' => $data['response']
         );
         return $data;
     }
 
-    public function getCantidadAutorizadaNominaciones($data) {
+    public function getCantidadAutorizadaNominaciones($data)
+    {
         $data = array(
             'dataTables' => $data['response']
         );
         return $data;
     }
 
-    public function getCantidadTomadaTransportadoresTramo($data) {
+    public function getCantidadTomadaTransportadoresTramo($data)
+    {
         $data = array(
             'dataTables' => $data['response']
         );
         return $data;
     }
 
-    public function getCantidadTomadaComercializadores($data) {
+    public function getCantidadTomadaComercializadores($data)
+    {
         $data = array(
             'dataTables' => $data['response']
         );
         return $data;
     }
 
-    public function getCantidadTomadaDiariamenteSnt($data) {
+    public function getCantidadTomadaDiariamenteSnt($data)
+    {
         $data = array(
             'dataTables' => $data['response']
         );
         return $data;
     }
 
-    public function getCantidadTomadaContratosParqueo($data) {
+    public function getCantidadTomadaContratosParqueo($data)
+    {
         $data = array(
             'dataTables' => $data['response']
         );
         return $data;
     }
 
-    public function getInfGrafIni($data) {
+    public function getInfGrafIni($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
@@ -545,7 +556,8 @@ class ServiciosController extends ControllerBase
         return $data;
     }
 
-    public function getPuntoEntregaSuministro($data) {
+    public function getPuntoEntregaSuministro($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
@@ -576,7 +588,8 @@ class ServiciosController extends ControllerBase
         return $data;
     }
 
-    public function getAgregadoNacionalSuministro($data) {
+    public function getAgregadoNacionalSuministro($data)
+    {
         $labels = array();
         $dataDataSets = array();
         $info = array();
@@ -613,36 +626,45 @@ class ServiciosController extends ControllerBase
         return $data;
     }
 
-    public function getInformaciontransaccionalSUVCP_CEN_UVCP($data) {
+    public function getInformaciontransaccionalSUVCP_CEN_UVCP($data)
+    {
         return $data["response"];
     }
 
-    public function getInformaciontransaccionalSUVCP_CEN_UVCP_AN($data) {
-        var_dump($data);exit;
+    public function getInformaciontransaccionalSUVCP_CEN_UVCP_AN($data)
+    {
+        var_dump($data);
+        exit;
         return $data["response"];
     }
 
-    public function getCapacidadTransporteNegociadaUVCP($data) {
+    public function getCapacidadTransporteNegociadaUVCP($data)
+    {
         return $data["response"];
     }
 
-    public function getCapacidadTransporteNegociadaUVCP_AN($data) {
+    public function getCapacidadTransporteNegociadaUVCP_AN($data)
+    {
         return $data["response"];
     }
 
-    public function getCantidadesAdjudicadasPuntoEntrega($data) {
+    public function getCantidadesAdjudicadasPuntoEntrega($data)
+    {
         return $data["response"];
     }
 
-    public function getCPublicacionOfertaSubastaBimestral($data) {
+    public function getCPublicacionOfertaSubastaBimestral($data)
+    {
         return $data["response"];
     }
 
-    public function getSUVLPCantidadesAdjudicadasPuntoEntrega($data){
+    public function getSUVLPCantidadesAdjudicadasPuntoEntrega($data)
+    {
         return $data;
     }
 
-    public function getSubastaSuministroConInterrupciones($data) {
+    public function getSubastaSuministroConInterrupciones($data)
+    {
         return $data["response"];
     }
 }
