@@ -429,7 +429,7 @@
                 var fechas = '';
                 var nacional = '';
                 var importadas = '';
-                info.forech(funcion(e) {
+                info.forEach(function(e) {
                     fechas = e.dia + '/' + e.mes + '/' + e.año + ',';
                     if (e.tipo_produccion == 'NACIONAL') {
                         nacional = e.cantidad + ',';
