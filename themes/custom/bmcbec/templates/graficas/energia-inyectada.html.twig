@@ -386,7 +386,7 @@
                     <option value="231">ZOE</option>
                 </optgroup>
             </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button">
+            <input onclick="postJs()" value="Consultar" class="bmcbec-dp-button">
         </form>
         <p class="helpText">Consulta un periodo hasta 395 días</p></div>
     <div class="bmcbec-dp-fix"></div>
@@ -413,6 +413,26 @@
     var randomColor = function (opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
     };
+    
+    function postJs() {
+        var settings = {
+            "url": "http://wstest.bmcbec.com.co/api/BEC/getCantidadEnergiaInyectadaOpe_New",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "data": {
+                "fechaInicial": "2018-12-01",
+                "fechaFinal": "2019-01-31",
+                "codigoPozo": "0"
+            }
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    }
 
     var lineChartData = {
         labels: [
