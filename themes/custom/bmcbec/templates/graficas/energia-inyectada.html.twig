@@ -421,38 +421,38 @@
             method: 'POST', headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: "fechaInicial=2017-08-02&fechaFinal=2019-08-02&codigoPozo=0"
+            body: "fechaInicial=2018-08-02&fechaFinal=2019-08-02&codigoPozo=0"
         })
         .then(response => response.json()
             .then(function (value) {
                 console.log('estamos::', value);
-                var fechas = '';
-                var nacional = '';
-                var importadas = '';
-                value.forEach(function(e) {
-                    fechas += e.dia + '/' + e.mes + '/' + e.ano + ',';
+                var fechas = [];
+                var nacional = [];
+                var importadas = [];
+                value.forEach(function(e, index) {
+                    fechas[index] = e.dia + '/' + e.mes + '/' + e.ano;
                     if (e.tipo_produccion == 'NACIONAL') {
-                        nacional += e.cantidad_mbtud + ',';
+                        nacional[index] = e.cantidad_mbtud + ',';
                     }
                     if (e.tipo_produccion == 'IMPORTADO') {
-                        importadas += e.cantidad_mbtud + ',';
+                        importadas[index] = e.cantidad_mbtud + ',';
                     }
                 });
                 console.log('data:', fechas,' N- ', nacional,' I- ', importadas)
                 var lineChartDataM = {
-                    labels: [fechas],
+                    labels: fechas,
                     datasets: [
                         {
                             label: "Cantidad Nacional (MBTUD)",
                             yAxisID: "y-axis-1",
                             fill: "true",
-                            data: [nacional]
+                            data: nacional
                         },
                         {
                             label: "Cantidad Importada (MBTUD)",
                             yAxisID: "y-axis-1",
                             fill: "false",
-                            data: [importadas]
+                            data: importadas
                         }
                     ]
                 };
