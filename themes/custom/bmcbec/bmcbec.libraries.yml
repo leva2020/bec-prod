@@ -9,7 +9,6 @@ base:
       dist/css/main.css: {}
       src/scss/leva.css: {}
       src/scss/charts.css: {}
-      src/scss/datepicker.css: {}
   js:
     dist/js/greenSock/minified/TweenMax.min.js: {}
     dist/js/owl.carousel.js: {}
@@ -17,7 +16,6 @@ base:
     src/js/slick.js: {}
     src/js/leva.js: {}
     src/js/tables.js: {}
-    src/js/bootstrap-datepicker.js: {}
   dependencies:
     - core/jquery
     - core/underscore
