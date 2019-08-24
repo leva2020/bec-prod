@@ -425,11 +425,11 @@
         })
         .then(response => response.json()
             .then(function (value) {
-                console.log('estamos::', info);
+                console.log('estamos::', value);
                 var fechas = '';
                 var nacional = '';
                 var importadas = '';
-                info.forEach(function(e) {
+                value.forEach(function(e) {
                     fechas = e.dia + '/' + e.mes + '/' + e.año + ',';
                     if (e.tipo_produccion == 'NACIONAL') {
                         nacional = e.cantidad + ',';
@@ -456,7 +456,7 @@
                     ]
                 };
                 console.log('lineChartDataM', lineChartDataM);
-                // createGraph(lineChartDataM)
+                createGraph(lineChartDataM);
             })
         )
         .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
