@@ -425,8 +425,42 @@
         })
         .then(response => response.json()
             .then(function (value) {
-            console.log('estamos', value);
-            info["dataTables"] = value
+                info["dataTables"] = value
+                console.log('estamos::', info);
+                lineChartDataM = {
+                    labels: [
+                        {% for item in value %}
+                        "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
+                        {% endfor %}
+                    ],
+                    datasets: [
+                        {
+                            label: "Cantidad Nacional (MBTUD)",
+                            yAxisID: "y-axis-1",
+                            fill: "true",
+                            data: [
+                                {% for item in value %}
+                                {% if item.tipo_produccion == 'NACIONAL' %}
+                                "{{item.cantidad}}",
+                                {% endif %}
+                                {% endfor %}
+                            ]
+                        },
+                        {
+                            label: "Cantidad Importada (MBTUD)",
+                            yAxisID: "y-axis-1",
+                            fill: "false",
+                            data: [
+                                {% for item in ivalue %}
+                                {% if item.tipo_produccion == 'IMPORTADA' %}
+                                "{{ item.cantidad }}",
+                                {% endif %}
+                                {% endfor %}
+                            ]
+                        }
+                    ]
+                };
+                createGraph(lineChartDataM)
             })
         )
         .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
@@ -475,9 +509,18 @@
     });
 
     window.onload = function () {
+        createGraph(lineChartData)
+    };
+
+
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("3d");
+    //ctx.font="30px Arial";
+
+    function createGraph(infoG) {
         var ctx = document.getElementById("canvas");
         window.myLine = Chart.Line(ctx, {
-            data: lineChartData,
+            data: infoG,
             options: {
                 responsive: true,
                 hoverMode: 'label',
@@ -511,13 +554,7 @@
                 }
             }
         });
-    };
-
-
-    var c = document.getElementById("canvas");
-    var ctx = c.getContext("3d");
-    //ctx.font="30px Arial";
-
+    }
 </script>
 
 
