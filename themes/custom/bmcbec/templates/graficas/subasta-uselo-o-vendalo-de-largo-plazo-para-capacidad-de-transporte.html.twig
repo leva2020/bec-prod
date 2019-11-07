@@ -1,14 +1,12 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getSUVLPCantidadesAdjudicadasPuntoEntrega', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoPunto',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
+{% set info = enviar_post_ws('getSUVLPCantidadesAdjudicadasPuntoEntrega', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoPunto',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
-<link rel="stylesheet" type="text/css"
-      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
 {# <script type="text/javascript" src="src/js/tables.js"></script>#}
 
 {{ attach_library('bmcbec/tables') }}
@@ -22,250 +20,246 @@
         <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
     </div>
     <div class="bmcbec-dp-right">
-        <form method="post" action="">
-            <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
-                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years"
-                   data-date-minviewmode="days"/>
-            <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
-                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years"
-                   data-date-minviewmode="days"/>
-            <select name="paramsFilter[codigoPunto]">
-                <option value="0" selected>-- Tramo o Grupo de Gasoductos --</option>
-                <optgroup label="Puntos de Entrega">
-                    <option value="1455">AGUAZUL - YOPAL</option>
-                    <option value="1258">APIAY - CENTAUROS</option>
-                    <option value="1183">APIAY - GRANADA</option>
-                    <option value="1040">APIAY - OCOA</option>
-                    <option value="1039">APIAY - USME</option>
-                    <option value="1029">ARMENIA - YUMBO/CALI</option>
-                    <option value="1068">BALLENA - ARMENIA</option>
-                    <option value="1064">BALLENA - BARRANCABERMEJA</option>
-                    <option value="1077">BALLENA - BARRANQUILLA</option>
-                    <option value="1078">BALLENA - CARTAGENA</option>
-                    <option value="1072">BALLENA - COGUA</option>
-                    <option value="1073">BALLENA - EL PORVENIR</option>
-                    <option value="1218">BALLENA - GBS_F</option>
-                    <option value="1219">BALLENA - GBS_I</option>
-                    <option value="1070">BALLENA - GUALANDAY</option>
-                    <option value="1080">BALLENA - JOBO</option>
-                    <option value="1071">BALLENA - LA BELLEZA</option>
-                    <option value="1076">BALLENA - LA MAMI</option>
-                    <option value="1124">BALLENA - MAMONAL</option>
-                    <option value="1066">BALLENA - MARIQUITA</option>
-                    <option value="1259">BALLENA - MEDELLIN</option>
-                    <option value="1217">BALLENA - MONTA&#209;UELO</option>
-                    <option value="1075">BALLENA - NEIVA</option>
-                    <option value="1067">BALLENA - PEREIRA</option>
-                    <option value="1176">BALLENA - SABANA_F</option>
-                    <option value="1074">BALLENA - SEBASTOPOL</option>
-                    <option value="1079">BALLENA - SINCELEJO</option>
-                    <option value="1065">BALLENA - VASCONIA</option>
-                    <option value="1069">BALLENA - YUMBO/CALI</option>
-                    <option value="1004">BARRANCABERMEJA - ARMENIA</option>
-                    <option value="1010">BARRANCABERMEJA - BUCARAMANGA</option>
-                    <option value="1008">BARRANCABERMEJA - COGUA</option>
-                    <option value="1009">BARRANCABERMEJA - EL PORVENIR</option>
-                    <option value="1169">BARRANCABERMEJA - GBS_F</option>
-                    <option value="1251">BARRANCABERMEJA - GBS_I</option>
-                    <option value="1130">BARRANCABERMEJA - GIBRALTAR</option>
-                    <option value="1006">BARRANCABERMEJA - GUALANDAY</option>
-                    <option value="1007">BARRANCABERMEJA - LA BELLEZA</option>
-                    <option value="1002">BARRANCABERMEJA - MARIQUITA</option>
-                    <option value="1181">BARRANCABERMEJA - MONTA&#209;UELO</option>
-                    <option value="1012">BARRANCABERMEJA - NEIVA</option>
-                    <option value="1003">BARRANCABERMEJA - PEREIRA</option>
-                    <option value="1168">BARRANCABERMEJA - SABANA_F</option>
-                    <option value="1011">BARRANCABERMEJA - SEBASTOPOL</option>
-                    <option value="1001">BARRANCABERMEJA - VASCONIA</option>
-                    <option value="1005">BARRANCABERMEJA - YUMBO/CALI</option>
-                    <option value="1087">BARRANQUILLA - CARTAGENA</option>
-                    <option value="1089">BARRANQUILLA - JOBO</option>
-                    <option value="1190">BARRANQUILLA - LA MAMI</option>
-                    <option value="1126">BARRANQUILLA - MAMONAL</option>
-                    <option value="1088">BARRANQUILLA - SINCELEJO</option>
-                    <option value="1167">Boca - Pozo</option>
-                    <option value="1128">BUCARAMANGA - BARRANCABERMEJA</option>
-                    <option value="1131">BUCARAMANGA - GIBRALTAR</option>
-                    <option value="1046">BUENOS AIRES - IBAGUE</option>
-                    <option value="1196">CARTAGENA - BARRANQUILLA</option>
-                    <option value="1091">CARTAGENA - JOBO</option>
-                    <option value="1197">CARTAGENA - LA MAMI</option>
-                    <option value="1127">CARTAGENA - MAMONAL</option>
-                    <option value="1090">CARTAGENA - SINCELEJO</option>
-                    <option value="1178">CENTAUROS - GRANADA</option>
-                    <option value="1048">CHICORAL - FLANDES</option>
-                    <option value="1121">CHICORAL - FUSAGASUGA</option>
-                    <option value="1120">CHICORAL - GUANDO</option>
-                    <option value="1047">CHICORAL - RICAURTE</option>
-                    <option value="1213">COGUA - ARMENIA</option>
-                    <option value="1216">COGUA - BARRANCABERMEJA</option>
-                    <option value="1206">COGUA - EL PORVENIR</option>
-                    <option value="1205">COGUA - GBS_F</option>
-                    <option value="1204">COGUA - GBS_I</option>
-                    <option value="1209">COGUA - GUALANDAY</option>
-                    <option value="1203">COGUA - LA BELLEZA</option>
-                    <option value="1208">COGUA - MARIQUITA</option>
-                    <option value="1210">COGUA - MONTA&#209;UELO</option>
-                    <option value="1211">COGUA - NEIVA</option>
-                    <option value="1212">COGUA - PEREIRA</option>
-                    <option value="1180">COGUA - SABANA_F</option>
-                    <option value="1215">COGUA - SEBASTOPOL</option>
-                    <option value="1207">COGUA - VASCONIA</option>
-                    <option value="1214">COGUA - YUMBO/CALI</option>
-                    <option value="1036">CUSIANA - APIAY</option>
-                    <option value="1114">CUSIANA - ARMENIA</option>
-                    <option value="1171">CUSIANA - BARRANCABERMEJA</option>
-                    <option value="1200">CUSIANA - CENTAUROS</option>
-                    <option value="1096">CUSIANA - COGUA</option>
-                    <option value="1035">CUSIANA - EL PORVENIR</option>
-                    <option value="1170">CUSIANA - GBS_F</option>
-                    <option value="1202">CUSIANA - GBS_I</option>
-                    <option value="1182">CUSIANA - GRANADA</option>
-                    <option value="1116">CUSIANA - GUALANDAY</option>
-                    <option value="1095">CUSIANA - LA BELLEZA</option>
-                    <option value="1112">CUSIANA - MARIQUITA</option>
-                    <option value="1201">CUSIANA - MONTA&#209;UELO</option>
-                    <option value="1117">CUSIANA - NEIVA</option>
-                    <option value="1038">CUSIANA - OCOA</option>
-                    <option value="1113">CUSIANA - PEREIRA</option>
-                    <option value="1172">CUSIANA - SABANA_F</option>
-                    <option value="1175">CUSIANA - SEBASTOPOL</option>
-                    <option value="1037">CUSIANA - USME</option>
-                    <option value="1111">CUSIANA - VASCONIA</option>
-                    <option value="1115">CUSIANA - YUMBO/CALI</option>
-                    <option value="1107">EL PORVENIR - ARMENIA</option>
-                    <option value="1253">EL PORVENIR - BARRANCABERMEJA</option>
-                    <option value="1094">EL PORVENIR - COGUA</option>
-                    <option value="1257">EL PORVENIR - GBS_F</option>
-                    <option value="1256">EL PORVENIR - GBS_I</option>
-                    <option value="1109">EL PORVENIR - GUALANDAY</option>
-                    <option value="1093">EL PORVENIR - LA BELLEZA</option>
-                    <option value="1105">EL PORVENIR - MARIQUITA</option>
-                    <option value="1290">EL PORVENIR - MEDELLIN</option>
-                    <option value="1252">EL PORVENIR - MONTA&#209;UELO</option>
-                    <option value="1110">EL PORVENIR - NEIVA</option>
-                    <option value="1106">EL PORVENIR - PEREIRA</option>
-                    <option value="1255">EL PORVENIR - SABANA_F</option>
-                    <option value="1254">EL PORVENIR - SEBASTOPOL</option>
-                    <option value="1104">EL PORVENIR - VASCONIA</option>
-                    <option value="1108">EL PORVENIR - YUMBO/CALI</option>
-                    <option value="1123">FLANDES - FUSAGASUGA</option>
-                    <option value="1119">FLANDES - GUANDO</option>
-                    <option value="1122">FLANDES - GUANDO</option>
-                    <option value="1063">FLANDES - RICAURTE</option>
-                    <option value="1118">FLORE&#209;A - YOPAL</option>
-                    <option value="1132">GBS_I - GBS_F</option>
-                    <option value="1278">GBS_I - SABANA_F</option>
-                    <option value="1423">GBS_I - YUMBO/CALI</option>
-                    <option value="1129">GIBRALTAR - BARRANCABERMEJA</option>
-                    <option value="1042">GIBRALTAR - BUCARAMANGA</option>
-                    <option value="1238">GUALANDAY - ARMENIA</option>
-                    <option value="1173">GUALANDAY - MARIQUITA</option>
-                    <option value="1240">GUALANDAY - MONTA&#209;UELO</option>
-                    <option value="1030">GUALANDAY - NEIVA</option>
-                    <option value="1237">GUALANDAY - PEREIRA</option>
-                    <option value="1239">GUALANDAY - YUMBO/CALI</option>
-                    <option value="1043">GUANDO - FUSAGASUGA</option>
-                    <option value="1194">JOBO - BARRANQUILLA</option>
-                    <option value="1187">JOBO - CARTAGENA</option>
-                    <option value="1195">JOBO - LA MAMI</option>
-                    <option value="1193">JOBO - MAMONAL</option>
-                    <option value="1186">JOBO - SINCELEJO</option>
-                    <option value="1100">LA BELLEZA - ARMENIA</option>
-                    <option value="1231">LA BELLEZA - BARRANCABERMEJA</option>
-                    <option value="1033">LA BELLEZA - COGUA</option>
-                    <option value="1034">LA BELLEZA - EL PORVENIR</option>
-                    <option value="1234">LA BELLEZA - GBS_F</option>
-                    <option value="1233">LA BELLEZA - GBS_I</option>
-                    <option value="1102">LA BELLEZA - GUALANDAY</option>
-                    <option value="1098">LA BELLEZA - MARIQUITA</option>
-                    <option value="1232">LA BELLEZA - MONTA&#209;UELO</option>
-                    <option value="1103">LA BELLEZA - NEIVA</option>
-                    <option value="1099">LA BELLEZA - PEREIRA</option>
-                    <option value="1235">LA BELLEZA - SABANA_F</option>
-                    <option value="1230">LA BELLEZA - SEBASTOPOL</option>
-                    <option value="1097">LA BELLEZA - VASCONIA</option>
-                    <option value="1101">LA BELLEZA - YUMBO/CALI</option>
-                    <option value="1188">LA CRECIENTE - BARRANQUILLA</option>
-                    <option value="1174">LA CRECIENTE - CARTAGENA</option>
-                    <option value="1082">LA CRECIENTE - JOBO</option>
-                    <option value="1199">LA CRECIENTE - LA MAMI</option>
-                    <option value="1198">LA CRECIENTE - MAMONAL</option>
-                    <option value="1081">LA CRECIENTE - SINCELEJO</option>
-                    <option value="1083">LA MAMI - BARRANQUILLA</option>
-                    <option value="1084">LA MAMI - CARTAGENA</option>
-                    <option value="1086">LA MAMI - JOBO</option>
-                    <option value="1125">LA MAMI - MAMONAL</option>
-                    <option value="1085">LA MAMI - SINCELEJO</option>
-                    <option value="1150">LLANITO - PROVINCIA</option>
-                    <option value="1023">MARIQUITA - ARMENIA</option>
-                    <option value="1025">MARIQUITA - GUALANDAY</option>
-                    <option value="1236">MARIQUITA - MONTA&#209;UELO</option>
-                    <option value="1026">MARIQUITA - NEIVA</option>
-                    <option value="1022">MARIQUITA - PEREIRA</option>
-                    <option value="1024">MARIQUITA - YUMBO/CALI</option>
-                    <option value="1243">MONTA&#209;UELO - ARMENIA</option>
-                    <option value="1031">MONTA&#209;UELO - GUALANDAY</option>
-                    <option value="1241">MONTA&#209;UELO - MARIQUITA</option>
-                    <option value="1032">MONTA&#209;UELO - NEIVA</option>
-                    <option value="1242">MONTA&#209;UELO - PEREIRA</option>
-                    <option value="1244">MONTA&#209;UELO - YUMBO/CALI</option>
-                    <option value="1041">MORICHAL - YOPAL</option>
-                    <option value="1248">NEIVA - ARMENIA</option>
-                    <option value="1250">NEIVA - GUALANDAY</option>
-                    <option value="1062">NEIVA - HOBO</option>
-                    <option value="1246">NEIVA - MARIQUITA</option>
-                    <option value="1245">NEIVA - MONTA&#209;UELO</option>
-                    <option value="1247">NEIVA - PEREIRA</option>
-                    <option value="1249">NEIVA - YUMBO/CALI</option>
-                    <option value="1027">PEREIRA - ARMENIA</option>
-                    <option value="1028">PEREIRA - YUMBO/CALI</option>
-                    <option value="1044">PRADERA - POPAYAN</option>
-                    <option value="1134">RAMALES AISLADOS_I - RAMALES AISLADOS_F</option>
-                    <option value="1045">SARDINATA - CUCUTA</option>
-                    <option value="1054">SEBASTOPOL - ARMENIA</option>
-                    <option value="1220">SEBASTOPOL - BARRANCABERMEJA</option>
-                    <option value="1058">SEBASTOPOL - COGUA</option>
-                    <option value="1059">SEBASTOPOL - EL PORVENIR</option>
-                    <option value="1224">SEBASTOPOL - GBS_F</option>
-                    <option value="1222">SEBASTOPOL - GBS_I</option>
-                    <option value="1056">SEBASTOPOL - GUALANDAY</option>
-                    <option value="1057">SEBASTOPOL - LA BELLEZA</option>
-                    <option value="1052">SEBASTOPOL - MARIQUITA</option>
-                    <option value="1060">SEBASTOPOL - MEDELLIN</option>
-                    <option value="1221">SEBASTOPOL - MONTA&#209;UELO</option>
-                    <option value="1061">SEBASTOPOL - NEIVA</option>
-                    <option value="1053">SEBASTOPOL - PEREIRA</option>
-                    <option value="1225">SEBASTOPOL - SABANA_F</option>
-                    <option value="1051">SEBASTOPOL - VASCONIA</option>
-                    <option value="1055">SEBASTOPOL - YUMBO/CALI</option>
-                    <option value="1191">SINCELEJO - BARRANQUILLA</option>
-                    <option value="1179">SINCELEJO - CARTAGENA</option>
-                    <option value="1092">SINCELEJO - JOBO</option>
-                    <option value="1192">SINCELEJO - LA MAMI</option>
-                    <option value="1189">SINCELEJO - MAMONAL</option>
-                    <option value="1049">TANE/CACOTA - PAMPLONA</option>
-                    <option value="1015">VASCONIA - ARMENIA</option>
-                    <option value="1185">VASCONIA - BARRANCABERMEJA</option>
-                    <option value="1019">VASCONIA - COGUA</option>
-                    <option value="1020">VASCONIA - EL PORVENIR</option>
-                    <option value="1228">VASCONIA - GBS_F</option>
-                    <option value="1227">VASCONIA - GBS_I</option>
-                    <option value="1017">VASCONIA - GUALANDAY</option>
-                    <option value="1018">VASCONIA - LA BELLEZA</option>
-                    <option value="1013">VASCONIA - MARIQUITA</option>
-                    <option value="1226">VASCONIA - MONTA&#209;UELO</option>
-                    <option value="1021">VASCONIA - NEIVA</option>
-                    <option value="1014">VASCONIA - PEREIRA</option>
-                    <option value="1229">VASCONIA - SABANA_F</option>
-                    <option value="1184">VASCONIA - SEBASTOPOL</option>
-                    <option value="1016">VASCONIA - YUMBO/CALI</option>
-                    <option value="1453">YOPAL - MORICHAL</option>
-                    <option value="1050">YUMBO/CALI - CALI</option>
-                </optgroup>
-            </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
-        </form>
+    <form method="post" action="">
+    <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
+    <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
+    <select name="paramsFilter[codigoPunto]">
+    <option value="0" selected>-- Tramo o Grupo de Gasoductos --</option>
+    <optgroup label="Puntos de Entrega">
+        <option value="1455" >AGUAZUL - YOPAL</option>
+        <option value="1258" >APIAY - CENTAUROS</option>
+        <option value="1183" >APIAY - GRANADA</option>
+        <option value="1040" >APIAY - OCOA</option>
+        <option value="1039" >APIAY - USME</option>
+        <option value="1029" >ARMENIA - YUMBO/CALI</option>
+        <option value="1068" >BALLENA - ARMENIA</option>
+        <option value="1064" >BALLENA - BARRANCABERMEJA</option>
+        <option value="1077" >BALLENA - BARRANQUILLA</option>
+        <option value="1078" >BALLENA - CARTAGENA</option>
+        <option value="1072" >BALLENA - COGUA</option>
+        <option value="1073" >BALLENA - EL PORVENIR</option>
+        <option value="1218" >BALLENA - GBS_F</option>
+        <option value="1219" >BALLENA - GBS_I</option>
+        <option value="1070" >BALLENA - GUALANDAY</option>
+        <option value="1080" >BALLENA - JOBO</option>
+        <option value="1071" >BALLENA - LA BELLEZA</option>
+        <option value="1076" >BALLENA - LA MAMI</option>
+        <option value="1124" >BALLENA - MAMONAL</option>
+        <option value="1066" >BALLENA - MARIQUITA</option>
+        <option value="1259" >BALLENA - MEDELLIN</option>
+        <option value="1217" >BALLENA - MONTA&#209;UELO</option>
+        <option value="1075" >BALLENA - NEIVA</option>
+        <option value="1067" >BALLENA - PEREIRA</option>
+        <option value="1176" >BALLENA - SABANA_F</option>
+        <option value="1074" >BALLENA - SEBASTOPOL</option>
+        <option value="1079" >BALLENA - SINCELEJO</option>
+        <option value="1065" >BALLENA - VASCONIA</option>
+        <option value="1069" >BALLENA - YUMBO/CALI</option>
+        <option value="1004" >BARRANCABERMEJA - ARMENIA</option>
+        <option value="1010" >BARRANCABERMEJA - BUCARAMANGA</option>
+        <option value="1008" >BARRANCABERMEJA - COGUA</option>
+        <option value="1009" >BARRANCABERMEJA - EL PORVENIR</option>
+        <option value="1169" >BARRANCABERMEJA - GBS_F</option>
+        <option value="1251" >BARRANCABERMEJA - GBS_I</option>
+        <option value="1130" >BARRANCABERMEJA - GIBRALTAR</option>
+        <option value="1006" >BARRANCABERMEJA - GUALANDAY</option>
+        <option value="1007" >BARRANCABERMEJA - LA BELLEZA</option>
+        <option value="1002" >BARRANCABERMEJA - MARIQUITA</option>
+        <option value="1181" >BARRANCABERMEJA - MONTA&#209;UELO</option>
+        <option value="1012" >BARRANCABERMEJA - NEIVA</option>
+        <option value="1003" >BARRANCABERMEJA - PEREIRA</option>
+        <option value="1168" >BARRANCABERMEJA - SABANA_F</option>
+        <option value="1011" >BARRANCABERMEJA - SEBASTOPOL</option>
+        <option value="1001" >BARRANCABERMEJA - VASCONIA</option>
+        <option value="1005" >BARRANCABERMEJA - YUMBO/CALI</option>
+        <option value="1087" >BARRANQUILLA - CARTAGENA</option>
+        <option value="1089" >BARRANQUILLA - JOBO</option>
+        <option value="1190" >BARRANQUILLA - LA MAMI</option>
+        <option value="1126" >BARRANQUILLA - MAMONAL</option>
+        <option value="1088" >BARRANQUILLA - SINCELEJO</option>
+        <option value="1167" >Boca - Pozo</option>
+        <option value="1128" >BUCARAMANGA - BARRANCABERMEJA</option>
+        <option value="1131" >BUCARAMANGA - GIBRALTAR</option>
+        <option value="1046" >BUENOS AIRES - IBAGUE</option>
+        <option value="1196" >CARTAGENA - BARRANQUILLA</option>
+        <option value="1091" >CARTAGENA - JOBO</option>
+        <option value="1197" >CARTAGENA - LA MAMI</option>
+        <option value="1127" >CARTAGENA - MAMONAL</option>
+        <option value="1090" >CARTAGENA - SINCELEJO</option>
+        <option value="1178" >CENTAUROS - GRANADA</option>
+        <option value="1048" >CHICORAL - FLANDES</option>
+        <option value="1121" >CHICORAL - FUSAGASUGA</option>
+        <option value="1120" >CHICORAL - GUANDO</option>
+        <option value="1047" >CHICORAL - RICAURTE</option>
+        <option value="1213" >COGUA - ARMENIA</option>
+        <option value="1216" >COGUA - BARRANCABERMEJA</option>
+        <option value="1206" >COGUA - EL PORVENIR</option>
+        <option value="1205" >COGUA - GBS_F</option>
+        <option value="1204" >COGUA - GBS_I</option>
+        <option value="1209" >COGUA - GUALANDAY</option>
+        <option value="1203" >COGUA - LA BELLEZA</option>
+        <option value="1208" >COGUA - MARIQUITA</option>
+        <option value="1210" >COGUA - MONTA&#209;UELO</option>
+        <option value="1211" >COGUA - NEIVA</option>
+        <option value="1212" >COGUA - PEREIRA</option>
+        <option value="1180" >COGUA - SABANA_F</option>
+        <option value="1215" >COGUA - SEBASTOPOL</option>
+        <option value="1207" >COGUA - VASCONIA</option>
+        <option value="1214" >COGUA - YUMBO/CALI</option>
+        <option value="1036" >CUSIANA - APIAY</option>
+        <option value="1114" >CUSIANA - ARMENIA</option>
+        <option value="1171" >CUSIANA - BARRANCABERMEJA</option>
+        <option value="1200" >CUSIANA - CENTAUROS</option>
+        <option value="1096" >CUSIANA - COGUA</option>
+        <option value="1035" >CUSIANA - EL PORVENIR</option>
+        <option value="1170" >CUSIANA - GBS_F</option>
+        <option value="1202" >CUSIANA - GBS_I</option>
+        <option value="1182" >CUSIANA - GRANADA</option>
+        <option value="1116" >CUSIANA - GUALANDAY</option>
+        <option value="1095" >CUSIANA - LA BELLEZA</option>
+        <option value="1112" >CUSIANA - MARIQUITA</option>
+        <option value="1201" >CUSIANA - MONTA&#209;UELO</option>
+        <option value="1117" >CUSIANA - NEIVA</option>
+        <option value="1038" >CUSIANA - OCOA</option>
+        <option value="1113" >CUSIANA - PEREIRA</option>
+        <option value="1172" >CUSIANA - SABANA_F</option>
+        <option value="1175" >CUSIANA - SEBASTOPOL</option>
+        <option value="1037" >CUSIANA - USME</option>
+        <option value="1111" >CUSIANA - VASCONIA</option>
+        <option value="1115" >CUSIANA - YUMBO/CALI</option>
+        <option value="1107" >EL PORVENIR - ARMENIA</option>
+        <option value="1253" >EL PORVENIR - BARRANCABERMEJA</option>
+        <option value="1094" >EL PORVENIR - COGUA</option>
+        <option value="1257" >EL PORVENIR - GBS_F</option>
+        <option value="1256" >EL PORVENIR - GBS_I</option>
+        <option value="1109" >EL PORVENIR - GUALANDAY</option>
+        <option value="1093" >EL PORVENIR - LA BELLEZA</option>
+        <option value="1105" >EL PORVENIR - MARIQUITA</option>
+        <option value="1290" >EL PORVENIR - MEDELLIN</option>
+        <option value="1252" >EL PORVENIR - MONTA&#209;UELO</option>
+        <option value="1110" >EL PORVENIR - NEIVA</option>
+        <option value="1106" >EL PORVENIR - PEREIRA</option>
+        <option value="1255" >EL PORVENIR - SABANA_F</option>
+        <option value="1254" >EL PORVENIR - SEBASTOPOL</option>
+        <option value="1104" >EL PORVENIR - VASCONIA</option>
+        <option value="1108" >EL PORVENIR - YUMBO/CALI</option>
+        <option value="1123" >FLANDES - FUSAGASUGA</option>
+        <option value="1119" >FLANDES - GUANDO</option>
+        <option value="1122" >FLANDES - GUANDO</option>
+        <option value="1063" >FLANDES - RICAURTE</option>
+        <option value="1118" >FLORE&#209;A - YOPAL</option>
+        <option value="1132" >GBS_I - GBS_F</option>
+        <option value="1278" >GBS_I - SABANA_F</option>
+        <option value="1423" >GBS_I - YUMBO/CALI</option>
+        <option value="1129" >GIBRALTAR - BARRANCABERMEJA</option>
+        <option value="1042" >GIBRALTAR - BUCARAMANGA</option>
+        <option value="1238" >GUALANDAY - ARMENIA</option>
+        <option value="1173" >GUALANDAY - MARIQUITA</option>
+        <option value="1240" >GUALANDAY - MONTA&#209;UELO</option>
+        <option value="1030" >GUALANDAY - NEIVA</option>
+        <option value="1237" >GUALANDAY - PEREIRA</option>
+        <option value="1239" >GUALANDAY - YUMBO/CALI</option>
+        <option value="1043" >GUANDO - FUSAGASUGA</option>
+        <option value="1194" >JOBO - BARRANQUILLA</option>
+        <option value="1187" >JOBO - CARTAGENA</option>
+        <option value="1195" >JOBO - LA MAMI</option>
+        <option value="1193" >JOBO - MAMONAL</option>
+        <option value="1186" >JOBO - SINCELEJO</option>
+        <option value="1100" >LA BELLEZA - ARMENIA</option>
+        <option value="1231" >LA BELLEZA - BARRANCABERMEJA</option>
+        <option value="1033" >LA BELLEZA - COGUA</option>
+        <option value="1034" >LA BELLEZA - EL PORVENIR</option>
+        <option value="1234" >LA BELLEZA - GBS_F</option>
+        <option value="1233" >LA BELLEZA - GBS_I</option>
+        <option value="1102" >LA BELLEZA - GUALANDAY</option>
+        <option value="1098" >LA BELLEZA - MARIQUITA</option>
+        <option value="1232" >LA BELLEZA - MONTA&#209;UELO</option>
+        <option value="1103" >LA BELLEZA - NEIVA</option>
+        <option value="1099" >LA BELLEZA - PEREIRA</option>
+        <option value="1235" >LA BELLEZA - SABANA_F</option>
+        <option value="1230" >LA BELLEZA - SEBASTOPOL</option>
+        <option value="1097" >LA BELLEZA - VASCONIA</option>
+        <option value="1101" >LA BELLEZA - YUMBO/CALI</option>
+        <option value="1188" >LA CRECIENTE - BARRANQUILLA</option>
+        <option value="1174" >LA CRECIENTE - CARTAGENA</option>
+        <option value="1082" >LA CRECIENTE - JOBO</option>
+        <option value="1199" >LA CRECIENTE - LA MAMI</option>
+        <option value="1198" >LA CRECIENTE - MAMONAL</option>
+        <option value="1081" >LA CRECIENTE - SINCELEJO</option>
+        <option value="1083" >LA MAMI - BARRANQUILLA</option>
+        <option value="1084" >LA MAMI - CARTAGENA</option>
+        <option value="1086" >LA MAMI - JOBO</option>
+        <option value="1125" >LA MAMI - MAMONAL</option>
+        <option value="1085" >LA MAMI - SINCELEJO</option>
+        <option value="1150" >LLANITO - PROVINCIA</option>
+        <option value="1023" >MARIQUITA - ARMENIA</option>
+        <option value="1025" >MARIQUITA - GUALANDAY</option>
+        <option value="1236" >MARIQUITA - MONTA&#209;UELO</option>
+        <option value="1026" >MARIQUITA - NEIVA</option>
+        <option value="1022" >MARIQUITA - PEREIRA</option>
+        <option value="1024" >MARIQUITA - YUMBO/CALI</option>
+        <option value="1243" >MONTA&#209;UELO - ARMENIA</option>
+        <option value="1031" >MONTA&#209;UELO - GUALANDAY</option>
+        <option value="1241" >MONTA&#209;UELO - MARIQUITA</option>
+        <option value="1032" >MONTA&#209;UELO - NEIVA</option>
+        <option value="1242" >MONTA&#209;UELO - PEREIRA</option>
+        <option value="1244" >MONTA&#209;UELO - YUMBO/CALI</option>
+        <option value="1041" >MORICHAL - YOPAL</option>
+        <option value="1248" >NEIVA - ARMENIA</option>
+        <option value="1250" >NEIVA - GUALANDAY</option>
+        <option value="1062" >NEIVA - HOBO</option>
+        <option value="1246" >NEIVA - MARIQUITA</option>
+        <option value="1245" >NEIVA - MONTA&#209;UELO</option>
+        <option value="1247" >NEIVA - PEREIRA</option>
+        <option value="1249" >NEIVA - YUMBO/CALI</option>
+        <option value="1027" >PEREIRA - ARMENIA</option>
+        <option value="1028" >PEREIRA - YUMBO/CALI</option>
+        <option value="1044" >PRADERA - POPAYAN</option>
+        <option value="1134" >RAMALES AISLADOS_I - RAMALES AISLADOS_F</option>
+        <option value="1045" >SARDINATA - CUCUTA</option>
+        <option value="1054" >SEBASTOPOL - ARMENIA</option>
+        <option value="1220" >SEBASTOPOL - BARRANCABERMEJA</option>
+        <option value="1058" >SEBASTOPOL - COGUA</option>
+        <option value="1059" >SEBASTOPOL - EL PORVENIR</option>
+        <option value="1224" >SEBASTOPOL - GBS_F</option>
+        <option value="1222" >SEBASTOPOL - GBS_I</option>
+        <option value="1056" >SEBASTOPOL - GUALANDAY</option>
+        <option value="1057" >SEBASTOPOL - LA BELLEZA</option>
+        <option value="1052" >SEBASTOPOL - MARIQUITA</option>
+        <option value="1060" >SEBASTOPOL - MEDELLIN</option>
+        <option value="1221" >SEBASTOPOL - MONTA&#209;UELO</option>
+        <option value="1061" >SEBASTOPOL - NEIVA</option>
+        <option value="1053" >SEBASTOPOL - PEREIRA</option>
+        <option value="1225" >SEBASTOPOL - SABANA_F</option>
+        <option value="1051" >SEBASTOPOL - VASCONIA</option>
+        <option value="1055" >SEBASTOPOL - YUMBO/CALI</option>
+        <option value="1191" >SINCELEJO - BARRANQUILLA</option>
+        <option value="1179" >SINCELEJO - CARTAGENA</option>
+        <option value="1092" >SINCELEJO - JOBO</option>
+        <option value="1192" >SINCELEJO - LA MAMI</option>
+        <option value="1189" >SINCELEJO - MAMONAL</option>
+        <option value="1049" >TANE/CACOTA - PAMPLONA</option>
+        <option value="1015" >VASCONIA - ARMENIA</option>
+        <option value="1185" >VASCONIA - BARRANCABERMEJA</option>
+        <option value="1019" >VASCONIA - COGUA</option>
+        <option value="1020" >VASCONIA - EL PORVENIR</option>
+        <option value="1228" >VASCONIA - GBS_F</option>
+        <option value="1227" >VASCONIA - GBS_I</option>
+        <option value="1017" >VASCONIA - GUALANDAY</option>
+        <option value="1018" >VASCONIA - LA BELLEZA</option>
+        <option value="1013" >VASCONIA - MARIQUITA</option>
+        <option value="1226" >VASCONIA - MONTA&#209;UELO</option>
+        <option value="1021" >VASCONIA - NEIVA</option>
+        <option value="1014" >VASCONIA - PEREIRA</option>
+        <option value="1229" >VASCONIA - SABANA_F</option>
+        <option value="1184" >VASCONIA - SEBASTOPOL</option>
+        <option value="1016" >VASCONIA - YUMBO/CALI</option>
+        <option value="1453" >YOPAL - MORICHAL</option>
+        <option value="1050" >YUMBO/CALI - CALI</option>
+    </optgroup>
+    </select>
+    <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+    </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
@@ -274,62 +268,59 @@
 
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
-    <!-- <h4>Tabla de Resultados</h4> -->
-    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
-        la tabla.</p>
-    <table id="ResultTable" class="table table-striped table-bordered" cellspacing="0" width="100%" align="center"
-           data-page-length="20">
-        <thead>
+<!-- <h4>Tabla de Resultados</h4> -->
+<p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
+<table id="ResultTable" class="table table-striped table-bordered" cellspacing="0" width="100%" align="center" data-page-length="20">
+    <thead>
         <tr>
             <th>Fecha</th>
             <th>Tramo o Grupo de Gasoductos</th>
             <th>Cantidad (KPCD)</th>
             <th>Precio Promedio Ponderado (USD/KPC)</th>
         </tr>
-        </thead>
-        <tfoot>
+    </thead>
+    <tfoot>
         <tr>
             <th>Fecha</th>
             <th>Tramo o Grupo de Gasoductos</th>
             <th>Cantidad (KPCD)</th>
             <th>Precio Promedio Ponderado (USD/KPC)</th>
         </tr>
-        </tfoot>
-        <tbody>
+    </tfoot>
+    <tbody>
         {% for key, data in info["response"] %}
-            <tr valign="top" align="left">
-                <td>{{ data.fecha }}</td>
-                <td>{{ data.ruta }}</td>
-                <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
-                <td align="right" data-order="{{ data.precio_prom }}">{{ data.precio_prom }}</td>
-            </tr>
+        <tr valign="top" align="left">
+            <td>{{ data.fecha }}</td>
+            <td>{{ data.ruta }}</td>
+            <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
+            <td align="right" data-order="{{ data.precio_prom }}">{{ data.precio_prom }}</td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
 </div>
 
 <!-- Begin - Export Option Table -->
 <div id="table2export">
-    <table id="ResultTable1"></table>
+<table id="ResultTable1"></table>
 </div>
 <!-- END - Export Option Table -->
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        dataTablesIni();
-        datesFieldsValidation(395, 395);
-    });
+$(document).ready(function() {
+    dataTablesIni();
+});
 
-    {% if info['paramsFilter'] is not null %}
-    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
-    $("input[id='dpd1']").attr('value', fechaInicial);
+{% if info['paramsFilter'] is not null %}
+var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+$("input[id='dpd1']").attr('value', fechaInicial);
 
-    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
-    $("input[id='dpd2']").attr('value', fechaFinal);
+var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+$("input[id='dpd2']").attr('value', fechaFinal);
 
-    var codigoPunto = {{ (info['paramsFilter']['codigoPunto'])?:0 }};
-    $("option[value=" + codigoPunto + "]").attr('selected', 'selected');
-    {% endif %}
+var codigoPunto = {{ (info['paramsFilter']['codigoPunto'])?:0 }};
+$("option[value=" + codigoPunto + "]").attr('selected', 'selected');
+{% endif %}
 
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->

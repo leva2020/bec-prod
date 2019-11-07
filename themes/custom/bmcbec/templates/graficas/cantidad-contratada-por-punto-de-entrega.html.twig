@@ -20,7 +20,7 @@
 {#     </div>#}
 {# </section>#}
 
-{% set info = enviar_post_ws('getCantidadContratadaPorPuntoDeEntrega', 'puntoTramo=39&pCodigoModalidad=1', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad') %}
+{% set info = enviar_post_ws('getCantidadContratadaPorPuntoDeEntrega', 'puntoTramo=39&pCodigoModalidad=1', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad')  %}
 
 {{ attach_library('bmcbec/chartJS') }}
 
@@ -29,27 +29,27 @@
         <form method="post" action="">
             <select name="paramsFilter[puntoTramo]">
                 <optgroup label="Elegir Punto de Entrega">
-                    <option value="39" selected>BALLENA</option>
-                    <option value="12">CUSIANA</option>
-                    <option value="40">LA CRECIENTE</option>
+                    <option value="39"  selected >BALLENA</option>
+                    <option value="12" >CUSIANA</option>
+                    <option value="40" >LA CRECIENTE</option>
                 </optgroup>
             </select>
-            <select name="paramsFilter[pCodigoModalidad]">
-                <optgroup label="Elegir Modalidad">
-                    <option value="21">C1</option>
-                    <option value="22">C2</option>
-                    <option value="5">CON INTERRUPCIONES</option>
-                    <option value="6">CONTINGENCIA</option>
-                    <option value="1" selected>FIRME</option>
-                    <option value="23">FIRME AL 95%</option>
-                    <option value="2">FIRMEZA CONDICIONADA</option>
-                    <option value="3">OPCI&#211;N DE COMPRA</option>
-                    <option value="4">OPCI&#211;N DE COMPRA CONTRA EXP</option>
-                    <option value="16">OTRAS</option>
-                    <option value="8">TAKE OR PAY</option>
-                </optgroup>
-            </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
+        <select name="paramsFilter[pCodigoModalidad]">
+            <optgroup label="Elegir Modalidad">
+                <option value="21" >C1</option>
+                <option value="22" >C2</option>
+                <option value="5" >CON INTERRUPCIONES</option>
+                <option value="6" >CONTINGENCIA</option>
+                <option value="1"  selected >FIRME</option>
+                <option value="23" >FIRME AL 95%</option>
+                <option value="2" >FIRMEZA CONDICIONADA</option>
+                <option value="3" >OPCI&#211;N DE COMPRA</option>
+                <option value="4" >OPCI&#211;N DE COMPRA CONTRA EXP</option>
+                <option value="16" >OTRAS</option>
+                <option value="8" >TAKE OR PAY</option>
+            </optgroup>
+        </select>
+        <input type="submit" value="Consultar" class="bmcbec-dp-button" />
         </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
@@ -57,63 +57,59 @@
 <div class="bmcbec-fix"></div>
 
 <!-- GRAPHIC CONSTRUCTOR -->
-<div class="canvas-holder-text">
-    <h4>
-        <text>Resultados:</text>
-    </h4>
-    <p>Se est&#225; mostrando informaci&#243;n de 181 resultados encontrados con los filtros aplicados.</p>
-    <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+{# <div class="canvas-holder-text">#}
+{#     <h4><text>Resultados:</text></h4>#}
+{#     <p>Se est&#225; mostrando informaci&#243;n de  181 resultados encontrados con los filtros aplicados.</p>#}
+{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
+{# </div>#}
 
-</div>
+{{ include('resultados_info.html.twig', {"numero_resultados": 181, "info": info}) }}
+
 <div class="canvas-holder">
     <h3 align="center">CANTIDAD CONTRATADA POR PUNTO DE ENTREGA</h3>
-    <canvas id="chart"/>
+    <canvas id="chart" />
 </div>
 <script type="text/javascript">
 
-    $(document).ready(function () {
-        datesFieldsValidation(395, 395);
-    });
+{% if info['paramsFilter'] is not null %}
+var puntoTramo = {{ info['paramsFilter']['puntoTramo'] }};
+$("option[value=" + puntoTramo + "]").attr('selected', 'selected');
 
-    {% if info['paramsFilter'] is not null %}
-    var puntoTramo = {{ info['paramsFilter']['puntoTramo'] }};
-    $("option[value=" + puntoTramo + "]").attr('selected', 'selected');
+var pCodigoModalidad = {{ info['paramsFilter']['pCodigoModalidad'] }};
+$("option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
+{% endif %}
 
-    var pCodigoModalidad = {{ info['paramsFilter']['pCodigoModalidad'] }};
-    $("option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
-    {% endif %}
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+var lineChartData = {
+    labels: {{ info["labels"]|json_encode|raw }},
+    datasets: [{
+        type: 'line',
+        label: 'Precio Mínimo (USD/MBTU)',
+        fill: false,
+        lineTension: 0,
+        hidden: false, 
+        data: {{ info["dataDataSets"]["precio_minimo"]|json_encode()|raw }}
+    },{
+        type: 'line',
+        label: 'Precio Promedio (USD/MBTU)',
+        fill: false,
+        lineTension: 0,
+        hidden: false,
+        data: {{ info["dataDataSets"]["precio_promedio"]|json_encode()|raw }}
+    },{
+        type: 'line',
+        label: 'Precio Máximo (USD/MBTU)',
+        fill: false,
+        lineTension: 0,
+        hidden: false,
+        data: {{ info["dataDataSets"]["precio_maximo"]|json_encode()|raw }}
+    }]
+};
 
-    var randomColor = function (opacity) {
-        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-    };
-    var lineChartData = {
-        labels: {{ info["labels"]|json_encode|raw }},
-        datasets: [{
-            type: 'line',
-            label: 'Precio Mínimo (USD/MBTU)',
-            fill: false,
-            lineTension: 0,
-            hidden: false,
-            data: {{ info["dataDataSets"]["precio_minimo"]|json_encode()|raw }}
-        }, {
-            type: 'line',
-            label: 'Precio Promedio (USD/MBTU)',
-            fill: false,
-            lineTension: 0,
-            hidden: false,
-            data: {{ info["dataDataSets"]["precio_promedio"]|json_encode()|raw }}
-        }, {
-            type: 'line',
-            label: 'Precio Máximo (USD/MBTU)',
-            fill: false,
-            lineTension: 0,
-            hidden: false,
-            data: {{ info["dataDataSets"]["precio_maximo"]|json_encode()|raw }}
-        }]
-    };
-
-    $.each(lineChartData.datasets, function (i, dataset) {
-        var tempColor = randomColor(1);
+$.each(lineChartData.datasets, function(i, dataset) {
+    var tempColor = randomColor(1);
         dataset.borderColor = tempColor;
         dataset.backgroundColor = tempColor;
         dataset.pointBorderColor = tempColor;
@@ -124,32 +120,32 @@
         dataset.pointHoverBorderWidth = 0;
         dataset.pointRadius = 0;
         dataset.pointHitRadius = 0;
-    });
+});
 
-    window.onload = function () {
-        var chartEl = document.getElementById("chart");
-        window.myLine = new Chart(chartEl, {
-            type: 'line',
-            data: lineChartData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                title: {
-                    display: false,
-                    text: 'CANTIDAD CONTRATADA POR PUNTO DE ENTREGA',
-                    fontSize: 16,
-                },
-                tooltips: {
-                    mode: 'label',
-                    enabled: true
-                    //custom: customTooltips
-                },
-                legend: {
-                    position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
-                }
+window.onload = function () {
+    var chartEl = document.getElementById("chart");
+    window.myLine = new Chart(chartEl, {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            title: {
+                display:false,
+                text: 'CANTIDAD CONTRATADA POR PUNTO DE ENTREGA',
+                fontSize: 16,
+            },
+            tooltips: {
+                mode: 'label',
+                enabled: true
+                //custom: customTooltips
+            },
+            legend: {
+                position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
             }
-        });
-    };
+        }
+    });
+};
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>

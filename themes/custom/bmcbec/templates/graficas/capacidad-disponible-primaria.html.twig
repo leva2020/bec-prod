@@ -3,14 +3,12 @@
 {% set mf = "now"|date("m", "America/Bogota") %}
 {% set mi = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getCapacidadDisponiblePrimaria','anoInicial=' ~ai~ '&mesInicial=' ~mi~ '&anoFinal=' ~af~ '&mesFinal=' ~mf~ '&codigoOperador=228&codigopunto=120', 1, 1, '', '', 'cantidad') %}
+{% set info = enviar_post_ws('getCapacidadDisponiblePrimaria','anoInicial=' ~ai~ '&mesInicial=' ~mi~ '&anoFinal=' ~af~ '&mesFinal=' ~mf~ '&codigoOperador=228&codigopunto=120', 1, 1, '', '', 'cantidad')  %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
-{# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css"> #}
-<link rel="stylesheet" type="text/css"
-      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
 {# <script type="text/javascript" src="src/js/tables.js"></script>#}
 
 {{ attach_library('bmcbec/tables') }}
@@ -24,161 +22,153 @@
         <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
     </div>
     <div class="bmcbec-dp-right">
-        <form method="post" action="">
-            <input type="text" class="span2 editable" value="{{ ai }}-{{ mi }}" id="dpd1"
-                   name="paramsFilter[fechaInicial]" data-date="{{ ai }}-{{ mi }}" data-date-format="yyyy-mm"
-                   data-date-viewmode="months" data-date-minviewmode="days">
-            <input type="text" class="span2 editable" value="{{ af }}-{{ mf }}" id="dpd2"
-                   name="paramsFilter[fechaFinal]" data-date="{{ af }}-{{ mf }}" data-date-format="yyyy-mm"
-                   data-date-viewmode="months" data-date-minviewmode="days">
-
-            <select name="paramsFilter[codigoOperador]" id="formOperatorCode">
-                <!-- <option value="0" selected>-- Transportador --</option>-->
-                <!--optgroup label="Todos los Operadores"-->
-                <option value="71">COINOBRAS GAS S.A. ESP - COINOBRAS GAS S.A. ESP</option>
-                <option value="213">PROMIGAS S.A. E.S.P. - PROMIGAS S.A. E.S.P.</option>
-                <option value="193">PROMIORIENTE S.A. E.S.P - PROMIORIENTE S.A. E.S.P</option>
-                <option value="214">PROMOTORA DE GASES DEL SUR S.A. E.S.P. - PROMOTORA DE GASES DEL SUR S.A. E.S.P.
-                </option>
-                <option value="211">TRANSOCCIDENTE S.A. E.S.P. - TRANSOCCIDENTE S.A. E.S.P.</option>
-                <option value="228" selected>TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP -
-                    Transportadora de Gas Internacional S.A. E.S.P. - TGI S.A. ESP
-                </option>
-                <option value="205">TRANSPORTADORA DE METANO E.S.P S.A - TRANSPORTADORA DE METANO E.S.P S.A</option>
-                </optgroup>
-            </select>
-
-            <select name="paramsFilter[codigopunto]" id="formRouteCode">
-                <option value="0" selected>-- Todos los tramos --</option>
-                <optgroup label="Tramos o Grupo de Gasoductos">
-                    <option value="132">MORICHAL-YOPAL</option>
-                    <option value="146">EL PORVENIR-LA BELLEZA</option>
-                    <option value="118">SEBASTOPOL-VASCONIA</option>
-                    <option value="126">VASCONIA-LA BELLEZA</option>
-                    <option value="129">CUSIANA-APIAY</option>
-                    <option value="167">SEBASTOPOL-BARRANCABERMEJA</option>
-                    <option value="121">PEREIRA-ARMENIA</option>
-                    <option value="127">LA BELLEZA-COGUA</option>
-                    <option value="130">APIAY-USME</option>
-                    <option value="124">GUALANDAY-NEIVA</option>
-                    <option value="84">CENTAUROS-GRANADA</option>
-                    <option value="153">GBS_I-GBS_F</option>
-                    <option value="133">CUSIANA-EL PORVENIR</option>
-                    <option value="147">LA BELLEZA-VASCONIA</option>
-                    <option value="119">VASCONIA-MARIQUITA</option>
-                    <option value="165">GUALANDAY-MONTAÑUELO</option>
-                    <option value="125">MONTAÑUELO-GUALANDAY</option>
-                    <option value="168">NEIVA-GUALANDAY</option>
-                    <option value="116">BALLENA-BARRANCABERMEJA</option>
-                    <option value="162">GUALANDAY-MARIQUITA</option>
-                    <option value="122">ARMENIA-YUMBO/CALI</option>
-                    <option value="128">LA BELLEZA-EL PORVENIR</option>
-                    <option value="117">BARRANCABERMEJA-SEBASTOPOL</option>
-                    <option value="123">MARIQUITA-GUALANDAY</option>
-                    <option value="160">VASCONIA-SEBASTOPOL</option>
-                    <option value="120" selected>MARIQUITA-PEREIRA</option>
-                    <option value="131">APIAY-OCOA</option>
-                    <option value="157">COGUA-SABANA_F</option>
-                </optgroup>
-            </select>
-
-            <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
-        </form>
+    <form method="post" action="">
+    <input type="text" class="span2 editable" value="{{ ai }}-{{ mi }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ ai }}-{{ mi }}" data-date-format="yyyy-mm" data-date-viewmode="months" data-date-minviewmode="days">
+    <input type="text" class="span2 editable" value="{{ af }}-{{ mf }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ af }}-{{ mf }}" data-date-format="yyyy-mm" data-date-viewmode="months" data-date-minviewmode="days">
+    
+    <select name="paramsFilter[codigoOperador]" id="formOperatorCode">
+    <!-- <option value="0" selected>-- Transportador --</option>-->
+    <!--optgroup label="Todos los Operadores"-->
+        <option value="71" >COINOBRAS GAS S.A. ESP - COINOBRAS GAS S.A. ESP</option>
+        <option value="213" >PROMIGAS S.A. E.S.P. - PROMIGAS S.A. E.S.P.</option>
+        <option value="193" >PROMIORIENTE S.A. E.S.P - PROMIORIENTE S.A. E.S.P</option>
+        <option value="214" >PROMOTORA DE GASES DEL SUR S.A. E.S.P. - PROMOTORA DE GASES DEL SUR S.A. E.S.P.</option>
+        <option value="211" >TRANSOCCIDENTE S.A. E.S.P. - TRANSOCCIDENTE S.A. E.S.P.</option>
+        <option value="228"  selected >TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP - Transportadora de Gas Internacional S.A. E.S.P. - TGI S.A. ESP</option>
+        <option value="205" >TRANSPORTADORA DE METANO E.S.P S.A - TRANSPORTADORA DE METANO E.S.P S.A</option>
+    </optgroup>
+    </select>
+    
+    <select name="paramsFilter[codigopunto]" id="formRouteCode">
+    <option value="0" selected>-- Todos los tramos --</option>
+    <optgroup label="Tramos o Grupo de Gasoductos">
+        <option value="132" >MORICHAL-YOPAL</option>
+        <option value="146" >EL PORVENIR-LA BELLEZA</option>
+        <option value="118" >SEBASTOPOL-VASCONIA</option>
+        <option value="126" >VASCONIA-LA BELLEZA</option>
+        <option value="129" >CUSIANA-APIAY</option>
+        <option value="167" >SEBASTOPOL-BARRANCABERMEJA</option>
+        <option value="121" >PEREIRA-ARMENIA</option>
+        <option value="127" >LA BELLEZA-COGUA</option>
+        <option value="130" >APIAY-USME</option>
+        <option value="124" >GUALANDAY-NEIVA</option>
+        <option value="84" >CENTAUROS-GRANADA</option>
+        <option value="153" >GBS_I-GBS_F</option>
+        <option value="133" >CUSIANA-EL PORVENIR</option>
+        <option value="147" >LA BELLEZA-VASCONIA</option>
+        <option value="119" >VASCONIA-MARIQUITA</option>
+        <option value="165" >GUALANDAY-MONTAÑUELO</option>
+        <option value="125" >MONTAÑUELO-GUALANDAY</option>
+        <option value="168" >NEIVA-GUALANDAY</option>
+        <option value="116" >BALLENA-BARRANCABERMEJA</option>
+        <option value="162" >GUALANDAY-MARIQUITA</option>
+        <option value="122" >ARMENIA-YUMBO/CALI</option>
+        <option value="128" >LA BELLEZA-EL PORVENIR</option>
+        <option value="117" >BARRANCABERMEJA-SEBASTOPOL</option>
+        <option value="123" >MARIQUITA-GUALANDAY</option>
+        <option value="160" >VASCONIA-SEBASTOPOL</option>
+        <option value="120"  selected >MARIQUITA-PEREIRA</option>
+        <option value="131" >APIAY-OCOA</option>
+        <option value="157" >COGUA-SABANA_F</option>
+    </optgroup>
+    </select>
+    
+    <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+    </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
 <div class="bmcbec-fix"></div>
 
 <!-- GRAPHIC CONSTRUCTOR -->
-<div class="canvas-holder-text">
-    <h4>
-        <text>Resultados:</text>
-    </h4>
-    <p>Se est&#225; mostrando informaci&#243;n de 3 resultados encontrados con los filtros aplicados.</p>
-    <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+{# <div class="canvas-holder-text">#}
+{#     <h4><text>Resultados:</text></h4>#}
+{#     <p>Se est&#225; mostrando informaci&#243;n de  3 resultados encontrados con los filtros aplicados.</p>#}
+{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
+{# </div>#}
 
-</div>
+{{ include('resultados_info.html.twig', {"numero_resultados": 3, "info": info}) }}
+
 <div class="canvas-holder">
     <h3 align="center">CAPACIDAD DISPONIBLE PRIMARIA</h3>
-    <canvas id="canvas"/>
+    <canvas id="canvas" />
 </div>
 
 <script type="text/javascript">
 
-    var randomScalingFactor = function () {
-        return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
-    };
-    var randomColor = function (opacity) {
-        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-    };
+var randomScalingFactor = function() {
+    return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
+};
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
 
-    var config = {
-        type: 'line',
-        data: {
-            labels: {{ info['labels']|json_encode|raw }},
-            datasets: [
-                {
-                    label: "CAPACIDAD DISPONIBLE PRIMARIA",
-                    data: {{ info["dataDataSets"]|json_encode()|raw }}
-                }]
+var config = {
+    type: 'line',
+    data: {
+        labels: {{ info['labels']|json_encode|raw }},
+        datasets: [
+            {
+                label: "CAPACIDAD DISPONIBLE PRIMARIA",
+                data: {{ info["dataDataSets"]|json_encode()|raw }}
+            }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        title:{
+            display:false,
+            text:'CAPACIDAD DISPONIBLE PRIMARIA - {{ info['info']['transportador'] }}',
+            fontSize: 16,
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            title: {
-                display: false,
-                text: 'CAPACIDAD DISPONIBLE PRIMARIA - {{ info['info']['transportador'] }}',
-                fontSize: 16,
-            },
-            tooltips: {
-                mode: 'label',
-            },
-            hover: {
-                mode: 'dataset'
-            },
-            legend: {
-                position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        show: true,
-                        labelString: 'Mes'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        show: true,
-                        labelString: 'Valor'
-                    }
-                }]
-            }
+        tooltips: {
+            mode: 'label',
+        },
+        hover: {
+            mode: 'dataset'
+        },
+        legend: {
+            position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    show: true,
+                    labelString: 'Mes'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    show: true,
+                    labelString: 'Valor'
+                }
+            }]
         }
-    };
+    }
+};
 
-    $.each(config.data.datasets, function (i, dataset) {
-        dataset.borderColor = randomColor(0.4);
-        dataset.backgroundColor = randomColor(0.5);
-        dataset.pointBorderColor = randomColor(0.7);
-        dataset.pointBackgroundColor = randomColor(0.5);
-        dataset.pointBorderWidth = 1;
-    });
+$.each(config.data.datasets, function(i, dataset) {
+    dataset.borderColor = randomColor(0.4);
+    dataset.backgroundColor = randomColor(0.5);
+    dataset.pointBorderColor = randomColor(0.7);
+    dataset.pointBackgroundColor = randomColor(0.5);
+    dataset.pointBorderWidth = 1;
+});
 
-    window.onload = function () {
-        var ctx = document.getElementById("canvas").getContext("2d");
-        window.myLine = new Chart(ctx, config);
-    };
+window.onload = function() {
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myLine = new Chart(ctx, config);
+};
 </script>
 
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
-    <h4>Tabla de Resultados</h4>
-    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
-        la tabla.</p>
-    <table id="ResultTable" class="display" cellspacing="0" width="100%">
-        <thead>
+<h4>Tabla de Resultados</h4>
+<p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
+<table id="ResultTable" class="display" cellspacing="0" width="100%">
+    <thead>
         <tr>
             <th>Transportador</th>
             <th>Tramo</th>
@@ -186,8 +176,8 @@
             <th>Mes</th>
             <th>Capacidad Disponible Primaria (KPCD)</th>
         </tr>
-        </thead>
-        <tfoot>
+    </thead>
+    <tfoot>
         <tr>
             <th>Transportador</th>
             <th>Tramo</th>
@@ -195,9 +185,9 @@
             <th>Mes</th>
             <th>Capacidad Disponible Primaria (KPCD)</th>
         </tr>
-        </tfoot>
-        <tbody>
-
+    </tfoot>
+    <tbody>
+        
         {% for key, data in info["dataTables"] %}
             <tr valign="top" align="left">
                 <td>{{ data.trasportador }}</td>
@@ -207,39 +197,36 @@
                 <td align="right" data-order={{ data.capacidad }}>{{ data.capacidad }}</td>
             </tr>
         {% endfor %}
-
-        </tbody>
-    </table>
+    
+    </tbody>
+</table>
 </div>
 <div class="bmcbec-fix"></div>
 
 <!-- Begin - Export Option Table -->
 <div id="table2export">
-    <table id="ResultTable1"></table>
+<table id="ResultTable1"></table>
 </div>
 <!-- END - Export Option Table -->
 
 <script type="text/javascript">
-
-
-    $(document).ready(function () {
-        datesFieldsValidation(395, 395);
-        $("#ResultTable thead").clone().appendTo("#ResultTable1");
-        $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
-        $("#ResultTable tbody").clone().appendTo("#ResultTable1");
-        dataTablesIni();
-    });
+$(document).ready(function() {
+    $("#ResultTable thead").clone().appendTo("#ResultTable1");
+    $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+    $("#ResultTable tbody").clone().appendTo("#ResultTable1");
+    dataTablesIni();
+});
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
 
 <script type="text/javascript">
     $('#formOperatorCode').change(function () {
-        $('form').submit();
+    $('form').submit();
     });
     $('form').submit(function () {
         return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 3650);
     });
-    $(document).ready(function () {
+    $(document).ready(function() {
         insertText(3650);
     });
 </script>

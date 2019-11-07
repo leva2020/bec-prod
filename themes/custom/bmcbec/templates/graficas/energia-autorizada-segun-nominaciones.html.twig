@@ -1,10 +1,4 @@
-{% set now = "now"|date("Y-m-d", "America/Bogota") %}
-{% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
-
-{% set monthNow = "now"|date("m", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
-
-{% set info=enviar_post_ws('getCantidadAutorizadaNominaciones','fechaInicial=' ~yearAgo~ '&fechaFinal='~now~'&codigoOperador=0',1,1,'','','cantidad') %}
+{% set info=enviar_post_ws('getCantidadAutorizadaNominaciones','fechaInicial=2018-06-01&fechaFinal=2019-01-01&codigoOperador=0',1,1,'','','cantidad')  %}
 
 {{ attach_library('bmcbec/chartJS') }}
 <div class="filter-graphic" align="center">
@@ -13,80 +7,64 @@
         <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
         <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
         <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
-        <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
+    <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
     <div class="bmcbec-dp-right">
-        <form method="post" action="">
-            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
-                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
-                   data-date-minviewmode="days"/>
-            <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
-                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
-                   data-date-minviewmode="days"/>
-
-            <select name="paramsFilter[codigoOperador]">
-                <option value="0" selected="">-- Todos los Operadores --</option>
-                <optgroup label="Seleccione un Operador">
-                    <option value="71">COINOBRAS GAS S.A. ESP</option>
-                    <option value="213">PROMIGAS S.A. E.S.P.</option>
-                    <option value="193">PROMIORIENTE S.A. E.S.P</option>
-                    <option value="214">PROMOTORA DE GASES DEL SUR S.A. E.S.P.</option>
-                    <option value="211">TRANSOCCIDENTE S.A. E.S.P.</option>
-                    <option value="228">TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP</option>
-                    <option value="205">TRANSPORTADORA DE METANO E.S.P S.A</option>
-                </optgroup>
-            </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button">
-        </form>
-        <p class="helpText">Consulta un periodo hasta 395 días</p></div>
+    <form method="post" action="">
+    <input type="text" class="span2" value="2019-02-01" id="dpd1" name="formDateBegin" data-date="2019-02-01" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" readonly="readonly">
+    <input type="text" class="span2" value="2019-03-31" id="dpd2" name="formDateEnd" data-date="2019-03-31" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" readonly="readonly">
+    
+    <select name="formOperatorCode">
+    <option value="0" selected="">-- Todos los Operadores --</option>
+    <optgroup label="Seleccione un Operador">
+        <option value="71">COINOBRAS GAS S.A. ESP</option>
+        <option value="213">PROMIGAS S.A. E.S.P.</option>
+        <option value="193">PROMIORIENTE S.A. E.S.P</option>
+        <option value="214">PROMOTORA DE GASES DEL SUR S.A. E.S.P.</option>
+        <option value="211">TRANSOCCIDENTE S.A. E.S.P.</option>
+        <option value="228">TRANSPORTADORA DE GAS INTERNACIONAL S.A. E.S.P. - TGI S.A. ESP</option>
+        <option value="205">TRANSPORTADORA DE METANO E.S.P S.A</option>
+    </optgroup>
+    </select>
+    <input type="submit" value="Consultar" class="bmcbec-dp-button">
+    </form>
+    <p class="helpText">Consulta un periodo hasta 395 días</p></div>
     <div class="bmcbec-dp-fix"></div>
 </div>
 
-<div class="chart-container">
-    <canvas id="canvas"></canvas>
+<div class="chart-container" >
+<canvas id="canvas" ></canvas>
 </div>
 <style type="text/css">
     .chart-container {
-        position: relative;
-        margin: auto;
-        height: 80vh;
-        width: 80vw;
-    }
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 80vw;
+}
 </style>
 <script type="text/javascript">
 
-    $(document).ready(function () {
-        datesFieldsValidation(395, 395);
-    });
 
-    {% if info['paramsFilter'] is not null %}
-    var codigoOperador = {{ (info['paramsFilter']['codigoOperador'])?:0 }};
-    $("option[value=" + codigoOperador + "]").attr('selected', 'selected');
 
-    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
-    $("input[id='dpd1']").attr('value', fechaInicial);
 
-    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
-    $("input[id='dpd2']").attr('value', fechaFinal);
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
 
-    {% endif %}
 
-    var randomColor = function (opacity) {
-        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+
+var lineChartData = {
+        labels: [  {% for item in info['labels'] %}"{{item}}",{% endfor %}  ],
+    datasets: [
+         {
+         label: "Cantidad (MBTUD)",
+         data: [ {% for item in info['data'] %}"{{item}}",{% endfor %} ]
+         },
+
+    ]
     };
 
-
-    var lineChartData = {
-        labels: [{% for item in info['labels'] %}"{{ item }}",{% endfor %}  ],
-        datasets: [
-            {
-                label: "Cantidad (MBTUD)",
-                data: [{% for item in info['data'] %}"{{ item }}",{% endfor %} ]
-            },
-
-        ]
-    };
-
-    $.each(lineChartData.datasets, function (i, dataset) {
+    $.each(lineChartData.datasets, function(i, dataset) {
         dataset.borderColor = randomColor(0.4);
         dataset.backgroundColor = randomColor(1);
         dataset.pointBorderColor = randomColor(0.7);
@@ -94,7 +72,7 @@
         dataset.pointBorderWidth = 1;
     });
 
-    window.onload = function () {
+    window.onload = function() {
         var ctx = document.getElementById("canvas");
         window.myLine = Chart.Line(ctx, {
             data: lineChartData,
@@ -102,9 +80,9 @@
                 responsive: true,
                 hoverMode: 'label',
                 stacked: false,
-                title: {
-                    display: false,
-                    text: 'CANTIDAD DE ENERGÍA AUTORIZADA DE ACUERDO A NOMINACIONES',
+                title:{
+                    display:false,
+                    text:'CANTIDAD DE ENERGÍA AUTORIZADA DE ACUERDO A NOMINACIONES',
                     fontSize: 16,
                 },
                 legend: {
@@ -117,9 +95,9 @@
                             offsetGridLines: false
                         },
                         ticks: {
-                            userCallback: function (dataLabel, index) {
-                                return index % 2 === 0 ? dataLabel : '';
-                            }
+                             userCallback: function(dataLabel, index) {
+                                 return index % 2 === 0 ? dataLabel : '';
+                             }
                         }
                     }],
                     yAxes: [{
@@ -133,7 +111,7 @@
         });
     };
 
-    $('#randomizeData').click(function () {
+    $('#randomizeData').click(function() {
         lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
 
         lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
@@ -141,10 +119,10 @@
         window.myLine.update();
     });
 
-    var c = document.getElementById("canvas");
-    var ctx = c.getContext("3d");
-    ctx.font = "30px Arial";
+    var c=document.getElementById("canvas");
+    var ctx=c.getContext("3d");
+    ctx.font="30px Arial";
 
-
-</script>
+    
+    </script>
     

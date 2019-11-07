@@ -1,13 +1,11 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getAgregadoNacionalSuministro', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoModalidad=1',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
+{% set info = enviar_post_ws('getAgregadoNacionalSuministro', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoModalidad=1',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
-<link rel="stylesheet" type="text/css"
-      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
 {# <script type="text/javascript" src="src/js/tables.js"></script>#}
 
 {{ attach_library('bmcbec/tables') }}
@@ -21,86 +19,82 @@
         <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
     </div>
     <div class="bmcbec-dp-right">
-        <form method="post" action="">
-            <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
-                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
-                   data-date-minviewmode="days"/>
-            <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
-                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
-                   data-date-minviewmode="days"/>
-
-            <select name="paramsFilter[codigoModalidad]">
-                <!-- <option value="0" selected>-- Modalidad Contractual --</option> -->
-                <optgroup label="Modalidad">
-                    <option value="21">C1</option>
-                    <option value="22">C2</option>
-                    <option value="5">CON INTERRUPCIONES</option>
-                    <option value="6">CONTINGENCIA</option>
-                    <option value="1" selected>FIRME</option>
-                    <option value="23">FIRME AL 95%</option>
-                    <option value="2">FIRMEZA CONDICIONADA</option>
-                    <option value="3">OPCI&#211;N DE COMPRA</option>
-                    <option value="4">OPCI&#211;N DE COMPRA CONTRA EXP</option>
-                    <option value="16">OTRAS</option>
-                    <option value="8">TAKE OR PAY</option>
-                </optgroup>
-            </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
-        </form>
+    <form method="post" action="">
+    <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+    <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+    
+    <select name="paramsFilter[codigoModalidad]">
+    <!-- <option value="0" selected>-- Modalidad Contractual --</option> -->
+    <optgroup label="Modalidad">
+        <option value="21" >C1</option>
+        <option value="22" >C2</option>
+        <option value="5" >CON INTERRUPCIONES</option>
+        <option value="6" >CONTINGENCIA</option>
+        <option value="1"  selected >FIRME</option>
+        <option value="23" >FIRME AL 95%</option>
+        <option value="2" >FIRMEZA CONDICIONADA</option>
+        <option value="3" >OPCI&#211;N DE COMPRA</option>
+        <option value="4" >OPCI&#211;N DE COMPRA CONTRA EXP</option>
+        <option value="16" >OTRAS</option>
+        <option value="8" >TAKE OR PAY</option>
+    </optgroup>
+    </select>
+    <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+    </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
 <div class="bmcbec-fix"></div>
 
 <!-- GRAPHIC CONSTRUCTOR -->
-<div class="canvas-holder-text">
-    <h4>
-        <text>Resultados:</text>
-    </h4>
-    <p>Se est&#225; mostrando informaci&#243;n de 1 resultados encontrados con los filtros aplicados.</p>
-    <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
-</div>
+{# <div class="canvas-holder-text">#}
+{#     <h4><text>Resultados:</text></h4>#}
+{#     <p>Se est&#225; mostrando informaci&#243;n de  1 resultados encontrados con los filtros aplicados.</p>#}
+{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
+{# </div>#}
+
+{{ include('resultados_info.html.twig', {"numero_resultados": 1, "info": info}) }}
+
 <div class="canvas-holder">
     <h3 align="center">CANTIDAD CONTRATADA - AGREGADO NACIONAL</h3>
-    <canvas id="canvas"/>
+    <canvas id="canvas" />
 </div>
-
 <script type="text/javascript">
 
-    {% if info['paramsFilter'] is not null %}
+{% if info['paramsFilter'] is not null %}
 
-    var codigoModalidad = {{ info['paramsFilter']['[codigoModalidad'] }};
-    $("option[value=" + codigoModalidad + "]").attr('selected', 'selected');
+var codigoModalidad = {{ info['paramsFilter']['codigoModalidad'] }};
+$("option[value=" + codigoModalidad + "]").attr('selected', 'selected');
 
-    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
-    $("input[id='dpd1']").attr('value', fechaInicial);
+var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+$("input[id='dpd1']").attr('value', fechaInicial);
 
-    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
-    $("input[id='dpd2']").attr('value', fechaFinal);
-    {% endif %}
+var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+$("input[id='dpd2']").attr('value', fechaFinal);
+{% endif %}
 
-    var randomScalingFactor = function () {
-        return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
+var randomScalingFactor = function() {
+    return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
+};
+var randomColor = function(opacity) {
+    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+};
+
+var lineChartData = {
+    labels: {{ info["labels"]|json_encode|raw }},
+    datasets: [
+        {% for key, dataSet in info["dataDataSets"] %}
+        {
+            label: "{{ key }}",
+            fill: false,
+            data: {{ dataSet|json_encode|raw }}
+        },
+        {% endfor %}
+
+    ]
     };
-    var randomColor = function (opacity) {
-        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-    };
 
-    var lineChartData = {
-        labels: {{ info["labels"]|json_encode|raw }},
-        datasets: [
-            {% for key, dataSet in info["dataDataSets"] %}
-            {
-                label: "{{ key }}",
-                fill: false,
-                data: {{ dataSet|json_encode|raw }}
-            },
-            {% endfor %}
-
-        ]
-    };
-
-    $.each(lineChartData.datasets, function (i, dataset) {
+    $.each(lineChartData.datasets, function(i, dataset) {
         dataset.borderColor = randomColor(0.4);
         dataset.backgroundColor = dataset.borderColor;
         dataset.pointBorderColor = dataset.borderColor;
@@ -108,7 +102,7 @@
         dataset.pointBorderWidth = 0;
     });
 
-    window.onload = function () {
+    window.onload = function() {
         var ctx = document.getElementById("canvas").getContext("2d");
         window.myLine = Chart.Line(ctx, {
             data: lineChartData,
@@ -117,9 +111,9 @@
                 maintainAspectRatio: true,
                 hoverMode: 'label',
                 stacked: false,
-                title: {
-                    display: false,
-                    text: 'CANTIDAD CONTRATADA - AGREGADO NACIONAL',
+                title:{
+                    display:false,
+                    text:'CANTIDAD CONTRATADA - AGREGADO NACIONAL',
                     fontSize: 16,
                 },
                 scales: {
@@ -139,7 +133,7 @@
                         display: true,
                         position: "right",
                         id: "y-axis-2",
-
+                        
                         gridLines: {
                             drawOnChartArea: false,
                         },
@@ -149,11 +143,11 @@
         });
     };
 
-    $('#randomizeData').click(function () {
-        lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
-        lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
-        window.myLine.update();
-    });
+$('#randomizeData').click(function() {
+    lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+    lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+    window.myLine.update();
+});
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>
@@ -161,11 +155,10 @@
 
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
-    <h4>Tabla de Resultados</h4>
-    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
-        la tabla.</p>
-    <table id="ResultTable" class="display" cellspacing="0" width="100%">
-        <thead>
+<h4>Tabla de Resultados</h4>
+<p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
+<table id="ResultTable" class="display" cellspacing="0" width="100%">
+    <thead>
         <tr>
             <th>Año</th>
             <th>Mes</th>
@@ -173,8 +166,8 @@
             <th>Cantidad (MBTUD)</th>
             <th>Precio Promedio Ponderado (USD/MBTU)</th>
         </tr>
-        </thead>
-        <tfoot>
+    </thead>
+    <tfoot>
         <tr>
             <th>Año</th>
             <th>Mes</th>
@@ -182,8 +175,8 @@
             <th>Cantidad (MBTUD)</th>
             <th>Precio Promedio Ponderado (USD/MBTU)</th>
         </tr>
-        </tfoot>
-        <tbody>
+    </tfoot>
+    <tbody>
         <tr valign="top" align="left">
             <td>2019</td>
             <td>julio</td>
@@ -191,15 +184,15 @@
             <td align="right" data-order="2110">2110</td>
             <td align="right" data-order="0.89">0.89</td>
         </tr>
-        </tbody>
-    </table>
+    </tbody>
+</table>
 </div>
 
 
 <!-- Begin - Export Option Table -->
 <div id="table2export">
-    <table id="ResultTable1">
-        <thead>
+<table id="ResultTable1">
+    <thead>
         <tr>
             <th>Año</th>
             <th>Mes</th>
@@ -207,8 +200,8 @@
             <th>Cantidad (MBTUD)</th>
             <th>Precio Promedio Ponderado (USD/MBTU)</th>
         </tr>
-        </thead>
-        <tfoot>
+    </thead>
+    <tfoot>
         <tr>
             <th>Año</th>
             <th>Mes</th>
@@ -216,8 +209,8 @@
             <th>Cantidad (MBTUD)</th>
             <th>Precio Promedio Ponderado (USD/MBTU)</th>
         </tr>
-        </tfoot>
-        <tbody>
+    </tfoot>
+    <tbody>
         <tr valign="top" align="left">
             <td>2019</td>
             <td>julio</td>
@@ -225,17 +218,16 @@
             <td align="right" data-order="2110">2110</td>
             <td align="right" data-order="0.89">0.89</td>
         </tr>
-        </tbody>
-    </table>
+    </tbody>
+</table>
 </div>
 <!-- END - Export Option Table -->
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        datesFieldsValidation(395, 395);
-        dataTablesIni();
-    });
+$(document).ready(function() {
+    dataTablesIni();
+});
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
 
@@ -243,7 +235,7 @@
     $('form').submit(function () {
         //return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 1825);
     });
-    $(document).ready(function () {
+    $(document).ready(function() {
         insertText(1825);
     });
 </script>

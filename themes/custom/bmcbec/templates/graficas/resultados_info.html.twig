@@ -1,0 +1,12 @@
+<!-- GRAPHIC CONSTRUCTOR -->
+<div class="canvas-holder-text">
+    <h4><text>Resultados:</text></h4>
+    {% if info["labels"] is not empty %}
+        <p>Se est&#225; mostrando informaci&#243;n de  {{ numero_resultados }} resultados encontrados con los filtros aplicados.</p>
+        <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+    {% else %}
+        <p>
+            {{ info["response"] }}
+        </p>
+    {% endif %}
+</div>

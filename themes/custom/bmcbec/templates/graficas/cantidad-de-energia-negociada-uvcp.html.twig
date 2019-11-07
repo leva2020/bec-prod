@@ -1,14 +1,12 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getInformaciontransaccionalSUVCP_CEN_UVCP', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
+{% set info = enviar_post_ws('getInformaciontransaccionalSUVCP_CEN_UVCP', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
-<link rel="stylesheet" type="text/css"
-      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
 {# <script type="text/javascript" src="src/js/tables.js"></script>#}
 
 {{ attach_library('bmcbec/tables') }}
@@ -22,391 +20,387 @@
         <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
     </div>
     <div class="bmcbec-dp-right">
-        <form method="post" action="">
-            <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
-                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years"
-                   data-date-minviewmode="days"/>
-            <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
-                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years"
-                   data-date-minviewmode="days"/>
-            <select name="paramsFilter[Punto_ruta]">
-                <option value="0" selected>-- Todos los Puntos --</option>
-                <optgroup label="Puntos de Entrega">
-                    <option value="73">Abanico</option>
-                    <option value="95">ABEJAS</option>
-                    <option value="266">ACAE SAN MIGUEL</option>
-                    <option value="96">ACORDIONERO</option>
-                    <option value="358">AGUAS BLANCAS</option>
-                    <option value="258">AGUAZUL</option>
-                    <option value="97">AKACIAS</option>
-                    <option value="359">ANDINA</option>
-                    <option value="98">APAMATE</option>
-                    <option value="13">APIAY</option>
-                    <option value="309">APIAY CONEXI&#211;N</option>
-                    <option value="99">ARAGUATO</option>
-                    <option value="100">ARAUCA</option>
-                    <option value="284">ARDILLA</option>
-                    <option value="94">ARIANNA</option>
-                    <option value="257">ARJONA</option>
-                    <option value="5">ARMENIA</option>
-                    <option value="310">ARMENIA CONEXI&#211;N</option>
-                    <option value="101">ARRAYAN</option>
-                    <option value="285">AVISPA</option>
-                    <option value="360">AZOR</option>
-                    <option value="102">BALAY</option>
-                    <option value="103">BALCON</option>
-                    <option value="39">BALLENA</option>
-                    <option value="104">BARQUERE&#209;A</option>
-                    <option value="1">BARRANCABERMEJA</option>
-                    <option value="311">BARRANCABERMENJA CONEXI&#211;N</option>
-                    <option value="42">BARRANQUILLA</option>
-                    <option value="353">BARRANQUILLA CONEXI&#211;N</option>
-                    <option value="105">BEGONIA</option>
-                    <option value="253">Bloque Esperanza (Campo Mayor)</option>
-                    <option value="254">Bloque Esperanza (Prueba Extensa)</option>
-                    <option value="255">Bloque VIM 5</option>
-                    <option value="66">BOCA</option>
-                    <option value="305">BOLIVAR</option>
-                    <option value="267">BONANZA</option>
-                    <option value="75">Bonga Mamey</option>
-                    <option value="245">BOQUER&#211;N</option>
-                    <option value="260">BREMEN JOBO</option>
-                    <option value="307">BREVA-1</option>
-                    <option value="106">BRILLANTE</option>
-                    <option value="107">BRISAS</option>
-                    <option value="328">BRISASB R</option>
-                    <option value="18">BUCARAMANGA</option>
-                    <option value="354">BUCARAMANGA CONEXI&#211;N</option>
-                    <option value="28">BUENOS AIRES</option>
-                    <option value="233">BULLERENGUE</option>
-                    <option value="65">CALDAS VIEJO</option>
-                    <option value="6">CALI</option>
-                    <option value="108">CALONA</option>
-                    <option value="235">CAMPO CORRALES</option>
-                    <option value="109">CAMPO RICO</option>
-                    <option value="70">CAMPO SANTIAGO</option>
-                    <option value="286">CANAGUAY</option>
-                    <option value="111">CANAGUEY</option>
-                    <option value="112">CANDALAY</option>
-                    <option value="287">CANDELILLA</option>
-                    <option value="54">CANTAGALLO</option>
-                    <option value="326">CANTAGALLO R</option>
-                    <option value="110">CA&#209;AFLECHA</option>
-                    <option value="263">CA&#209;AHUATE</option>
-                    <option value="300">CA&#209;ANDONGA</option>
-                    <option value="113">CA&#209;O DUYA</option>
-                    <option value="114">CA&#209;O GANDUL</option>
-                    <option value="115">CA&#209;O GARZA</option>
-                    <option value="116">CA&#209;O LIMON</option>
-                    <option value="117">CA&#209;O RONDON</option>
-                    <option value="118">CA&#209;O YARUMAL</option>
-                    <option value="268">CAPACHOS</option>
-                    <option value="288">CAPURE</option>
-                    <option value="77">CARAMELO</option>
-                    <option value="269">CARIBE</option>
-                    <option value="119">CARICARE</option>
-                    <option value="120">CARMENTEA</option>
-                    <option value="43">CARTAGENA</option>
-                    <option value="355">CARTAGENA CONEXI&#211;N</option>
-                    <option value="121">CARUPANA</option>
-                    <option value="289">CARUTO</option>
-                    <option value="122">CASABE</option>
-                    <option value="123">CASONA</option>
-                    <option value="124">CEBU</option>
-                    <option value="290">CEIBO</option>
-                    <option value="68">CENTAUROS</option>
-                    <option value="312">CENTAUROS CONEXI&#211;N</option>
-                    <option value="72">Cerrito</option>
-                    <option value="76">CERRO GORDO</option>
-                    <option value="239">CERRO MATOSO</option>
-                    <option value="125">CHACHARO</option>
-                    <option value="126">CHAPARRITO</option>
-                    <option value="127">CHAPARRO</option>
-                    <option value="128">CHICHIMENE</option>
-                    <option value="30">CHICORAL</option>
-                    <option value="129">CHIPIRON</option>
-                    <option value="130">CHUCHUPA</option>
-                    <option value="131">CHUIRA</option>
-                    <option value="270">CHURUYACO</option>
-                    <option value="236">CLARINETE</option>
-                    <option value="291">COBRA</option>
-                    <option value="10">COGUA</option>
-                    <option value="313">COGUA CONEXI&#211;N</option>
-                    <option value="132">COHEMBI</option>
-                    <option value="133">COLON</option>
-                    <option value="134">COMPAE</option>
-                    <option value="135">CORAZON</option>
-                    <option value="136">CORAZON 9</option>
-                    <option value="137">CORAZON WEST</option>
-                    <option value="292">CORCEL A</option>
-                    <option value="293">CORCEL C</option>
-                    <option value="294">CORCEL D</option>
-                    <option value="295">CORCEL E</option>
-                    <option value="138">COREN</option>
-                    <option value="139">COROCORA</option>
-                    <option value="247">corra</option>
-                    <option value="237">CORRALES</option>
-                    <option value="140">CORSUR</option>
-                    <option value="141">COSTAYACO</option>
-                    <option value="296">COTORRA</option>
-                    <option value="142">CRAVO</option>
-                    <option value="27">CUCUTA</option>
-                    <option value="143">CUERVA</option>
-                    <option value="53">CUPIAG&#220;A</option>
-                    <option value="262">Cupiagua Sur</option>
-                    <option value="361">CURITO</option>
-                    <option value="12">CUSIANA</option>
-                    <option value="363">CUSIANA NORTE</option>
-                    <option value="362">CUSIANA TAURAMENA</option>
-                    <option value="144">DINA CRETACEO</option>
-                    <option value="82">DINA ECOPETROL</option>
-                    <option value="364">DINA NORTE</option>
-                    <option value="145">DINA TERCIARIO</option>
-                    <option value="345">E. DE COMPRESI&#211;N APIAY</option>
-                    <option value="335">E. DE COMPRESI&#211;N BARRANCABERMEJA</option>
-                    <option value="348">E. DE COMPRESI&#211;N CARACOL&#205;</option>
-                    <option value="331">E. DE COMPRESI&#211;N CASACAR&#193;</option>
-                    <option value="332">E. DE COMPRESI&#211;N CURUMAN&#205;</option>
-                    <option value="349">E. DE COMPRESI&#211;N FILADELFIA</option>
-                    <option value="329">E. DE COMPRESI&#211;N HATONUEVO</option>
-                    <option value="330">E. DE COMPRESI&#211;N JAGUA DEL PILAR</option>
-                    <option value="346">E. DE COMPRESI&#211;N LA SABANA</option>
-                    <option value="341">E. DE COMPRESI&#211;N MARIQUITA</option>
-                    <option value="336">E. DE COMPRESI&#211;N MIRAFLORES</option>
-                    <option value="333">E. DE COMPRESI&#211;N NOREAN</option>
-                    <option value="342">E. DE COMPRESI&#211;N PADUA</option>
-                    <option value="347">E. DE COMPRESI&#211;N PALOMINO</option>
-                    <option value="343">E. DE COMPRESI&#211;N PARATEBUENO</option>
-                    <option value="337">E. DE COMPRESI&#211;N PUENTE GUILLERMO</option>
-                    <option value="350">E. DE COMPRESI&#211;N SAHAG&#218;N</option>
-                    <option value="334">E. DE COMPRESI&#211;N SAN ALBERTO</option>
-                    <option value="340">E. DE COMPRESI&#211;N VASCONIA LA BELLEZA</option>
-                    <option value="338">E. DE COMPRESI&#211;N VASCONIA MARIQUITA</option>
-                    <option value="339">E. DE COMPRESI&#211;N VASCONIA SEBASTOPOL</option>
-                    <option value="344">E. DE COMPRESI&#211;N VILLAVICENCIO</option>
-                    <option value="56">EL CENTRO</option>
-                    <option value="93">EL DIFICIL</option>
-                    <option value="11">EL PORVENIR</option>
-                    <option value="320">EL PORVENIR CONEXI&#211;N</option>
-                    <option value="265">EPM No Regulado</option>
-                    <option value="264">EPM Regulado</option>
-                    <option value="297">ESPADARTE</option>
-                    <option value="146">ESPINO</option>
-                    <option value="240">Exportaci&#243;n Venezuela Ballena</option>
-                    <option value="38">FLANDES</option>
-                    <option value="34">FLORE&#209;A</option>
-                    <option value="365">FLORE&#209;A B</option>
-                    <option value="22">FUSAGASUGA</option>
-                    <option value="271">GALA DE MARES</option>
-                    <option value="246">GAL&#193;N PETROSANTANDER</option>
-                    <option value="147">GARZAS</option>
-                    <option value="48">GBS_F</option>
-                    <option value="47">GBS_I</option>
-                    <option value="314">GBS_I CONEXI&#211;N</option>
-                    <option value="234">GCARIBE CAMPOS MENORES</option>
-                    <option value="19">GIBRALTAR</option>
-                    <option value="69">GRANADA</option>
-                    <option value="71">GUADUAS</option>
-                    <option value="366">GUADUAS DINDAL RIO SECO B</option>
-                    <option value="7">GUALANDAY</option>
-                    <option value="315">GUALANDAY CONEXI&#211;N</option>
-                    <option value="241">GUAMA</option>
-                    <option value="148">GUANAPALO</option>
-                    <option value="21">GUANDO</option>
-                    <option value="149">GUARILAQUE</option>
-                    <option value="150">GUASAR</option>
-                    <option value="151">GUAYUYACO</option>
-                    <option value="23">HOBO</option>
-                    <option value="243">HOCOL</option>
-                    <option value="272">HORMIGA</option>
-                    <option value="302">HUR&#211;N</option>
-                    <option value="29">IBAGUE</option>
-                    <option value="238">Importaci&#243;n Venezuela Ballena</option>
-                    <option value="74">JAMUNDI</option>
-                    <option value="152">JIBA</option>
-                    <option value="45">JOBO</option>
-                    <option value="153">JORCAN</option>
-                    <option value="154">JUANAMBU</option>
-                    <option value="367">JUAPE</option>
-                    <option value="368">JUAPE B</option>
-                    <option value="155">JUGLAR</option>
-                    <option value="156">KANANASKIS</option>
-                    <option value="157">KATANA</option>
-                    <option value="158">KATMANDU</option>
-                    <option value="327">KM 8 R</option>
-                    <option value="159">KONA</option>
-                    <option value="9">LA BELLEZA</option>
-                    <option value="316">LA BELLEZA CONEXI&#211;N</option>
-                    <option value="160">LA CA&#209;ADA NORTE</option>
-                    <option value="161">LA CASONA</option>
-                    <option value="85">La Cira Infantas</option>
-                    <option value="40">LA CRECIENTE</option>
-                    <option value="303">LA ESTANCIA</option>
-                    <option value="162">LA FLORA</option>
-                    <option value="163">LA GLORIA</option>
-                    <option value="164">LA HOCHA</option>
-                    <option value="165">LA JAGUA</option>
-                    <option value="306">LA LOMA</option>
-                    <option value="41">LA MAMI</option>
-                    <option value="356">LA MAMI CONEXI&#211;N</option>
-                    <option value="63">LA PUNTA</option>
-                    <option value="166">LA SALINA</option>
-                    <option value="167">LAS ACACIAS</option>
-                    <option value="168">LAS MARACAS</option>
-                    <option value="169">LIEBRE</option>
-                    <option value="62">LISAMA</option>
-                    <option value="55">LLANITO</option>
-                    <option value="170">LOMA LARGA</option>
-                    <option value="273">LORO</option>
-                    <option value="171">LOS ANGELES</option>
-                    <option value="172">LOS POTROS</option>
-                    <option value="173">MAMEY</option>
-                    <option value="46">MAMONAL</option>
-                    <option value="87">MANA</option>
-                    <option value="298">MANAMO</option>
-                    <option value="274">MANSOYA</option>
-                    <option value="174">MARACAS</option>
-                    <option value="3">MARIQUITA</option>
-                    <option value="317">MARIQUITA CONEXI&#211;N</option>
-                    <option value="175">MARY</option>
-                    <option value="176">MATACHIN</option>
-                    <option value="84">MATACHINES</option>
-                    <option value="33">MEDELLIN</option>
-                    <option value="177">MIRAFLOR</option>
-                    <option value="8">MONTA&#209;UELO</option>
-                    <option value="178">MOQUETA</option>
-                    <option value="16">MORICHAL</option>
-                    <option value="179">MORROCOY</option>
-                    <option value="37">NEIVA</option>
-                    <option value="89">NELSON</option>
-                    <option value="251">Nelson Ci&#233;naga de Oro</option>
-                    <option value="250">NELSON PORQUERO</option>
-                    <option value="249">N&#237;spero - Tromb&#243;n</option>
-                    <option value="242">NO CONECTADO</option>
-                    <option value="275">NUTRIA</option>
-                    <option value="252">OBOE</option>
-                    <option value="15">OCOA</option>
-                    <option value="318">OCOA CONEXI&#211;N</option>
-                    <option value="180">OPON</option>
-                    <option value="59">ORIPAYA</option>
-                    <option value="276">ORITO</option>
-                    <option value="181">OROPENDOLA</option>
-                    <option value="182">ORTEGA</option>
-                    <option value="183">PACANDE</option>
-                    <option value="184">PALAGUA</option>
-                    <option value="369">PALAGUA B</option>
-                    <option value="185">PALERMO</option>
-                    <option value="186">PALMARITO</option>
-                    <option value="232">PALMER</option>
-                    <option value="187">PALOGRANDE</option>
-                    <option value="32">PAMPLONA</option>
-                    <option value="301">PANDERETA</option>
-                    <option value="188">PARAVARE</option>
-                    <option value="79">PAUTO</option>
-                    <option value="370">PAUTO SUR B</option>
-                    <option value="80">PAYOA</option>
-                    <option value="371">PAYOA WEST</option>
-                    <option value="189">PEDERNALITO</option>
-                    <option value="190">PE&#209;AS BLANCAS</option>
-                    <option value="4">PEREIRA</option>
-                    <option value="319">PEREIRA CONEXI&#211;N</option>
-                    <option value="191">PIJAO</option>
-                    <option value="192">PIRITO</option>
-                    <option value="259">PK8 CUPIAGUA</option>
-                    <option value="83">PLAYA ROJA</option>
-                    <option value="25">POPAYAN</option>
-                    <option value="193">POTRILLO</option>
-                    <option value="67">POZO</option>
-                    <option value="24">PRADERA</option>
-                    <option value="57">PROVINCIA</option>
-                    <option value="325">PTE SOGAMOSO R</option>
-                    <option value="323">PTO WILCHES R</option>
-                    <option value="86">PULI</option>
-                    <option value="194">PURIFICACION</option>
-                    <option value="195">QUERUBIN</option>
-                    <option value="277">QUILILI</option>
-                    <option value="196">QUILLACINGA</option>
-                    <option value="197">QUIMBAYA</option>
-                    <option value="198">QUINDE</option>
-                    <option value="278">QURIYANA</option>
-                    <option value="52">RAMALES AISLADOS_F</option>
-                    <option value="51">RAMALES AISLADOS_I</option>
-                    <option value="199">RAMIRIQUI</option>
-                    <option value="91">RANCHO HERMOSO</option>
-                    <option value="200">REDONDO</option>
-                    <option value="201">REMACHE SUR</option>
-                    <option value="202">REX</option>
-                    <option value="20">RICAURTE</option>
-                    <option value="203">RIO CEIBAS</option>
-                    <option value="204">RIO OPIA</option>
-                    <option value="205">RIO ZULIA</option>
-                    <option value="78">RIOHACHA</option>
-                    <option value="50">SABANA_F</option>
-                    <option value="49">SABANA_I</option>
-                    <option value="279">SAN ANTONIO</option>
-                    <option value="206">SAN FRANCISCO</option>
-                    <option value="324">SAN PABLO R</option>
-                    <option value="58">SANTA CLARA</option>
-                    <option value="207">SANTA LUCIA</option>
-                    <option value="208">SANTIAGO</option>
-                    <option value="64">SANTO DOMINGO</option>
-                    <option value="372">SANTO DOMINGO NORTE</option>
-                    <option value="209">SARDINAS</option>
-                    <option value="26">SARDINATA</option>
-                    <option value="36">SEBASTOPOL</option>
-                    <option value="321">SEBASTOPOL CONEXI&#211;N</option>
-                    <option value="81">SERAFIN</option>
-                    <option value="44">SINCELEJO</option>
-                    <option value="357">SINCELEJO CONEXI&#211;N</option>
-                    <option value="210">SIRENAS</option>
-                    <option value="244">SPEC</option>
-                    <option value="280">SUCIO</option>
-                    <option value="281">SUCUMBIOS</option>
-                    <option value="31">TANE/CACOTA</option>
-                    <option value="211">TAROTARO</option>
-                    <option value="212">T-BURNS</option>
-                    <option value="213">TELLO</option>
-                    <option value="90">TEMPRANILLO</option>
-                    <option value="373">TEMPRANILLO NORTE</option>
-                    <option value="60">TENAY</option>
-                    <option value="214">TERECAY</option>
-                    <option value="282">TESORO</option>
-                    <option value="215">TIBU</option>
-                    <option value="216">TIERRA BLANCA</option>
-                    <option value="217">TILO</option>
-                    <option value="218">TOCARIA</option>
-                    <option value="219">TOLDADO</option>
-                    <option value="304">TOPOSI</option>
-                    <option value="61">TOQUI TOQUI</option>
-                    <option value="261">TORONJA</option>
-                    <option value="220">TOROS</option>
-                    <option value="221">TOROYACO</option>
-                    <option value="222">TOY</option>
-                    <option value="223">TRINIDAD</option>
-                    <option value="248">Tromb&#243;n</option>
-                    <option value="224">TRONOS</option>
-                    <option value="225">TUA</option>
-                    <option value="88">TUCURINCA</option>
-                    <option value="226">TURPIAL</option>
-                    <option value="256">Unidad Flotante de Almacenamiento y Regasificaci&#243;n (FSRU)</option>
-                    <option value="14">USME</option>
-                    <option value="2">VASCONIA</option>
-                    <option value="322">VASCONIA CONEXI&#211;N</option>
-                    <option value="227">VIGIA</option>
-                    <option value="228">VIREO</option>
-                    <option value="229">YAGUARA</option>
-                    <option value="374">YAGUAZO</option>
-                    <option value="230">YAMU</option>
-                    <option value="92">YARIGUI-CANTAGALLO</option>
-                    <option value="299">YATAY</option>
-                    <option value="17">YOPAL</option>
-                    <option value="35">YUMBO/CALI</option>
-                    <option value="283">YURILLA</option>
-                    <option value="231">ZOE</option>
-                </optgroup>
-            </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button"/>
-        </form>
+    <form method="post" action="">
+    <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
+    <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" />
+    <select name="paramsFilter[Punto_ruta]">
+    <option value="0" selected>-- Todos los Puntos --</option>
+    <optgroup label="Puntos de Entrega">
+        <option value="73" >Abanico</option>
+        <option value="95" >ABEJAS</option>
+        <option value="266" >ACAE SAN MIGUEL</option>
+        <option value="96" >ACORDIONERO</option>
+        <option value="358" >AGUAS BLANCAS</option>
+        <option value="258" >AGUAZUL</option>
+        <option value="97" >AKACIAS</option>
+        <option value="359" >ANDINA</option>
+        <option value="98" >APAMATE</option>
+        <option value="13" >APIAY</option>
+        <option value="309" >APIAY CONEXI&#211;N</option>
+        <option value="99" >ARAGUATO</option>
+        <option value="100" >ARAUCA</option>
+        <option value="284" >ARDILLA</option>
+        <option value="94" >ARIANNA</option>
+        <option value="257" >ARJONA</option>
+        <option value="5" >ARMENIA</option>
+        <option value="310" >ARMENIA CONEXI&#211;N</option>
+        <option value="101" >ARRAYAN</option>
+        <option value="285" >AVISPA</option>
+        <option value="360" >AZOR</option>
+        <option value="102" >BALAY</option>
+        <option value="103" >BALCON</option>
+        <option value="39" >BALLENA</option>
+        <option value="104" >BARQUERE&#209;A</option>
+        <option value="1" >BARRANCABERMEJA</option>
+        <option value="311" >BARRANCABERMENJA CONEXI&#211;N</option>
+        <option value="42" >BARRANQUILLA</option>
+        <option value="353" >BARRANQUILLA CONEXI&#211;N</option>
+        <option value="105" >BEGONIA</option>
+        <option value="253" >Bloque Esperanza (Campo Mayor)</option>
+        <option value="254" >Bloque Esperanza (Prueba Extensa)</option>
+        <option value="255" >Bloque VIM 5</option>
+        <option value="66" >BOCA</option>
+        <option value="305" >BOLIVAR</option>
+        <option value="267" >BONANZA</option>
+        <option value="75" >Bonga Mamey</option>
+        <option value="245" >BOQUER&#211;N</option>
+        <option value="260" >BREMEN JOBO</option>
+        <option value="307" >BREVA-1</option>
+        <option value="106" >BRILLANTE</option>
+        <option value="107" >BRISAS</option>
+        <option value="328" >BRISASB R</option>
+        <option value="18" >BUCARAMANGA</option>
+        <option value="354" >BUCARAMANGA CONEXI&#211;N</option>
+        <option value="28" >BUENOS AIRES</option>
+        <option value="233" >BULLERENGUE</option>
+        <option value="65" >CALDAS VIEJO</option>
+        <option value="6" >CALI</option>
+        <option value="108" >CALONA</option>
+        <option value="235" >CAMPO CORRALES</option>
+        <option value="109" >CAMPO RICO</option>
+        <option value="70" >CAMPO SANTIAGO</option>
+        <option value="286" >CANAGUAY</option>
+        <option value="111" >CANAGUEY</option>
+        <option value="112" >CANDALAY</option>
+        <option value="287" >CANDELILLA</option>
+        <option value="54" >CANTAGALLO</option>
+        <option value="326" >CANTAGALLO R</option>
+        <option value="110" >CA&#209;AFLECHA</option>
+        <option value="263" >CA&#209;AHUATE</option>
+        <option value="300" >CA&#209;ANDONGA</option>
+        <option value="113" >CA&#209;O DUYA</option>
+        <option value="114" >CA&#209;O GANDUL</option>
+        <option value="115" >CA&#209;O GARZA</option>
+        <option value="116" >CA&#209;O LIMON</option>
+        <option value="117" >CA&#209;O RONDON</option>
+        <option value="118" >CA&#209;O YARUMAL</option>
+        <option value="268" >CAPACHOS</option>
+        <option value="288" >CAPURE</option>
+        <option value="77" >CARAMELO</option>
+        <option value="269" >CARIBE</option>
+        <option value="119" >CARICARE</option>
+        <option value="120" >CARMENTEA</option>
+        <option value="43" >CARTAGENA</option>
+        <option value="355" >CARTAGENA CONEXI&#211;N</option>
+        <option value="121" >CARUPANA</option>
+        <option value="289" >CARUTO</option>
+        <option value="122" >CASABE</option>
+        <option value="123" >CASONA</option>
+        <option value="124" >CEBU</option>
+        <option value="290" >CEIBO</option>
+        <option value="68" >CENTAUROS</option>
+        <option value="312" >CENTAUROS CONEXI&#211;N</option>
+        <option value="72" >Cerrito</option>
+        <option value="76" >CERRO GORDO</option>
+        <option value="239" >CERRO MATOSO</option>
+        <option value="125" >CHACHARO</option>
+        <option value="126" >CHAPARRITO</option>
+        <option value="127" >CHAPARRO</option>
+        <option value="128" >CHICHIMENE</option>
+        <option value="30" >CHICORAL</option>
+        <option value="129" >CHIPIRON</option>
+        <option value="130" >CHUCHUPA</option>
+        <option value="131" >CHUIRA</option>
+        <option value="270" >CHURUYACO</option>
+        <option value="236" >CLARINETE</option>
+        <option value="291" >COBRA</option>
+        <option value="10" >COGUA</option>
+        <option value="313" >COGUA CONEXI&#211;N</option>
+        <option value="132" >COHEMBI</option>
+        <option value="133" >COLON</option>
+        <option value="134" >COMPAE</option>
+        <option value="135" >CORAZON</option>
+        <option value="136" >CORAZON 9</option>
+        <option value="137" >CORAZON WEST</option>
+        <option value="292" >CORCEL A</option>
+        <option value="293" >CORCEL C</option>
+        <option value="294" >CORCEL D</option>
+        <option value="295" >CORCEL E</option>
+        <option value="138" >COREN</option>
+        <option value="139" >COROCORA</option>
+        <option value="247" >corra</option>
+        <option value="237" >CORRALES</option>
+        <option value="140" >CORSUR</option>
+        <option value="141" >COSTAYACO</option>
+        <option value="296" >COTORRA</option>
+        <option value="142" >CRAVO</option>
+        <option value="27" >CUCUTA</option>
+        <option value="143" >CUERVA</option>
+        <option value="53" >CUPIAG&#220;A</option>
+        <option value="262" >Cupiagua Sur</option>
+        <option value="361" >CURITO</option>
+        <option value="12" >CUSIANA</option>
+        <option value="363" >CUSIANA NORTE</option>
+        <option value="362" >CUSIANA TAURAMENA</option>
+        <option value="144" >DINA CRETACEO</option>
+        <option value="82" >DINA ECOPETROL</option>
+        <option value="364" >DINA NORTE</option>
+        <option value="145" >DINA TERCIARIO</option>
+        <option value="345" >E. DE COMPRESI&#211;N APIAY</option>
+        <option value="335" >E. DE COMPRESI&#211;N BARRANCABERMEJA</option>
+        <option value="348" >E. DE COMPRESI&#211;N CARACOL&#205;</option>
+        <option value="331" >E. DE COMPRESI&#211;N CASACAR&#193;</option>
+        <option value="332" >E. DE COMPRESI&#211;N CURUMAN&#205;</option>
+        <option value="349" >E. DE COMPRESI&#211;N FILADELFIA</option>
+        <option value="329" >E. DE COMPRESI&#211;N HATONUEVO</option>
+        <option value="330" >E. DE COMPRESI&#211;N JAGUA DEL PILAR</option>
+        <option value="346" >E. DE COMPRESI&#211;N LA SABANA</option>
+        <option value="341" >E. DE COMPRESI&#211;N MARIQUITA</option>
+        <option value="336" >E. DE COMPRESI&#211;N MIRAFLORES</option>
+        <option value="333" >E. DE COMPRESI&#211;N NOREAN</option>
+        <option value="342" >E. DE COMPRESI&#211;N PADUA</option>
+        <option value="347" >E. DE COMPRESI&#211;N PALOMINO</option>
+        <option value="343" >E. DE COMPRESI&#211;N PARATEBUENO</option>
+        <option value="337" >E. DE COMPRESI&#211;N PUENTE GUILLERMO</option>
+        <option value="350" >E. DE COMPRESI&#211;N SAHAG&#218;N</option>
+        <option value="334" >E. DE COMPRESI&#211;N SAN ALBERTO</option>
+        <option value="340" >E. DE COMPRESI&#211;N VASCONIA LA BELLEZA</option>
+        <option value="338" >E. DE COMPRESI&#211;N VASCONIA MARIQUITA</option>
+        <option value="339" >E. DE COMPRESI&#211;N VASCONIA SEBASTOPOL</option>
+        <option value="344" >E. DE COMPRESI&#211;N VILLAVICENCIO</option>
+        <option value="56" >EL CENTRO</option>
+        <option value="93" >EL DIFICIL</option>
+        <option value="11" >EL PORVENIR</option>
+        <option value="320" >EL PORVENIR CONEXI&#211;N</option>
+        <option value="265" >EPM No Regulado</option>
+        <option value="264" >EPM Regulado</option>
+        <option value="297" >ESPADARTE</option>
+        <option value="146" >ESPINO</option>
+        <option value="240" >Exportaci&#243;n Venezuela Ballena</option>
+        <option value="38" >FLANDES</option>
+        <option value="34" >FLORE&#209;A</option>
+        <option value="365" >FLORE&#209;A B</option>
+        <option value="22" >FUSAGASUGA</option>
+        <option value="271" >GALA DE MARES</option>
+        <option value="246" >GAL&#193;N PETROSANTANDER</option>
+        <option value="147" >GARZAS</option>
+        <option value="48" >GBS_F</option>
+        <option value="47" >GBS_I</option>
+        <option value="314" >GBS_I CONEXI&#211;N</option>
+        <option value="234" >GCARIBE CAMPOS MENORES</option>
+        <option value="19" >GIBRALTAR</option>
+        <option value="69" >GRANADA</option>
+        <option value="71" >GUADUAS</option>
+        <option value="366" >GUADUAS DINDAL RIO SECO B</option>
+        <option value="7" >GUALANDAY</option>
+        <option value="315" >GUALANDAY CONEXI&#211;N</option>
+        <option value="241" >GUAMA</option>
+        <option value="148" >GUANAPALO</option>
+        <option value="21" >GUANDO</option>
+        <option value="149" >GUARILAQUE</option>
+        <option value="150" >GUASAR</option>
+        <option value="151" >GUAYUYACO</option>
+        <option value="23" >HOBO</option>
+        <option value="243" >HOCOL</option>
+        <option value="272" >HORMIGA</option>
+        <option value="302" >HUR&#211;N</option>
+        <option value="29" >IBAGUE</option>
+        <option value="238" >Importaci&#243;n Venezuela Ballena</option>
+        <option value="74" >JAMUNDI</option>
+        <option value="152" >JIBA</option>
+        <option value="45" >JOBO</option>
+        <option value="153" >JORCAN</option>
+        <option value="154" >JUANAMBU</option>
+        <option value="367" >JUAPE</option>
+        <option value="368" >JUAPE B</option>
+        <option value="155" >JUGLAR</option>
+        <option value="156" >KANANASKIS</option>
+        <option value="157" >KATANA</option>
+        <option value="158" >KATMANDU</option>
+        <option value="327" >KM 8 R</option>
+        <option value="159" >KONA</option>
+        <option value="9" >LA BELLEZA</option>
+        <option value="316" >LA BELLEZA CONEXI&#211;N</option>
+        <option value="160" >LA CA&#209;ADA NORTE</option>
+        <option value="161" >LA CASONA</option>
+        <option value="85" >La Cira Infantas</option>
+        <option value="40" >LA CRECIENTE</option>
+        <option value="303" >LA ESTANCIA</option>
+        <option value="162" >LA FLORA</option>
+        <option value="163" >LA GLORIA</option>
+        <option value="164" >LA HOCHA</option>
+        <option value="165" >LA JAGUA</option>
+        <option value="306" >LA LOMA</option>
+        <option value="41" >LA MAMI</option>
+        <option value="356" >LA MAMI CONEXI&#211;N</option>
+        <option value="63" >LA PUNTA</option>
+        <option value="166" >LA SALINA</option>
+        <option value="167" >LAS ACACIAS</option>
+        <option value="168" >LAS MARACAS</option>
+        <option value="169" >LIEBRE</option>
+        <option value="62" >LISAMA</option>
+        <option value="55" >LLANITO</option>
+        <option value="170" >LOMA LARGA</option>
+        <option value="273" >LORO</option>
+        <option value="171" >LOS ANGELES</option>
+        <option value="172" >LOS POTROS</option>
+        <option value="173" >MAMEY</option>
+        <option value="46" >MAMONAL</option>
+        <option value="87" >MANA</option>
+        <option value="298" >MANAMO</option>
+        <option value="274" >MANSOYA</option>
+        <option value="174" >MARACAS</option>
+        <option value="3" >MARIQUITA</option>
+        <option value="317" >MARIQUITA CONEXI&#211;N</option>
+        <option value="175" >MARY</option>
+        <option value="176" >MATACHIN</option>
+        <option value="84" >MATACHINES</option>
+        <option value="33" >MEDELLIN</option>
+        <option value="177" >MIRAFLOR</option>
+        <option value="8" >MONTA&#209;UELO</option>
+        <option value="178" >MOQUETA</option>
+        <option value="16" >MORICHAL</option>
+        <option value="179" >MORROCOY</option>
+        <option value="37" >NEIVA</option>
+        <option value="89" >NELSON</option>
+        <option value="251" >Nelson Ci&#233;naga de Oro</option>
+        <option value="250" >NELSON PORQUERO</option>
+        <option value="249" >N&#237;spero - Tromb&#243;n</option>
+        <option value="242" >NO CONECTADO</option>
+        <option value="275" >NUTRIA</option>
+        <option value="252" >OBOE</option>
+        <option value="15" >OCOA</option>
+        <option value="318" >OCOA CONEXI&#211;N</option>
+        <option value="180" >OPON</option>
+        <option value="59" >ORIPAYA</option>
+        <option value="276" >ORITO</option>
+        <option value="181" >OROPENDOLA</option>
+        <option value="182" >ORTEGA</option>
+        <option value="183" >PACANDE</option>
+        <option value="184" >PALAGUA</option>
+        <option value="369" >PALAGUA B</option>
+        <option value="185" >PALERMO</option>
+        <option value="186" >PALMARITO</option>
+        <option value="232" >PALMER</option>
+        <option value="187" >PALOGRANDE</option>
+        <option value="32" >PAMPLONA</option>
+        <option value="301" >PANDERETA</option>
+        <option value="188" >PARAVARE</option>
+        <option value="79" >PAUTO</option>
+        <option value="370" >PAUTO SUR B</option>
+        <option value="80" >PAYOA</option>
+        <option value="371" >PAYOA WEST</option>
+        <option value="189" >PEDERNALITO</option>
+        <option value="190" >PE&#209;AS BLANCAS</option>
+        <option value="4" >PEREIRA</option>
+        <option value="319" >PEREIRA CONEXI&#211;N</option>
+        <option value="191" >PIJAO</option>
+        <option value="192" >PIRITO</option>
+        <option value="259" >PK8 CUPIAGUA</option>
+        <option value="83" >PLAYA ROJA</option>
+        <option value="25" >POPAYAN</option>
+        <option value="193" >POTRILLO</option>
+        <option value="67" >POZO</option>
+        <option value="24" >PRADERA</option>
+        <option value="57" >PROVINCIA</option>
+        <option value="325" >PTE SOGAMOSO R</option>
+        <option value="323" >PTO WILCHES R</option>
+        <option value="86" >PULI</option>
+        <option value="194" >PURIFICACION</option>
+        <option value="195" >QUERUBIN</option>
+        <option value="277" >QUILILI</option>
+        <option value="196" >QUILLACINGA</option>
+        <option value="197" >QUIMBAYA</option>
+        <option value="198" >QUINDE</option>
+        <option value="278" >QURIYANA</option>
+        <option value="52" >RAMALES AISLADOS_F</option>
+        <option value="51" >RAMALES AISLADOS_I</option>
+        <option value="199" >RAMIRIQUI</option>
+        <option value="91" >RANCHO HERMOSO</option>
+        <option value="200" >REDONDO</option>
+        <option value="201" >REMACHE SUR</option>
+        <option value="202" >REX</option>
+        <option value="20" >RICAURTE</option>
+        <option value="203" >RIO CEIBAS</option>
+        <option value="204" >RIO OPIA</option>
+        <option value="205" >RIO ZULIA</option>
+        <option value="78" >RIOHACHA</option>
+        <option value="50" >SABANA_F</option>
+        <option value="49" >SABANA_I</option>
+        <option value="279" >SAN ANTONIO</option>
+        <option value="206" >SAN FRANCISCO</option>
+        <option value="324" >SAN PABLO R</option>
+        <option value="58" >SANTA CLARA</option>
+        <option value="207" >SANTA LUCIA</option>
+        <option value="208" >SANTIAGO</option>
+        <option value="64" >SANTO DOMINGO</option>
+        <option value="372" >SANTO DOMINGO NORTE</option>
+        <option value="209" >SARDINAS</option>
+        <option value="26" >SARDINATA</option>
+        <option value="36" >SEBASTOPOL</option>
+        <option value="321" >SEBASTOPOL CONEXI&#211;N</option>
+        <option value="81" >SERAFIN</option>
+        <option value="44" >SINCELEJO</option>
+        <option value="357" >SINCELEJO CONEXI&#211;N</option>
+        <option value="210" >SIRENAS</option>
+        <option value="244" >SPEC</option>
+        <option value="280" >SUCIO</option>
+        <option value="281" >SUCUMBIOS</option>
+        <option value="31" >TANE/CACOTA</option>
+        <option value="211" >TAROTARO</option>
+        <option value="212" >T-BURNS</option>
+        <option value="213" >TELLO</option>
+        <option value="90" >TEMPRANILLO</option>
+        <option value="373" >TEMPRANILLO NORTE</option>
+        <option value="60" >TENAY</option>
+        <option value="214" >TERECAY</option>
+        <option value="282" >TESORO</option>
+        <option value="215" >TIBU</option>
+        <option value="216" >TIERRA BLANCA</option>
+        <option value="217" >TILO</option>
+        <option value="218" >TOCARIA</option>
+        <option value="219" >TOLDADO</option>
+        <option value="304" >TOPOSI</option>
+        <option value="61" >TOQUI TOQUI</option>
+        <option value="261" >TORONJA</option>
+        <option value="220" >TOROS</option>
+        <option value="221" >TOROYACO</option>
+        <option value="222" >TOY</option>
+        <option value="223" >TRINIDAD</option>
+        <option value="248" >Tromb&#243;n</option>
+        <option value="224" >TRONOS</option>
+        <option value="225" >TUA</option>
+        <option value="88" >TUCURINCA</option>
+        <option value="226" >TURPIAL</option>
+        <option value="256" >Unidad Flotante de Almacenamiento y Regasificaci&#243;n (FSRU)</option>
+        <option value="14" >USME</option>
+        <option value="2" >VASCONIA</option>
+        <option value="322" >VASCONIA CONEXI&#211;N</option>
+        <option value="227" >VIGIA</option>
+        <option value="228" >VIREO</option>
+        <option value="229" >YAGUARA</option>
+        <option value="374" >YAGUAZO</option>
+        <option value="230" >YAMU</option>
+        <option value="92" >YARIGUI-CANTAGALLO</option>
+        <option value="299" >YATAY</option>
+        <option value="17" >YOPAL</option>
+        <option value="35" >YUMBO/CALI</option>
+        <option value="283" >YURILLA</option>
+        <option value="231" >ZOE</option>
+    </optgroup>
+    </select>
+    <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+    </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
@@ -414,33 +408,31 @@
 
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
-    <!-- <h4>Tabla de Resultados</h4> -->
-    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
-        la tabla.</p>
-    <table id="ResultTable" class="display cellspacing=" 0
-    " width="100%" align="center" data-page-length="20">
+<!-- <h4>Tabla de Resultados</h4> -->
+<p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
+<table id="ResultTable" class="display cellspacing="0" width="100%" align="center" data-page-length="20">
     <thead>
-    <tr>
-        <th>Fecha</th>
-        <th>Punto de Entrega</th>
-        <th>Cantidad Adjudicada (MBTUD)</th>
-        <th>Precio Promedio Ponderado de la Adjudicación (USD/MBTU)</th>
-        <th>Cantidad Registrada (MBTUD)</th>
-        <th>Precio Promedio Ponderado de Registro (USD/MBTU)</th>
-    </tr>
+        <tr>
+            <th>Fecha</th>
+            <th>Punto de Entrega</th>
+            <th>Cantidad Adjudicada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de la Adjudicación (USD/MBTU)</th>
+            <th>Cantidad Registrada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de Registro (USD/MBTU)</th>
+        </tr>
     </thead>
     <tfoot>
-    <tr>
-        <th>Fecha</th>
-        <th>Punto de Entrega</th>
-        <th>Cantidad Adjudicada (MBTUD)</th>
-        <th>Precio Promedio Ponderado de la Adjudicación (USD/MBTU)</th>
-        <th>Cantidad Registrada (MBTUD)</th>
-        <th>Precio Promedio Ponderado de Registro (USD/MBTU)</th>
-    </tr>
+        <tr>
+            <th>Fecha</th>
+            <th>Punto de Entrega</th>
+            <th>Cantidad Adjudicada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de la Adjudicación (USD/MBTU)</th>
+            <th>Cantidad Registrada (MBTUD)</th>
+            <th>Precio Promedio Ponderado de Registro (USD/MBTU)</th>
+        </tr>
     </tfoot>
     <tbody>
-
+        
     {% for key, data in info %}
         <tr valign="top" align="left">
             <td>{{ data.fecha }}</td>
@@ -452,26 +444,24 @@
         </tr>
     {% endfor %}
     </tbody>
-    </table>
+</table>
 </div>
 
 
 <!-- Begin - Export Option Table -->
 <div id="table2export">
-    <table id="ResultTable1"></table>
+<table id="ResultTable1"></table>
 </div>
 <!-- END - Export Option Table -->
 
 
 <script type="text/javascript">
-
-    $(document).ready(function () {
-        datesFieldsValidation(395, 395);
-        $("#ResultTable thead").clone().appendTo("#ResultTable1");
-        $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
-        $("#ResultTable tbody").clone().appendTo("#ResultTable1");
-        dataTablesIni();
-    });
+$(document).ready(function() {
+    $("#ResultTable thead").clone().appendTo("#ResultTable1");
+    $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+    $("#ResultTable tbody").clone().appendTo("#ResultTable1");
+    dataTablesIni();
+});
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
 
@@ -479,7 +469,7 @@
     $('form').submit(function () {
         //return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 365);
     });
-    $(document).ready(function () {
+    $(document).ready(function() {
         insertText(365);
     });
 </script>
