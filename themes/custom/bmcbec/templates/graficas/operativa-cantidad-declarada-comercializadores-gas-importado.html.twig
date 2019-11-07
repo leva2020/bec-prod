@@ -2,10 +2,9 @@
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
 {% set monthNow = "now"|date("m", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-1 year")|date("m", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-1 month")|date("Y-m-d", "America/Bogota") %}
 
-
-{% set info=enviar_post_ws('getCantidadDeclaradaPorNoComercializadoresNoInyectada','fechaInicial=' ~yearAgo~ '&fechaFinal='~now~'&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
+{% set info=enviar_post_ws('getCantidadDeclaradaPorNoComercializadoresNoInyectada','fechaInicial=' ~monthAgo~ '&fechaFinal='~now~'&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {#<link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
@@ -33,8 +32,8 @@
     </div>
     <div class="bmcbec-dp-right">
         <form method="post" action="">
-            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
-                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+            <input type="text" class="span2" value="{{ monthAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+                   data-date="{{ monthAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
                    data-date-minviewmode="days"/>
             <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
                    data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
@@ -48,14 +47,16 @@
 
 
 <!-- GRAPHIC CONSTRUCTOR -->
-<div class="canvas-holder-text">
-    <h4>
-        <text>Resultados</text>
-    </h4>
-    <p>Se est&#225; mostrando informaci&#243;n de 1504 resultados encontrados con los filtros aplicados.</p>
-    <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+{# <div class="canvas-holder-text">#}
+{#     <h4>#}
+{#         <text>Resultados</text>#}
+{#     </h4>#}
+{#     <p>Se est&#225; mostrando informaci&#243;n de 1504 resultados encontrados con los filtros aplicados.</p>#}
+{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
+{# </div>#}
 
-</div>
+{{ include('resultados_info.html.twig', {"info": info}) }}
+
 <div class="canvas-holder">
     <h3 align="center">CANTIDAD DE ENERGÍA DECLARADA POR COMERCIALIZADORES DE GAS IMPORTADO Y NO INYECTADA AL SNT</h3>
     <canvas id="canvas"></canvas>
@@ -82,16 +83,16 @@
 
     var lineChartData = {
         labels: [
-            {% for item in info["dataTables"] %}
-            "{{ item.dia }}/{{ item.mes }}/{{ item.ano }}",
+            {% for key, item in info["dataGraficas"] %}
+            "{{ key }}",
             {% endfor %}
         ],
         datasets: [
             {
                 label: "Cantidad (MBTUD)",
                 data: [
-                    {% for item in info["dataTables"] %}
-                    "{{ item.cantidad }}",
+                    {% for item in info["dataGraficas"] %}
+                    "{{ item }}",
                     {% endfor %}
                 ]
             },

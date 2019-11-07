@@ -28,8 +28,8 @@ class ServiciosController extends ControllerBase {
             $client = \Drupal::httpClient();
             $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
             $request = $client->post($url, array(
-                'headers' => $headers,
-                'body' => $params)
+                    'headers' => $headers,
+                    'body' => $params)
             );
 
             $response = array(
@@ -314,6 +314,7 @@ class ServiciosController extends ControllerBase {
             'info' => $info,
             'labels' => $labels,
             'dataDataSets' => $dataDataSets,
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -344,6 +345,7 @@ class ServiciosController extends ControllerBase {
             'info' => $info,
             'labels' => $labels,
             'dataDataSets' => $dataDataSets,
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -376,6 +378,7 @@ class ServiciosController extends ControllerBase {
             'info' => $info,
             'labels' => $labels,
             'dataDataSets' => $dataDataSets,
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -442,6 +445,7 @@ class ServiciosController extends ControllerBase {
             'labels' => $labels,
             'dataDataSets' => $dataSets,
             'dataTables' => $data["response"],
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
         //         var_dump($data['dataDataSets']);exit;
@@ -467,6 +471,7 @@ class ServiciosController extends ControllerBase {
             'labels' => $labels,
             'dataDataSets' => $dataDataSets,
             'dataTables' => $data["response"],
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -498,6 +503,7 @@ class ServiciosController extends ControllerBase {
             'labels' => $labels,
             'dataDataSets' => $dataDataSets,
             'dataTables' => $data["response"],
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
     }
@@ -548,6 +554,7 @@ class ServiciosController extends ControllerBase {
             'labels' => $labels,
             'dataDataSets' => $dataSets,
             'dataTables' => $data["response"],
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
     }
@@ -585,6 +592,7 @@ class ServiciosController extends ControllerBase {
             'labels' => $labels,
             'dataDataSets' => $dataSets,
             'dataTables' => $data['response'],
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -604,7 +612,7 @@ class ServiciosController extends ControllerBase {
                     $labels[] = $date;
                     $dataDataSets[$value->desc_modalidad][$key] = $value->capac_cant;
                 else:
-                $dataDataSets[$value->desc_modalidad][$key] += $value->capac_cant;
+                    $dataDataSets[$value->desc_modalidad][$key] += $value->capac_cant;
                 endif;
             }
         }
@@ -613,6 +621,7 @@ class ServiciosController extends ControllerBase {
             'info' => $info,
             'labels' => $labels,
             'dataDataSets' => $dataDataSets,
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -647,6 +656,7 @@ class ServiciosController extends ControllerBase {
             'labels' => $labels,
             'dataDataSets' => $dataSets,
             'dataTables' => $data["response"],
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -687,6 +697,7 @@ class ServiciosController extends ControllerBase {
             'labels' => $labels,
             'dataDataSets' => $dataSets,
             'dataTables' => $data["response"],
+            'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
 
@@ -727,7 +738,34 @@ class ServiciosController extends ControllerBase {
 
     public function getInformacionOperativaGasoductosConexion($data)
     {
-        return $data["response"];
+
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->fecha;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key]["kpcd"] += $info->equivalente_kpcd;
+                    $dataGraficas[$key]["cmmp"] += $info->cantidad_cmmp;
+                } else {
+                    $dataGraficas[$key]["cmmp"] = $info->cantidad_cmmp;
+                    $dataGraficas[$key]["kpcd"] = $info->equivalente_kpcd;
+                    $labels[] = $key;
+                }
+            }
+        }
+
+        $data = array(
+            'labels' => $labels,
+            'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
+        );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
+        return $data;
     }
 
     public function getCantidadEnergiaInyectadaOpe_R($data)
@@ -758,57 +796,136 @@ class ServiciosController extends ControllerBase {
             'data' => $info,
             'labels' => $labels,
             'dataDataSets' => $dataSets,
-            'dataTables' => $data['response']
+            'num_resultados' => count($data['response']),
+            'dataTables' => $data['response'],
+            'response' => $data["response"]
         );
         return $data;
     }
 
     public function getCantidadEnergiaSuministrar($data)
     {
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad;
+                    $labels[] = $key;
+                }
+            }
+        }
+
         $data = array(
-            'dataTables' => $data['response']
+            'labels' => $labels,
+            'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
         );
+//         echo count($data["dataTables"]);
+//         var_dump($data);exit;
         return $data;
     }
     public function getCantidadDeclaradaPorNoComercializadoresNoInyectada($data)
     {
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->dia . "/" . $info->mes . "/" . $info->ano;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad;
+                    $labels[] = $key;
+                }
+            }
+        }
+
         $data = array(
-            'dataTables' => $data['response']
+            'labels' => $labels,
+            'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
         );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
         return $data;
+
     }
+
     public function getCantidadAutorizadaNominaciones($data)
     {
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad;
+                    $labels[] = $key;
+                }
+            }
+        }
+
         $data = array(
-            'dataTables' => $data['response']
+            'labels' => $labels,
+            'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
         );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
         return $data;
     }
+// @todo
     public function getCantidadTomadaTransportadoresTramo($data)
     {
         $data = array(
-            'dataTables' => $data['response']
+            'dataTables' => $data['response'],
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
         );
         return $data;
     }
+//  @todo
     public function getCantidadTomadaComercializadores($data)
     {
         $data = array(
-            'dataTables' => $data['response']
+            'dataTables' => $data['response'],
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
         );
         return $data;
     }
+// @todo
     public function getCantidadTomadaDiariamenteSnt($data)
     {
         $data = array(
-            'dataTables' => $data['response']
+            'dataTables' => $data['response'],
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
         );
         return $data;
     }
+// @todo
     public function getCantidadTomadaContratosParqueo($data)
     {
         $data = array(
-            'dataTables' => $data['response']
+            'dataTables' => $data['response'],
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
         );
         return $data;
     }

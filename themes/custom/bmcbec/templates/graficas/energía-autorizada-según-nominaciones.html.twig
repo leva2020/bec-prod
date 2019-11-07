@@ -55,12 +55,14 @@
 
 
 <!-- GRAPHIC CONSTRUCTOR -->
-<div class="canvas-holder-text">
-    <h4><text>Resultados:</text></h4>
-    <p>Se est&#225; mostrando informaci&#243;n de  427 resultados encontrados con los filtros aplicados.</p>
-    <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>
+{# <div class="canvas-holder-text">#}
+{#     <h4><text>Resultados:</text></h4>#}
+{#     <p>Se est&#225; mostrando informaci&#243;n de  427 resultados encontrados con los filtros aplicados.</p>#}
+{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
+{# </div>#}
 
-</div>
+{{ include('resultados_info.html.twig', {"info": info}) }}
+
 <div class="canvas-holder">
     <h3 align="center">CANTIDAD DE ENERGÍA AUTORIZADA DE ACUERDO A NOMINACIONES</h3>
     <canvas id="canvas"></canvas>
