@@ -889,44 +889,123 @@ class ServiciosController extends ControllerBase {
         //         var_dump($data);exit;
         return $data;
     }
-// @todo
+
     public function getCantidadTomadaTransportadoresTramo($data)
     {
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad;
+                    $labels[] = $key;
+                }
+            }
+        }
+
         $data = array(
+            'labels' => $labels,
             'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
             'num_resultados' => count($data['response']),
             'response' => $data["response"]
         );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
         return $data;
     }
-//  @todo
-    public function getCantidadTomadaComercializadores($data)
+
+    public function getCantidadEnergiaTomadaComercializadores($data)
     {
+//         var_dump($data["response"]);exit;
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad;
+                    $labels[] = $key;
+                }
+            }
+        }
+
         $data = array(
+            'labels' => $labels,
             'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
             'num_resultados' => count($data['response']),
             'response' => $data["response"]
         );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
         return $data;
     }
-// @todo
+
     public function getCantidadTomadaDiariamenteSnt($data)
     {
+//                 var_dump($data["response"]);exit;
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->dia . "/" . $info->mes . "/" . $info->ano;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad_mbtud;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad_mbtud;
+                    $labels[] = $key;
+                }
+            }
+        }
+
         $data = array(
+            'labels' => $labels,
             'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
             'num_resultados' => count($data['response']),
             'response' => $data["response"]
         );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
         return $data;
     }
-// @todo
+
     public function getCantidadTomadaContratosParqueo($data)
     {
+//                         var_dump($data["response"]);exit;
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad;
+                    $labels[] = $key;
+                }
+            }
+        }
+
         $data = array(
+            'labels' => $labels,
             'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
             'num_resultados' => count($data['response']),
             'response' => $data["response"]
         );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
         return $data;
     }
 

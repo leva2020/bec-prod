@@ -1,0 +1,981 @@
+{% set now = "now"|date("Y-m-d", "America/Bogota") %}
+{% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
+
+{% set monthNow = "now"|date("m", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-1 month")|date("Y-m-d", "America/Bogota") %}
+
+{% set info=enviar_post_ws('getCantidadTomadaContratosParqueo','fechaInicial=' ~yearAgo~ '&fechaFinal='~now~'&codigoPozo=0',1,1,'','','cantidad')  %}
+
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+
+{{ attach_library('bmcbec/tables') }}
+{{ attach_library('bmcbec/chartJS') }}
+
+<div class="well" align="center">
+    <div class="bmcbec-dp-left">
+        <a href="?quickDate=1m" class="bmcbec-dp-button">1m</a>
+        <a href="?quickDate=3m" class="bmcbec-dp-button">3m</a>
+        <a href="?quickDate=6m" class="bmcbec-dp-button">6m</a>
+        <a href="?quickDate=1a" class="bmcbec-dp-button">1a</a>
+    </div>
+    <div class="bmcbec-dp-right">
+        <form method="post" action="">
+            <input type="text" class="span2" value="{{ monthAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+                   data-date="{{ monthAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
+            <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
+                   data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days"/>
+
+            <select name="paramsFilter[codigoPozo]">
+                <option value="0" selected>-- Todos los Puntos de Salida --</option>
+                <optgroup label="Seleccione un Punto de Salida">
+                    <option value="295" >ABOCOL LINEA NO. 1</option>
+                    <option value="42" >ACACIAS LLANOGAS</option>
+                    <option value="43" >ACACIAS MADIGAS</option>
+                    <option value="928" >ACOPI KRA 35</option>
+                    <option value="929" >ACOPI KRA 37</option>
+                    <option value="34" >AGUACHICA</option>
+                    <option value="156" >AGUACLARA</option>
+                    <option value="147" >AGUAZUL GNV ENERCA</option>
+                    <option value="44" >AGUAZUL-G. CUS.</option>
+                    <option value="45" >AIPE</option>
+                    <option value="557" >AJOVER GENERACION</option>
+                    <option value="46" >ALBANIA</option>
+                    <option value="229" >ALCALA</option>
+                    <option value="309" >ALCANOS GUARNE</option>
+                    <option value="967" >ALCANOS GUARNE INDUSTRIAL</option>
+                    <option value="310" >ALCANOS RIONEGRO RESIDENCIAL</option>
+                    <option value="440" >ALPINA</option>
+                    <option value="921" >AL&#218;MINA</option>
+                    <option value="537" >ALVAREZ Y COLLINS</option>
+                    <option value="233" >AMOCAR (AMONIACOS DEL CARIBE)</option>
+                    <option value="258" >AMOCAR MATERIA PRIMA</option>
+                    <option value="176" >ANDALUC&#205;A</option>
+                    <option value="215" >ANSERMANUEVO</option>
+                    <option value="831" >APIAY</option>
+                    <option value="970" >APIAY CONEXI&#211;N</option>
+                    <option value="261" >ARACATACA</option>
+                    <option value="374" >ARCABUCO</option>
+                    <option value="936" >ARGOS</option>
+                    <option value="493" >ARGOS ZONA FRANCA</option>
+                    <option value="528" >ARJONA</option>
+                    <option value="194" >ARMENIA</option>
+                    <option value="971" >ARMENIA CONEXI&#211;N</option>
+                    <option value="124" >ARROCERA</option>
+                    <option value="496" >ARROYO DE PIEDRA</option>
+                    <option value="598" >ASOMINEROS DE SUCRE</option>
+                    <option value="544" >ATUNCOL</option>
+                    <option value="683" >AYAPEL</option>
+                    <option value="185" >BALBOA</option>
+                    <option value="766" >BALLENA</option>
+                    <option value="497" >BARANOA</option>
+                    <option value="875" >BARBOSA</option>
+                    <option value="413" >BARBOSA GNV</option>
+                    <option value="149" >BARRANCA DE UPIA</option>
+                    <option value="880" >BARRANCABERMEJA</option>
+                    <option value="972" >BARRANCABERMEJA CONEXI&#211;N</option>
+                    <option value="987" >BARRANCABERMEJA PROMIORIENTE</option>
+                    <option value="7" >BARRANCAS</option>
+                    <option value="991" >BARRANQUILLA CONEXI&#211;N</option>
+                    <option value="125" >BASE MILITAR</option>
+                    <option value="533" >BAYUNCA</option>
+                    <option value="230" >BAZAR DEL VIDRIO</option>
+                    <option value="18" >BECERRIL</option>
+                    <option value="375" >BEL&#201;N</option>
+                    <option value="376" >BELENCITO IND.</option>
+                    <option value="377" >BELENCITO URBANO</option>
+                    <option value="364" >BERLIN</option>
+                    <option value="580" >BETULIA</option>
+                    <option value="559" >BIOAISE</option>
+                    <option value="562" >BIOFILM COGENERACION</option>
+                    <option value="543" >BIOFILM LINEA NO. 1</option>
+                    <option value="942" >BIOMAX MOSQUERA</option>
+                    <option value="259" >BOHORQUEZ</option>
+                    <option value="416" >BOJACA</option>
+                    <option value="378" >BOL&#205;VAR</option>
+                    <option value="876" >BRICENO SABANA</option>
+                    <option value="47" >BRICE&#209;O</option>
+                    <option value="468" >BRISAS DE BOLIVAR</option>
+                    <option value="990" >BUCARAMANGA CONEXI&#211;N</option>
+                    <option value="584" >BUENAVISTA</option>
+                    <option value="682" >BUENAVISTA CORDOBA</option>
+                    <option value="235" >BUENOS AIRES</option>
+                    <option value="170" >BUGA</option>
+                    <option value="219" >BUGA GAS VEHICULAR C</option>
+                    <option value="220" >BUGA GAZEL GDO</option>
+                    <option value="222" >BUGA TOTAL GAS</option>
+                    <option value="225" >BUGA_EDS GUADALAJARA</option>
+                    <option value="204" >BUGALAGRANDE</option>
+                    <option value="900" >BULLERENGUE</option>
+                    <option value="41" >BURITACA</option>
+                    <option value="48" >C.G. CALDAS</option>
+                    <option value="253" >CABOT LINEA NO. 1</option>
+                    <option value="182" >CAICEDONIA</option>
+                    <option value="850" >CAJIB&#205;O</option>
+                    <option value="417" >CAJICA</option>
+                    <option value="238" >CALAMAR</option>
+                    <option value="197" >CALARC&#193;</option>
+                    <option value="289" >CALDAS VIEJO</option>
+                    <option value="169" >CALI</option>
+                    <option value="436" >CALLE 13</option>
+                    <option value="463" >CALLE 80 (ELIOT)</option>
+                    <option value="247" >CAMARONES</option>
+                    <option value="587" >CAMILO TORRES</option>
+                    <option value="498" >CAMPECHE</option>
+                    <option value="273" >CAMPESTRE</option>
+                    <option value="240" >CAMPO DE LA CRUZ</option>
+                    <option value="937" >CAMPO SANTIAGO</option>
+                    <option value="178" >CANDELARIA</option>
+                    <option value="886" >CANDELARIA PROMIGAS</option>
+                    <option value="466" >CANTAGALLO</option>
+                    <option value="126" >CAQUEZA</option>
+                    <option value="499" >CARACOLI</option>
+                    <option value="815" >CARAMELO</option>
+                    <option value="285" >CARMEN DE APICALA</option>
+                    <option value="577" >CARMEN DE BOLIVAR</option>
+                    <option value="241" >CARRETO</option>
+                    <option value="992" >CARTAGENA CONEXI&#211;N</option>
+                    <option value="535" >CARTAGENA ZONA NORTE</option>
+                    <option value="433" >CARTAGENITA</option>
+                    <option value="181" >CARTAGO</option>
+                    <option value="242" >CARTON COLOMBIA TURBINA</option>
+                    <option value="243" >CARTON DE COLOMBIA MOLINO 5</option>
+                    <option value="934" >CARTONES DE AM&#201;RICA</option>
+                    <option value="272" >CASA DE LA MONEDA</option>
+                    <option value="17" >CASACAR&#193;</option>
+                    <option value="549" >CASCABEL</option>
+                    <option value="681" >CAUCASIA</option>
+                    <option value="542" >CELLUX S.A.</option>
+                    <option value="49" >CEMEX</option>
+                    <option value="956" >CENTAUROS</option>
+                    <option value="973" >CENTAUROS CONEXI&#211;N</option>
+                    <option value="343" >CENTROABASTOS GAZEL</option>
+                    <option value="441" >CERAMITAS</option>
+                    <option value="672" >CERETE</option>
+                    <option value="673" >CERETE III</option>
+                    <option value="674" >CERETE IV</option>
+                    <option value="379" >CERINZA</option>
+                    <option value="814" >CERROGORDO</option>
+                    <option value="50" >CG ALVARADO</option>
+                    <option value="51" >CG AMBALEMA</option>
+                    <option value="52" >CG CAPELLANIA</option>
+                    <option value="53" >CG DOIMA</option>
+                    <option value="54" >CG GUAYABAL</option>
+                    <option value="55" >CG LA BELLEZA</option>
+                    <option value="56" >CG LA DORADA</option>
+                    <option value="57" >CG PIEDRAS</option>
+                    <option value="58" >CG PTO SALGAR</option>
+                    <option value="59" >CG PURIFICACI&#211;N</option>
+                    <option value="60" >CG SALDA&#209;A A</option>
+                    <option value="61" >CG SUSA</option>
+                    <option value="418" >CHIA</option>
+                    <option value="913" >CHICHIMENE</option>
+                    <option value="62" >CHICORAL</option>
+                    <option value="847" >CHICORAL CITY GATE</option>
+                    <option value="666" >CHIMA</option>
+                    <option value="202" >CHINCHIN&#193;</option>
+                    <option value="664" >CHINU</option>
+                    <option value="127" >CHIPAQU&#201;</option>
+                    <option value="380" >CHIPAT&#193;</option>
+                    <option value="63" >CHIQUINQUIRA</option>
+                    <option value="22" >CHIRIGUAN&#193;</option>
+                    <option value="365" >CHITAGA</option>
+                    <option value="381" >CHITARAQUE</option>
+                    <option value="868" >CHIVATA</option>
+                    <option value="920" >CHORRERA</option>
+                    <option value="101" >CIB</option>
+                    <option value="671" >CIENAGA DE ORO</option>
+                    <option value="250" >CIENAGA I</option>
+                    <option value="251" >CIENAGA II</option>
+                    <option value="193" >CIRCASIA</option>
+                    <option value="940" >CITY GATE AGUAZUL</option>
+                    <option value="531" >CLEMENCIA</option>
+                    <option value="525" >CLEMENCIA CEMEX</option>
+                    <option value="16" >CODAZZI</option>
+                    <option value="957" >COGUA</option>
+                    <option value="974" >COGUA CONEXI&#211;N</option>
+                    <option value="121" >COGUA_SENERGYC</option>
+                    <option value="492" >COLCLINKER GENERACION</option>
+                    <option value="260" >COLCLINKER LINEA NO. 1</option>
+                    <option value="301" >COLCLINKER LINEA NO. 2</option>
+                    <option value="382" >COMBITA</option>
+                    <option value="434" >COMPLEJO VIZCAYA</option>
+                    <option value="599" >CORELCA TEBSA S.A.</option>
+                    <option value="581" >COROZAL</option>
+                    <option value="916" >CORRALES</option>
+                    <option value="938" >CORTIJO 3</option>
+                    <option value="419" >COTA</option>
+                    <option value="986" >COTA_GNI</option>
+                    <option value="437" >COTABOGOTA</option>
+                    <option value="106" >CRESERGAS</option>
+                    <option value="383" >CUCAITA</option>
+                    <option value="64" >CUCUNUBA</option>
+                    <option value="128" >CUMARAL</option>
+                    <option value="158" >CUMARAL GNV</option>
+                    <option value="834" >CUPIAGUA</option>
+                    <option value="24" >CURUMAN&#205;</option>
+                    <option value="763" >CUSIANA</option>
+                    <option value="835" >CUSIANA NORTE</option>
+                    <option value="836" >CUSIANA SUR</option>
+                    <option value="162" >DERV_PAEZ</option>
+                    <option value="550" >DEXTON LINEA 1</option>
+                    <option value="878" >DIACO TOCANCIPA</option>
+                    <option value="237" >DIBULLA</option>
+                    <option value="832" >DINA_ECP</option>
+                    <option value="530" >DO&#209;A MANUELA</option>
+                    <option value="442" >DORIA</option>
+                    <option value="187" >DOSQUEBRADAS</option>
+                    <option value="188" >DOSQUEBRADAS GCC</option>
+                    <option value="552" >DOW RESINA EPOXICA LINEA NO. 1</option>
+                    <option value="36" >DRUMOND</option>
+                    <option value="384" >DUITAMA</option>
+                    <option value="594" >ECOPETROL EL RETIRO</option>
+                    <option value="600" >ECOPETROL POZOS COLORADOS</option>
+                    <option value="494" >ECOPETROL REFINERIA LINEA NO. 1</option>
+                    <option value="161" >ECPMONTERREY</option>
+                    <option value="858" >EDS LA SABANA</option>
+                    <option value="879" >EDS LOS PINOS</option>
+                    <option value="120" >EDS PE&#209;AS DEL RIO</option>
+                    <option value="28" >EL BANCO</option>
+                    <option value="29" >EL BURRO</option>
+                    <option value="474" >EL CARMEN DE CHUCURI</option>
+                    <option value="172" >EL CERRITO</option>
+                    <option value="947" >EL DIFICIL</option>
+                    <option value="249" >EL EBANAL</option>
+                    <option value="854" >EL ESCORIAL-PAMPLONA</option>
+                    <option value="589" >EL LIMON (CICUCO)</option>
+                    <option value="10" >EL MOLINO</option>
+                    <option value="479" >EL PAJARO</option>
+                    <option value="123" >EL PATA</option>
+                    <option value="961" >EL PORVENIR</option>
+                    <option value="981" >EL PORVENIR CONEXI&#211;N</option>
+                    <option value="122" >EL PRADO</option>
+                    <option value="588" >EL RETIRO</option>
+                    <option value="435" >EL TANDIL</option>
+                    <option value="274" >EL ZORRO</option>
+                    <option value="315" >EPM BARBOSA</option>
+                    <option value="311" >EPM CIS</option>
+                    <option value="314" >EPM CKC</option>
+                    <option value="318" >EPM EET</option>
+                    <option value="320" >EPM GUARNE</option>
+                    <option value="317" >EPM PARQUE DE LAS AGUAS</option>
+                    <option value="312" >EPM PBE</option>
+                    <option value="952" >EPM SAN VICENTE</option>
+                    <option value="313" >EPM SJN</option>
+                    <option value="500" >EQUIPOS UNIVERSAL</option>
+                    <option value="943" >ERM AGUAZUL</option>
+                    <option value="280" >ESPINAL</option>
+                    <option value="922" >ESTACI&#211;N ACOPI</option>
+                    <option value="595" >ESTACION ALMIDONES DE SUCRE</option>
+                    <option value="653" >ESTACION ARENOSA MEDIDOR NO. 1</option>
+                    <option value="597" >ESTACION BALLESTAS</option>
+                    <option value="953" >ESTACI&#211;N COMPRESORA MALENA</option>
+                    <option value="602" >ESTACION GASCARIBE ESTADIO STA MARTA</option>
+                    <option value="743" >ESTACION GNC BOSQUE</option>
+                    <option value="603" >ESTACION GNC CONCEPCION</option>
+                    <option value="519" >ESTACION GNC DO&#209;A MANUELA</option>
+                    <option value="255" >ESTACION GNC EL CORTIJO</option>
+                    <option value="524" >ESTACION GNC EL GALLO</option>
+                    <option value="604" >ESTACION GNC ESTADIO STA MARTA</option>
+                    <option value="605" >ESTACION GNC FERROCARRIL</option>
+                    <option value="606" >ESTACION GNC GASXI TAYRONA</option>
+                    <option value="522" >ESTACION GNC INDIA CATALINA</option>
+                    <option value="521" >ESTACION GNC LA VARIANTE</option>
+                    <option value="985" >ESTACI&#211;N GNC MARIQUITA</option>
+                    <option value="349" >ESTACION GNC MONTERIA</option>
+                    <option value="661" >ESTACION GNC RIO SINU</option>
+                    <option value="256" >ESTACI&#211;N GNC SANTA CRUZ</option>
+                    <option value="608" >ESTACION GNC SERVICAMPESTRE</option>
+                    <option value="566" >ESTACION GNC SINCELEJO</option>
+                    <option value="520" >ESTACION GNC TERNERA</option>
+                    <option value="610" >ESTACION GNC ZUCA</option>
+                    <option value="523" >ESTACION GNCV LA GIRALDA</option>
+                    <option value="662" >ESTACION GNCV PERLA DEL SIN&#218;</option>
+                    <option value="686" >ESTACION GNCV PLANETA RICA</option>
+                    <option value="685" >ESTACION GNCV SAHAGUN</option>
+                    <option value="540" >ESTACION GNCV TECNOLOGICA</option>
+                    <option value="845" >ESTACION GNCV TEXACO ARJONA</option>
+                    <option value="659" >ESTACION GNV BUENOS AIRES</option>
+                    <option value="556" >ESTACION GNV HEROICA</option>
+                    <option value="611" >ESTACION GNV LA CASTELLANA</option>
+                    <option value="568" >ESTACION GNV LA MACARENA</option>
+                    <option value="539" >ESTACION GNV LA TERMINAL</option>
+                    <option value="567" >ESTACION GNV LOS LAURELES SG</option>
+                    <option value="569" >ESTACION GNV MAGANGUE</option>
+                    <option value="501" >ESTACION GNV MANANTIAL</option>
+                    <option value="660" >ESTACION GNV URBINA</option>
+                    <option value="658" >ESTACION GNV VIRGEN DEL CARMEN</option>
+                    <option value="480" >ESTACION M.O.P.T.</option>
+                    <option value="563" >ESTACION PARQUE AMERICA</option>
+                    <option value="529" >ESTACION TERNERA</option>
+                    <option value="536" >ESTACION TERNERA II</option>
+                    <option value="321" >EUROCERAMICA</option>
+                    <option value="420" >FACATATIVA</option>
+                    <option value="443" >FAMILIA</option>
+                    <option value="129" >FANAGRA</option>
+                    <option value="65" >FERTICOL</option>
+                    <option value="765" >FILADELFIA</option>
+                    <option value="198" >FILANDIA</option>
+                    <option value="884" >FIRAVITOBA</option>
+                    <option value="855" >FLANDES CITY GATE</option>
+                    <option value="282" >FLOR HUILA</option>
+                    <option value="837" >FLORE&#209;A</option>
+                    <option value="66" >FLORIAN</option>
+                    <option value="208" >FLORIDA</option>
+                    <option value="8" >FONSECA</option>
+                    <option value="99" >FORTALECILLAS</option>
+                    <option value="130" >FOSCA</option>
+                    <option value="764" >FRESNO</option>
+                    <option value="444" >FRITOLAY</option>
+                    <option value="615" >FUNDACION</option>
+                    <option value="421" >FUNZA</option>
+                    <option value="67" >FUQUENE</option>
+                    <option value="270" >FUSAGASUGA</option>
+                    <option value="422" >GACHANCIPA</option>
+                    <option value="759" >GALAN REFINERIA</option>
+                    <option value="502" >GALAPA</option>
+                    <option value="33" >GAMARRA</option>
+                    <option value="941" >GAS DE OPERACI&#211;N SPEC</option>
+                    <option value="732" >GAS USADO PARA OPERACION GASODUCTO</option>
+                    <option value="68" >GASES DE BCA</option>
+                    <option value="910" >GASES DE OCCIDENTE</option>
+                    <option value="324" >GASMOVIL SAN PABLO</option>
+                    <option value="469" >GASORIENTE KM 8</option>
+                    <option value="322" >GAZEL DALLAS</option>
+                    <option value="345" >GAZEL METROGAS</option>
+                    <option value="331" >GAZEL ORIENTAL (PALENQUE)</option>
+                    <option value="323" >GAZEL TASAJERA</option>
+                    <option value="958" >GBS_F</option>
+                    <option value="975" >GBS_I CONEXI&#211;N</option>
+                    <option value="839" >GCGUAJIRARD</option>
+                    <option value="856" >GIBRALTAR</option>
+                    <option value="366" >GIBRALTAR GO</option>
+                    <option value="179" >GINEBRA</option>
+                    <option value="131" >GNC MADIGAS (GNV VILLAVICENCIO)</option>
+                    <option value="449" >GNV 4DIVINAS</option>
+                    <option value="231" >GNV AMARILLOS</option>
+                    <option value="451" >GNV AUTOP MEDELL&#205;N</option>
+                    <option value="448" >GNV BRIOCHIA</option>
+                    <option value="450" >GNV BRIOLOS ANGELES</option>
+                    <option value="151" >GNV COLONOS</option>
+                    <option value="276" >GNV COVEGAS</option>
+                    <option value="452" >GNV CRUCE MOSQ.</option>
+                    <option value="453" >GNV DANUBIO</option>
+                    <option value="277" >GNV ESSO</option>
+                    <option value="115" >GNV GUAYABAL</option>
+                    <option value="279" >GNV JARDIN</option>
+                    <option value="278" >GNV LA 60</option>
+                    <option value="116" >GNV LA MELISA</option>
+                    <option value="454" >GNV LA PAZ</option>
+                    <option value="462" >GNV LA TORRE</option>
+                    <option value="925" >GNV MAC</option>
+                    <option value="455" >GNV MADRID</option>
+                    <option value="287" >GNV NARANJOS</option>
+                    <option value="458" >GNV NUEVA DIANA</option>
+                    <option value="456" >GNV ORO NEGRO</option>
+                    <option value="924" >GNV PACAR&#193;</option>
+                    <option value="935" >GNV PETROLGAS</option>
+                    <option value="460" >GNV PORVENIR</option>
+                    <option value="459" >GNV PTO VALLARTA</option>
+                    <option value="923" >GNV SAN JOS&#201;</option>
+                    <option value="457" >GNV SAN PEDRO</option>
+                    <option value="477" >GNV SOL SAN MARTIN</option>
+                    <option value="461" >GNV TERPEL CHIA</option>
+                    <option value="111" >GNV UBATE</option>
+                    <option value="478" >GNV_COALTRANS</option>
+                    <option value="39" >GNV_VALLEDUPAR</option>
+                    <option value="926" >GOODYEAR</option>
+                    <option value="150" >GRANADA G.N. ARIARI</option>
+                    <option value="617" >GUACAMAYAL</option>
+                    <option value="171" >GUACAR&#205;</option>
+                    <option value="69" >GUACIRCO</option>
+                    <option value="867" >GUADUAS</option>
+                    <option value="618" >GUAIMARO</option>
+                    <option value="70" >GUALANDAY</option>
+                    <option value="976" >GUALANDAY CONEXI&#211;N</option>
+                    <option value="852" >GUAL&#205;</option>
+                    <option value="911" >GUAMA</option>
+                    <option value="152" >GUAMAL</option>
+                    <option value="71" >GUAMO</option>
+                    <option value="72" >GUATANCUY</option>
+                    <option value="411" >GUAVATA</option>
+                    <option value="132" >GUAYABETAL</option>
+                    <option value="438" >GUAYMARAL</option>
+                    <option value="385" >G&#220;EPSA</option>
+                    <option value="951" >GYPLAC</option>
+                    <option value="5" >HATO NUEVO</option>
+                    <option value="909" >HEGA YOND&#211;</option>
+                    <option value="207" >HERVEO</option>
+                    <option value="268" >HOBO</option>
+                    <option value="955" >HOCOL</option>
+                    <option value="103" >HONDA</option>
+                    <option value="73" >IBAGUE</option>
+                    <option value="367" >ICP LA ISLA</option>
+                    <option value="4" >INTERCOR</option>
+                    <option value="503" >ISABEL LOPEZ</option>
+                    <option value="830" >JAMUNDI</option>
+                    <option value="164" >JENESANO</option>
+                    <option value="386" >JESUS MARIA</option>
+                    <option value="768" >JOBO</option>
+                    <option value="586" >JUAN ARIAS</option>
+                    <option value="504" >JUAN DE ACOSTA</option>
+                    <option value="620" >JUAN MINA II</option>
+                    <option value="948" >KM 0 DO&#209;A MANUELA</option>
+                    <option value="265" >KM 11 +950 DERIVACION AL GASODUCTO ARAGUANEY</option>
+                    <option value="266" >KM 14 DERIVACION A ENERCA ESTACION BUENAVISTA</option>
+                    <option value="267" >KM 17 +400 ENTREDA CITY GATE - ENTREGA REMITENTES</option>
+                    <option value="871" >KM0 CI&#201;NAGA – SANTA MARTA</option>
+                    <option value="959" >LA BELLEZA</option>
+                    <option value="977" >LA BELLEZA CONEXI&#211;N</option>
+                    <option value="905" >LA CA&#209;ADA</option>
+                    <option value="186" >LA CELIA</option>
+                    <option value="767" >LA CRECIENTE</option>
+                    <option value="146" >LA CUNCIA</option>
+                    <option value="387" >LA FLORESTA</option>
+                    <option value="32" >LA GLORIA</option>
+                    <option value="621" >LA GRAN VIA</option>
+                    <option value="19" >LA JAGUA</option>
+                    <option value="993" >LA MAMI CONEXI&#211;N</option>
+                    <option value="31" >LA MATA</option>
+                    <option value="175" >LA PAILA</option>
+                    <option value="13" >LA PAZ</option>
+                    <option value="481" >LA PUNTA DE LOS REMEDIOS</option>
+                    <option value="74" >LA SIERRA</option>
+                    <option value="192" >LA TEBAIDA</option>
+                    <option value="157" >LA TURUA</option>
+                    <option value="211" >LA UNI&#211;N</option>
+                    <option value="75" >LA VICTORIA</option>
+                    <option value="214" >LA VICTORIA-ARMENIA</option>
+                    <option value="190" >LA VIRGINIA</option>
+                    <option value="114" >LADRILLERAS COGUA</option>
+                    <option value="561" >LAMITECH</option>
+                    <option value="482" >LAS FLORES</option>
+                    <option value="329" >LEBRIJA DOMICILIARIO</option>
+                    <option value="330" >LEBRIJA GNV</option>
+                    <option value="119" >LENGUAZAQUE</option>
+                    <option value="445" >LEONA</option>
+                    <option value="76" >LERIDA</option>
+                    <option value="77" >LIBANO</option>
+                    <option value="944" >LLANITO</option>
+                    <option value="927" >LLOREDA GRASAS</option>
+                    <option value="669" >LORICA</option>
+                    <option value="100" >LOS PINOS</option>
+                    <option value="505" >LURUACO</option>
+                    <option value="902" >MACEO</option>
+                    <option value="423" >MADRID</option>
+                    <option value="585" >MAGANGUE</option>
+                    <option value="483" >MAICAO</option>
+                    <option value="513" >MALTERIA TROPICAL S.A. LINEA NO. 1</option>
+                    <option value="514" >MALTERIA TROPICAL S.A. LINEA NO. 2</option>
+                    <option value="623" >MAMATOCO NO. 1 Y 2</option>
+                    <option value="484" >MANAURE</option>
+                    <option value="201" >MANIZALES</option>
+                    <option value="209" >MANZANARES</option>
+                    <option value="570" >MARIA LA BAJA</option>
+                    <option value="78" >MARIQUITA</option>
+                    <option value="978" >MARIQUITA CONEXI&#211;N</option>
+                    <option value="224" >MARQUETALIA</option>
+                    <option value="213" >MARSELLA</option>
+                    <option value="898" >MATACHINES</option>
+                    <option value="154" >MAYA</option>
+                    <option value="148" >MEDINA</option>
+                    <option value="284" >MELGAR</option>
+                    <option value="624" >MENDIHUACA</option>
+                    <option value="79" >MERIL&#201;CTRICA (UPBM-12 COGB)</option>
+                    <option value="761" >METROGAS</option>
+                    <option value="333" >METROGAS ORIENTAL</option>
+                    <option value="820" >MEXICHEM</option>
+                    <option value="485" >MINGUEO</option>
+                    <option value="160" >MIRAFLORES</option>
+                    <option value="275" >MIROLINDO</option>
+                    <option value="506" >MOLINERO</option>
+                    <option value="667" >MOMIL</option>
+                    <option value="591" >MOMPOX</option>
+                    <option value="388" >MONIQUIR&#193;</option>
+                    <option value="626" >MONOMEROS COLOMBO VENEZOLANOS S.A.</option>
+                    <option value="414" >MONTEARROYO-BARBOSA</option>
+                    <option value="680" >MONTELIBANO</option>
+                    <option value="195" >MONTENEGRO</option>
+                    <option value="133" >MONTEREY  GAS CUSIANA</option>
+                    <option value="675" >MONTERIA</option>
+                    <option value="684" >MONTERIA SEVILLA NORTE</option>
+                    <option value="828" >MORICHAL</option>
+                    <option value="424" >MOSQUERA PARQUE</option>
+                    <option value="425" >MOSQUERA TRAMPAS</option>
+                    <option value="389" >MOTAVITA</option>
+                    <option value="80" >NATAGAIMA</option>
+                    <option value="212" >NEIRA</option>
+                    <option value="81" >NEMOCON</option>
+                    <option value="390" >NOBSA</option>
+                    <option value="988" >NOBSA PK85</option>
+                    <option value="216" >OBANDO</option>
+                    <option value="166" >OCENSA</option>
+                    <option value="893" >OCENSA (PROMIGAS)</option>
+                    <option value="914" >OCENSA PAEZ</option>
+                    <option value="897" >OCENSA-LA GRANJITA</option>
+                    <option value="228" >OCENSA-MIRAFLORES</option>
+                    <option value="960" >OCOA</option>
+                    <option value="979" >OCOA CONEXI&#211;N</option>
+                    <option value="391" >OICAT&#193;</option>
+                    <option value="82" >OMIMEX (JAZMIN)</option>
+                    <option value="117" >OMIMEX (MORICHE)</option>
+                    <option value="83" >OMIMEX (VASCONIA)</option>
+                    <option value="629" >ORIHUECA</option>
+                    <option value="574" >ORO BLANCO</option>
+                    <option value="578" >OVEJAS</option>
+                    <option value="223" >PADUA</option>
+                    <option value="26" >PAILITAS</option>
+                    <option value="392" >PAIPA</option>
+                    <option value="762" >PALENQUE GASORIENTE</option>
+                    <option value="630" >PALERMO</option>
+                    <option value="203" >PALESTINA</option>
+                    <option value="177" >PALMIRA</option>
+                    <option value="20" >PALMITA</option>
+                    <option value="596" >PALO ALTO</option>
+                    <option value="486" >PALOMINO</option>
+                    <option value="6" >PAPAYAL</option>
+                    <option value="205" >PAPELES DEL CAUCA</option>
+                    <option value="134" >PARATEBUENO</option>
+                    <option value="853" >PATILLALES-CUCUTA</option>
+                    <option value="915" >PAYOA</option>
+                    <option value="30" >PELAYA</option>
+                    <option value="446" >PELDAR</option>
+                    <option value="507" >PENDALES</option>
+                    <option value="770" >PE&#209;AS DEL RIO</option>
+                    <option value="189" >PEREIRA</option>
+                    <option value="980" >PEREIRA CONEXI&#211;N</option>
+                    <option value="516" >PETCO COGENERACION</option>
+                    <option value="517" >PETCO COGENERACION 2</option>
+                    <option value="135" >PETROBRAS MONTERREY</option>
+                    <option value="515" >PETROQUIMICA LINEA NO. 1</option>
+                    <option value="849" >PIENDAM&#211;</option>
+                    <option value="631" >PIMSA</option>
+                    <option value="771" >PINOS SURGAS</option>
+                    <option value="678" >PLANETA RICA I</option>
+                    <option value="679" >PLANETA RICA II</option>
+                    <option value="859" >PLAYA ROJA</option>
+                    <option value="108" >POBLACI&#211;N CASTILLA</option>
+                    <option value="508" >POLONUEVO</option>
+                    <option value="136" >POMPEYA</option>
+                    <option value="632" >PONEDERA</option>
+                    <option value="534" >PONTEZUELA</option>
+                    <option value="848" >POPAYAN CITY GATE</option>
+                    <option value="447" >PORCELANAS</option>
+                    <option value="137" >PORF&#205;A</option>
+                    <option value="173" >PRADERA</option>
+                    <option value="846" >PROELECTRICA LINEA NO. 1</option>
+                    <option value="730" >PROELECTRICA LINEA NO. 2</option>
+                    <option value="221" >PROGASUR</option>
+                    <option value="560" >PROPAISE</option>
+                    <option value="554" >PROPAISE  2</option>
+                    <option value="930" >PROPAL</option>
+                    <option value="558" >PROPILCO COGENERACION</option>
+                    <option value="546" >PROPILCO LINEA NO. 1</option>
+                    <option value="547" >PROPILCO LINEA NO. 2</option>
+                    <option value="464" >PROTISA</option>
+                    <option value="472" >PROVINCIA, SABANA DE TORRES Y SIMONICA</option>
+                    <option value="470" >PTE SOGAMOSO Y EL PEDRAL</option>
+                    <option value="84" >PTO BOYACA</option>
+                    <option value="118" >PTO PARRA</option>
+                    <option value="677" >PUEBLO NUEVO</option>
+                    <option value="271" >PUENTE BLANCO</option>
+                    <option value="393" >PUENTE NACIONAL</option>
+                    <option value="487" >PUERTO BRISA</option>
+                    <option value="218" >PUERTO CALDAS</option>
+                    <option value="635" >PUERTO GIRALDO</option>
+                    <option value="465" >PUERTO WILCHES</option>
+                    <option value="907" >PUL&#205;</option>
+                    <option value="85" >PURIFICACION (PPF)</option>
+                    <option value="668" >PURISIMA</option>
+                    <option value="138" >QUETAME</option>
+                    <option value="196" >QUIMBAYA</option>
+                    <option value="394" >R&#193;QUIRA</option>
+                    <option value="881" >REFICAR LINEA NO 1</option>
+                    <option value="327" >REGULADO GN</option>
+                    <option value="636" >REMOLINO</option>
+                    <option value="509" >REPELON</option>
+                    <option value="139" >RESTREPO</option>
+                    <option value="21" >RINC&#211;N HONDO</option>
+                    <option value="488" >RIO ANCHO</option>
+                    <option value="37" >RIO DE ORO</option>
+                    <option value="637" >RIO FRIO</option>
+                    <option value="489" >RIOHACHA</option>
+                    <option value="592" >ROCHA</option>
+                    <option value="638" >RODADERO</option>
+                    <option value="184" >ROLDANILLO</option>
+                    <option value="965" >ROTOPLAST GUARNE</option>
+                    <option value="918" >RUTA CARIBE</option>
+                    <option value="25" >SABANAGRANDE</option>
+                    <option value="887" >SABANAGRANDE (PROMIGAS)</option>
+                    <option value="510" >SABANALARGA</option>
+                    <option value="908" >SABOYA</option>
+                    <option value="395" >SACHICA</option>
+                    <option value="670" >SAHAGUN</option>
+                    <option value="639" >SALAMINA</option>
+                    <option value="86" >SALDA&#209;A B</option>
+                    <option value="199" >SALENTO</option>
+                    <option value="396" >SAMAC&#193;</option>
+                    <option value="281" >SAMAN</option>
+                    <option value="369" >SAMORE</option>
+                    <option value="663" >SAMPUES</option>
+                    <option value="35" >SAN ALBERTO</option>
+                    <option value="665" >SAN ANDRES DE SOTAVENTO</option>
+                    <option value="370" >SAN BERNARDO</option>
+                    <option value="15" >SAN DIEGO</option>
+                    <option value="112" >SAN FELIPE</option>
+                    <option value="945" >SAN FRANCISCO DE LOBA</option>
+                    <option value="579" >SAN JACINTO</option>
+                    <option value="415" >SAN JOSE DE PARE</option>
+                    <option value="9" >SAN JUAN</option>
+                    <option value="891" >SAN JUAN (PROMIGAS)</option>
+                    <option value="87" >SAN LUIS</option>
+                    <option value="676" >SAN MARCOS</option>
+                    <option value="153" >SAN MARTIN</option>
+                    <option value="38" >SAN MARTIN-CESAR</option>
+                    <option value="572" >SAN ONOFRE</option>
+                    <option value="467" >SAN PABLO PROMIGAS</option>
+                    <option value="901" >SAN PABLO TGI</option>
+                    <option value="206" >SAN PEDRO</option>
+                    <option value="892" >SAN PEDRO (PROMIGAS)</option>
+                    <option value="40" >SAN RAFAEL</option>
+                    <option value="23" >SAN ROQUE</option>
+                    <option value="473" >SAN VICENTE DE CHUCURI</option>
+                    <option value="110" >SAN VICENTE FERRER (GNV)</option>
+                    <option value="912" >SANCELA</option>
+                    <option value="640" >SANJOSE (BANANERAS)</option>
+                    <option value="532" >SANTA CATALINA</option>
+                    <option value="997" >SANTA CECILIA</option>
+                    <option value="874" >SANTA CLARA</option>
+                    <option value="641" >SANTA LUCIA</option>
+                    <option value="642" >SANTA MARTA 1 Y 2</option>
+                    <option value="643" >SANTA RITA</option>
+                    <option value="191" >SANTA ROSA</option>
+                    <option value="888" >SANTA ROSA (PROMIGAS)</option>
+                    <option value="397" >SANTA ROSA DE VIT.</option>
+                    <option value="398" >SANTA SOF&#205;A</option>
+                    <option value="511" >SANTA VERONICA</option>
+                    <option value="412" >SANTANA</option>
+                    <option value="877" >SANTANA METROGAS</option>
+                    <option value="904" >SANTO DOMINGO</option>
+                    <option value="644" >SANTO TOMAS</option>
+                    <option value="919" >SARDINATA</option>
+                    <option value="962" >SEBASTOPOL</option>
+                    <option value="982" >SEBASTOPOL CONEXI&#211;N</option>
+                    <option value="966" >SENCO GUARNE</option>
+                    <option value="950" >SENERGY NOBSA</option>
+                    <option value="833" >SERAFIN</option>
+                    <option value="180" >SEVILLA</option>
+                    <option value="889" >SEVILLA (PROMIGAS)</option>
+                    <option value="371" >SILOS</option>
+                    <option value="88" >SIMIJACA</option>
+                    <option value="582" >SINCE</option>
+                    <option value="576" >SINCELEJO</option>
+                    <option value="994" >SINCELEJO CONEXI&#211;N</option>
+                    <option value="645" >SITIO NUEVO</option>
+                    <option value="931" >SMURFIT CART&#211;N COLOMBIA</option>
+                    <option value="439" >SOACHA</option>
+                    <option value="399" >SOGAMOSO</option>
+                    <option value="426" >SOPO</option>
+                    <option value="400" >SORA</option>
+                    <option value="476" >SOTAQUIRA</option>
+                    <option value="475" >SUAITA</option>
+                    <option value="646" >SUAN</option>
+                    <option value="427" >SUBACHOQUE</option>
+                    <option value="401" >SUCRE</option>
+                    <option value="217" >SUCROMILES</option>
+                    <option value="555" >SUIN SA</option>
+                    <option value="104" >SUMICOL</option>
+                    <option value="648" >SUR DEL MAGDALENA</option>
+                    <option value="113" >SURGAS</option>
+                    <option value="996" >SURGAS LA MATA</option>
+                    <option value="541" >SURTIGAS MAMONAL</option>
+                    <option value="402" >SUTAMARCH&#193;N</option>
+                    <option value="89" >SUTATAUSA</option>
+                    <option value="428" >TABIO</option>
+                    <option value="969" >TALAIGUA</option>
+                    <option value="590" >TALAIGUA NUEVO</option>
+                    <option value="27" >TAMALAMEQUE</option>
+                    <option value="372" >TANE PAMPLONA</option>
+                    <option value="857" >TASAJERA</option>
+                    <option value="949" >TASAJERA GN</option>
+                    <option value="946" >TASAJERA PLEXA</option>
+                    <option value="140" >TAURAMENA</option>
+                    <option value="90" >TAUSA</option>
+                    <option value="429" >TENJO</option>
+                    <option value="246" >TERMOBARRANQUILLA UNIDADES 1.2.3 Y 4</option>
+                    <option value="564" >TERMOCANDELARIA S.C.A. E.S.P.</option>
+                    <option value="495" >TERMOCARTAGENA LINEA 1</option>
+                    <option value="91" >TERMOCENTRO</option>
+                    <option value="92" >TERMODORADA</option>
+                    <option value="168" >TERMOEMCALI</option>
+                    <option value="654" >TERMOFLORES I</option>
+                    <option value="655" >TERMOFLORES II LTDA &amp; CIA S.C.A. E.S.P.</option>
+                    <option value="656" >TERMOFLORES III LTDA &amp; CIA S.C.A. E.S.P.</option>
+                    <option value="954" >TERMOFLORES IV</option>
+                    <option value="236" >TERMOGUAJIRA</option>
+                    <option value="917" >TERMOGUAJIRA 2</option>
+                    <option value="968" >TERMONORTE</option>
+                    <option value="141" >TERMO-OCOA</option>
+                    <option value="984" >TERMOPIEDRAS</option>
+                    <option value="93" >TERMOSIERRA</option>
+                    <option value="155" >TERMO-SURIA</option>
+                    <option value="885" >TERMOSURIA B</option>
+                    <option value="167" >TERMOVALLE</option>
+                    <option value="347" >TERPEL METROGAS</option>
+                    <option value="758" >TERPEL ORIENTAL (PALENQUE)</option>
+                    <option value="403" >TIBASOSA</option>
+                    <option value="94" >TIERRADENTRO</option>
+                    <option value="404" >TINJAC&#193;</option>
+                    <option value="430" >TOCANCIPA</option>
+                    <option value="410" >TOG&#220;I</option>
+                    <option value="565" >TOLCEMENTO LINEA NO. 1</option>
+                    <option value="373" >TOLEDO LABATECA</option>
+                    <option value="575" >TOLU</option>
+                    <option value="573" >TOLU VIEJO</option>
+                    <option value="869" >TOPAGA</option>
+                    <option value="906" >TOQUI TOQUI</option>
+                    <option value="899" >TRANSCARIBE</option>
+                    <option value="283" >TRANSF. GIRARDOT-RICAURTE</option>
+                    <option value="288" >TRANSFERENCIA PERENCO - FLANDES</option>
+                    <option value="95" >TRANSMETANO (SEBASTOPOL)</option>
+                    <option value="105" >TRANSORIENTE</option>
+                    <option value="490" >TRITURADORA LA MACUIRA</option>
+                    <option value="526" >TUBOCARIBE</option>
+                    <option value="866" >TUBOCARIBE2</option>
+                    <option value="174" >TULU&#193;</option>
+                    <option value="405" >TUNJA</option>
+                    <option value="96" >TUNUNGUA</option>
+                    <option value="527" >TURBACO</option>
+                    <option value="571" >TURBANA</option>
+                    <option value="102" >TURBOGENERACION</option>
+                    <option value="406" >TUTA - MCPIO</option>
+                    <option value="407" >TUTA SIDEBOYAC&#193;</option>
+                    <option value="97" >UBATE</option>
+                    <option value="142" >UNE</option>
+                    <option value="593" >URIBE - URIBE</option>
+                    <option value="491" >URIBIA</option>
+                    <option value="12" >URUMITA</option>
+                    <option value="512" >USIACURI</option>
+                    <option value="143" >USME</option>
+                    <option value="163" >VALLE DE TENZA</option>
+                    <option value="14" >VALLEDUPAR</option>
+                    <option value="548" >VANLEER</option>
+                    <option value="844" >VASCONIA</option>
+                    <option value="983" >VASCONIA CONEXI&#211;N</option>
+                    <option value="408" >V&#201;LEZ</option>
+                    <option value="98" >VENADILLO</option>
+                    <option value="165" >VENTAQUEMADA</option>
+                    <option value="107" >VEREDA CRUCE GUACIRCO</option>
+                    <option value="109" >VEREDA SAN JORGE</option>
+                    <option value="409" >VILLA DE LEYVA</option>
+                    <option value="200" >VILLAMAR&#205;A</option>
+                    <option value="11" >VILLANUEVA</option>
+                    <option value="144" >VILLANUEVA-G.CUSIANA</option>
+                    <option value="145" >VILLAVICENCIO</option>
+                    <option value="159" >VILLAVICENCIO GNI</option>
+                    <option value="851" >YARUMALES</option>
+                    <option value="903" >YOLOMB&#211;</option>
+                    <option value="471" >YONDO</option>
+                    <option value="782" >YOPAL</option>
+                    <option value="829" >YUMBO</option>
+                    <option value="932" >YUMBO INDUSTRIAL</option>
+                    <option value="933" >YUMBO RESIDENCIAL</option>
+                    <option value="183" >ZARZAL</option>
+                    <option value="431" >ZIPACON</option>
+                    <option value="432" >ZIPAQUIRA</option>
+                    <option value="227" >ZONA FRANCA</option>
+                    <option value="890" >ZONA FRANCA (PROMIGAS)</option>
+                    <option value="553" >ZONA FRANCA LA CANDELARIA</option>
+                    <option value="652" >ZONA FRANCA SANTA MARTA</option>
+                </optgroup>
+            </select>
+            <select name="formTransferPoint">
+                <option value="0" selected>-- Todos los Puntos de Transferencia --</option>
+                <optgroup label="Seleccione un Punto de Transferencia">
+                    <option value="1" >BARRANCABERMEJA</option>
+                    <option value="28" >BUENOS AIRES</option>
+                    <option value="30" >CHICORAL</option>
+                    <option value="24" >PRADERA</option>
+                    <option value="36" >SEBASTOPOL</option>
+                    <option value="31" >TANE/CACOTA</option>
+                    <option value="17" >YOPAL</option>
+                    <option value="35" >YUMBO/CALI</option>
+                </optgroup>
+            </select>
+            <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+        </form>
+    </div>
+    <div class="bmcbec-dp-fix"></div>
+</div>
+
+<div class="bmcbec-fix"></div>
+
+<!-- GRAPHIC CONSTRUCTOR -->
+{# <div class="canvas-holder-text">#}
+{#     <h4><text>Resultados:</text></h4>#}
+{#     <p>Se est&#225; mostrando informaci&#243;n de  48 resultados encontrados con los filtros aplicados.</p>#}
+{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
+{# </div>#}
+
+{{ include('resultados_info.html.twig', {"info": info}) }}
+
+<div class="canvas-holder">
+    <h3 align="center">CANTIDAD DE ENERGÍA TOMADA CORRESPONDIENTE A CONTRATOS DE PARQUEO</h3>
+    <canvas id="canvas"></canvas>
+</div>
+<script type="text/javascript">
+
+    {% if info['paramsFilter'] is not null %}
+    var codigoPozo = {{ (info['paramsFilter']['codigoPozo'])?:0 }};
+    $("option[value=" + codigoPozo + "]").attr('selected', 'selected');
+
+    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+    $("input[id='dpd1']").attr('value', fechaInicial);
+
+    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+    $("input[id='dpd2']").attr('value', fechaFinal);
+
+    {% endif %}
+
+    var randomColor = function(opacity) {
+        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+    };
+
+    var lineChartData = {
+        labels: [
+            {% for item in info["dataTables"] %}
+                "{{ item.dia }}/{{ item.mes }}/{{ item.año }}",
+            {% endfor %}
+        ],
+        datasets: [
+            {
+                label: "Cantidad (MBTUD)",
+                data: [
+                    {% for item in info["dataTables"] %}
+                        "{{item.cantidad}}",
+                    {% endfor %}
+                ]
+            },
+
+        ]
+    };
+
+    $.each(lineChartData.datasets, function(i, dataset) {
+        dataset.borderColor = randomColor(0.4);
+        dataset.backgroundColor = randomColor(1);
+        dataset.pointBorderColor = randomColor(0.7);
+        dataset.pointBackgroundColor = randomColor(0.5);
+        dataset.pointBorderWidth = 1;
+    });
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas");
+        window.myLine = Chart.Line(ctx, {
+            data: lineChartData,
+            options: {
+                responsive: true,
+                hoverMode: 'label',
+                stacked: false,
+                title:{
+                    display:false,
+                    text:'CANTIDAD DE ENERGÍA TOMADA CORRESPONDIENTE A CONTRATOS DE PARQUEO',
+                    fontSize: 16,
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            offsetGridLines: false
+                        },
+                        ticks: {
+                            userCallback: function(dataLabel, index) {
+                                return index % 2 === 0 ? dataLabel : '';
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                        type: "linear",
+                        display: true,
+                        position: "left",
+                        id: "y-axis-1",
+                    }],
+                }
+            }
+        });
+    };
+
+    $('#randomizeData').click(function() {
+        lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        window.myLine.update();
+    });
+
+    var c=document.getElementById("canvas");
+    var ctx=c.getContext("3d");
+
+
+</script>
+<!-- END OF GRAPHIC CONSTRUCTOR -->
+<div class="bmcbec-fix"></div>
+
+
+<!-- TABLE CONSTRUCTOR -->
+<div class="table-holder">
+    <h4>Tabla de Resultados</h4>
+    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
+    <table id="ResultTable" class="display" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Día</th>
+            <th>Punto de Salida</th>
+            <th>Punto de Transferencia</th>
+            <th>Cantidad (MBTUD)</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Día</th>
+            <th>Punto de Salida</th>
+            <th>Punto de Transferencia</th>
+            <th>Cantidad (MBTUD)</th>
+        </tr>
+        </tfoot>
+        <tbody>
+        {% for key, data in info["dataTables"] %}
+            <tr valign="top" align="left">
+                <td>{{ data.año }}</td>
+                <td>{{ data.mes }}</td>
+                <td>{{ data.dia }}</td>
+                <td>{{ data.punto_de_salida }}</td>
+                <td>{{ data.Descripcion_trans }}</td>
+                <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Begin - Export Option Table -->
+<div id="table2export">
+<table id="ResultTable1"></table>
+</div>
+<!-- END - Export Option Table -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#ResultTable thead").clone().appendTo("#ResultTable1");
+        $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+        $("#ResultTable tbody").clone().appendTo("#ResultTable1");
+        dataTablesIni();
+    });
+</script>
