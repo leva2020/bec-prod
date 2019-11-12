@@ -23,9 +23,16 @@
     <p class="helpText">Consulta rápidamente desde un mes (1m) hasta un año (1a)</p></div>
     <div class="bmcbec-dp-right">
     <form method="post" action="">
-    <input type="text" class="span2" value="{{ monthAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ monthAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" >
-    <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days">
-    <select name="paramsFilter[codigoPozo]">
+    <!--<input type="text" class="span2" value="{{ monthAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ monthAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days" >
+    <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years" data-date-minviewmode="days">-->
+        <input type="text" class="span2" value="{{ monthAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+               data-date="{{ monthAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+               data-date-minviewmode="days"/>
+        <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
+               data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+               data-date-minviewmode="days"/>
+
+        <select name="paramsFilter[codigoPozo]">
     <option value="0" selected="">-- Todos los Puntos de Entrada --</option>
     <optgroup label="Seleccione un Punto de Entrada">
         <option value="73">ABANICO</option>
