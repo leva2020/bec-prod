@@ -774,23 +774,29 @@ class ServiciosController extends ControllerBase {
         $dataDataSets = array();
         $info = array();
         $dataSets = array();
-        if (isset($data['response'])):
-            foreach ($data['response'] as $key => $value) {
-                $date = $value->mes . "./" . $value->ano;
-                if (!in_array($date, $labels)):
-                    $labels[] = $date;
-                    $dataDataSets["PTDVF (MBTUD)"][$date] = 0;
-                    $dataDataSets["CIDVF (MBTUD)"][$date] = 0;
-                endif;
-                $dataDataSets["PTDVF (MBTUD)"][$date] += $value->ptdvf;
-                $dataDataSets["CIDVF (MBTUD)"][$date] += $value->cidvf;
-            }
-        endif;
-        foreach ($dataDataSets["PTDVF (MBTUD)"] as $tmp):
-            $dataSets["PTDVF (MBTUD)"][] = $tmp;
+
+        if (is_array($data['response'])) {
+            if (isset($data['response'])):
+                foreach ($data['response'] as $key => $value) {
+                    $date = $value->dia . "/" . $value->mes . "/" . $value->año;
+                    if (!in_array($date, $labels)):
+                        $labels[] = $date;
+                        $dataDataSets["Nacional"][$date] = 0;
+                        $dataDataSets["Importada"][$date] = 0;
+                    endif;
+                    if ($value->tipo_produccion == "NACIONAL"){
+                        $dataDataSets["Nacional"][$date] += $value->cantidad;
+                    } else {
+                        $dataDataSets["Importada"][$date] += $value->cantidad;
+                    }
+                }
+            endif;
+        }
+        foreach ($dataDataSets["Nacional"] as $tmp):
+            $dataSets["Nacional"][] = $tmp;
         endforeach;
-        foreach ($dataDataSets["CIDVF (MBTUD)"] as $tmp):
-            $dataSets["CIDVF (MBTUD)"][] = $tmp;
+        foreach ($dataDataSets["Importada"] as $tmp):
+            $dataSets["Importada"][] = $tmp;
         endforeach;
         $data = array(
             'data' => $info,
