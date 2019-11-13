@@ -773,7 +773,7 @@ input[type="file"], input[type="image"], input[type="submit"], input[type="reset
 }
 
 input[type=checkbox] {
-    display: none;
+    display: block;
 }
 
 input[type=checkbox]:checked + div {
