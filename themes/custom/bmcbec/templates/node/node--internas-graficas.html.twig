@@ -1,10 +1,10 @@
- 	{% if node.field_banner_principal is not empty%}
- 		{% include 'banners.html.twig' with {'data': node.field_banner_principal.entity } %}
- 	{% endif %}
+{# 	{% if node.field_banner_principal is not empty%}#}
+{# 		{% include 'banners.html.twig' with {'data': node.field_banner_principal.entity } %}#}
+{# 	{% endif %}#}
 
- 	{% if node.field_graficas is not empty%}
-		{#{% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}#}
- 	{% endif %}
+{# 	{% if node.field_graficas is not empty%}#}
+{# 		{% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}#}
+{# 	{% endif %}#}
 
 {# 	{% for item in node.field_graficas %}#}
 {# 		{% if node.field_template.value is not empty%}#}
@@ -25,7 +25,7 @@
 {#                                     }#}
 {#                                 </style>#}
 
-                                {% include node.field_graficas[0].entity.field_template.value %}
+                                {% include node.field_template.value %}
 
                             </div>
                         </div>
@@ -35,15 +35,15 @@
 {# 		{% endif %}#}
 {# 	{% endfor %}#}
 
- 	{% if node.field_cuadros_listado_ct is not empty%}
- 		{% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}
- 	{% endif %}
+{# 	{% if node.field_cuadros_listado_ct is not empty%}#}
+{# 		{% include 'section-tabbed-listing.html.twig' with {'data': node.field_cuadros_listado_ct.entity } %}#}
+{# 	{% endif %}#}
 
- 	{% if node.field_cuadros_listado_tipo_2 is not empty%}
- 		{% include 'section-grid-list.html.twig' with {'data': node.field_cuadros_listado_tipo_2 } %}
- 	{% endif %}
+{# 	{% if node.field_cuadros_listado_tipo_2 is not empty%}#}
+{# 		{% include 'section-grid-list.html.twig' with {'data': node.field_cuadros_listado_tipo_2 } %}#}
+{# 	{% endif %}#}
 
- 	{% if node.field_banner_inferior is not empty%}
- 		{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}
- 	{% endif %}
+{# 	{% if node.field_banner_inferior is not empty%}#}
+{# 		{% include 'section-participantes.html.twig' with {'data': node.field_banner_inferior.entity } %}#}
+{# 	{% endif %}#}
 
