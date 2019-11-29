@@ -1,0 +1,120 @@
+<section style="background-color: rgba(238,238,238,1);" class="content advanced-component text-with-image_video secondary_colour_2-bg">
+    <div class="container">
+        <!-- ROW -->
+        <div class="row">
+            <div class="col-md-5 col-xs-12 pull-right os-animation animated fadeIn" data-os-animation="fadeIn"
+                 data-os-animation-delay="0">
+                <!-- INFO -->
+                <div class="info">
+
+                    <h1 class="heading main primary_colour_1-text">Auditoría Externa</h1>
+                    <div class="text ">
+                        <p>En esta sección se encuentran los informes emitidos por la auditoría externa en lo referente
+                            a los Indicadores de Gestión y los Sistemas de tecnología de la información y
+                            comunicaciones.</p>
+                    </div>
+                    <p class="link"><a style="background-color: rgba(11,90,156,1);" role="button" class="btn primary_colour_1-bg secondary_colour_3-text"
+                                       href="/informes/">Regresar a Todos los Informes</a></p>
+                </div>
+                <!--// INFO -->
+            </div>
+            <div class="col-md-6 col-xs-12 pull-left">
+                <div class="image video os-animation animated fadeInLeft" data-os-animation="fadeInLeft"
+                     data-os-animation-delay="0">
+                    <img alt=""
+                         src="/themes/custom/bmcbec/images/contenido-reportes-informes-2.jpg">
+                </div>
+            </div>
+        </div>
+        <!--// ROW -->
+    </div>
+</section>
+
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT TEXT -->
+                <div class="page_component textblock">
+                    <h3 class="heading">{{ node.title.value }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 24px;" class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">
+                <!-- PAGE COMPONENT TABBED -->
+                <div class="page_component tabbed" role="tabpanel">
+                    <ul class="nav nav-tabs responsive hidden-xs hidden-sm" role="tablist">
+                        {% if node.field_informes_d %}
+                            {% for anio in node.field_informes_d %}
+                                {% set loopAnio = loop.index %}
+                                {% if loopAnio == 1 %}
+                                    <li role="presentation" class="odd active">
+                                {% else %}
+                                    <li role="presentation" class="odd">
+                                {% endif %}
+                                <a href="#tabname-3530-{{ loopAnio }}"
+                                   aria-controls="tabname-3530-1" role="tab"
+                                   data-toggle="tab" aria-expanded="true">
+                                    {{ anio.entity.field_titulo.value }}
+                                    <i class="fa fa-chevron-down pull-right after highlight"></i>
+                                </a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <div class="tab-content panel panel-default responsive hidden-xs hidden-sm">
+                        {% if node.field_informes_d %}
+                        {% for anio in node.field_informes_d %}
+                        {% set loopAnio = loop.index %}
+                        {% if loopAnio == 1 %}
+                        <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body active">
+                            {% else %}
+                            <div id="tabname-3530-{{ loopAnio }}" role="tabpanel" class="tab-pane panel-body">
+                                {% endif %}
+                                {% for doc in anio.entity.field_archivos %}
+                                    <p>
+                                        <a data-id="11592"
+                                           href="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}"
+                                           target="_blank"
+                                           title="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}">
+                                            {{ doc.entity.field_label_archivo.value }}
+                                        </a>
+                                        {% if doc.entity.field_fecha.value %}
+                                            <span><span>&nbsp;</span>-</span>
+                                            <em>&nbsp;{{ doc.entity.field_fecha.value }}</em>
+                                        {% endif %}
+                                    </p>
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="content advanced-component standard-components">
+    <div class="container">
+        <div class="row">
+            <div id="mid_col" class="col-md-8 col-md-offset-2 col-xs-12" role="main">    <!-- PAGE COMPONENT ALERT -->
+                <div class="page_component alert alert-warning alert-dismissible fade in" role="alert">
+                    <div class="info">
+                        <p align="center">
+                            <strong>ATENCIÓN</strong>
+                            <br>Puede requerir de&nbsp;programas especiales para abrir&nbsp;algunos archivos.<br>
+                            [ PDF / ZIP / PPT&nbsp;/ XLS / DOC&nbsp;]
+                        </p>
+                    </div>
+                </div>
+                <!--// PAGE COMPONENT ALERT -->
+            </div>
+        </div>
+    </div>
+</section>
