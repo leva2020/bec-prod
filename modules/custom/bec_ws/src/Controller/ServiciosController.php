@@ -809,6 +809,47 @@ class ServiciosController extends ControllerBase {
         return $data;
     }
 
+    public function getCantidadEnergiaInyectadaOpe_New($data)
+    {
+        $labels = array();
+        $dataDataSets = array();
+        $info = array();
+        $dataSets = array();
+
+        if (is_array($data['response'])) {
+            if (isset($data['response'])):
+            foreach ($data['response'] as $key => $value) {
+                $date = $value->dia . "/" . $value->mes . "/" . $value->ano;
+                if (!in_array($date, $labels)):
+                $labels[] = $date;
+                $dataDataSets["Nacional"][$date] = 0;
+                $dataDataSets["Importada"][$date] = 0;
+                endif;
+                if ($value->tipo_produccion == "NACIONAL"){
+                    $dataDataSets["Nacional"][$date] += $value->cantidad_mbtud;
+                } else {
+                    $dataDataSets["Importada"][$date] += $value->cantidad_mbtud;
+                }
+            }
+            endif;
+        }
+        foreach ($dataDataSets["Nacional"] as $tmp):
+        $dataSets["Nacional"][] = $tmp;
+        endforeach;
+        foreach ($dataDataSets["Importada"] as $tmp):
+        $dataSets["Importada"][] = $tmp;
+        endforeach;
+        $data = array(
+            'data' => $info,
+            'labels' => $labels,
+            'dataDataSets' => $dataSets,
+            'num_resultados' => count($data['response']),
+            'dataTables' => $data['response'],
+            'response' => $data["response"]
+        );
+        return $data;
+    }
+
     public function getCantidadEnergiaSuministrar($data)
     {
         $dataGraficas = array();

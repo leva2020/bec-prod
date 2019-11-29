@@ -3,3 +3,7 @@ services:
     class: Drupal\bec_ws\Extensions\SendMethodTwigExtension
     tags:
       - { name: twig.extension }
+  bec_ws.ConsolidarDataTwigExtension:
+    class: Drupal\bec_ws\Extensions\ConsolidarDataTwigExtension
+    tags:
+      - { name: twig.extension }
