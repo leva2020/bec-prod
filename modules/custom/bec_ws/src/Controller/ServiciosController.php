@@ -544,7 +544,7 @@ class ServiciosController extends ControllerBase {
             foreach ($dataDataSets["Precio máximo"] as $tmp):
                 $dataSets["Precio máximo"][] = $tmp;
             endforeach;
-            foreach ($dataDataSets["Precio máximo"] as $tmp):
+            foreach ($dataDataSets["Precio promedio"] as $tmp):
                 $dataSets["Precio promedio"][] = $tmp;
             endforeach;
         }

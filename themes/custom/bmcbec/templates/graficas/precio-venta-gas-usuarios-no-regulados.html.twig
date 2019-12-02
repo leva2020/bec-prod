@@ -1,7 +1,7 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getPrecioVentaUsuariosNoRegulados', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoDepartamento=0&codigoCiudad=05001&destinoRueda=G&codigoCentro=',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
+{% set info = enviar_post_ws('getPrecioVentaUsuariosNoRegulados', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoDepartamento=0&codigoCiudad=0&destinoRueda=A&codigoCentro=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
@@ -15,69 +15,70 @@
 <div class="well" align="center">
     <div class="bmcbec-dp-right1">
     <form method="post" action="">
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formDestino">Destino Rueda:</label>
-    <select name="paramsFilter[destinoRueda]">
-        <option value="G"  selected >Suministro</option>
-        <option value="T" >Transporte</option>
-        <option value="A" >Suministro y Transporte</option>
-    </select>
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formDepto">Departamento:</label>
-    <select name="paramsFilter[codigoDepartamento]" onChange="form.submit();">
-        <option value="0" selected >Sin Conexi&#243;n al SNT</option>
-        <option value="05" >ANTIOQUIA</option>
-        <option value="08" >ATL&#193;NTICO</option>
-        <option value="11" >BOGOT&#193;, D.C.</option>
-        <option value="13" >BOL&#205;VAR</option>
-        <option value="15" >BOYAC&#193;</option>
-        <option value="17" >CALDAS</option>
-        <option value="19" >CAUCA</option>
-        <option value="20" >CESAR</option>
-        <option value="23" >C&#211;RDOBA</option>
-        <option value="25" >CUNDINAMARCA</option>
-        <option value="44" >LA GUAJIRA</option>
-        <option value="47" >MAGDALENA</option>
-        <option value="66" >RISARALDA</option>
-        <option value="68" >SANTANDER</option>
-        <option value="70" >SUCRE</option>
-        <option value="73" >TOLIMA</option>
-        <option value="76" >VALLE DEL CAUCA</option>
-        <option value="85" >CASANARE</option>
-    </select>
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formCiudad">Ciudad:</label>
-    <select name="paramsFilter[codigoCiudad]" onChange="form.submit();">
-        <option value="05154" >CAUCASIA</option>
-        <option value="05308" >GIRARDOTA</option>
-        <option value="05001" selected >MEDELL&#205;N</option>
-        <option value="05585" >PUERTO NARE</option>
-    </select>
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="formCenter">Centro Poblado:</label>
-    <select name="paramsFilter[codigoCentro]">
-    <!-- <option value="0" selected>-- Todos --</option> -->
-    <optgroup label="Centro Poblado">
-    </optgroup>
-    </select>
-    </div>
-    
-    <div class="bmcbec-dp-fix" style="margin-bottom:15px;"></div>
-    
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="dpd1">Fecha Inicio:</label>
-    <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-    </div>
-    <div class="bmcbec-left bmcbec-form-div">
-    <label for="dpd2">Fecha Fin:</label>
-    <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
-    </div>
-    <div class="bmcbec-left bmcbec-form-div" style="padding-top:20px;">
-        <input type="submit" value="Consultar" class="bmcbec-dp-button" />
-    </div>
+        <div class="bmcbec-left bmcbec-form-div">
+            <label for="formDestino">Destino Rueda:</label>
+            <select name="paramsFilter[destinoRueda]">
+                <option value="G" >Suministro</option>
+                <option value="T" >Transporte</option>
+                <option value="A" selected>Suministro y Transporte</option>
+            </select>
+        </div>
+        <div class="bmcbec-left bmcbec-form-div">
+        <label for="formDepto">Departamento:</label>
+        <select name="paramsFilter[codigoDepartamento]">
+            <option value="0" selected >Sin Conexi&#243;n al SNT</option>
+            <option value="05" >ANTIOQUIA</option>
+            <option value="08" >ATL&#193;NTICO</option>
+            <option value="11" >BOGOT&#193;, D.C.</option>
+            <option value="13" >BOL&#205;VAR</option>
+            <option value="15" >BOYAC&#193;</option>
+            <option value="17" >CALDAS</option>
+            <option value="19" >CAUCA</option>
+            <option value="20" >CESAR</option>
+            <option value="23" >C&#211;RDOBA</option>
+            <option value="25" >CUNDINAMARCA</option>
+            <option value="44" >LA GUAJIRA</option>
+            <option value="47" >MAGDALENA</option>
+            <option value="66" >RISARALDA</option>
+            <option value="68" >SANTANDER</option>
+            <option value="70" >SUCRE</option>
+            <option value="73" >TOLIMA</option>
+            <option value="76" >VALLE DEL CAUCA</option>
+            <option value="85" >CASANARE</option>
+        </select>
+        </div>
+        <div class="bmcbec-left bmcbec-form-div">
+            <label for="formCiudad">Ciudad:</label>
+            <select name="paramsFilter[codigoCiudad]">
+                <option value="0" selected="">Sin Conexión al SNT</option>
+                <option value="05154" >CAUCASIA</option>
+                <option value="05308" >GIRARDOTA</option>
+                <option value="05001" >MEDELL&#205;N</option>
+                <option value="05585" >PUERTO NARE</option>
+            </select>
+        </div>
+        <div class="bmcbec-left bmcbec-form-div">
+            <label for="formCenter">Centro Poblado:</label>
+            <select name="paramsFilter[codigoCentro]">
+                <!-- <option value="0" selected>-- Todos --</option> -->
+                <optgroup label="Centro Poblado"></optgroup>
+                <option value="0" selected="">SIN CONEXIÓN AL SNT</option>
+            </select>
+        </div>
+        
+        <div class="bmcbec-dp-fix" style="margin-bottom:15px;"></div>
+        
+        <div class="bmcbec-left bmcbec-form-div">
+            <label for="dpd1">Fecha Inicio:</label>
+            <input type="text" class="span2 editable" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]" data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+        </div>
+        <div class="bmcbec-left bmcbec-form-div">
+            <label for="dpd2">Fecha Fin:</label>
+            <input type="text" class="span2 editable" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]" data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months" data-date-minviewmode="days" />
+        </div>
+        <div class="bmcbec-left bmcbec-form-div" style="padding-top:20px;">
+            <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+        </div>
     </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
@@ -168,7 +169,7 @@ window.onload = function () {
 <div class="table-holder">
 <!-- <h4>Tabla de Resultados</h4> -->
 <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en la tabla.</p>
-<table id="ResultTable" class="display" cellspacing="0" width="100%" data-page-length="20">
+<table id="ResultTable" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Año</th>
@@ -205,14 +206,13 @@ window.onload = function () {
             <td>{{ data.centro_poblado }}</td>
             <td>{{ data.desc_producto }}</td>
             <td>{{ data.precio_prom }}</td>
-            <td align="right" data-order={{ data.precio_min }}>{{ data.precio_min }}</td>
+            <td align="right" data-order="{{ data.precio_min }}">{{ data.precio_min }}</td>
             <td align="right" data-order="{{ data.precio_max }}">{{ data.precio_max }}</td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
 </div>
-
 
 <!-- Begin - Export Option Table -->
 <div id="table2export">
@@ -224,18 +224,9 @@ window.onload = function () {
 <script type="text/javascript">
 $(document).ready(function() {
     $("#ResultTable thead").clone().appendTo("#ResultTable1");
-    $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
     $("#ResultTable tbody").clone().appendTo("#ResultTable1");
+    $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
     dataTablesIni();
 });
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
-
-<script type="text/javascript">
-//     $('form').submit(function () {
-//         //return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 365);
-//     });
-//     $(document).ready(function() {
-//         insertText(365);
-//     });
-</script>

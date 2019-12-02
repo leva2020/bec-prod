@@ -15,7 +15,6 @@ function dataTablesIni(){
              text: 'Exportar Tabla',
              action: function(){ openExportTable(); }
           },
-    
        ],
        "language": {
           "decimal": ",",
@@ -88,14 +87,10 @@ function dataTablesIniExport(){
          title: 'Gestor del Mercado de Gas Natural en Colombia',
          messageTop: 'Bolsa Mercantil de Colombia',
          messageBottom: null,
-                    customize: function ( win ) {
-                        $(win.document.body)
-                            .css( 'font-size', '10pt' );
-     
-                        $(win.document.body).find( 'table' )
-                            .addClass( 'compact' )
-                            .css( 'font-size', 'inherit' );
-                    }
+            customize: function ( win ) {
+                $(win.document.body).css( 'font-size', '10pt' );
+                $(win.document.body).find( 'table' ).addClass( 'compact' ).css( 'font-size', 'inherit' );
+            }
           },
           /*{
              extend: 'excel',
@@ -103,7 +98,7 @@ function dataTablesIniExport(){
              text: 'Excel',
           },*/
           {
-             extend: 'excelHtml5',
+         extend: 'excelHtml5',
          download: 'open',
              filename: 'bmc-bec-export',
              text: 'Excel',
