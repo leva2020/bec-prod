@@ -54,7 +54,20 @@ class ServiciosController extends ControllerBase {
             if ($paramsFilter = $_POST["paramsFilter"]):
                 $params = null;
                 foreach ($paramsFilter as $key => $param):
-                    $params .= $key . "=" . $param . "&";
+
+                    if ($metodo == "getCapacidadDisponiblePrimaria" && ($key == "fechaInicial" || $key == "fechaFinal")) {
+                        if ($key == "fechaInicial") {
+                            $tmp = explode("-", $param);
+                            $params .= "anoInicial=" . $tmp[0] . "&";
+                            $params .= "mesInicial=" . $tmp[1] . "&";
+                        } elseif ($key == "fechaFinal") {
+                            $tmp = explode("-", $param);
+                            $params .= "anoFinal=" . $tmp[0] . "&";
+                            $params .= "mesFinal=" . $tmp[1] . "&";
+                        }
+                    } else {
+                        $params .= $key . "=" . $param . "&";
+                    }
                 endforeach;
             endif;
         endif;
