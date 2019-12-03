@@ -106,6 +106,12 @@ $("option[value=" + destinoRueda + "]").attr('selected', 'selected');
 var codigoDepartamento = {{ info['paramsFilter']['codigoDepartamento'] }};
 $("option[value=" + codigoDepartamento + "]").attr('selected', 'selected');
 
+var codigoCiudad = "{{ info['paramsFilter']['codigoCiudad'] }}";
+$("option[value=" + codigoCiudad + "]").attr('selected', 'selected');
+
+var codigoCentro = {{ info['paramsFilter']['codigoCentro'] }};
+$("option[value=" + codigoCentro + "]").attr('selected', 'selected');
+
 var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
 $("input[id='dpd1']").attr('value', fechaInicial);
 

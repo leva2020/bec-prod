@@ -98,6 +98,20 @@
 
 <script type="text/javascript">
 
+{% if info['paramsFilter'] is not null %}
+var codigoOperador = "{{ info['paramsFilter']['codigoOperador'] }}";
+$("option[value=" + codigoOperador + "]").attr('selected', 'selected');
+
+var codigopunto = {{ info['paramsFilter']['codigopunto'] }};
+$("option[value=" + codigopunto + "]").attr('selected', 'selected');
+
+var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+$("input[id='dpd1']").attr('value', fechaInicial);
+
+var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+$("input[id='dpd2']").attr('value', fechaFinal);
+{% endif %}
+
 var randomScalingFactor = function() {
     return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
 };
