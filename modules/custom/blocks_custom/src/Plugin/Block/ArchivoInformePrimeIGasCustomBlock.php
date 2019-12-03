@@ -22,7 +22,7 @@ class ArchivoInformePrimeIGasCustomBlock extends BlockBase
     public function build()
     {
         $query = Drupal::entityQuery('node')
-            ->condition('type', 'archivo_prime_igas')
+            ->condition('type', 'archivo_informe_prime_igas')
             ->sort('field_apig_dia', 'DESC')
             ->execute();
         $archivos_informe = [];
