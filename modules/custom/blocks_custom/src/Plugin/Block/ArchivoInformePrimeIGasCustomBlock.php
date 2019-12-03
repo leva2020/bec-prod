@@ -21,12 +21,30 @@ class ArchivoInformePrimeIGasCustomBlock extends BlockBase
      */
     public function build()
     {
-        $query = Drupal::entityQuery('node')
-            ->condition('type', 'archivo_informe_prime_igas')
-            ->sort('field_apig_dia', 'DESC')
-            ->execute();
         $archivos_informe = [];
         $estructura = [];
+        $anio = "";
+        $mes = "";
+        $conversion_meses = array(
+            '01' => 'enero',
+            '02' => 'febrero',
+            '03' => 'marzo',
+            '04' => 'abril',
+            '05' => 'mayo',
+            '06' => 'junio',
+            '07' => 'julio',
+            '08' => 'agosto',
+            '09' => 'septiembre',
+            '10' => 'octubre',
+            '11' => 'noviembre',
+            '12' => 'Diciembre',
+        );
+
+        $query = Drupal::entityQuery('node')
+            ->condition('type', 'archivo_informe_prime_igas')
+            ->sort('field_apig_mes', 'DESC')
+            ->sort('field_apig_dia', 'DESC')
+            ->execute();
 
         if (!empty($query)) {
             foreach ($query as $archivo_id) {
@@ -35,8 +53,11 @@ class ArchivoInformePrimeIGasCustomBlock extends BlockBase
             }
         }
         foreach ($archivos_informe as $node) {
-            $estructura[$node->get('field_apig_anio')->getValue()[0]["value"]]
-                [$node->get('field_apig_mes')->getValue()[0]["value"]][] = array(
+            $anio = $node->get('field_apig_anio')->getValue()[0]["value"];
+            $mes = $node->get('field_apig_mes')->getValue()[0]["value"];
+            $mes = (array_key_exists($mes, $conversion_meses) ? $conversion_meses[$mes] : 'desconocido');
+
+            $estructura[$anio][$mes][] = array(
                     'titulo' => $node->getTitle(),
                     'archivo' => $node->get('field_apig_archivo')->entity->url()
                 );
