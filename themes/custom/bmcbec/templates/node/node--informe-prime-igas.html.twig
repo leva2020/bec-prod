@@ -34,56 +34,8 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="page_component accordion">
-                            <div class="panel-group" id="accordion" role="tablist">
-                                {% if node.field_historial_archivos %}
-                                    {% for anio in node.field_historial_archivos %}
-                                        {% set loopAnio = loop.index %}
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="heading-{{ loopAnio }}">
-                                                <p class="heading panel-title">
-                                                    <a data-toggle="collapse"
-                                                       href="#history-{{ loopAnio }}"
-                                                       aria-controls="history-{{ loopAnio }}">
-                                                        {{ anio.entity.field_fecha.value }}
-                                                        <i class="fa fa-chevron-down pull-right after highlight"></i>
-                                                    </a>
-                                                </p>
-                                            </div>
-                                            <div id="history-{{ loopAnio }}" class="panel panel-default collapse">
-                                                {% for mes in anio.entity.field_mes %}
-                                                    {% set loopMes = loop.index %}
-                                                    <div class="panel-heading" role="tab"
-                                                         id="heading-{{ loopAnio }}-{{ loopMes }}">
-                                                        <p class="heading panel-title">
-                                                            <a data-toggle="collapse"
-                                                               data-parent="#heading-{{ loopAnio }}"
-                                                               href="#history-{{ loopAnio }}-{{ loopMes }}"
-                                                               aria-controls="history-{{ loopAnio }}-{{ loopMes }}">
-                                                                {{ mes.entity.field_fecha.value }}
-                                                                <i class="fa fa-chevron-down pull-right after highlight"></i>
-                                                            </a>
-                                                        </p>
-                                                    </div>
-                                                    <div id="history-{{ loopAnio }}-{{ loopMes }}" class="collapse">
-                                                        <div class="panel-body">
-                                                            {% for archivo in mes.entity.field_informes_h %}
-                                                                <p>
-                                                                    <a data-id="10546"
-                                                                       href="{{ file_url(archivo.entity.field_archivo.entity.fileuri) }}"
-                                                                       target="_blank">
-                                                                        {{ archivo.entity.field_titulo.value }}
-                                                                    </a>
-                                                                </p>
-                                                            {% endfor %}
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
+                        <div>
+                            {{ drupal_block('archivo_informe_prime_igas_block') }}
                         </div>
                     </div>
                 </div>

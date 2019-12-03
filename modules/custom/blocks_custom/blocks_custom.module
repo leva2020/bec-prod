@@ -133,6 +133,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'title' => NULL
                 ],
                 'template' => 'registered-participants'
+            ],
+        'archivo_informe_prime_igas_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Archivo Informe Prime IGas',
+                    'descripcion' => 'Lista de archivos del informe prime IGas',
+                    'archivos' => NULL
+                ],
+                'template' => 'archivo-informe-prime-igas'
             ]
     ];
 }
