@@ -107,6 +107,10 @@ class ServiciosController extends ControllerBase
                     $params .= "mesFinal=" . $currentMonth. "&";
                     $params .= "codigoOperador=" . "228". "&";
                     $params .= "codigopunto=" . "120";
+                elseif ($metodo == "getComportamientoOperativoMercado"):
+                    $params .= "codigoReporte=1&";
+                    $params .= "fechaInicial=" . $fechaInicial . "&";
+                    $params .= "fechaFinal=" . $fecha;
                 else:
                     $paramsFilter["tramoOGrupo"] = "";
                     $params .= "fechaInicial=" . $fechaInicial . "&";
@@ -147,7 +151,6 @@ class ServiciosController extends ControllerBase
                 $paramsFilter["fechaFinal"] = $parametros["fechaFinal"];
             endif;
         endif;*/
-
         $data = $this->sendPostRequest($url, $params);
 
         $info = $this->$metodo($data);
@@ -209,11 +212,6 @@ class ServiciosController extends ControllerBase
          case 'getCapacidadDisponiblePrimaria':
          # PARAMS: anoInicial=2018&mesInicial=12&anoFinal=2019&mesFinal=02&codigoOperador=228&codigopunto=120
          $data = $this->getCapacidadDisponiblePrimaria( $data['response'], $fechaCompleta, $cantidad);
-         break;
-
-         case 'getCAntidadContratadaPuntoEntrega':
-         # PARAMS: puntoTramo=39&pCodigoModalidad=1
-         $data = $this->getCAntidadContratadaPuntoEntrega( $data['response'], $fechaCompleta, $cantidad);
          break;
 
          case 'getPuntoEntregaSuministro':
@@ -390,16 +388,44 @@ class ServiciosController extends ControllerBase
         if (is_array($data['response'])) {
             foreach ($data['response'] as $key => $value) {
                 $date = $value->fecha;
-
-                $date = date("Y/m/d", strtotime($date));
-                $labels[] = $date;
-
-                $dataDataSets['capac_cant'][] = $value->capac_cant;
+                $date = date("Y/m", strtotime($date));
+                if (!in_array($date, $labels)):
+                    $labels[] = $date;
+                    $dataDataSets["capac_cant"][$date] = 0;
+                endif;
+                $dataDataSets['capac_cant'][$date] += $value->capac_cant;
 
             }
-
+            foreach ($dataDataSets["capac_cant"] as $tmp):
+                $dataSets["capac_cant"][] = $tmp;
+            endforeach;
             $info['desc_punto_tramo'] = $data["response"][0]->desc_punto_tramo;
             $info['desc_modalidad'] = $data["response"][0]->desc_modalidad;
+        }
+
+        $data = array(
+            'info' => $info,
+            'labels' => $labels,
+            'dataDataSets' => $dataSets,
+            'num_resultados' => count($data['response']),
+            'response' => $data['response']
+        );
+
+        return $data;
+    }
+
+    public function getComportamientoOperativoMercado($data)
+    {
+        $labels = array();
+        $dataDataSets = array();
+        $info = array();
+        if (is_array($data['response'])) {
+            foreach ($data['response'] as $key => $value) {
+                $date = $value->fecha;
+                $date = date("Y/m/d", strtotime($date));
+                $labels[] = $date;
+                $dataDataSets['cantidad'][] = $value->cantidad;
+            }
         }
 
         $data = array(
@@ -409,7 +435,6 @@ class ServiciosController extends ControllerBase
             'num_resultados' => count($data['response']),
             'response' => $data['response']
         );
-
         return $data;
     }
 

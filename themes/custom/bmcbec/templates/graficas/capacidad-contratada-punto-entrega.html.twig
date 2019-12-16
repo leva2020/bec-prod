@@ -24,6 +24,8 @@
 
 {{ attach_library('bmcbec/chartJS') }}
 
+<link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/datePicker/css/bootstrap.css">
+
 <div class="well" align="center">
     <div class="bmcbec-dp-right">
         <form method="post" action="">
@@ -99,7 +101,7 @@ $.each(lineChartData.datasets, function(i, dataset) {
         dataset.backgroundColor = tempColor;
         dataset.pointBorderColor = tempColor;
         dataset.pointBackgroundColor = tempColor;
-        dataset.borderWidth = 9;
+        dataset.borderWidth = -1;
         dataset.pointBorderWidth = 0;
         dataset.pointHoverRadius = 0;
         dataset.pointHoverBorderWidth = 0;
@@ -133,3 +135,9 @@ window.onload = function () {
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>
+
+<style>
+    section p {
+        font-size: 1em;
+    }
+</style>
