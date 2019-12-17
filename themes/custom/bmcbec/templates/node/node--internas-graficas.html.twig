@@ -3,7 +3,7 @@
  	{% endif %}
 
  	{% if node.field_graficas is not empty%}
-		{#{% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}#}
+		{% include 'page-component-titlecenter-graficas.html.twig' with {'data': node.field_graficas } %}
  	{% endif %}
 
 {# 	{% for item in node.field_graficas %}#}
