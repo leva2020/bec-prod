@@ -117,162 +117,19 @@ class ServiciosController extends ControllerBase
                     $params .= "fechaFinal=" . $fecha;
                 endif;
             endif;
-            // var_dump($paramsFilter);
-            // var_dump('params', $params);die;
         endif;
-        /*if ( !empty($_GET) ):
-            if ($filterDate = $_GET["quickDate"]):
-                $parametros = array();
-                $params = explode("&", $params);
-
-                foreach ($params as $param):
-                    $tmp = explode("=", $param);
-                    $parametros[$tmp[0]] = $tmp[1];
-                endforeach;
-                $fechaFinal = date_create($parametros["fechaFinal"]);
-
-                if ($filterDate == "1m"):
-                    $fechaInicial = date_format(date_modify($fechaFinal, "-1 month"), "Y-m-d");
-                elseif ($filterDate == "3m"):
-                    $fechaInicial = date_format(date_modify($fechaFinal, "-3 month"), "Y-m-d");
-                elseif ($filterDate == "6m"):
-                    $fechaInicial = date_format(date_modify($fechaFinal, "-6 month"), "Y-m-d");
-                elseif ($filterDate == "1a"):
-                    $fechaInicial = date_format(date_modify($fechaFinal, "-1 year"), "Y-m-d");
-                endif;
-
-                $parametros["fechaInicial"] = $fechaInicial;
-                $params= "";
-                foreach ($parametros as $key => $param):
-                    $params .= $key . "=" . $param . "&";
-                endforeach;
-                $paramsFilter["tramoOGrupo"] = "";
-                $paramsFilter["fechaInicial"] = $fechaInicial;
-                $paramsFilter["fechaFinal"] = $parametros["fechaFinal"];
-            endif;
-        endif;*/
         $data = $this->sendPostRequest($url, $params);
 
         $info = $this->$metodo($data);
 
         $info['paramsFilter'] = $paramsFilter;
 
-        /* if ($formatear) {
-         switch ($metodo) {
-         case 'getCantidadEnergiaInyectadaOpe_R':
-         # PARAMS: fechaInicial=2018-12-01&fechaFinal=2019-01-31&codigoPozo=0
-         $data=$this->energiaInyectada($data['response'],$fechaCompleta,$filtro,$campos,$cantidad);
-         break;
-
-         case 'getCantidadEnergiaSuministrar':
-         # PARAMS: fechaInicial=2018-12-01&fechaFinal=2019-01-31&codigoPozo=0
-         $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
-         break;
-
-         case 'getCantidadAutorizadaNominaciones':
-         # PARAMS: fechaInicial=2018-06-01&fechaFinal=2019-01-01&codigoOperador=0
-         $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
-         break;
-
-         case 'getCantidadTomadaTransportadoresTramo':
-         # PARAMS: fechaInicial%0A=2018-01-01&fechaFinal=2019-01-01&codigoPozo=0
-         $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
-         break;
-
-         case 'getCantidadTomadaComercializadores':
-         # PARAMS: fechaInicial=2018-06-01&fechaFinal=2019-03-31&codigoPozo=0
-         $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
-         break;
-
-         case 'getCantidadTomadaDiariamenteSnt':
-         # PARAMS: fechaInicial=2018-06-01&fechaFinal=2019-01-01&codigoTipoDemanda=0
-         $data=$this->energiaSuministrar($data['response'],$fechaCompleta,$cantidad);
-         break;
-
-         case 'getCantidadContratadaPorPuntoDeEntrega':
-         # PARAMS: puntoTramo=39&pCodigoModalidad=1
-         $data=$this->getCantidadContratadaPorPuntoDeEntrega($data['response'],$fechaCompleta,$cantidad);
-         break;
-
-         case 'getCapacidadContratadaTramoGrupoGasoductos':
-         # PARAMS: fechaInicial=2018-04-01 &fechaFinal=2019-03-31&tramoOGrupo=
-         $data=$this->getCapacidadContratadaTramoGrupoGasoductos($data['response'], $fechaCompleta, $cantidad);
-         break;
-
-         case 'getInfGrafIni':
-         # PARAMS: puntoTramo=116&pCodigoModalidad=1
-         $data = $this->getInfGrafIni( $data['response'], $fechaCompleta, $cantidad);
-         break;
-
-         case 'getCapacidadMaximaMedianoPlazo':
-         # PARAMS: codigoOperador=228
-         $data = $this->getCagetCapacidadMaximaMedianoPlazo( $data['response'], $fechaCompleta, $cantidad);
-         break;
-
-         case 'getCapacidadDisponiblePrimaria':
-         # PARAMS: anoInicial=2018&mesInicial=12&anoFinal=2019&mesFinal=02&codigoOperador=228&codigopunto=120
-         $data = $this->getCapacidadDisponiblePrimaria( $data['response'], $fechaCompleta, $cantidad);
-         break;
-
-         case 'getPuntoEntregaSuministro':
-         # PARAMS: fechaInicial=2018-12-01&fechaFinal=2019-02-28&codigoPunto=1&codigoModalidad=21
-         $data = $this->getPuntoEntregaSuministro( $data['response'], $fechaCompleta, $cantidad);
-         break;
-
-         case 'getAgregadoNacionalSuministro':
-         # PARAMS: puntoTramo=116&pCodigoModalidad=1
-         break;
-
-         case 'getPrecioNegociadoPorTramo':
-         # PARAMS: puntoTramo=116&pCodigoModalidad=1
-         # $data = $this->getPrecioNegociadoPorTramo( $data['response']);
-         $data = $data['response'];
-         break;
-
-         case 'getCapacidadNegociadaPorTramosOGrupoDeGasoductos':
-         # PARAMS: fechaInicial=2018-12-01&fechaFinal=2019-02-28&codigoPunto=1064&codigoModalidad=1
-         $data = $data['response'];
-         # var_dump($this->$metodo($data));
-         break;
-
-         case 'getPuntoDeEntregaSuministro':
-         # code...
-         break;
-
-         case 'getPrecioVentaUsuariosNoRegulados':
-         # code...
-         break;
-
-         case 'getCantidadEnergiaInyectadaOpe_New':
-         # code...
-         break;
-
-         case 'getCantidadDeclaradaPorNoComercializadoresNoInyectada':
-         # code...
-         break;
-
-         case 'getCantidadTomadaContratosParqueo':
-         # code...
-         break;
-
-         case 'getComportamientoTransaccionalMercado':
-         # code...
-         break;
-
-         case 'getComportamientoOperativoMercado':
-         # code...
-         break;
-
-         case 'getCuadroMErcadoComportamientoTansaccionalMercadoHomepage':
-         # code...
-         break;
-
-         default:
-         # code...
-         break;
-         }
-         }*/
         return $info;
+    }
+
+    public function getCuadroMercadoResumenContratos($data)
+    {
+        return $data['response'];
     }
 
     public function energiaInyectada($data, $fechaCompleta, $filtro, $cantidad)
