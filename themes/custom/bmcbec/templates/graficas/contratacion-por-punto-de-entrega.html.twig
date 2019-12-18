@@ -1,7 +1,7 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set monthAgo = "now"|date_modify("-1 month")|date("Y-m-d", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getCAntidadContratadaPuntoEntrega', 'fechaInicial=' ~yearAgo~ '&fechaFinal='~now~'&puntoTramo=&pCodigoModalidad=', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad') %}
+{% set info = enviar_post_ws('getPuntoEntregaSuministro', 'fechaInicial=' ~yearAgo~ '&fechaFinal='~now~'&puntoTramo=&pCodigoModalidad=', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad') %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
