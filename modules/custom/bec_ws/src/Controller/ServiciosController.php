@@ -381,7 +381,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data['response'] as $key => $value) {
-                $date = $value->mes . "/" . $value->año;
+                $date = $this->formatMonthLabel($value->mes) . "/" . $value->año;
                 //             $date = date("m/Y", strtotime($date));
                 $modalidad = $value->modalidad;
                 $cantidad = $value->cantidad;
@@ -460,6 +460,34 @@ class ServiciosController extends ControllerBase
         return $data;
     }
 
+    public function formatMonthLabel($month)
+    {
+        $months = [
+            '1' => 'Ene',
+            '01' => 'Ene',
+            '2' => 'Feb',
+            '02' => 'Feb',
+            '3' => 'Mar',
+            '03' => 'Mar',
+            '4' => 'Abr',
+            '04' => 'Abr',
+            '5' => 'May',
+            '05' => 'May',
+            '6' => 'Jun',
+            '06' => 'Jun',
+            '7' => 'Jul',
+            '07' => 'Jul',
+            '8' => 'Ago',
+            '08' => 'Ago',
+            '9' => 'Sep',
+            '09' => 'Sep',
+            '10' => 'Oct',
+            '11' => 'Nov',
+            '12' => 'Dic',
+        ];
+        return $months[$month];
+    }
+
     public function getCapacidadDisponiblePrimaria($data)
     {
         $labels = array();
@@ -468,7 +496,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $key => $value) {
-                $date = $value->mes . "/" . $value->año;
+                $date = $this->formatMonthLabel($value->mes) . "/" . $value->año;
 
                 $labels[] = $date;
 
@@ -500,7 +528,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $key => $value):
-                $date = $value->año . "/" . $value->mes;
+                $date = $value->año . "/" . $this->formatMonthLabel($value->mes);
 
                 if (!in_array($date, $labels)):
                     $labels[] = $date;
@@ -552,7 +580,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data['response'] as $key => $value) {
-                $date = $value->mes . "./" . $value->ano;
+                $date = $this->formatMonthLabel($value->mes) . "./" . $value->ano;
 
                 if (!in_array($date, $labels)):
                     $labels[] = $date;
@@ -623,7 +651,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data['response'] as $key => $value):
-                $date = $value->mes . "./" . $value->año;
+                $date = $this->formatMonthLabel($value->mes) . "./" . $value->año;
                 sort ($date);
                 if (!in_array($date, $labels)):
                     $labels[] = $date;
@@ -659,7 +687,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data['response'] as $key => $value):
-                $date = $value->mes . "./" . $value->año;
+                $date = $this->formatMonthLabel($value->mes) . "./" . $value->año;
 
                 if (!in_array($date, $labels)):
                     $labels[] = $date;
@@ -774,7 +802,7 @@ class ServiciosController extends ControllerBase
         if (is_array($data['response'])) {
             if (isset($data['response'])):
                 foreach ($data['response'] as $key => $value) {
-                    $date = $value->dia . "/" . $value->mes . "/" . $value->año;
+                    $date = $value->dia . "/" . $this->formatMonthLabel($value->mes) . "/" . $value->año;
                     if (!in_array($date, $labels)):
                         $labels[] = $date;
                         $dataDataSets["Nacional"][$date] = 0;
@@ -815,7 +843,7 @@ class ServiciosController extends ControllerBase
         if (is_array($data['response'])) {
             if (isset($data['response'])):
                 foreach ($data['response'] as $key => $value) {
-                    $date = $value->dia . "/" . $value->mes . "/" . $value->ano;
+                    $date = $value->dia . "/" . $this->formatMonthLabel($value->mes) . "/" . $value->ano;
                     if (!in_array($date, $labels)):
                         $labels[] = $date;
                         $dataDataSets["Nacional"][$date] = 0;
@@ -853,7 +881,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $info) {
-                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                $key = $info->dia . "/" . $this->formatMonthLabel($info->mes) . "/" . $info->año;
                 if (array_key_exists($key, $dataGraficas)) {
                     $dataGraficas[$key] += $info->cantidad;
                 } else {
@@ -882,7 +910,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $info) {
-                $key = $info->dia . "/" . $info->mes . "/" . $info->ano;
+                $key = $info->dia . "/" . $this->formatMonthLabel($info->mes) . "/" . $info->ano;
                 if (array_key_exists($key, $dataGraficas)) {
                     $dataGraficas[$key] += $info->cantidad;
                 } else {
@@ -912,7 +940,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $info) {
-                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                $key = $info->dia . "/" . $this->formatMonthLabel($info->mes) . "/" . $info->año;
                 if (array_key_exists($key, $dataGraficas)) {
                     $dataGraficas[$key] += $info->cantidad;
                 } else {
@@ -941,7 +969,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $info) {
-                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                $key = $info->dia . "/" . $this->formatMonthLabel($info->mes) . "/" . $info->año;
                 if (array_key_exists($key, $dataGraficas)) {
                     $dataGraficas[$key] += $info->cantidad;
                 } else {
@@ -971,7 +999,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $info) {
-                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                $key = $info->dia . "/" . $this->formatMonthLabel($info->mes) . "/" . $info->año;
                 if (array_key_exists($key, $dataGraficas)) {
                     $dataGraficas[$key] += $info->cantidad;
                 } else {
@@ -1001,7 +1029,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $info) {
-                $key = $info->dia . "/" . $info->mes . "/" . $info->ano;
+                $key = $info->dia . "/" . $this->formatMonthLabel($info->mes) . "/" . $info->ano;
                 if (array_key_exists($key, $dataGraficas)) {
                     $dataGraficas[$key] += $info->cantidad_mbtud;
                 } else {
@@ -1031,7 +1059,7 @@ class ServiciosController extends ControllerBase
 
         if (is_array($data['response'])) {
             foreach ($data["response"] as $info) {
-                $key = $info->dia . "/" . $info->mes . "/" . $info->año;
+                $key = $info->dia . "/" . $this->formatMonthLabel($info->mes) . "/" . $info->año;
                 if (array_key_exists($key, $dataGraficas)) {
                     $dataGraficas[$key] += $info->cantidad;
                 } else {
