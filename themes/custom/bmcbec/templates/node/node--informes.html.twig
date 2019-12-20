@@ -88,9 +88,9 @@
                                 {% for doc in anio.entity.field_archivos %}
                                     <p>
                                         <a data-id="11592"
-                                           href="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}"
+                                           href="{{ file_url(doc.entity.field_archivo_1.entity.fileuri) }}"
                                            target="_blank"
-                                           title="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}">
+                                           title="{{ doc.entity.field_label_archivo.value }}">
                                             {{ doc.entity.field_label_archivo.value }}
                                         </a>
                                         {% if doc.entity.field_fecha.value %}
