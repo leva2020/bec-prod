@@ -46,7 +46,22 @@
 								{% if item1.entity.bundle =="menu_lateral_tipo_1" %}
 									{% include 'content-promopods-default-panel-1.html.twig' with {'data': item1.entity } %}
 								{% elseif item1.entity.bundle =="menu_lateral_tipo_2" %}
-									{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}
+									{#{% include 'content-promopods-default-panel-color.html.twig' with {'data': item1.entity } %}#}
+									<div class="item panel panel-default odd">
+										<div class="panel-body primary_colour_2-bg">
+											<p class="heading secondary_colour_3-text">Nuestras Oficinas </p>
+											<div class="info">
+												<div class="text secondary_colour_3-text">
+													<p>Calle 113 No. 7-21<br>Piso 15 Torre A
+														<br>Edif.&nbsp;Teleport Business Park
+														<br>Pbx: +57(1) 629-2529
+														<br>Bogotá D.C., Colombia
+													</p>
+												</div>
+												<p class="link"><a href="/contáctenos/#pos_1327" class="btn secondary_colour_3-bg primary_colour_1-text">Escríbanos sus comentarios</a></p>
+											</div>
+										</div>
+									</div>
 								{% elseif item1.entity.bundle =="menu_lateral_tipo_3" %}
 									{% include 'content-promopods-list-panel.html.twig' with {'data': item1.entity } %}
 								{% elseif item1.entity.bundle =="menu_lateral_tipo_4" %}

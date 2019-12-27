@@ -79,6 +79,7 @@
                                 {% for doc in anio.entity.field_archivos %}
                                     <p>
                                         <a data-id="11592"
+                                                {{ file_url(enlaces.entity.field_archivo.entity.fileuri) }}
                                            href="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}"
                                            target="_blank"
                                            title="{{ file_url(doc.entity.field_archivo.entity.fileuri) }}">

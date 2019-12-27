@@ -7,17 +7,15 @@
                 <!-- INFO -->
                 <div class="info">
 
-                    <h1 class="heading main primary_colour_1-text">Informes de Mercado</h1>
+                    <h1 class="heading main primary_colour_1-text">{{ node.title.value }}</h1>
                     <div class="text ">
-                        <p>En esta sección se encuentran los informes del mercado mayorista de gas natural, conforme a
-                            las declaraciones de información realizadas por los participantes del mercado inscritos ante
-                            en Gestor:</p>
-                        <ul>
+                        <p>{{ node.body.value | raw }}</p>
+                        <!--<ul>
                             <li class="odd">Informes de Divulgación Anual</li>
                             <li class="even">Resultados del Proceso de Comercialización</li>
                             <li class="odd">Informes Semestrales</li>
                             <li class="even">Informes Naturgas</li>
-                        </ul>
+                        </ul>-->
                     </div>
                     <p class="link">
                         <a role="button" style="background-color: rgba(11,90,156,1);" class="btn primary_colour_1-bg secondary_colour_3-text"
@@ -30,8 +28,8 @@
             <div class="col-md-6 col-xs-12 pull-left">
                 <div class="image video os-animation animated fadeInLeft" data-os-animation="fadeInLeft"
                      data-os-animation-delay="0">
-                    <img alt=""
-                         src="/themes/custom/bmcbec/images/contenido-reportes-informes-3.jpg">
+                    <img alt="" src="/themes/custom/bmcbec/images/contenido-reportes-informes-3.jpg">
+                    <img alt="" src="{{ file_url(node.field_banner_principal.entity.field_imagen_desktop.entity.fileuri) }}">
                 </div>
             </div>
         </div>
@@ -90,7 +88,8 @@
                                         <a data-id="11592"
                                            href="{{ file_url(doc.entity.field_archivo_1.entity.fileuri) }}"
                                            target="_blank"
-                                           title="{{ doc.entity.field_label_archivo.value }}">
+                                           title="{{ doc.entity.field_labe
+                                           l_archivo.value }}">
                                             {{ doc.entity.field_label_archivo.value }}
                                         </a>
                                         {% if doc.entity.field_fecha.value %}
