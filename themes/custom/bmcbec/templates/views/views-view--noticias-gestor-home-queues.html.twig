@@ -17,22 +17,22 @@
                             <article>
                                 <div class="wrapper-image">
                                     {% if data.field_archivo %}
-                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" target="_blank" itemprop="url">
-                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}" itemprop="image">
+                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" target="_blank">
+                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}">
                                         </a>
                                     {% else %}
-                                        <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
-                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}" itemprop="image">
+                                        <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
+                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}">
                                         </a>
                                     {% endif %}
                                 </div>
                                 <div class="content">
                                     {% if data.field_archivo %}
-                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" target="_blank" itemprop="url">
+                                        <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" target="_blank">
                                             {{ data.field_titulo[0].value }}
                                         </a>
                                     {% else %}
-                                        <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                        <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
                                             {{ data.field_titulo[0].value }}
                                         </a>
                                     {% endif %}

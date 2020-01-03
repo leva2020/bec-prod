@@ -18,7 +18,7 @@
                     {% for key , row in resultados %}
                         {% set data = row._entity %}
                         <div class="item odd" itemscope="" itemtype="http://schema.org/BlogPosting">
-                            <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                            <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" >
                                 <p class="heading" itemprop="name headline">
                                     {{ data.title.value }}
                                 </p>
