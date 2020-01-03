@@ -55,116 +55,115 @@
 {# Navbar #}
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
-    {%
-      set navbar_classes = [
+    {% set navbar_classes = [
         'navbar',
         theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
-      ]
-    %}
-</div>
+    ] %}
+
 {% if page.navigation %}
-        {% block navigation %}<div class="topbar">
-        <div class="left">
-            {% set current_date = date()|date('U')|format_date('F jS \\a\\t g:ia') %}
-            {% trans %}
-                <span>{{ current_date|placeholder|striptags }}</span>
-            {% endtrans %}
-        </div>
+    {% block navigation %}
+        <div class="topbar">
+            <div class="left">
+                {% set current_date = date()|date('U')|format_date('F jS \\a\\t g:ia') %}
+                {% trans %}
+                    <span>{{ current_date|placeholder|striptags }}</span>
+                {% endtrans %}
+            </div>
             {{ page.navigation }}
-        <div style="clear:both;"></div>
-      </div>
-        {% endblock %}
-      {% endif %}
+            <div style="clear:both;"></div>
+        </div>
+    {% endblock %}
+{% endif %}
 <div id="site">
-      
+
 
     <header>
-      {# Header #}
-      {% if page.header %}
-        {% block header %}
-          <div class="container">
-                <!-- LOGO -->
+        {# Header #}
+        {% if page.header %}
+            {% block header %}
+                <div class="container">
+                    <!-- LOGO -->
                     <div id="logo"><a href="/">Gestor del Mercado de Gas Natural en Colombia - BEC</a></div>
-                <!--// LOGO -->
-                <div class="navigation">
-                  <!-- EXPAND -->
-                  <a class="expand">
-                    <em>Menu</em>
-                    <span class="line top"></span>
-                    <span class="line mid"></span>
-                    <span class="line bottom"></span>
-                  </a>
-                  <!--// EXPAND -->
+                    <!--// LOGO -->
+                    <div class="navigation">
+                        <!-- EXPAND -->
+                        <a class="expand">
+                            <em>Menu</em>
+                            <span class="line top"></span>
+                            <span class="line mid"></span>
+                            <span class="line bottom"></span>
+                        </a>
+                        <!--// EXPAND -->
 
-                  <!-- REVEAL -->
-                  <div class="reveal">
-                    {{ page.header }}
-                  </div>
-                  <!--// REVEAL -->
+                        <!-- REVEAL -->
+                        <div class="reveal">
+                            {{ page.header }}
+                        </div>
+                        <!--// REVEAL -->
 
+                    </div>
                 </div>
-          </div>
-        {% endblock %}
-      {% endif %}
+            {% endblock %}
+        {% endif %}
     </header>
-  {% endblock %}
-{% endif %}
+    {% endblock %}
+    {% endif %}
 
-{# Main #}
-{% block main %}
+    {# Main #}
+    {% block main %}
 
-      {# Sidebar First #}
-      {% if page.sidebar_first %}
-        {% block sidebar_first %}
-          {{ page.sidebar_first }}
-        {% endblock %}
-      {% endif %}
+        {# Sidebar First #}
+        {% if page.sidebar_first %}
+            {% block sidebar_first %}
+                {{ page.sidebar_first }}
+            {% endblock %}
+        {% endif %}
 
 
         {# Highlighted #}
         {% if page.highlighted %}
-          {% block highlighted %}
-            {{ page.highlighted }}
-          {% endblock %}
+            {% block highlighted %}
+                {{ page.highlighted }}
+            {% endblock %}
         {% endif %}
 
         {# Help #}
         {% if page.help %}
-          {% block help %}
-            {{ page.help }}
-          {% endblock %}
+            {% block help %}
+                {{ page.help }}
+            {% endblock %}
         {% endif %}
 
         {# Content #}
         {% block content %}
-          {{ page.content }}
+            {{ page.content }}
         {% endblock %}
 
-      {# Sidebar Second #}
-      {% if page.sidebar_second %}
-        {% block sidebar_second %}
-          {{ page.sidebar_second }}
-        {% endblock %}
-      {% endif %}
-{% endblock %}
+        {# Sidebar Second #}
+        {% if page.sidebar_second %}
+            {% block sidebar_second %}
+                {{ page.sidebar_second }}
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
 
-{% if page.footer %}
-  {% block footer %}
-  <footer class="color-bg-main-blue">
-	<div class="container">
-		<div class="row">
-      {{ page.footer }}
-		</div>
-	</div>
-</footer>
+    {% if page.footer %}
+        {% block footer %}
+            <footer class="color-bg-main-blue">
+                <div class="container">
+                    <div class="row">
+                        {{ page.footer }}
+                    </div>
+                </div>
+            </footer>
 
 
-<span id="top-link-block" class="show affix">
+            <span id="top-link-block" class="show affix">
 	<a href="#top" class="well well-sm" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
 		<i class="glyphicon glyphicon-chevron-up"></i>
 	</a>
 </span>
-  {% endblock %}
-{% endif %}
+        {% endblock %}
+    {% endif %}
 </div>
