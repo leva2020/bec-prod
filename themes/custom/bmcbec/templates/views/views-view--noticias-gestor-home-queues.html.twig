@@ -18,11 +18,11 @@
                                 <div class="wrapper-image">
                                     {% if data.field_archivo %}
                                         <a href="{{ file_url(data.field_archivo[0].entity.fileuri) }}" target="_blank">
-                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}">
+                                            <img alt="img" src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}">
                                         </a>
                                     {% else %}
                                         <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
-                                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}">
+                                            <img alt="img" src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}">
                                         </a>
                                     {% endif %}
                                 </div>
