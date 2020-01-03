@@ -1,9 +1,9 @@
 {% if element['#form_id'] == 'search_block_form' %}
     <form class="navbar-form" role="search"  action="{{element['#action']}}" method="get" id="search-block-form" accept-charset="UTF-8" data-drupal-form-fields="edit-keys" name="searchForm">
       <div class="form-group">
-        <input type="text" class="form-control" id="search_field" data-drupal-selector="edit-keys" type="text" id="edit-keys" name="keys" value="" placeholder="Buscar en el sitio">
+        <input class="form-control" id="search_field" data-drupal-selector="edit-keys" type="text" name="keys" value="" placeholder="Buscar en el sitio">
       </div>
-      <button data-drupal-selector="edit-submit" type="submit" id="edit-submit" value="Search"  type="submit" class="btn btn-default js-form-submit submit-button color-text-blue"><i class="glyphicon glyphicon-search"></i></button>
+      <button data-drupal-selector="edit-submit" id="edit-submit" value="Search"  type="submit" class="btn btn-default js-form-submit submit-button color-text-blue"><i class="glyphicon glyphicon-search"></i></button>
     </form>
 {% else %}
 

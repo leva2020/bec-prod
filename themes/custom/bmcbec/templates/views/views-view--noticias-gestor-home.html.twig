@@ -16,13 +16,13 @@
                             {% set data = row._entity %}
                             <article>
                                 <div class="wrapper-image">
-                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
                                         <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}"
-                                             itemprop="image">
+                                             alt="img">
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}" itemprop="url">
+                                    <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
                                         {{ data.field_titulo[0].value }}
                                     </a>
                                     {% set newsDate = data.created.value|date('j M Y') %}
