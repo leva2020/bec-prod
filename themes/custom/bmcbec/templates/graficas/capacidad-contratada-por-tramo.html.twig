@@ -96,7 +96,8 @@ var lineChartData = {
     datasets: [
         {% for key, dataSet in info["dataDataSets"] %}
         {
-            label: "{{ key }}",
+            // label: "{{ key }}",
+            label: "Firme (MBTUD)",
 //             lineTension: 0,
 //             fill: "true",
             data: {{ dataSet|json_encode|raw }}
