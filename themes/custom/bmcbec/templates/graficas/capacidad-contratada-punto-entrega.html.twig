@@ -20,7 +20,7 @@
 {#     </div>#}
 {# </section>#}
 
-{% set info = enviar_post_ws('getCantidadContratadaPuntoEntrega', 'puntoTramo=39&pCodigoModalidad=1', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad')  %}
+{% set info = enviar_post_ws('getInfGrafIni', 'puntoTramo=39&pCodigoModalidad=1', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad')  %}
 
 {{ attach_library('bmcbec/chartJS') }}
 

@@ -31,12 +31,12 @@
     </div>
     <div class="bmcbec-dp-right">
         <form method="post" action="">
-            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
-                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
-                   data-date-minviewmode="days"/>
+            <input type="text" class="span2" value="{{ monthAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+                   data-date="{{ monthAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+                   data-date-minviewmode="days" style="width: 100px;"/>
             <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
                    data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
-                   data-date-minviewmode="days"/>
+                   data-date-minviewmode="days" style="width: 100px;"/>
 
             <select name="paramsFilter[codigoPozo]">
                 <option value="0" selected>-- Todos los Puntos de Entrada --</option>
@@ -244,6 +244,7 @@
 </div>
 <script>
     $(document).ready(function () {
+        datesFieldsValidation(395, 395);
         dataTablesIni();
     });
 </script>
