@@ -1,4 +1,4 @@
-{% set info = enviar_post_ws('getInfGrafIni','puntoTramo=116&pCodigoModalidad=1', 1, 1, '', '', 'cantidad')  %}
+{% set info = enviar_post_ws('getCAntidadContratadaPuntoEntrega','puntoTramo=39&pCodigoModalidad=1', 1, 1, '', '', 'cantidad')  %}
 
 {{ attach_library('bmcbec/chartJS') }}
 
@@ -15,10 +15,9 @@
             <select name="paramsFilter[puntoTramo]">
                 <!-- <option value="" selected>-- Todos los tramos --</option> -->
                 <optgroup label="Elegir Tramo">
-                    <option value="116"  selected >BALLENA-BARRANCABERMEJA</option>
-                    <option value="110" >BALLENA-LA MAMI</option>
-                    <option value="133" >CUSIANA-EL PORVENIR</option>
-                    <option value="115" >LA CRECIENTE-SINCELEJO</option>
+                    <option value="39"  selected >BALLENA</option>
+                    <option value="12" >CUSIANA</option>
+                    <option value="40" >LA CRECIENTE</option>
                 </optgroup>
             </select>
             <select name="paramsFilter[pCodigoModalidad]">
