@@ -1,5 +1,9 @@
 /* leva css */
 
+.back-h2 {
+    display: none;
+}
+
 .promo_pods .primary_colour_1-bg {
     background-color: rgba(11, 90, 156, 1);
 }
