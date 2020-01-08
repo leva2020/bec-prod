@@ -15,6 +15,7 @@
                         {% for key , row in resultados %}
                             {% set data = row._entity %}
                             <article>
+                                <h2 class="back-h2">gestor</h2>
                                 <div class="wrapper-image">
                                     <a href="{{ path('entity.node.canonical', {'node': data.id}) }}">
                                         <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}"
