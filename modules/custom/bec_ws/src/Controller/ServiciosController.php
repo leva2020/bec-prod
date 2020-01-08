@@ -245,7 +245,7 @@ class ServiciosController extends ControllerBase
         if (is_array($data['response'])) {
             foreach ($data['response'] as $key => $value) {
                 $date = $value->fecha;
-                $date = date("Y/m", strtotime($date));
+                $date = date("Y/m/d", strtotime($date));
                 if (!in_array($date, $labels)):
                     $labels[] = $date;
                     $dataDataSets["capac_cant"][$date] = 0;
