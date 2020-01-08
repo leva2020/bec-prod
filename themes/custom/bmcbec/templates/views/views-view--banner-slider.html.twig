@@ -1,19 +1,27 @@
-{%  set resultados = view.result  %}
-<section class="back content advanced-component banner">
-    <h2></h2>
-  <div class="main-slider slides owl-carousel">
-    {% for key , row in resultados %}
-      {%  set data = row._entity  %}
-        <div class="item">
-            <div class="image">
-                <a href="{{data.field_cta[0].url}}" title="{{data.field_cta[0].title}}" target="blank">
-                    <picture>
-                        <source media="(max-width: 480px)" srcset="{{ file_url(data.field_imagen_mobile[0].entity.fileuri) }}">
-                        <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}" alt="{{data.field_imagen_desktop[0].alt}}" title="{{data.field_imagen_desktop[0].title}}">
-                    </picture>
-                </a>
+{% set resultados = view.result %}
+<section class="content advanced-component banner">
+    <h2 class="back-h2">banner</h2>
+    <div class="main-slider slides owl-carousel">
+        {% for key , row in resultados %}
+            {% set data = row._entity %}
+            <div class="item">
+                <div class="image">
+                    <a href="{{ data.field_cta[0].url }}" title="{{ data.field_cta[0].title }}" target="blank">
+                        <picture>
+                            <source media="(max-width: 480px)"
+                                    srcset="{{ file_url(data.field_imagen_mobile[0].entity.fileuri) }}">
+                            <img src="{{ file_url(data.field_imagen_desktop[0].entity.fileuri) }}"
+                                 alt="{{ data.field_imagen_desktop[0].alt }}"
+                                 title="{{ data.field_imagen_desktop[0].title }}">
+                        </picture>
+                    </a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
-  </div>
+        {% endfor %}
+    </div>
 </section>
+<style>
+    .back-h2 {
+        display: none;
+    }
+</style>
