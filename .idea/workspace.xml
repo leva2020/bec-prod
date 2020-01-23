@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +74,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="391">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -421,11 +419,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199948000" />
+    <option name="totallyTimeSpent" value="200259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3390558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -801,8 +798,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="391">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
