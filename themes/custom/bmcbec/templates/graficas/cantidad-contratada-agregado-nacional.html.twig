@@ -241,6 +241,13 @@
 
 
 <script type="text/javascript">
+    {% if info['paramsFilter'] is not null %}
+        var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+        $("input[id='dpd1']").attr('value', fechaInicial);
+
+        var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+        $("input[id='dpd2']").attr('value', fechaFinal);
+    {% endif %}
     $(document).ready(function () {
         datesFieldsValidation(395, 395);
         dataTablesIni();
