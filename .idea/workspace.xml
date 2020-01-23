@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="107" selection-start-line="107" selection-end-line="107" />
+            <state relative-caret-position="188">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
             </state>
           </provider>
         </entry>
@@ -73,11 +73,28 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-por-punto-de-entrega.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>codigoModalidad</find>
       <find>info['paramsFilter']['fechaInicial']</find>
       <find>paramsFilter</find>
       <find>leva</find>
@@ -106,6 +123,7 @@
       <find>resulta</find>
       <find>tabla de</find>
       <find>Resultados</find>
+      <find>CANTIDAD CONTRATADA - PUNTO DE ENTREGA</find>
       <find>se est</find>
     </findStrings>
     <replaceStrings>
@@ -167,7 +185,6 @@
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-de-energia-negociada-uvcp-agregado-nacional.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-por-tramo.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-por-tramo-grupo-gasoductos.html.twig" />
-        <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp-agregado-nacional.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-disponible-primaria.html.twig" />
@@ -195,6 +212,7 @@
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/informacion-operativa-gasoductos-conexion.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" />
+        <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" />
       </list>
     </option>
   </component>
@@ -403,7 +421,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198867000" />
+    <option name="totallyTimeSpent" value="199403000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -536,13 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-por-punto-de-entrega.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="73" column="4" selection-start-line="73" selection-start-column="4" selection-end-line="75" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-por-tramo.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
@@ -669,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="77" column="7" selection-start-line="75" selection-start-column="4" selection-end-line="77" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/dist/js/chartJS/bootstrap-datepicker.js" />
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/src/scss/leva.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -783,8 +787,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        <state relative-caret-position="188">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-por-punto-de-entrega.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="28" column="11" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
         </state>
       </provider>
     </entry>

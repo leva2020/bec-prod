@@ -26,6 +26,9 @@
 
 {#<link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/datePicker/css/bootstrap.css">#}
 
+<embed src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/transaccional-MS-IS-punto-entrega-suministro.cshtml">
+
+{#
 <div class="well" align="center">
     <div class="bmcbec-dp-right">
         <form method="post" action="">
@@ -59,13 +62,6 @@
     <div class="bmcbec-dp-fix"></div>
 </div>
 <div class="bmcbec-fix"></div>
-
-<!-- GRAPHIC CONSTRUCTOR -->
-{# <div class="canvas-holder-text">#}
-{#     <h4><text>Resultados:</text></h4>#}
-{#     <p>Se est&#225; mostrando informaci&#243;n de  181 resultados encontrados con los filtros aplicados.</p>#}
-{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
-{# </div>#}
 
 {{ include('resultados_info.html.twig', {"info": info}) }}
 
@@ -133,7 +129,6 @@ window.onload = function () {
     });
 };
 </script>
-<!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>
 
 <style>
@@ -141,3 +136,4 @@ window.onload = function () {
         font-size: 1em;
     }
 </style>
+#}
