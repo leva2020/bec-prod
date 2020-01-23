@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/informacion-operativa-gasoductos-conexion.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php" afterDir="false" />
-    </list>
+    <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,46 +28,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="59" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="59" />
+              <folding>
+                <element signature="n#style#0;n#input#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="668" column="4" selection-start-line="668" selection-start-column="4" selection-end-line="668" selection-end-column="4" />
+            <state relative-caret-position="235">
+              <caret line="681" column="49" selection-start-line="681" selection-start-column="20" selection-end-line="681" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/informacion-operativa-gasoductos-conexion.html.twig">
+        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-a-suministrar.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2940">
-              <caret line="196" column="32" selection-start-line="196" selection-start-column="32" selection-end-line="196" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/operativa-cantidad-declarada-comercializadores-gas-importado.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="67" column="7" selection-end-line="216" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-inyectada.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6585">
-              <caret line="439" column="66" selection-start-line="439" selection-start-column="66" selection-end-line="439" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/contratacion-por-punto-de-entrega.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6390">
-              <caret line="426" column="33" selection-start-line="426" selection-start-column="19" selection-end-line="426" selection-end-column="33" />
+            <state relative-caret-position="360">
+              <caret line="24" column="48" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -79,18 +61,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>well</find>
-      <find>fechaInicial</find>
       <find>getCantidadTomadaComercializadores</find>
       <find>getCantidadTomadaDiariamenteSnt</find>
-      <find>yearAgo</find>
       <find>getCantidadTomadaContratosParqueo</find>
       <find>$metodo</find>
       <find>getPTDVFYCIDVF</find>
-      <find>dpd1</find>
       <find>codigoModalidad</find>
-      <find>quickDate</find>
-      <find>getAgregadoNacionalSuministro</find>
       <find>info['paramsFilter']['fechaInicial']</find>
       <find>paramsFilter</find>
       <find>leva</find>
@@ -109,6 +85,12 @@
       <find>value</find>
       <find>getCantidadEnergiaInyectadaOpe_R</find>
       <find>$params</find>
+      <find>dpd1</find>
+      <find>getCantidadEnergiaSuministrar</find>
+      <find>quickDate</find>
+      <find>getAgregadoNacionalSuministro</find>
+      <find>yearAgo</find>
+      <find>monthAgo</find>
     </findStrings>
     <replaceStrings>
       <replace>newId</replace>
@@ -261,13 +243,47 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
               <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="custom" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="custom" type="462c0819:PsiDirectoryNode" />
+              <item name="bec_ws" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="custom" type="462c0819:PsiDirectoryNode" />
+              <item name="bec_ws" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="custom" type="462c0819:PsiDirectoryNode" />
+              <item name="bec_ws" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
@@ -304,10 +320,20 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="graficas" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
+              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="custom" type="462c0819:PsiDirectoryNode" />
+              <item name="bmcbec" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="node" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,12 +396,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197674000" />
+    <option name="totallyTimeSpent" value="198056000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30829757" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3390558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -400,9 +427,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/images/plantilla-banner-web-premium_21.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/images/contenido-reportes-informes-2.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -505,13 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="151" column="19" lean-forward="true" selection-end-line="181" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="235" column="40" selection-start-line="235" selection-start-column="40" selection-end-line="235" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -712,13 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="668" column="4" selection-start-line="668" selection-start-column="4" selection-end-line="668" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/informacion-operativa-gasoductos-conexion.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2940">
@@ -744,6 +754,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6390">
           <caret line="426" column="33" selection-start-line="426" selection-start-column="19" selection-end-line="426" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="681" column="49" selection-start-line="681" selection-start-column="20" selection-end-line="681" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-a-suministrar.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="59" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#input#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

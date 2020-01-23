@@ -1,7 +1,7 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
-
-{% set info = enviar_post_ws('getAgregadoNacionalSuministro', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoModalidad=1',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
+{% set monthAgo = "now"|date_modify("-3 month")|date("Y-m-d", "America/Bogota") %}
+{% set info = enviar_post_ws('getAgregadoNacionalSuministro', 'fechaInicial=' ~monthAgo~ '&fechaFinal=' ~now~ '&codigoModalidad=1',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 <link rel="stylesheet" type="text/css"
@@ -31,8 +31,8 @@
     </div>
     <div class="bmcbec-dp-right">
         <form method="post" action="">
-            <input type="text" class="span2" value="{{ yearAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
-                   data-date="{{ yearAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
+            <input type="text" class="span2" value="{{ monthAgo }}" id="dpd1" name="paramsFilter[fechaInicial]"
+                   data-date="{{ monthAgo }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
                    data-date-minviewmode="days" style="width: 100px;"/>
             <input type="text" class="span2" value="{{ now }}" id="dpd2" name="paramsFilter[fechaFinal]"
                    data-date="{{ now }}" data-date-format="yyyy-mm-dd" data-date-viewmode="months"
