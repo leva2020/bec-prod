@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="" />
+    <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
+            <state relative-caret-position="2475">
+              <caret line="165" column="23" lean-forward="true" selection-start-line="165" selection-start-column="23" selection-end-line="165" selection-end-column="23" />
               <folding>
                 <element signature="n#style#0;n#input#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -39,13 +41,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="107" column="20" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="20" />
+            <state relative-caret-position="203">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/resultados_info.html.twig">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -70,8 +77,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$metodo</find>
-      <find>getPTDVFYCIDVF</find>
       <find>codigoModalidad</find>
       <find>info['paramsFilter']['fechaInicial']</find>
       <find>paramsFilter</find>
@@ -98,8 +103,10 @@
       <find>getAgregadoNacionalSuministro</find>
       <find>POST</find>
       <find>monthAgo</find>
-      <find>tabla de</find>
       <find>resulta</find>
+      <find>tabla de</find>
+      <find>Resultados</find>
+      <find>se est</find>
     </findStrings>
     <replaceStrings>
       <replace>newId</replace>
@@ -164,7 +171,6 @@
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp-agregado-nacional.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-disponible-primaria.html.twig" />
-        <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/contratacion-por-punto-de-entrega.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-autorizada-segun-nominaciones.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-suministrar.html.twig" />
@@ -188,6 +194,7 @@
         <option value="$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/informacion-operativa-gasoductos-conexion.html.twig" />
         <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig" />
+        <option value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" />
       </list>
     </option>
   </component>
@@ -329,15 +336,6 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="graficas" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="bec-prod" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bec-prod" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="custom" type="462c0819:PsiDirectoryNode" />
-              <item name="bmcbec" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="node" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -405,12 +403,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198604000" />
+    <option name="totallyTimeSpent" value="198867000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3390558" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3390558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -423,7 +422,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3299363" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -435,9 +434,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/images/contenido-reportes-informes-2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/node/node--informes-disponibles.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -772,20 +768,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="107" column="20" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
+        <state relative-caret-position="2475">
+          <caret line="165" column="23" lean-forward="true" selection-start-line="165" selection-start-column="23" selection-end-line="165" selection-end-column="23" />
           <folding>
             <element signature="n#style#0;n#input#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/resultados_info.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
         </state>
       </provider>
     </entry>
