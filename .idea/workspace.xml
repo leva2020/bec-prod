@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/bec-prod.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bec-prod.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-contratada-punto-entrega.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-autorizada-segun-nominaciones.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-autorizada-segun-nominaciones.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-suministrar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-suministrar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-comercializadores.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-comercializadores.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-por-contratos-de-parqueo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-por-contratos-de-parqueo.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +149,8 @@
       <workItem from="1566617326142" duration="16942000" />
       <workItem from="1567565613849" duration="1168000" />
       <workItem from="1571799316293" duration="15000" />
-      <workItem from="1580413218358" duration="3886000" />
+      <workItem from="1580413218358" duration="4011000" />
+      <workItem from="1580486644345" duration="2936000" />
     </task>
     <servers />
   </component>
