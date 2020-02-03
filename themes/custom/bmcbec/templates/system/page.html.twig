@@ -65,7 +65,8 @@
     {% block navigation %}
         <div class="topbar">
             <div class="left">
-                {% set current_date = date()|date('U')|format_date('F jS \\a\\t g:ia') %}
+                {#{% set current_date = date()|date('U')|format_date('F jS \\a\\t g:ia') %}#}
+                <iframe src="http://drupal-devtest-1310369577.us-east-1.elb.amazonaws.com/hour.php" style="margin-top: -5px;width: 200px;border: 0;height: 28px;"></iframe>
                 {% trans %}
                     <span>{{ current_date|placeholder|striptags }}</span>
                 {% endtrans %}
