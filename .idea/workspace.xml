@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-autorizada-segun-nominaciones.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-autorizada-segun-nominaciones.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-suministrar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-suministrar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-por-contratos-de-parqueo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-por-contratos-de-parqueo.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/subasta-de-suministro-con-interrupciones.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/subasta-de-suministro-con-interrupciones.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-contratada-agregado-nacional.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-de-energia-negociada-uvcp-agregado-nacional.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-de-energia-negociada-uvcp-agregado-nacional.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp-agregado-nacional.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp-agregado-nacional.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/contratacion-por-punto-de-entrega.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/contratacion-por-punto-de-entrega.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/precio-venta-gas-usuarios-no-regulados.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/precio-venta-gas-usuarios-no-regulados.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +151,8 @@
       <workItem from="1567565613849" duration="1168000" />
       <workItem from="1571799316293" duration="15000" />
       <workItem from="1580413218358" duration="4011000" />
-      <workItem from="1580486644345" duration="5475000" />
+      <workItem from="1580486644345" duration="5544000" />
+      <workItem from="1580761084980" duration="3086000" />
     </task>
     <servers />
   </component>
@@ -158,9 +160,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1053" y="188" width="606" height="536" key="find.popup" timestamp="1580506431483">
+    <state x="-1053" y="188" width="606" height="536" key="find.popup" timestamp="1580762149533">
       <screen x="-1440" y="0" width="1440" height="860" />
     </state>
-    <state x="-1053" y="188" width="606" height="536" key="find.popup/0.0.1366.728/-1440.0.1440.860@0.0.1366.728" timestamp="1580506431483" />
+    <state x="-1053" y="188" width="606" height="536" key="find.popup/0.0.1366.728/-1440.0.1440.860@0.0.1366.728" timestamp="1580762149533" />
   </component>
 </project>
