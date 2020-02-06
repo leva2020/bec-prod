@@ -1,7 +1,7 @@
 {% set now = "now"|date("Y-m-d", "America/Bogota") %}
 {% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
 
-{% set info = enviar_post_ws('getCapacidadTransporteNegociadaUVCP', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '&codigoPunto',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
+{% set info = enviar_post_ws('getCapacidadTransporteNegociadaUVCP_AN', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 
 {# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
 {# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
@@ -40,7 +40,6 @@
 </div>
 <div class="bmcbec-fix"></div>
 
-
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
 <!-- <h4>Tabla de Resultados</h4> -->
@@ -72,30 +71,31 @@
 </table>
 </div>
 
-
 <!-- Begin - Export Option Table -->
 <div id="table2export">
 <table id="ResultTable1"></table>
 </div>
 <!-- END - Export Option Table -->
 
-
 <script type="text/javascript">
+{% if info['paramsFilter'] is not null %}
+    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+    $("input[id='dpd1']").attr('value', fechaInicial);
+    
+    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+    $("input[id='dpd2']").attr('value', fechaFinal);
+{% endif %}
+
 $(document).ready(function() {
+    $("#ResultTable thead").clone().appendTo("#ResultTable1");
+    $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+    $("#ResultTable tbody").clone().appendTo("#ResultTable1");
     dataTablesIni();
     datesFieldsValidation(395, 395);
 });
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
 
-<script type="text/javascript">
-    $('form').submit(function () {
-        //return checkDateRange($('#dpd1').val(), $('#dpd2').val(), 365);
-    });
-    $(document).ready(function() {
-//         insertText(365);
-    });
-</script>
 <style>
   .page-node-type-internas-graficas #ResultTable {
     border:none;

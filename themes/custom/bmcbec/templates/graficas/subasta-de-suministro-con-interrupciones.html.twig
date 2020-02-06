@@ -421,6 +421,123 @@
     <div class="bmcbec-dp-fix"></div>
 </div>
 <div class="bmcbec-fix"></div>
+
+{{ include('resultados_info.html.twig', {"info": info}) }}
+
+<div class="canvas-holder">
+    <canvas id="canvas"></canvas>
+</div>
+<style type="text/css">
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 80vh;
+        width: 80vw;
+    }
+</style>
+
+<script type="text/javascript">
+
+    {% if info['paramsFilter'] is not null %}
+        var codigoPunto = {{ (info['paramsFilter']['codigoPunto'])?:0 }};
+        $("option[value=" + codigoPunto + "]").attr('selected', 'selected');
+    
+        var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
+        $("input[id='dpd1']").attr('value', fechaInicial);
+    
+        var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
+        $("input[id='dpd2']").attr('value', fechaFinal);
+    
+    {% endif %}
+
+    var randomColor = function (opacity) {
+        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+    };
+
+    var lineChartData = {
+        labels: [
+            {% for key, item in info["dataGraficas"] %}
+            "{{ key }}",
+            {% endfor %}
+        ],
+        datasets: [
+            {
+                label: "Cantidad (MBTUD)",
+                data: [
+                    {% for item in info["dataGraficas"] %}
+                    "{{ item }}",
+                    {% endfor %}
+                ]
+            },
+        ]
+    };
+
+    $.each(lineChartData.datasets, function (i, dataset) {
+        dataset.borderColor = randomColor(0.4);
+        dataset.backgroundColor = randomColor(1);
+        dataset.pointBorderColor = randomColor(0.7);
+        dataset.pointBackgroundColor = randomColor(0.5);
+        dataset.pointBorderWidth = 1;
+    });
+
+    window.onload = function () {
+        var ctx = document.getElementById("canvas");
+        window.myLine = Chart.Line(ctx, {
+            data: lineChartData,
+            options: {
+                responsive: true,
+                hoverMode: 'label',
+                stacked: false,
+                title: {
+                    display: false,
+                    text: 'Subasta de Suministro con Interrupciones',
+                    fontSize: 16,
+                },
+                legend: {
+                    position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            offsetGridLines: false
+                        }
+                    }],
+                    yAxes: [{
+                        type: "linear",
+                        display: true,
+                        position: "left",
+                        id: "y-axis-1",
+                    }, {
+                        type: "linear",
+                        display: true,
+                        position: "right",
+                        id: "y-axis-2",
+
+                        gridLines: {
+                            drawOnChartArea: false,
+                        },
+                    }],
+                }
+            }
+        });
+    };
+
+    $('#randomizeData').click(function () {
+        lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        window.myLine.update();
+    });
+
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("3d");
+    ctx.font = "30px Arial";
+
+
+</script>
+
 <!-- TABLE CONSTRUCTOR -->
 <div class="table-holder">
     <!-- <h4>Tabla de Resultados</h4> -->
@@ -445,7 +562,7 @@
         </tr>
         </tfoot>
         <tbody>
-        {% for key, data in info %}
+        {% for key, data in info["dataTables"] %}
             <tr valign="top" align="left">
                 <td>{{ data.fecha }}</td>
                 <td>{{ data.Punto_entrega }}</td>
@@ -457,13 +574,11 @@
     </table>
 </div>
 
-
 <!-- Begin - Export Option Table -->
 <div id="table2export">
     <table id="ResultTable1"></table>
 </div>
 <!-- END - Export Option Table -->
-
 
 <script type="text/javascript">
     $(document).ready(function () {

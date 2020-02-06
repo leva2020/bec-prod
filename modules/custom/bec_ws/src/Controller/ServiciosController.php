@@ -55,7 +55,7 @@ class ServiciosController extends ControllerBase
 
         $paramsFilter = null;
         if (!empty($_POST)):
-            if ($paramsFilter = $_POST["paramsFilter"]):
+            if (isset($_POST["paramsFilter"]) && $paramsFilter = $_POST["paramsFilter"]):
                 $params = null;
                 foreach ($paramsFilter as $key => $param):
 
@@ -758,7 +758,34 @@ class ServiciosController extends ControllerBase
 
     public function getSubastaSuministroConInterrupciones($data)
     {
-        return $data["response"];
+        $dataGraficas = array();
+        $labels = array();
+
+        if (is_array($data['response'])) {
+            foreach ($data["response"] as $info) {
+                $date = $info->fecha;
+                $key = date("Y/m/d", strtotime($date));
+                if (array_key_exists($key, $dataGraficas)) {
+                    $dataGraficas[$key] += $info->cantidad;
+                    //                     $dataGraficas[$key]["precio_prom"] += $info->precio_prom;
+                } else {
+                    $dataGraficas[$key] = $info->cantidad;
+                    //                     $dataGraficas[$key]["precio_prom"] = $info->precio_prom;
+                    $labels[] = $key;
+                }
+            }
+        }
+
+        $data = array(
+            'labels' => $labels,
+            'dataTables' => $data['response'],
+            'dataGraficas' => $dataGraficas,
+            'num_resultados' => count($data['response']),
+            'response' => $data["response"]
+        );
+        //         echo count($data["dataTables"]);
+        //         var_dump($data);exit;
+        return $data;
     }
 
     public function getInformacionOperativaGasoductosConexion($data)
