@@ -73,7 +73,7 @@ class ServiciosController extends ControllerBase
                         $params .= $key . "=" . $param . "&";
                     }
                 endforeach;
-            elseif ($paramsFilterQ = $_POST["quickDate"]):
+            elseif (isset($_POST["quickDate"]) && $paramsFilterQ = $_POST["quickDate"]):
                 $fecha = date("Y-m-d");
                 $currentYear = date('Y');
                 $currentMonth = date('m');
@@ -248,14 +248,16 @@ class ServiciosController extends ControllerBase
                 $date = date("Y/m/d", strtotime($date));
                 if (!in_array($date, $labels)):
                     $labels[] = $date;
-                    $dataDataSets["capac_cant"][$date] = 0;
+                    $dataDataSets[$value->desc_modalidad . "(MBTUD)"][$date] = $value->capac_cant;
+                else:
+                    $dataDataSets[$value->desc_modalidad . "(MBTUD)"][$date] += $value->capac_cant;
                 endif;
-                $dataDataSets['capac_cant'][$date] += $value->capac_cant;
-
             }
-            foreach ($dataDataSets["capac_cant"] as $tmp):
-                $dataSets["capac_cant"][] = $tmp;
-            endforeach;
+            foreach ($dataDataSets as $key => $infoXModalidad) {
+                foreach ($infoXModalidad as $tmp) {
+                    $dataSets[$key][] = $tmp;
+                }
+            }
             $info['desc_punto_tramo'] = $data["response"][0]->desc_punto_tramo;
             $info['desc_modalidad'] = $data["response"][0]->desc_modalidad;
         }

@@ -1,48 +1,38 @@
-{# <section class="content advanced-component standard-components">#}
-{#     <div class="container">#}
-{#         <div class="row">#}
-{#             <div class="col-md-8 col-md-offset-2 col-xs-12" role="main">#}
-{#                 <div class="page_component codeblock">#}
-{#                     <object id="becchartframe" width="100%" height="700"#}
-{#                             data="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/transaccional-MP-IS.cshtml"#}
-{#                             style="height:700px; border:0;" scrolling="no">#}
-{#                     </object>#}
-{#                     <style>#}
-{#                         #pos_2093 + section > div {#}
-{#                             width: 100% !important;#}
-{#                             margin: 0;#}
-{#                             padding: 0;#}
-{#                         }#}
-{#                     </style>#}
-{#                 </div>#}
-{#             </div>#}
-{#         </div>#}
-{#     </div>#}
-{# </section>#}
+{% set now = "now"|date("Y-m-d", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-3 month")|date("Y-m-d", "America/Bogota") %}
 
 {% set info = enviar_post_ws('getCantidadContratadaPuntoEntrega', 'puntoTramo=39&pCodigoModalidad=1', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad')  %}
 
+{# <link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/_bmcbec-charts.css">#}
+{# <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site.css">#}
+{#<link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/datePicker/css/bootstrap.css">#}
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css"/>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/jszip-3.1.3/pdfmake-0.1.27/dt-1.10.15/af-2.2.0/b-1.3.1/b-colvis-1.3.1/b-flash-1.3.1/b-html5-1.3.1/b-print-1.3.1/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css"
+      href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/datePicker/css/datepicker.css">
+<script type="text/javascript"
+        src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/datePicker/js/bootstrap-datepicker.js"></script>
+{# <script type="text/javascript" src="src/js/tables.js"></script>#}
+
+{{ attach_library('bmcbec/tables') }}
 {{ attach_library('bmcbec/chartJS') }}
 
-{#<link rel="stylesheet" type="text/css" href="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/datePicker/css/bootstrap.css">#}
-
-<iframe scrolling="no" width="100%" height="1400px" frameBorder="0" src="http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/transaccional-MS-IS-punto-entrega-suministro.cshtml"></iframe>
-
-{#
 <div class="well" align="center">
     <div class="bmcbec-dp-right">
         <form method="post" action="">
-            <select name="paramsFilter[puntoTramo]">
-                <option value="" selected>-- Todos los Puntos de Entrega --</option>
+            <select name="paramsFilter[puntoTramo]" id="puntoTramo">
                 <optgroup label="Elegir Punto de Entrega">
+                    <option value="0">-- Todos los Puntos de Entrega --</option>
                     <option value="39"  selected >BALLENA</option>
                     <option value="12" >CUSIANA</option>
                     <option value="40" >LA CRECIENTE</option>
                 </optgroup>
             </select>
-            <select name="paramsFilter[pCodigoModalidad]">
-                <option value="" selected>-- Todas --</option>
+            <select name="paramsFilter[pCodigoModalidad]" id="pCodigoModalidad">
                 <optgroup label="Elegir Modalidad">
+                    <option value="0">-- Todas --</option>
                     <option value="21" >C1</option>
                     <option value="22" >C2</option>
                     <option value="5" >CON INTERRUPCIONES</option>
@@ -56,89 +46,101 @@
                     <option value="8" >TAKE OR PAY</option>
                 </optgroup>
             </select>
-            <input type="submit" value="Consultar" class="bmcbec-dp-button" />
+        <input type="submit" value="Consultar" class="bmcbec-dp-button" />
         </form>
     </div>
     <div class="bmcbec-dp-fix"></div>
 </div>
 <div class="bmcbec-fix"></div>
 
-{{ include('resultados_info.html.twig', {"info": info}) }}
+<!-- GRAPHIC CONSTRUCTOR -->
+
+{{ include('resultados_info.html.twig', {"numero_resultados": 32, "info": info}) }}
 
 <div class="canvas-holder">
     <h3 align="center">CANTIDAD CONTRATADA - PUNTO DE ENTREGA</h3>
-    <canvas id="chart" />
+    <canvas id="canvas"></canvas>
 </div>
 <script type="text/javascript">
 
-{% if info['paramsFilter'] is not null %}
-var puntoTramo = {{ info['paramsFilter']['puntoTramo'] }};
-$("option[value=" + puntoTramo + "]").attr('selected', 'selected');
+    {% if info['paramsFilter'] is not null %}
+    var pCodigoModalidad = {{ (info['paramsFilter']['pCodigoModalidad'])?:0 }};
+    $("#pCodigoModalidad option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
 
-var pCodigoModalidad = {{ info['paramsFilter']['pCodigoModalidad'] }};
-$("option[value=" + pCodigoModalidad + "]").attr('selected', 'selected');
-{% endif %}
+    var puntoTramo = {{ (info['paramsFilter']['puntoTramo'])?:0 }};
+    $("#puntoTramo option[value=" + puntoTramo + "]").attr('selected', 'selected');
+    {% endif %}
 
-var randomColor = function(opacity) {
-    return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-};
+    var randomColor = function (opacity) {
+        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+    };
 
-var lineChartData = {
-    labels: {{ info["labels"]|json_encode|raw }},
-    datasets: [{
-        label: "Firme (MBTUD)",
-        data: {{ info["dataDataSets"]["capac_cant"]|json_encode()|raw }}
-    }]
-};
+    var lineChartData = {
+        labels: {{ info["labels"]|json_encode|raw }},
+        datasets: [
+            {% for key, dataSet in info["dataDataSets"] %}
+            {
+                label: "{{ key }}",
+                yAxisID: "y-axis-1",
+                data: {{ dataSet|json_encode|raw }}
+            },
+            {% endfor %}
+        ]
+    };
 
-$.each(lineChartData.datasets, function(i, dataset) {
-    var tempColor = randomColor(1);
-        dataset.borderColor = tempColor;
-        dataset.backgroundColor = tempColor;
-        dataset.pointBorderColor = tempColor;
-        dataset.pointBackgroundColor = tempColor;
-        dataset.borderWidth = -1;
+    $.each(lineChartData.datasets, function (i, dataset) {
+        dataset.borderColor = randomColor(0.4);
+        dataset.backgroundColor = dataset.borderColor;
+        dataset.pointBorderColor = dataset.borderColor;
+        dataset.pointBackgroundColor = dataset.borderColor;
         dataset.pointBorderWidth = 0;
-        dataset.pointHoverRadius = 0;
-        dataset.pointHoverBorderWidth = 0;
-        dataset.pointRadius = 0;
-        dataset.pointHitRadius = 0;
-});
-
-window.onload = function () {
-    var chartEl = document.getElementById("chart");
-    window.myLine = new Chart(chartEl, {
-        type: 'line',
-        data: lineChartData,
-        options: {
-            responsive: true,
-            title: {
-                display:false,
-                text: 'CANTIDAD CONTRATADA - PUNTO DE ENTREGA',
-                fontSize: 16,
-            },
-            tooltips: {
-                mode: 'label',
-                enabled: true
-                //custom: customTooltips
-            },
-            legend: {
-                position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
-            }
-        }
     });
-};
-</script>
-<div class="bmcbec-fix"></div>
 
-<style>
-    section p {
-        font-size: 1em;
-    }
-</style>
-#}
-<style>
-  .content.advanced-component.standard-components{
-    padding: 0;
-  }
-</style>
+    window.onload = function () {
+        var ctx = document.getElementById("canvas");
+        window.myLine = Chart.Line(ctx, {
+            data: lineChartData,
+            options: {
+
+                responsive: true,
+                maintainAspectRatio: true,
+                hoverMode: 'label',
+                stacked: false,
+                title: {
+                    display: false,
+                    text: 'CANTIDAD CONTRATADA - PUNTO DE ENTREGA',
+                    fontSize: 16,
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            offsetGridLines: false
+                        }
+                    }],
+                    yAxes: [{
+                        type: "linear",
+                        display: true,
+                        position: "left",
+                        id: "y-axis-1",
+                    }],
+                }
+            }
+        });
+    };
+
+    $('#randomizeData').click(function () {
+        lineChartData.datasets[0].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        lineChartData.datasets[1].data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+        window.myLine.update();
+    });
+
+    //     var c=document.getElementById("canvas");
+    //     var ctx=c.getContext("3d");
+    //     ctx.font="30px Arial";
+
+</script>
+<!-- END OF GRAPHIC CONSTRUCTOR -->
+<div class="bmcbec-fix"></div>
