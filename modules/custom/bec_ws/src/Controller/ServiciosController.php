@@ -653,7 +653,6 @@ class ServiciosController extends ControllerBase
         if (is_array($data['response'])) {
             foreach ($data['response'] as $key => $value):
                 $date = $this->formatMonthLabel($value->mes) . "./" . $value->año;
-                sort ($date);
                 if (!in_array($date, $labels)):
                     $labels[] = $date;
                     $dataDataSets["Cantidad (MBTUD)"][$date] = $value->cantidad;
