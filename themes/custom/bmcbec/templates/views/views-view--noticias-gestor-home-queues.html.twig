@@ -14,7 +14,7 @@
                         {% set resultados = view.result %}
                         {% for key , row in resultados %}
                             {% set data = row._entity %}
-                            <article>
+                            <article style="z-index: 1000; position: relative">
                                 <h2 class="back-h2">gestor</h2>
                                 <div class="wrapper-image">
                                     {% if data.field_archivo %}
