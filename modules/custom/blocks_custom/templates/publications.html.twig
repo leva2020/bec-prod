@@ -13,7 +13,7 @@
 
                         {% if publicaciones %}
                             {% for empresa in publicaciones %}
-                                <article>
+                                <article style="z-index: 1000; position: relative">
                                     <h2 class="back-h2">.</h2>
                                     {% set imagestyle = {
                                         '#theme':      'image_style',
@@ -27,7 +27,7 @@
                                         </a>
                                     </div>
                                     <div class="content">
-                                        <a style="z-index: 1000; position: relative" href="{{ path('entity.node.canonical', {'node': empresa.id}) }}">
+                                        <a href="{{ path('entity.node.canonical', {'node': empresa.id}) }}">
                                             {{ empresa.get('title').value }}
                                         </a>
                                         <em>{{ empresa.published_at.value|date('j M Y') }}</em>
