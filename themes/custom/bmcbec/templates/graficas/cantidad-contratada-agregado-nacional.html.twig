@@ -162,11 +162,43 @@
 
 
 <!-- TABLE CONSTRUCTOR -->
+<div class="table-holder">
+    <h4>Resultados</h4>
+    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
+        la tabla.</p>
+    <table id="ResultTable" class="display" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Modalidad Contractual</th>
+            <th>Cantidad (MBTUD)</th>
+            <th>Precio Promedio Ponderado (USD/MBTU)</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Modalidad Contractual</th>
+            <th>Cantidad (MBTUD)</th>
+            <th>Precio Promedio Ponderado (USD/MBTU)</th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr valign="top" align="left">
+            <td>{{ data.año }}</td>
+            <td>{{ data.mes }}</td>
+            <td>{{ data.modalidad }}</td>
+            <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
+            <td align="right" data-order="{{ data.precio_prom }}">{{ data.precio_prom }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <div id="table2export">
     <table id="ResultTable1"></table>
 </div>
-<!-- END - Export Option Table -->
-
 
 <script type="text/javascript">
     {% if info['paramsFilter'] is not null %}
@@ -183,7 +215,6 @@
         $("#ResultTable tbody").clone().appendTo("#ResultTable1");
         dataTablesIni();
     });
-
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
 
