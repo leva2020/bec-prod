@@ -1,11 +1,13 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="http://www.bmcbec.com.co/scripts/application.js"></script>
 <div class="row page_component gallery">
-	<div class="item col-md-4 col-xs-6">
-		<div class="image">
-			<a href="{{file_url(data.field_imagen.entity.fileuri)}}" data-title="{{data.field_imagen.title}}"  data-toggle="lightbox" data-type="image" data-gallery="galleryname-1470">
-				<img src="{{file_url(data.field_imagen.entity.fileuri)}}" title="{{data.field_imagen.title}}" alt="{{data.field_imagenalt}}">
-				<div class="overlayicon" style="width: 220px; height: 165px;"><i class="fa fa-expand"></i></div>
-			</a>
-		</div>
-	</div>
+    <div class="item col-md-4 col-xs-6">
+        <div class="image">
+            <a href="{{ file_url(data.field_imagen.entity.fileuri) }}" data-title="{{ data.field_imagen.title }}"
+               data-toggle="lightbox" data-type="image" data-gallery="galleryname-1470">
+                <img src="{{ file_url(data.field_imagen.entity.fileuri) }}" title="{{ data.field_imagen.title }}"
+                     alt="{{ data.field_imagenalt }}">
+                <div class="overlayicon" style="width: 220px; height: 165px;"><i class="fa fa-expand"></i></div>
+            </a>
+        </div>
+    </div>
 </div>
