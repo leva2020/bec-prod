@@ -91,7 +91,7 @@
     var lineChartData = {
         labels: {{ info["labels"]|json_encode|raw }},
         datasets: [
-            {% for key, dataSet in info["dataTables"] %}
+            {% for key, dataSet in info["dataDataSets"] %}
             {
                 label: "{{ key }}",
                 fill: false,
