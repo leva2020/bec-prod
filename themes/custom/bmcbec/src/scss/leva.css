@@ -194,7 +194,7 @@ CSS MODAL
     background-color: transparent
 }
 
-/*.modal {
+.modal {
     display: none;
     vertical-align: middle;
     position: relative;
@@ -290,7 +290,7 @@ CSS MODAL
         transform: scaleY(1.0);
         -webkit-transform: scaleY(1.0)
     }
-}*/
+}
 
 
 /**
