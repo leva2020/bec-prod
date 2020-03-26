@@ -162,73 +162,8 @@
 
 
 <!-- TABLE CONSTRUCTOR -->
-<div class="table-holder">
-    <h4>Resultados</h4>
-    <p class="alert alert-warning">Utilice las opciones de filtrado y ordenamiento para refinar los datos mostrados en
-        la tabla.</p>
-    <table id="ResultTable" class="display" cellspacing="0" width="100%">
-        <thead>
-        <tr>
-            <th>Año</th>
-            <th>Mes</th>
-            <th>Modalidad Contractual</th>
-            <th>Cantidad (MBTUD)</th>
-            <th>Precio Promedio Ponderado (USD/MBTU)</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th>Año</th>
-            <th>Mes</th>
-            <th>Modalidad Contractual</th>
-            <th>Cantidad (MBTUD)</th>
-            <th>Precio Promedio Ponderado (USD/MBTU)</th>
-        </tr>
-        </tfoot>
-        <tbody>
-        <tr valign="top" align="left">
-            <td>2019</td>
-            <td>julio</td>
-            <td>Firme</td>
-            <td align="right" data-order="2110">2110</td>
-            <td align="right" data-order="0.89">0.89</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<!-- Begin - Export Option Table -->
 <div id="table2export">
-    <table id="ResultTable1">
-        <thead>
-        <tr>
-            <th>Año</th>
-            <th>Mes</th>
-            <th>Modalidad Contractual</th>
-            <th>Cantidad (MBTUD)</th>
-            <th>Precio Promedio Ponderado (USD/MBTU)</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th>Año</th>
-            <th>Mes</th>
-            <th>Modalidad Contractual</th>
-            <th>Cantidad (MBTUD)</th>
-            <th>Precio Promedio Ponderado (USD/MBTU)</th>
-        </tr>
-        </tfoot>
-        <tbody>
-        <tr valign="top" align="left">
-            <td>2019</td>
-            <td>julio</td>
-            <td>Firme</td>
-            <td align="right" data-order="2110">2110</td>
-            <td align="right" data-order="0.89">0.89</td>
-        </tr>
-        </tbody>
-    </table>
+    <table id="ResultTable1"></table>
 </div>
 <!-- END - Export Option Table -->
 
@@ -243,8 +178,12 @@
     {% endif %}
     $(document).ready(function () {
         datesFieldsValidation(395, 395);
+        $("#ResultTable thead").clone().appendTo("#ResultTable1");
+        $("#ResultTable tfoot").clone().appendTo("#ResultTable1");
+        $("#ResultTable tbody").clone().appendTo("#ResultTable1");
         dataTablesIni();
     });
+
 </script>
 <!-- END OF TABLE CONSTRUCTOR -->
 
