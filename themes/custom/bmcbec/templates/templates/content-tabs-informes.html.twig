@@ -12,7 +12,7 @@
                 <blockquote>
                   {{item.entity.field_descripcion_1.value|raw }}
                 </blockquote>
-                <h3><a href="{{item.entity.field_link.url}}" title="{{item.entity.field_link.title}}">{{item.entity.field_link.title}}</a></h3>
+                <h3><a href="{{item.entity.field_link.url}}" title="{{item.entity.field_link.title}}">{{item.entity.field_link.title}}..</a></h3>
               </div>
               {% include 'page-component-accordion-1.html.twig' with {'data': item.entity.field_acordeon_1, 'item_test': loop.index } %}
             </div>
