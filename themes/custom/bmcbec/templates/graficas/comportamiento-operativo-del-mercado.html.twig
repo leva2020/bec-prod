@@ -1,5 +1,5 @@
-{% set now = "now"|date("Y-m-d", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-1 month")|date("Y-m-d", "America/Bogota") %}
+{% set now = "now"|date("Y-m-t", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-11 months")|date("Y-m-01", "America/Bogota") %}
 
 {% set info = enviar_post_ws('getComportamientoOperativoMercado', 'fechaInicial=' ~monthAgo~ '&fechaFinal=' ~now~ '&codigoReporte=1',1,1,'','','cantidad')  %}
 

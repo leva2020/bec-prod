@@ -1,5 +1,5 @@
-{% set now = "now"|date("Y-m-d", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-3 month")|date("Y-m-d", "America/Bogota") %}
+{% set now = "now"|date("Y-m-t", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-2 months")|date("Y-m-01", "America/Bogota") %}
 
 {% set info = enviar_post_ws('getCantidadContratadaPuntoEntrega', 'puntoTramo=39&pCodigoModalidad=1', 1, 1, 'tipo_produccion', 'punto_de_entrada,desc_campo_prod', 'cantidad')  %}
 

@@ -1,5 +1,5 @@
-{% set now = "now"|date("Y-m-d", "America/Bogota") %}
-{% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
+{% set now = "now"|date("Y-m-t", "America/Bogota") %}
+{% set yearAgo = "now"|date_modify("-11 months")|date("Y-m-01", "America/Bogota") %}
 
 {% set info = enviar_post_ws('getInformaciontransaccionalSUVCP_CEN_UVCP', 'fechaInicial=' ~yearAgo~ '&fechaFinal=' ~now~ '',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad')  %}
 

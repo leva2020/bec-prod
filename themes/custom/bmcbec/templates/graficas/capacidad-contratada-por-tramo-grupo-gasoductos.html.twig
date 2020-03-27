@@ -1,5 +1,5 @@
-{% set now = "now"|date("Y-m-d", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-1 month")|date("Y-m-d", "America/Bogota") %}
+{% set now = "now"|date("Y-m-t", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-0 month")|date("Y-m-01", "America/Bogota") %}
 {% set tmonthAgo = "now"|date_modify("-3 month")|date("Y-m-d", "America/Bogota") %}
 {% set smonthAgo = "now"|date_modify("-6 month")|date("Y-m-d", "America/Bogota") %}
 {% set ymonthAgo = "now"|date_modify("-12 month")|date("Y-m-d", "America/Bogota") %}

@@ -1,8 +1,8 @@
-{% set now = "now"|date("Y-m-d", "America/Bogota") %}
-{% set yearAgo = "now"|date_modify("-1 year")|date("Y-m-d", "America/Bogota") %}
+{% set now = "now"|date("Y-m-t", "America/Bogota") %}
+{% set yearAgo = "now"|date_modify("-11 months")|date("Y-m-01", "America/Bogota") %}
 
 {% set monthNow = "now"|date("m", "America/Bogota") %}
-{% set monthAgo = "now"|date_modify("-1 month")|date("Y-m-d", "America/Bogota") %}
+{% set monthAgo = "now"|date_modify("-0 months")|date("Y-m-01", "America/Bogota") %}
 
 
 {% set info=enviar_post_ws('getCantidadAutorizadaNominaciones','fechaInicial=' ~monthAgo~ '&fechaFinal='~now~'&codigoPozo=0',1,1,'tipo_produccion','punto_de_entrada,desc_campo_prod','cantidad') %}
