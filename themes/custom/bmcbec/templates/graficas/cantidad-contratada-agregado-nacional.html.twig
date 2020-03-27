@@ -91,10 +91,15 @@
     var lineChartData = {
         labels: {{ info["labels"]|json_encode|raw }},
         datasets: [
-            {% for key, dataSet in info["dataDataSets"] %}
+            {% for key, dataSet in info["dataDataSets"]|reverse %}
             {
                 label: "{{ key }}",
-                fill: false,
+                {% if loop.index == 1 %}
+                    fill: false,
+                {% else %}
+                    fill: true,
+                {% endif %}
+                yAxisID: "y-axis-{{ loop.index }}",
                 data: {{ dataSet|json_encode|raw }}
             },
             {% endfor %}
@@ -189,7 +194,10 @@
         {% for key, data in info["dataTables"] %}
             <tr valign="top" align="left">
                 <td>{{ data.año }}</td>
-                <td>{{ data.mes }}</td>
+                <td>
+                {% set dt = data.año ~ "-" ~ data.mes %}
+                {{ dt|date("M") }}
+                </td>
                 <td>{{ data.modalidad }}</td>
                 <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
                 <td align="right" data-order="{{ data.precio_prom }}">{{ data.precio_prom }}</td>

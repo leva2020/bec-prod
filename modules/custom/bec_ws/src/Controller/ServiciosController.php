@@ -112,6 +112,11 @@ class ServiciosController extends ControllerBase
                     $params .= "codigoReporte=1&";
                     $params .= "fechaInicial=" . $fechaInicial . "&";
                     $params .= "fechaFinal=" . $fecha;
+                elseif ($metodo == "getAgregadoNacionalSuministro"):
+                    $params .= "fechaInicial=" . $fechaInicial . "&";
+                    $params .= "fechaFinal=" . $fecha . "&";
+                    $params .= "codigoModalidad=1";
+                    $paramsFilter["codigoModalidad"] = "1";
                 else:
                     $paramsFilter["tramoOGrupo"] = "";
                     $params .= "fechaInicial=" . $fechaInicial . "&";
@@ -119,6 +124,7 @@ class ServiciosController extends ControllerBase
                 endif;
             endif;
         endif;
+
         $data = $this->sendPostRequest($url, $params);
 
         $info = $this->$metodo($data);
