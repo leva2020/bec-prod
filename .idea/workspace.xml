@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-maxima-de-mediano-plazo.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-a-suministrar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-a-suministrar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-comercializadores.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energia-tomada-comercializadores.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/subasta-uselo-o-vendalo-de-largo-plazo-para-capacidad-de-transporte.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/subasta-uselo-o-vendalo-de-largo-plazo-para-capacidad-de-transporte.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energía-a-suministrar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energía-a-suministrar.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +151,8 @@
       <workItem from="1580486644345" duration="5544000" />
       <workItem from="1580761084980" duration="3133000" />
       <workItem from="1580931284447" duration="2960000" />
-      <workItem from="1585321791262" duration="4231000" />
+      <workItem from="1585321791262" duration="5068000" />
+      <workItem from="1585332393568" duration="40000" />
     </task>
     <servers />
   </component>
