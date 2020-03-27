@@ -74,23 +74,23 @@ class ServiciosController extends ControllerBase
                     }
                 endforeach;
             elseif (isset($_POST["quickDate"]) && $paramsFilterQ = $_POST["quickDate"]):
-                $fecha = date("Y-m-d");
+                $fecha = date("Y-m-t");
                 $currentYear = date('Y');
                 $currentMonth = date('m');
                 if ($paramsFilterQ == "1m"):
-                    $fechaInicial = date("Y-m-d", strtotime("-1 months"));
+                    $fechaInicial = date("Y-m-t", strtotime("-1 months"));
                     $yearInicial = date("Y", strtotime("-1 months"));
                     $monthInicial = date("m", strtotime("-1 months"));
                 elseif ($paramsFilterQ == "3m"):
-                    $fechaInicial = date("Y-m-d", strtotime("-3 months"));
+                    $fechaInicial = date("Y-m-t", strtotime("-3 months"));
                     $yearInicial = date("Y", strtotime("-3 months"));
                     $monthInicial = date("m", strtotime("-3 months"));
                 elseif ($paramsFilterQ == "6m"):
-                    $fechaInicial = date("Y-m-d", strtotime("-6 months"));
+                    $fechaInicial = date("Y-m-t", strtotime("-6 months"));
                     $yearInicial = date("Y", strtotime("-6 months"));
                     $monthInicial = date("m", strtotime("-6 months"));
                 elseif ($paramsFilterQ == "1a"):
-                    $fechaInicial = date("Y-m-d", strtotime("-1 year"));
+                    $fechaInicial = date("Y-m-t", strtotime("-1 year"));
                     $yearInicial = date("Y", strtotime("-1 year"));
                     $monthInicial = date("m", strtotime("-1 year"));
                 endif;
