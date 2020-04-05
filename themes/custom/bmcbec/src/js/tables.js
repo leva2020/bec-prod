@@ -12,7 +12,7 @@ function dataTablesIni(){
        dom: 'Bfrtip',
        buttons: [
           {
-             text: 'Exportar Tabla.',
+             text: 'Exportar Tabla',
              action: function(){ openExportTable(); }
           },
        ],
