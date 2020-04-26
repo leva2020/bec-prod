@@ -31,11 +31,17 @@
                                 <div class="panel-body">
                                     {% for arc in files %}
                                         <p>
-                                            {{ day }} de {{ mes }}:
+                                            {{ arc.day }} de {{ mes }}:
                                             <a data-id="10546"
                                             href="{{ arc.archivo }}"
                                             target="_blank">
                                             {{ arc.titulo }}
+                                            </a>
+                                            -
+                                            <a data-id="10546"
+                                               href="{{ arc.archivo_2 }}"
+                                               target="_blank">
+                                                {{ arc.titulo_2 }}
                                             </a>
                                         </p>
                                     {% endfor %}
