@@ -59,7 +59,8 @@ class ArchivoInformeDiarioCustomBlock extends BlockBase
 
             $estructura[$anio][$mes][] = array(
                     'titulo' => $node->getTitle(),
-                    'archivo' => $node->get('field_apig_archivo')->entity->url()
+                    'archivo' => $node->get('field_apig_archivo')->entity->url(),
+                    'day' => $node->get('field_apig_dia')->getValue()[0]["value"]
                 );
         }
         unset($archivos_informe);
