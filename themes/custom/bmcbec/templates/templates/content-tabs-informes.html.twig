@@ -15,7 +15,6 @@
                 <h3><a href="{{item.entity.field_link[0].url}}" title="{{item.entity.field_link.title}}">{{item.entity.field_link.title}}</a></h3>
               </div>
                 {% if ( item.entity.field_titulo.value == 'Informe Diario') %}
-                    ..
                     {{ drupal_block('archivo_informe_diario_block_custom') }}
                 {% endif %}
               {% include 'page-component-accordion-1.html.twig' with {'data': item.entity.field_acordeon_1, 'item_test': loop.index } %}

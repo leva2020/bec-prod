@@ -14,7 +14,7 @@ use Drupal\node\Entity\Node;
  *   admin_label = @Translation("Archivos de Informe Prime IGas")
  * )
  */
-class ArchivoInformePrimeIGasCustomBlock extends BlockBase
+class ArchivoInformeDiarioCustomBlock extends BlockBase
 {
     /**
      * {@inheritdoc}
