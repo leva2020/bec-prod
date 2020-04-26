@@ -142,6 +142,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'archivos' => NULL
                 ],
                 'template' => 'archivo-informe-prime-igas'
+            ],
+        'archivo_informe_diario_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Archivo Informe Diario',
+                    'descripcion' => 'Lista de archivos informes diarios',
+                    'archivos' => NULL
+                ],
+                'template' => 'archivo-informe-diario'
             ]
     ];
 }

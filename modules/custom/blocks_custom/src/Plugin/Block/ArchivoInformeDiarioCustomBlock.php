@@ -41,7 +41,7 @@ class ArchivoInformePrimeIGasCustomBlock extends BlockBase
         );
 
         $query = Drupal::entityQuery('node')
-            ->condition('type', 'archivo_informe_prime_igas')
+            ->condition('type', 'archivo_informe_diario')
             ->sort('field_apig_mes', 'DESC')
             ->sort('field_apig_dia', 'DESC')
             ->execute();
@@ -65,8 +65,8 @@ class ArchivoInformePrimeIGasCustomBlock extends BlockBase
         unset($archivos_informe);
 
         return array(
-            '#theme' => 'archivo_informe_prime_igas_block_custom',
-            '#titulo' => $this->t('Listado de archivos informe prime IGas'),
+            '#theme' => 'archivo_informe_diario_block_custom',
+            '#titulo' => $this->t('Listado de archivos informes Diarios'),
             '#archivos' => $estructura
         );
     }
