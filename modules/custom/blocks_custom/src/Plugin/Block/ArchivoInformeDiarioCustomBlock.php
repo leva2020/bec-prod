@@ -10,8 +10,8 @@ use Drupal\node\Entity\Node;
  * Definición de nuestro bloque
  *
  * @Block(
- *   id = "archivo_informe_prime_igas_block",
- *   admin_label = @Translation("Archivos de Informe Prime IGas")
+ *   id = "archivo_informe_diario_block",
+ *   admin_label = @Translation("Archivos de Informe Diario")
  * )
  */
 class ArchivoInformeDiarioCustomBlock extends BlockBase
