@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
           {% for item in data %}
-            <div class="col-md-6">
+            <div class="col-md-4">
               <h2>{{item.entity.field_titulo.value }}</h2>
               <div class="wrapper-image">
                 <img src="{{file_url(item.entity.field_imagen.entity.fileuri)}}" title="{{item.entity.field_imagen.title}}" alt="{{item.entity.field_imagen.alt}}">
