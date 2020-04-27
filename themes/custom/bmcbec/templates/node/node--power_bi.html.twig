@@ -1,4 +1,26 @@
-{% include 'banners.html.twig' with {'data': node.field_image.entity } %}
+<section class="content advanced-component banner">
+    <div class="slides slick-initialized slick-slider">
+        <div class="slick-list draggable" tabindex="0" style="height: 535px;">
+            <div class="slick-track" style="opacity: 1; width: 1555px;">
+                <div class="item short secondary_colour_3-bg odd slick-slide slick-active" index="0"
+                     style="width: 1555px; position: relative; left: 0px; top: 0px; z-index: 900; opacity: 1;">
+                    <div class="image">
+                        <div class="page_component image">
+                            {% set imagestyle = {
+                                '#theme':      'image_style',
+                                '#style_name': 'large',
+                                '#uri':        node.field_image.entity.uri.value,
+                                '#alt':        '',
+                            } %}
+                            {{ imagestyle }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content advanced-component grid secondary_colour_3-bg">
     <div class="" data-os-animation="fadeIn" data-os-animation-delay="0">
         <div class="umb-grid">
@@ -18,12 +40,11 @@
         </div>
     </div>
 </section>
+
 {% for bi in node.field_tables %}
     <iframe id="BI3" width="100%" height="900"
-            src="{{ bi.url }}"
+            src="{{ bi.entity.url }}"
             style="height:900px; border:0;" scrolling="no">
     </iframe>
 {% endfor %}
-<div class="item lists panel panel-default even">
-    {{ drupal_block('recent_publications_block') }}
-</div>
+{{ drupal_block('registered_participants_block') }}
