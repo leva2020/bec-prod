@@ -41,9 +41,10 @@
     </div>
 </section>
 
+{{ node.field_tables.0.url }}
 {% for bi in node.field_tables %}
     <iframe id="BI3" width="100%" height="900"
-            src="{{ bi.entity.url }}"
+            src="{{ bi.url }}"
             style="height:900px; border:0;" scrolling="no">
     </iframe>
 {% endfor %}
