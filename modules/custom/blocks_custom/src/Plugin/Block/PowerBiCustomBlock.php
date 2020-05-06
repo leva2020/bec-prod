@@ -10,8 +10,8 @@ use Drupal\node\Entity\Node;
  * Definición de nuestro bloque
  *
  * @Block(
- *   id = "reports_bi_block",
- *   admin_label = @Translation("reports BI")
+ *   id = "power_bi_block",
+ *   admin_label = @Translation("Power BI")
  * )
  */
 class PowerBiCustomBlock extends BlockBase
