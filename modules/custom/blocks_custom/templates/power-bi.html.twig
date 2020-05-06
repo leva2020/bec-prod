@@ -7,7 +7,7 @@
                         <div class="slick-track" style="opacity: 1;transform: translate3d(0px, 0px, 0px);">
                             {% if reports %}
                                 {% for report in reports %}
-                                    <div class="item even slick-slide slick-active" index="3" style="width: 285px;margin: 0 auto;">
+                                    <div class="item even slide-pop slick-active" index="3" style="width: 285px;margin: 0 auto;">
                                         <div class="image">
                                             <a href="{{ path('entity.node.canonical', {'node': report.id}) }}">
                                                 {% set imagestyle = {
@@ -32,3 +32,19 @@
         </div>
     </div>
 </section>
+
+<style>
+    .slide-pop {
+        float: 0;
+        height: 100%;
+        min-height: 1px;
+        display: none;
+    }
+    @media(max-width: 750px){
+        .slide-pop {
+            height: 100%;
+            min-height: 1px;
+            display: none;
+        }
+    }
+</style>
