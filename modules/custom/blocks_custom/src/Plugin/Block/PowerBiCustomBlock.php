@@ -21,6 +21,11 @@ class PowerBiCustomBlock extends BlockBase
      */
     public function build()
     {
+        $node = \Drupal::routeMatch()->getParameter('node');
+        if ($node instanceof \Drupal\node\NodeInterface) {
+            // You can get nid and anything else you need from the node object.
+            $nid = $node->id();
+        }
         $query = Drupal::entityQuery('node')
             ->condition('type', 'power_bi')
             ->sort('created', 'ASC')
@@ -30,8 +35,10 @@ class PowerBiCustomBlock extends BlockBase
 
         if (!empty($query)) {
             foreach ($query as $newId) {
-                $new = Node::load($newId);
-                $reports[] = $new;
+                if ($nid != $newId) {
+                    $new = Node::load($newId);
+                    $reports[] = $new;
+                }
             }
         }
 
