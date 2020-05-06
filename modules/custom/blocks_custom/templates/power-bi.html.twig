@@ -6,15 +6,15 @@
                     <div class="slick-list draggable" tabindex="0">
                         <div class="slick-track" style="opacity: 1; width: 1140px; transform: translate3d(0px, 0px, 0px);">
                             {% if power %}
-                                {% for p in power %}
+                                {% for power in reports %}
                                     <div class="item even slick-slide slick-active" index="3" style="width: 285px;">
                                         <div class="image">
-                                            <a href="{{ path('entity.node.canonical', {'node': p.id}) }}">
+                                            <a href="{{ path('entity.node.canonical', {'node': power.id}) }}">
                                                 <img src="">
                                                 {% set imagestyle = {
                                                     '#theme':      'image_style',
                                                     '#style_name': 'custom_360x171',
-                                                    '#uri':        p.field_image.entity.uri.value,
+                                                    '#uri':        power.field_image.entity.uri.value,
                                                     '#alt':        '',
                                                 } %}
                                                 <div class="overlayicon" style="width: 284px; height: 151px;">

@@ -157,7 +157,7 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                 'variables' => [
                     'titulo' => 'Tablas Power BI',
                     'descripcion' => 'Tablas Power BI',
-                    'archivos' => NULL
+                    'reports' => NULL
                 ],
                 'template' => 'power-bi'
             ]
