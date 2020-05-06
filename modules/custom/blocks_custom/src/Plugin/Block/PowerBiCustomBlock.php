@@ -14,7 +14,7 @@ use Drupal\node\Entity\Node;
  *   admin_label = @Translation("reports BI")
  * )
  */
-class reportsBiBlock extends BlockBase
+class PowerBiCustomBlock extends BlockBase
 {
     /**
      * {@inheritdoc}
