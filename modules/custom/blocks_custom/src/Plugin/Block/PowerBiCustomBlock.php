@@ -36,7 +36,7 @@ class PowerBiCustomBlock extends BlockBase
         }
 
         return array(
-            '#theme' => 'reports_bi_block_custom',
+            '#theme' => 'power_bi_block_custom',
             '#titulo' => $this->t('Tablas reports BI'),
             '#reports' => $reports
         );
