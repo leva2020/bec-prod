@@ -151,6 +151,15 @@ function blocks_custom_theme($existing, $type, $theme, $path)
                     'archivos' => NULL
                 ],
                 'template' => 'archivo-informe-diario'
+            ],
+        'power_bi_block_custom' =>
+            [
+                'variables' => [
+                    'titulo' => 'Tablas Power BI',
+                    'descripcion' => 'Tablas Power BI',
+                    'archivos' => NULL
+                ],
+                'template' => 'power-bi'
             ]
     ];
 }
