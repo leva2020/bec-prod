@@ -23,7 +23,7 @@ class PowerBiCustomBlock extends BlockBase
     {
         $query = Drupal::entityQuery('node')
             ->condition('type', 'power_bi')
-            ->sort('created', 'DESC')
+            ->sort('created', 'ASC')
             ->range(0, 10)
             ->execute();
         $reports = [];
