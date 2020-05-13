@@ -36,6 +36,8 @@
 </section>
 -->
 
+{{ drupal_block('power_bi_block') }}
+
 {% for bi in node.field_tables %}
     <section class="content advanced-component standard-components">
         <div class="container">
@@ -52,7 +54,5 @@
         </div>
     </section>
 {% endfor %}
-
-{{ drupal_block('power_bi_block') }}
 
 {{ drupal_block('registered_participants_block') }}
