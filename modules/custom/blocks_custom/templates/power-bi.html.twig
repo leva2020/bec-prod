@@ -7,12 +7,12 @@
                         <div class="slick-track" style="opacity: 1;transform: translate3d(0px, 0px, 0px);">
                             {% if reports %}
                                 {% for report in reports %}
-                                    <div class="item even slide-pop slick-active" index="3" style="width: 285px;margin: 0 auto;">
+                                    <div class="item even slide-pop slick-active" index="3" style="width: 210px;margin: 0 auto;">
                                         <div class="image">
                                             <a href="{{ path('entity.node.canonical', {'node': report.id}) }}">
                                                 {% set imagestyle = {
                                                     '#theme':      'image_style',
-                                                    '#style_name': '360x120',
+                                                    '#style_name': '210x70',
                                                     '#uri':        report.field_image.entity.uri.value,
                                                     '#alt':        '',
                                                 } %}

@@ -35,10 +35,10 @@ class PowerBiCustomBlock extends BlockBase
 
         if (!empty($query)) {
             foreach ($query as $newId) {
-                if ($nid != $newId) {
+                // if ($nid != $newId) {
                     $new = Node::load($newId);
                     $reports[] = $new;
-                }
+                // }
             }
         }
 
