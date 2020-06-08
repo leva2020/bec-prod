@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="77be325c-7ff4-4c15-abce-ab40ed408ac6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-negociada-por-tramo-grupo-gasoductos.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energía-a-suministrar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/energía-a-suministrar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/custom/bec_ws/src/Controller/ServiciosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-de-energia-negociada-uvcp.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/cantidad-de-energia-negociada-uvcp.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/capacidad-de-transporte-negociada-uvcp.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/subasta-de-suministro-con-interrupciones.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas/subasta-de-suministro-con-interrupciones.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +34,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -87,13 +107,18 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -101,24 +126,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas" />
       <recent name="$PROJECT_DIR$/themes/custom/bmcbec/dist/js/chartJS" />
       <recent name="$PROJECT_DIR$/themes/custom/bmcbec/dist/js" />
       <recent name="$PROJECT_DIR$/themes/custom/bmcbec/dist/css" />
-      <recent name="$PROJECT_DIR$/themes/custom/bmcbec/templates/graficas" />
       <recent name="$PROJECT_DIR$/themes/custom/bmcbec/templates/node" />
     </key>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -164,20 +177,18 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="367" y="168" width="632" height="536" key="find.popup" timestamp="1585322804034">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="-1844" y="254" width="1167" height="738" key="find.popup" timestamp="1591652646386">
+      <screen x="-2522" y="23" width="2522" height="1057" />
     </state>
-    <state x="-1053" y="188" width="606" height="536" key="find.popup/0.0.1366.728/-1440.0.1440.860@-1440.0.1440.860" timestamp="1580932140867" />
-    <state x="-1053" y="188" width="606" height="536" key="find.popup/0.0.1366.728/-1440.0.1440.860@0.0.1366.728" timestamp="1580762149533" />
+    <state x="-1844" y="254" width="1167" height="738" key="find.popup/-2522.23.2522.1057/0.23.1440.877@-2522.23.2522.1057" timestamp="1591652646386" />
     <state x="367" y="168" width="632" height="536" key="find.popup/0.0.1366.768/1366.0.1024.768@0.0.1366.768" timestamp="1585322804034" />
   </component>
 </project>

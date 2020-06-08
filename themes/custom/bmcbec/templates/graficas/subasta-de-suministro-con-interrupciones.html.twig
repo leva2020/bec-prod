@@ -424,9 +424,9 @@
 
 {{ include('resultados_info.html.twig', {"info": info}) }}
 
-<div class="canvas-holder">
+<!--<div class="canvas-holder">
     <canvas id="canvas"></canvas>
-</div>
+</div>-->
 <style type="text/css">
     .chart-container {
         position: relative;
@@ -441,13 +441,13 @@
     {% if info['paramsFilter'] is not null %}
         var codigoPunto = {{ (info['paramsFilter']['codigoPunto'])?:0 }};
         $("option[value=" + codigoPunto + "]").attr('selected', 'selected');
-    
+
         var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
         $("input[id='dpd1']").attr('value', fechaInicial);
-    
+
         var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
         $("input[id='dpd2']").attr('value', fechaFinal);
-    
+
     {% endif %}
 
     var randomColor = function (opacity) {

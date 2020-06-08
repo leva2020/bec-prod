@@ -280,14 +280,12 @@
 <table id="ResultTable" class="table table-striped table-bordered" cellspacing="0" width="100%" align="center" data-page-length="20">
     <thead>
         <tr>
-        <tr>
             <th>Fecha</th>
             <th>Tramo o Grupo de Gasoductos</th>
             <th>Capacidad Adjudicada (KPCD)</th>
             <th>Precio Promedio Ponderado de la Adjudicación (USD/KPC)</th>
             <th>Capacidad Registrada (KPCD)</th>
             <th>Precio Promedio Ponderado de Registro (USD/KPC)</th>
-        </tr>
         </tr>
     </thead>
     <tfoot>
@@ -303,7 +301,7 @@
     <tbody>
     {% for key, data in info %}
         <tr valign="top" align="left">
-            <td>{{ data.fecha }}</td>
+            <td>{{ data.fecha | date("Y/m/d") }}</td>
             <td>{{ data.ruta }}</td>
             <td align="right" data-order="26">{{ data.cantidad_adj }}</td>
             <td align="right" data-order="0.22">{{ data.precio_prom_adj }}</td>
