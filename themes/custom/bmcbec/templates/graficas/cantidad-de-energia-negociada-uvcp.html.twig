@@ -439,7 +439,7 @@
         </tr>
     </tfoot>
     <tbody>
-        
+
     {% for key, data in info %}
         <tr valign="top" align="left">
             <td>{{ data.fecha }}</td>
@@ -481,3 +481,18 @@ $(document).ready(function() {
         datesFieldsValidation(395, 395);
     });
 </script>
+<style>
+  section.advanced-component {
+    padding: 40px 0 0 0;
+  }
+  body #site section.advanced-component.grid {
+    display:none;
+  }
+  body #site .body-section .btn {
+    white-space: initial;
+    padding: 0;
+  }
+  body #ResultTable tbody tr:first-child {
+    display:none;
+  }
+</style>
