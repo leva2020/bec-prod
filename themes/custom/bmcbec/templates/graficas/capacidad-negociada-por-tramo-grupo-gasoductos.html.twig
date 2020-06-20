@@ -370,38 +370,54 @@
         ]
     };
 
-    $.each(lineChartData.datasets, function (i, dataset) {
-        dataset.borderColor = randomColor(0.4);
-        dataset.backgroundColor = randomColor(1);
-        dataset.pointBorderColor = randomColor(0.7);
-        dataset.pointBackgroundColor = randomColor(0.5);
-        dataset.pointBorderWidth = 1;
-    });
-
-    window.onload = function () {
-        var chartEl = document.getElementById("chart");
-        window.myLine = new Chart(chartEl, {
-            type: 'line',
-            data: lineChartData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                title: {
-                    display: false,
-                    text: 'CAPACIDAD NEGOCIADA POR TRAMO O GRUPO DE GASODUCTOS',
-                    fontSize: 16,
-                },
-                tooltips: {
-                    mode: 'label',
-                    enabled: true
-                    //custom: customTooltips
-                },
-                legend: {
-                    position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
-                }
-            }
-        });
+    window.onload = function() {
+      var ctx = document.getElementById("canvas").getContext("2d");
+      window.myBar = Chart.Bar(ctx, {
+        data: lineChartData,
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          hoverMode: 'label',
+          hoverAnimationDuration: 400,
+          stacked: false,
+          title:{
+            display:false,
+            text:"CAPACIDAD NEGOCIADA POR TRAMO O GRUPO DE GASODUCTOS",
+            fontSize: 16,
+          },
+          scales: {
+            yAxes: [{
+              type: "linear",
+              display: true,
+              position: "left",
+              id: "y-axis-1",
+            }, {
+              type: "linear",
+              display: true,
+              position: "right",
+              id: "y-axis-2",
+              gridLines: {
+                drawOnChartArea: true
+              }
+            }],
+          }
+        }
+      });
     };
+
+    $('#randomizeData').click(function() {
+      $.each(lineChartData.datasets, function(i, dataset) {
+        if (Chart.helpers.isArray(dataset.backgroundColor)) {
+          dataset.backgroundColor= [randomColor(), randomColor(), randomColor(), randomColor(), randomColor(), randomColor(), randomColor()];
+        } else {
+          dataset.backgroundColor= randomColor();
+        }
+
+        dataset.data = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()];
+
+      });
+      window.myBar.update();
+    });
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>
