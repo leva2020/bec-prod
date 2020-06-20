@@ -218,7 +218,7 @@ class ServiciosController extends ControllerBase
           $date = date("Y/m/d", strtotime($date));
           $labels[] = $date;
         }
-        var_dump($data['response']);die;
+        //var_dump($data['response']);die;
       }
       $data = array(
         'info' => $info,
