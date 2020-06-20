@@ -435,15 +435,21 @@
             <th>Tramo o Grupo de Gasoductos</th>
             <th>Modalidad Contractual</th>
             <th>Capacidad (KPCD)</th>
+            <th>Precio Mínimo (USD/KPC)</th>
+            <th>Precio Promedio Ponderado (USD/KPC)</th>
+            <th>Precio Máximo (USD/KPC)</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
-            <th>Año</th>
-            <th>Mes</th>
-            <th>Tramo o Grupo de Gasoductos</th>
-            <th>Modalidad Contractual</th>
-            <th>Capacidad (KPCD)</th>
+          <th>Año</th>
+          <th>Mes</th>
+          <th>Tramo o Grupo de Gasoductos</th>
+          <th>Modalidad Contractual</th>
+          <th>Capacidad (KPCD)</th>
+          <th>Precio Mínimo (USD/KPC)</th>
+          <th>Precio Promedio Ponderado (USD/KPC)</th>
+          <th>Precio Máximo (USD/KPC)</th>
         </tr>
         </tfoot>
         <tbody>
@@ -453,11 +459,12 @@
                 <td>{{ data.año }}</td>
                 <td>{{ data.mes }}</td>
                 <td>{{ data.ruta }}</td>
-                <td>{{ data.modalidad }}</td>
-                <td align="right" data-order="{{ data.cantidad }}">{{ data.cantidad }}</td>
+                <td>{{ data.cantidad }}</td>
+                <td>{{ data.precio_min }}</td>
+                <td>{{ data.precio_prom }}</td>
+                <td>{{ data.precio_max }}</td>
             </tr>
         {% endfor %}
-
         </tbody>
     </table>
 </div>
