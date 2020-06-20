@@ -333,12 +333,40 @@
     var lineChartData = {
         labels: {{ info["labels"]|json_encode|raw }},
         datasets: [
-            {% for key, dataSet in info["dataDataSets"] %}
-            {
-                label: "{{ key }}",
-                data: {{ dataSet|json_encode|raw }}
-            },
-            {% endfor %}
+          {
+            type: 'line',
+            label: 'Capacidad (KPCD)',
+            backgroundColor: [randomColor()],
+            yAxisID: "y-axis-1",
+            fill: true,
+            data: {{ info['capacidad']|json_encode|raw }}
+          }, {
+            type: 'line',
+            label: 'Precio Mínimo (USD/KPC)',
+            backgroundColor: [randomColor()],
+            fill: false,
+            lineTension: 0,
+            yAxisID: "y-axis-2",
+            hidden: true,
+            data: {{ info['minimo']|json_encode|raw }}
+          }, {
+            type: 'line',
+            label: 'Precio Prom. Ponderado (USD/KPC)',
+            backgroundColor: [randomColor()],
+            fill: false,
+            lineTension: 0,
+            yAxisID: "y-axis-2",
+            data: {{ info['promedio']|json_encode|raw }}
+          }, {
+            type: 'line',
+            label: 'Precio Máximo (USD/KPC)',
+            backgroundColor: [randomColor()],
+            fill: false,
+            lineTension: 0,
+            yAxisID: "y-axis-2",
+            hidden: true,
+            data: {{ info['maximo']|json_encode|raw }}
+          }
         ]
     };
 
