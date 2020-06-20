@@ -326,70 +326,7 @@
 
   $(document).ready(function () {
     $( "#grafica_load" ).load( "http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/transaccional-MS-IT-capacidad-negociada-por-tramo.cshtml" );
-  })
-    {% if info['paramsFilter'] is not null %}
-    var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
-    $("input[id='dpd1']").attr('value', fechaInicial);
-
-    var fechaFinal = '{{ info['paramsFilter']['fechaFinal'] }}';
-    $("input[id='dpd2']").attr('value', fechaFinal);
-
-    var tramoOGrupo = {{ (info['paramsFilter']['tramoOGrupo'])?:0 }};
-    $("option[value=" + tramoOGrupo + "]").attr('selected', 'selected');
-    {% endif %}
-
-    var formModeCode = {{ (info['paramsFilter']['formModeCode'])?:0 }};
-    $("option[value=" + formModeCode + "]").attr('selected', 'selected');
-    {% endif %}
-
-    var randomColor = function (opacity) {
-        return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-    };
-
-    var lineChartData = {
-        labels: {{ info["labels"]|json_encode|raw }},
-        datasets: [
-            {% for key, dataSet in info["dataDataSets"] %}
-            {
-                label: "{{ key }}",
-                data: {{ dataSet|json_encode|raw }}
-            },
-            {% endfor %}
-        ]
-    };
-
-    $.each(lineChartData.datasets, function (i, dataset) {
-        dataset.borderColor = randomColor(0.4);
-        dataset.backgroundColor = randomColor(1);
-        dataset.pointBorderColor = randomColor(0.7);
-        dataset.pointBackgroundColor = randomColor(0.5);
-        dataset.pointBorderWidth = 1;
-    });
-
-    window.onload = function () {
-        var chartEl = document.getElementById("chart");
-        window.myLine = new Chart(chartEl, {
-            type: 'line',
-            data: lineChartData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                title: {
-                    display: false,
-                    text: 'CAPACIDAD CONTRATADA POR TRAMO O GRUPO DE GASODUCTOS',
-                    fontSize: 16,
-                },
-                tooltips: {
-                    mode: 'label',
-                    enabled: true
-                    //custom: customTooltips
-                },
-                legend: {
-                    position: (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'bottom' : 'top'
-                }
-            }
-        });
-    };
+  });
 </script>
 <!-- END OF GRAPHIC CONSTRUCTOR -->
 <div class="bmcbec-fix"></div>
