@@ -24,6 +24,8 @@
 
 {# {{ "2019-05-01"|date_modify("-1 month")|date("Y-m-d") }}#}
 
+<div id="grafica_load"></div>
+{#
 <div class="well" align="center" style="background-color: #fff">
     <div class="bmcbec-dp-left">
         <form method="post" action="">
@@ -304,7 +306,7 @@
     //     datesFieldsValidation(365);
 </script>
 <div class="bmcbec-fix"></div>
-
+#}
 
 <!-- GRAPHIC CONSTRUCTOR -->
 {# <div class="canvas-holder-text">#}
@@ -312,7 +314,7 @@
 {#     <p>Se est&#225; mostrando informaci&#243;n de  35 resultados encontrados con los filtros aplicados.</p>#}
 {#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
 {# </div>#}
-
+{#
 {{ include('resultados_info.html.twig', {"info": info}) }}
 
 <div class="canvas-holder">
@@ -321,10 +323,13 @@
     <canvas id="chart"/>
 </div>
 
-{# {{ dump(info) }}#}
+ {{ dump(info) }}#}
 
 <script type="text/javascript">
 
+  $(document).ready(function () {
+    $( "#grafica_load" ).load( "http://www.bmcbec.com.co/App_Plugins/BECCharts/front-end/transaccional-MS-IT-capacidad-negociada-por-tramo.cshtml" );
+  })
     {% if info['paramsFilter'] is not null %}
     var fechaInicial = '{{ info['paramsFilter']['fechaInicial'] }}';
     $("input[id='dpd1']").attr('value', fechaInicial);
