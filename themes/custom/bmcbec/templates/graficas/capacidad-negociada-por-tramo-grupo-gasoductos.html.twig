@@ -326,10 +326,6 @@
     $("option[value=" + tramoOGrupo + "]").attr('selected', 'selected');
     {% endif %}
 
-    var formModeCode = {{ (info['paramsFilter']['formModeCode'])?:0 }};
-    $("option[value=" + formModeCode + "]").attr('selected', 'selected');
-    {% endif %}
-
     var randomColor = function (opacity) {
         return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
     };
