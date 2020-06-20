@@ -226,12 +226,16 @@ class ServiciosController extends ControllerBase
           $promedio[] = $prom;
           $maximo[] = $max;
         }
-        $dataSets = [(object)$capacidad, (object)$minimo, (object)$promedio, (object)$maximo];
+        // $dataSets = [(object)$capacidad, (object)$minimo, (object)$promedio, (object)$maximo];
         //var_dump($data['response']);die;
       }
       $data = array(
         'info' => $info,
         'labels' => $labels,
+        'capacidad' => $capacidad,
+        'minimo' => $minimo,
+        'promedio' => $promedio,
+        'maximo' => $maximo,
         'dataDataSets' => $dataSets,
         'dataTables' => $data["response"],
         'num_resultados' => count($data['response']),
