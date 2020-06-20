@@ -217,7 +217,16 @@ class ServiciosController extends ControllerBase
           $date = $value->fecha;
           $date = date("Y/m/d", strtotime($date));
           $labels[] = $date;
+          $cap = ($value->cantidad) ? $value->cantidad : '';
+          $min = ($value->precio_min) ? $value->precio_min : '';
+          $max = ($value->precio_max) ? $value->precio_max : '';
+          $prom = ($value->precio_prom) ? $value->precio_prom : '';
+          $capacidad[] = $cap;
+          $minimo[] = $min;
+          $promedio[] = $prom;
+          $maximo[] = $max;
         }
+        $dataSets = [(object)$capacidad, (object)$minimo, (object)$promedio, (object)$maximo];
         //var_dump($data['response']);die;
       }
       $data = array(
