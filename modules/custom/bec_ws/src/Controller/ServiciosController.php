@@ -214,31 +214,11 @@ class ServiciosController extends ControllerBase
       sort($data["response"]);
       if (is_array($data['response'])) {
         foreach ($data['response'] as $key => $value) {
-          $date = $this->formatMonthLabel($value->mes) . "/" . $value->año;
-          $modalidad = $value->modalidad;
-          $cantidad = $value->cantidad;
-          if (!in_array($date, $labels)):
-            $labels[] = $date;
-            $dataDataSets[$date]['modalidad'] = array();
-          endif;
-          if (!in_array($modalidad, $modalidades)):
-            $modalidades[] = $modalidad;
-          endif;
-          if (array_key_exists($modalidad, $dataDataSets[$date]['modalidad'])):
-            $dataDataSets[$date]['modalidad'][$modalidad] += $cantidad;
-          else:
-            $dataDataSets[$date]['modalidad'][$modalidad] = $cantidad;
-          endif;
+          $date = $value->fecha;
+          $date = date("Y/m/d", strtotime($date));
+          $labels[] = $date;
         }
-        $tmpLabels = $labels;
-        foreach ($dataDataSets as $key => $tmpLabels):
-          foreach ($modalidades as $modalidad):
-            if (!array_key_exists($modalidad, $tmpLabels['modalidad'])):
-              $dataDataSets[$key]['modalidad'][$modalidad] = 0;
-            endif;
-            $dataSets[$modalidad][] = $dataDataSets[$key]['modalidad'][$modalidad];
-          endforeach;
-        endforeach;
+
       }
       $data = array(
         'info' => $info,
