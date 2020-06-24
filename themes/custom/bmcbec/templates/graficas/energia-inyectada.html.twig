@@ -1,5 +1,5 @@
 {% set now = "now"|date("Y-m-t", "America/Bogota") %}
-{% set yearAgo = "now"|date_modify("-11 months")|date("Y-m-01", "America/Bogota") %}
+{% set yearAgo = "now"|date_modify("-2 months")|date("Y-m-01", "America/Bogota") %}
 
 {% set monthNow = "now"|date("m", "America/Bogota") %}
 {% set monthAgo = "now"|date_modify("-0 months")|date("Y-m-01", "America/Bogota") %}
@@ -407,16 +407,6 @@
 
 <div class="bmcbec-fix"></div>
 
-<!-- GRAPHIC CONSTRUCTOR -->
-{# <div class="canvas-holder-text">#}
-{#     <h4>#}
-{#         <text>Resultados:</text>#}
-{#     </h4>#}
-{#     <p>Se est&#225; mostrando informaci&#243;n de 1379 resultados encontrados con los filtros aplicados.</p>#}
-{#     <p>Encuentre informaci&#243;n detallada en la Tabla de Resultados.</p>#}
-
-{# </div>#}
-
 {{ include('resultados_info.html.twig', {"info": info}) }}
 
 <div class="canvas-holder">
@@ -591,4 +581,3 @@
     });
 </script>
 
-    
